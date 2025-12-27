@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constitution of Nepal - Bilingual Viewer</title>
+    <title>Constitution of Nepal</title>
     <style>
         * {
             margin: 0;
@@ -11,55 +11,38 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #dc2626;
-            --primary-dark: #b91c1c;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #f9fafb;
-            --card-bg: white;
-            --border: #e5e7eb;
-            --hover: #f3f4f6;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-        }
-
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #000;
+            background: #fff;
+            max-width: 1000px;
+            margin: 0 auto;
             padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
-        .header h1 {
-            font-size: 2rem;
+        header {
+            border-bottom: 3px solid #000;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
         }
 
-        .header p {
-            opacity: 0.9;
-            font-size: 0.9rem;
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
         }
 
         .controls {
-            background: var(--card-bg);
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .controls-inner {
-            max-width: 1400px;
-            margin: 0 auto;
+            border-bottom: 2px solid #000;
+            padding: 1.5rem 0;
+            margin-bottom: 2rem;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
@@ -73,181 +56,116 @@
 
         .search-box input {
             width: 100%;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.9rem;
+            padding: 0.75rem;
+            border: 2px solid #000;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
         .search-box input:focus {
             outline: none;
-            border-color: var(--primary);
+            background: #f5f5f5;
         }
 
         .lang-toggle {
             display: flex;
-            gap: 0.5rem;
+            gap: 0;
+            border: 2px solid #000;
         }
 
-        .lang-btn {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            background: var(--bg);
-            border-radius: 6px;
+        button {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-right: 2px solid #000;
+            background: #fff;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
             transition: all 0.2s;
         }
 
-        .lang-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        button:last-child {
+            border-right: none;
         }
 
-        .lang-btn:hover:not(.active) {
-            background: var(--hover);
+        button:hover {
+            background: #f5f5f5;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-            padding: 2rem 1rem;
-        }
-
-        .sidebar {
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .sidebar h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-            font-size: 1.1rem;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar li {
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar a {
-            color: var(--text);
-            text-decoration: none;
-            display: block;
-            padding: 0.5rem;
-            border-radius: 4px;
-            transition: background 0.2s;
-            font-size: 0.9rem;
-        }
-
-        .sidebar a:hover {
-            background: var(--hover);
-            color: var(--primary);
-        }
-
-        .content {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        button.active {
+            background: #000;
+            color: #fff;
         }
 
         .preamble {
-            margin-bottom: 3rem;
+            border: 3px solid #000;
             padding: 2rem;
-            background: linear-gradient(to right, #fef3c7, #fde68a);
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
+            margin-bottom: 3rem;
+            background: #f9f9f9;
         }
 
-        .preamble-header {
+        .preamble-title {
             font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .preamble-text {
-            font-size: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.8;
-            margin-bottom: 1rem;
         }
 
-        .preamble-text.nepali-text {
-            font-size: 1.1rem;
+        .preamble-text.nepali {
+            font-size: 1.05rem;
         }
 
         .part {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .part-header {
-            background: linear-gradient(to right, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px 8px 0 0;
-            margin-bottom: 1.5rem;
+            background: #000;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .part-number {
             font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 0.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.8;
         }
 
         .part-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .article {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--bg);
-            border-radius: 8px;
-            border-left: 3px solid var(--primary);
-        }
-
-        .article-header {
-            margin-bottom: 1rem;
-        }
-
-        .article-number {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-weight: bold;
-            margin-right: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .article-title {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-top: 0.5rem;
         }
 
-        .article-title-en {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-top: 0.3rem;
-            font-style: italic;
+        .article {
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+            border-left: 3px solid #000;
+        }
+
+        .article-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-number {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .article-title {
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            color: #333;
         }
 
         .article-content {
@@ -255,247 +173,172 @@
         }
 
         .subsection {
-            margin-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
             line-height: 1.8;
         }
 
+        .subsection.nepali {
+            font-size: 1.05rem;
+        }
+
+        .subsection.english {
+            color: #444;
+            padding-left: 1rem;
+            border-left: 3px solid #999;
+            margin-top: 1rem;
+        }
+
+        .sentence-pair {
+            margin-bottom: 1.5rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .sentence {
+            padding: 0.75rem;
+            border-left: 4px solid #000;
+        }
+
+        .sentence.nepali {
+            background: #f5f5f5;
+            font-size: 1.05rem;
+        }
+
+        .sentence.english {
+            background: #fafafa;
+            border-left-color: #999;
+            color: #444;
+        }
+
+        .subsection-header {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 2rem 0 1rem 0;
+        }
+
         .subsection-id {
-            font-weight: 600;
-            color: var(--primary);
+            font-weight: 700;
             margin-right: 0.5rem;
         }
 
         .sub-subsection {
-            margin-left: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .nepali-text {
-            font-size: 1.05rem;
-        }
-
-        .english-text {
-            color: var(--text-light);
-            font-style: italic;
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--border);
-        }
-
-        .missing-translation {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            font-style: italic;
-            margin-top: 0.5rem;
-        }
-
-        .stats {
-            background: linear-gradient(to right, #dbeafe, #bfdbfe);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .stats-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .stats-content {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                position: relative;
-                top: 0;
-                height: auto;
-                max-height: 300px;
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-            }
-
-            .preamble {
-                padding: 1rem;
-            }
-
-            .content {
-                padding: 1rem;
-            }
+            margin-left: 2rem;
+            margin-top: 0.75rem;
         }
 
         .loading {
             text-align: center;
             padding: 3rem;
-            color: var(--text-light);
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .part-title {
+                font-size: 1.5rem;
+            }
+
+            .article {
+                padding-left: 1rem;
+            }
+        }
+
+        @media print {
+            .controls {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>नेपालको संविधान / Constitution of Nepal</h1>
-        <p>Bilingual Interactive Viewer - 100% Coverage</p>
-    </div>
+    <header>
+        <h1>Constitution of Nepal</h1>
+        <div class="subtitle">नेपालको संविधान</div>
+    </header>
 
     <div class="controls">
-        <div class="controls-inner">
-            <div class="search-box">
-                <input type="text" id="search" placeholder="Search articles...">
-            </div>
-            <div class="lang-toggle">
-                <button class="lang-btn active" data-lang="both">Both</button>
-                <button class="lang-btn" data-lang="nepali">नेपाली</button>
-                <button class="lang-btn" data-lang="english">English</button>
-            </div>
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Search articles...">
+        </div>
+        <div class="lang-toggle">
+            <button class="active" data-lang="both">Both</button>
+            <button data-lang="nepali">नेपाली</button>
+            <button data-lang="english">English</button>
+        </div>
+        <div class="lang-toggle">
+            <button class="active" data-view="paragraph">Paragraph</button>
+            <button data-view="sentence">Sentence</button>
         </div>
     </div>
 
-    <div class="container">
-        <aside class="sidebar">
-            <h3>Table of Contents</h3>
-            <ul id="toc"></ul>
-        </aside>
-
-        <main class="content">
-            <div id="constitution" class="loading">
-                Loading constitution...
-            </div>
-        </main>
-    </div>
+    <main id="content" class="loading">
+        Loading constitution...
+    </main>
 
     <script>
-        let constitutionData = null;
+        let paragraphData = null;
+        let sentenceData = null;
         let currentLang = 'both';
+        let currentView = 'paragraph';
 
-        // Load constitution data
-        fetch('constitution_bilingual.json')
-            .then(res => res.json())
-            .then(data => {
-                constitutionData = data;
-                renderTOC();
-                renderConstitution();
+        // Load both JSON files
+        Promise.all([
+            fetch('constitution_bilingual.json').then(res => res.json()),
+            fetch('per-sentence.json').then(res => res.json())
+        ])
+            .then(([paragraph, sentence]) => {
+                paragraphData = paragraph;
+                sentenceData = sentence;
+                render();
             })
             .catch(err => {
-                document.getElementById('constitution').innerHTML =
-                    '<p style="color: #dc2626;">Error loading constitution data. Please ensure constitution_bilingual.json is in the same directory.</p>';
+                document.getElementById('content').innerHTML = '<p>Error loading constitution data.</p>';
                 console.error(err);
             });
 
-        // Render table of contents
-        function renderTOC() {
-            const toc = document.getElementById('toc');
-            const parts = constitutionData.constitution.parts;
-
-            // Add preamble link
-            const preambleLi = document.createElement('li');
-            const preambleA = document.createElement('a');
-            preambleA.href = '#preamble';
-            preambleA.textContent = 'Preamble / प्रस्तावना';
-            preambleA.addEventListener('click', (e) => {
-                e.preventDefault();
-                document.getElementById('preamble').scrollIntoView({ behavior: 'smooth' });
-            });
-            preambleLi.appendChild(preambleA);
-            toc.appendChild(preambleLi);
-
-            // Add parts
-            parts.forEach(part => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = `#part-${part.number}`;
-                const title = part.title.np || part.title.en || `Part ${part.number}`;
-                a.textContent = `Part ${part.number}: ${title}`;
-                a.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    document.getElementById(`part-${part.number}`).scrollIntoView({ behavior: 'smooth' });
-                });
-                li.appendChild(a);
-                toc.appendChild(li);
-            });
+        function render() {
+            if (currentView === 'paragraph') {
+                renderParagraphView();
+            } else {
+                renderSentenceView();
+            }
         }
 
-        // Render constitution
-        function renderConstitution() {
-            const container = document.getElementById('constitution');
-            const constitution = constitutionData.constitution;
-            const parts = constitution.parts;
-
+        function renderParagraphView() {
+            const container = document.getElementById('content');
             container.innerHTML = '';
 
-            // Statistics
-            const totalArticles = parts.reduce((sum, part) => sum + part.articles.length, 0);
-            const withNepali = parts.reduce((sum, part) =>
-                sum + part.articles.filter(a => a.title.np).length, 0);
-
-            const statsDiv = document.createElement('div');
-            statsDiv.className = 'stats';
-            statsDiv.innerHTML = `
-                <div class="stats-title">Constitution Statistics</div>
-                <div class="stats-content">
-                    <div class="stat-item">
-                        <div class="stat-value">${parts.length}</div>
-                        <div class="stat-label">Parts</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">${totalArticles}</div>
-                        <div class="stat-label">Total Articles</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value">${((withNepali/totalArticles)*100).toFixed(1)}%</div>
-                        <div class="stat-label">Nepali Coverage</div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(statsDiv);
+            const constitution = paragraphData.constitution;
 
             // Preamble
             if (constitution.preamble) {
                 const preambleDiv = document.createElement('div');
-                preambleDiv.id = 'preamble';
                 preambleDiv.className = 'preamble';
+                preambleDiv.id = 'preamble';
 
-                const preambleHeader = document.createElement('div');
-                preambleHeader.className = 'preamble-header';
-                preambleHeader.textContent = 'Preamble / प्रस्तावना';
-                preambleDiv.appendChild(preambleHeader);
+                const title = document.createElement('div');
+                title.className = 'preamble-title';
+                title.textContent = 'Preamble / प्रस्तावना';
+                preambleDiv.appendChild(title);
 
                 if (constitution.preamble.np && currentLang !== 'english') {
                     const npText = document.createElement('div');
-                    npText.className = 'preamble-text nepali-text';
+                    npText.className = 'preamble-text nepali';
                     npText.textContent = constitution.preamble.np;
                     preambleDiv.appendChild(npText);
                 }
 
                 if (constitution.preamble.en && currentLang !== 'nepali') {
                     const enText = document.createElement('div');
-                    enText.className = 'preamble-text english-text';
+                    enText.className = 'preamble-text english';
                     enText.textContent = constitution.preamble.en;
                     preambleDiv.appendChild(enText);
                 }
@@ -504,26 +347,36 @@
             }
 
             // Parts
-            parts.forEach(part => {
+            constitution.parts.forEach(part => {
                 const partDiv = document.createElement('div');
                 partDiv.className = 'part';
                 partDiv.id = `part-${part.number}`;
 
-                const partHeader = document.createElement('div');
-                partHeader.className = 'part-header';
+                const header = document.createElement('div');
+                header.className = 'part-header';
 
+                const partNum = document.createElement('div');
+                partNum.className = 'part-number';
+                partNum.textContent = `Part ${part.number}`;
+                header.appendChild(partNum);
+
+                const partTitle = document.createElement('div');
+                partTitle.className = 'part-title';
                 const titleNp = part.title.np || '';
                 const titleEn = part.title.en || '';
 
-                partHeader.innerHTML = `
-                    <div class="part-number">Part ${part.number}</div>
-                    ${titleNp ? `<div class="part-title nepali-text">${titleNp}</div>` : ''}
-                    ${titleEn ? `<div class="part-title english-text" style="color: rgba(255,255,255,0.9); margin-top: 0.5rem; font-size: 1.2rem;">${titleEn}</div>` : ''}
-                `;
+                if (currentLang === 'both') {
+                    partTitle.textContent = titleNp && titleEn ? `${titleNp} / ${titleEn}` : titleNp || titleEn;
+                } else if (currentLang === 'nepali') {
+                    partTitle.textContent = titleNp;
+                } else {
+                    partTitle.textContent = titleEn;
+                }
 
-                partDiv.appendChild(partHeader);
+                header.appendChild(partTitle);
+                partDiv.appendChild(header);
 
-                // Render articles
+                // Articles
                 part.articles.forEach(article => {
                     const articleDiv = document.createElement('div');
                     articleDiv.className = 'article';
@@ -531,21 +384,31 @@
                     const articleHeader = document.createElement('div');
                     articleHeader.className = 'article-header';
 
+                    const articleNum = document.createElement('div');
+                    articleNum.className = 'article-number';
+                    articleNum.textContent = article.number;
+                    articleHeader.appendChild(articleNum);
+
+                    const articleTitle = document.createElement('div');
+                    articleTitle.className = 'article-title';
                     const titleNp = article.title.np || '';
                     const titleEn = article.title.en || '';
 
-                    articleHeader.innerHTML = `
-                        <span class="article-number">${article.number}</span>
-                        ${titleNp ? `<div class="article-title nepali-text">${titleNp}</div>` : ''}
-                        ${titleEn ? `<div class="article-title-en">${titleEn}</div>` : ''}
-                    `;
+                    if (currentLang === 'both') {
+                        articleTitle.textContent = titleNp && titleEn ? `${titleNp} / ${titleEn}` : titleNp || titleEn;
+                    } else if (currentLang === 'nepali') {
+                        articleTitle.textContent = titleNp;
+                    } else {
+                        articleTitle.textContent = titleEn;
+                    }
 
+                    articleHeader.appendChild(articleTitle);
                     articleDiv.appendChild(articleHeader);
 
-                    // Render content
+                    // Content
                     const contentDiv = document.createElement('div');
                     contentDiv.className = 'article-content';
-                    contentDiv.innerHTML = renderArticleContent(article.content);
+                    renderArticleContent(article.content, contentDiv);
 
                     articleDiv.appendChild(contentDiv);
                     partDiv.appendChild(articleDiv);
@@ -556,75 +419,247 @@
         }
 
         // Render article content
-        function renderArticleContent(content) {
-            let html = '';
-
+        function renderArticleContent(content, container) {
             // Nepali content
             if (content.np && content.np.length > 0 && currentLang !== 'english') {
                 content.np.forEach(item => {
+                    const subsectionDiv = document.createElement('div');
+                    subsectionDiv.className = 'subsection nepali';
+
                     if (item.type === 'subsection') {
-                        html += `<div class="subsection nepali-text">
-                            <span class="subsection-id">${item.identifier}</span>
-                            ${item.text}
-                        `;
+                        const id = document.createElement('span');
+                        id.className = 'subsection-id';
+                        id.textContent = item.identifier;
+                        subsectionDiv.appendChild(id);
+
+                        const text = document.createTextNode(' ' + item.text);
+                        subsectionDiv.appendChild(text);
 
                         if (item.items && item.items.length > 0) {
                             item.items.forEach(subItem => {
-                                html += `<div class="sub-subsection">
-                                    <span class="subsection-id">${subItem.identifier}</span>
-                                    ${subItem.text}
-                                </div>`;
+                                const subDiv = document.createElement('div');
+                                subDiv.className = 'sub-subsection';
+
+                                const subId = document.createElement('span');
+                                subId.className = 'subsection-id';
+                                subId.textContent = subItem.identifier;
+                                subDiv.appendChild(subId);
+
+                                const subText = document.createTextNode(' ' + subItem.text);
+                                subDiv.appendChild(subText);
+
+                                subsectionDiv.appendChild(subDiv);
                             });
                         }
-
-                        html += '</div>';
                     } else if (item.type === 'text') {
-                        html += `<div class="subsection nepali-text">${item.text}</div>`;
+                        subsectionDiv.textContent = item.text;
                     }
+
+                    container.appendChild(subsectionDiv);
                 });
             }
 
-            // English content (if available and language setting allows)
+            // English content
             if (content.en && content.en.length > 0 && currentLang !== 'nepali') {
                 content.en.forEach(item => {
+                    const subsectionDiv = document.createElement('div');
+                    subsectionDiv.className = 'subsection english';
+
                     if (item.type === 'subsection') {
-                        html += `<div class="subsection english-text">
-                            <span class="subsection-id">${item.identifier}</span>
-                            ${item.text}
-                        `;
+                        const id = document.createElement('span');
+                        id.className = 'subsection-id';
+                        id.textContent = item.identifier;
+                        subsectionDiv.appendChild(id);
+
+                        const text = document.createTextNode(' ' + item.text);
+                        subsectionDiv.appendChild(text);
 
                         if (item.items && item.items.length > 0) {
                             item.items.forEach(subItem => {
-                                html += `<div class="sub-subsection">
-                                    <span class="subsection-id">${subItem.identifier}</span>
-                                    ${subItem.text}
-                                </div>`;
+                                const subDiv = document.createElement('div');
+                                subDiv.className = 'sub-subsection';
+
+                                const subId = document.createElement('span');
+                                subId.className = 'subsection-id';
+                                subId.textContent = subItem.identifier;
+                                subDiv.appendChild(subId);
+
+                                const subText = document.createTextNode(' ' + subItem.text);
+                                subDiv.appendChild(subText);
+
+                                subsectionDiv.appendChild(subDiv);
                             });
                         }
-
-                        html += '</div>';
                     } else if (item.type === 'text') {
-                        html += `<div class="subsection english-text">${item.text}</div>`;
+                        subsectionDiv.textContent = item.text;
                     }
+
+                    container.appendChild(subsectionDiv);
                 });
             }
+        }
 
-            return html;
+        function renderSentenceView() {
+            const container = document.getElementById('content');
+            container.innerHTML = '';
+
+            const constitution = sentenceData.constitution;
+
+            // Preamble
+            if (constitution.preamble && constitution.preamble.aligned_sentences) {
+                const preambleDiv = document.createElement('div');
+                preambleDiv.className = 'preamble';
+                preambleDiv.id = 'preamble';
+
+                const title = document.createElement('div');
+                title.className = 'preamble-title';
+                title.textContent = 'Preamble / प्रस्तावना';
+                preambleDiv.appendChild(title);
+
+                constitution.preamble.aligned_sentences.forEach(pair => {
+                    const pairDiv = document.createElement('div');
+                    pairDiv.className = 'sentence-pair';
+
+                    if (pair.np && currentLang !== 'english') {
+                        const npDiv = document.createElement('div');
+                        npDiv.className = 'sentence nepali';
+                        npDiv.textContent = pair.np;
+                        pairDiv.appendChild(npDiv);
+                    }
+
+                    if (pair.en && currentLang !== 'nepali') {
+                        const enDiv = document.createElement('div');
+                        enDiv.className = 'sentence english';
+                        enDiv.textContent = pair.en;
+                        pairDiv.appendChild(enDiv);
+                    }
+
+                    preambleDiv.appendChild(pairDiv);
+                });
+
+                container.appendChild(preambleDiv);
+            }
+
+            // Parts
+            constitution.parts.forEach(part => {
+                const partDiv = document.createElement('div');
+                partDiv.className = 'part';
+                partDiv.id = `part-${part.number}`;
+
+                const header = document.createElement('div');
+                header.className = 'part-header';
+
+                const partNum = document.createElement('div');
+                partNum.className = 'part-number';
+                partNum.textContent = `Part ${part.number}`;
+                header.appendChild(partNum);
+
+                const partTitle = document.createElement('div');
+                partTitle.className = 'part-title';
+                const titleNp = part.title.np || '';
+                const titleEn = part.title.en || '';
+
+                if (currentLang === 'both') {
+                    partTitle.textContent = titleNp && titleEn ? `${titleNp} / ${titleEn}` : titleNp || titleEn;
+                } else if (currentLang === 'nepali') {
+                    partTitle.textContent = titleNp;
+                } else {
+                    partTitle.textContent = titleEn;
+                }
+
+                header.appendChild(partTitle);
+                partDiv.appendChild(header);
+
+                // Articles
+                part.articles.forEach(article => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.className = 'article';
+
+                    const articleHeader = document.createElement('div');
+                    articleHeader.className = 'article-header';
+
+                    const articleNum = document.createElement('div');
+                    articleNum.className = 'article-number';
+                    articleNum.textContent = article.number;
+                    articleHeader.appendChild(articleNum);
+
+                    const articleTitle = document.createElement('div');
+                    articleTitle.className = 'article-title';
+                    const titleNp = article.title.np || '';
+                    const titleEn = article.title.en || '';
+
+                    if (currentLang === 'both') {
+                        articleTitle.textContent = titleNp && titleEn ? `${titleNp} / ${titleEn}` : titleNp || titleEn;
+                    } else if (currentLang === 'nepali') {
+                        articleTitle.textContent = titleNp;
+                    } else {
+                        articleTitle.textContent = titleEn;
+                    }
+
+                    articleHeader.appendChild(articleTitle);
+                    articleDiv.appendChild(articleHeader);
+
+                    // Content
+                    article.content.forEach(item => {
+                        if (item.identifier) {
+                            const subsecHeader = document.createElement('div');
+                            subsecHeader.className = 'subsection-header';
+                            subsecHeader.textContent = item.identifier;
+                            articleDiv.appendChild(subsecHeader);
+                        }
+
+                        if (item.aligned_sentences) {
+                            item.aligned_sentences.forEach(pair => {
+                                const pairDiv = document.createElement('div');
+                                pairDiv.className = 'sentence-pair';
+
+                                if (pair.np && currentLang !== 'english') {
+                                    const npDiv = document.createElement('div');
+                                    npDiv.className = 'sentence nepali';
+                                    npDiv.textContent = pair.np;
+                                    pairDiv.appendChild(npDiv);
+                                }
+
+                                if (pair.en && currentLang !== 'nepali') {
+                                    const enDiv = document.createElement('div');
+                                    enDiv.className = 'sentence english';
+                                    enDiv.textContent = pair.en;
+                                    pairDiv.appendChild(enDiv);
+                                }
+
+                                articleDiv.appendChild(pairDiv);
+                            });
+                        }
+                    });
+
+                    partDiv.appendChild(articleDiv);
+                });
+
+                container.appendChild(partDiv);
+            });
         }
 
         // Language toggle
-        document.querySelectorAll('.lang-btn').forEach(btn => {
+        document.querySelectorAll('.lang-toggle button[data-lang]').forEach(btn => {
             btn.addEventListener('click', () => {
-                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.lang-toggle button[data-lang]').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentLang = btn.dataset.lang;
-
-                // Re-render to apply language filter
-                renderConstitution();
+                render();
             });
         });
 
-        // Search functionality
+        // View mode toggle
+        document.querySelectorAll('.lang-toggle button[data-view]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-toggle button[data-view]').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentView = btn.dataset.view;
+                render();
+            });
+        });
+
+        // Search
         document.getElementById('search').addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
             const articles = document.querySelectorAll('.article');
@@ -634,7 +669,6 @@
                 article.style.display = text.includes(query) ? 'block' : 'none';
             });
 
-            // Also filter preamble
             const preamble = document.getElementById('preamble');
             if (preamble) {
                 const text = preamble.textContent.toLowerCase();

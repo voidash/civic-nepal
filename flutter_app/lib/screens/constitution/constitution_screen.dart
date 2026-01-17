@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../providers/constitution_provider.dart';
 import '../../models/constitution.dart';
+import '../../widgets/meaning_mode_overlay.dart';
 
 part 'constitution_screen.g.dart';
 
@@ -18,6 +19,7 @@ class ConstitutionScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Constitution of Nepal'),
         actions: [
+          const MeaningModeToggleButton(),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
@@ -29,9 +31,10 @@ class ConstitutionScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: constitutionAsync.when(
-        data: (constitution) {
-          return Row(
+      body: MeaningModeOverlay(
+        child: constitutionAsync.when(
+          data: (constitution) {
+            return Row(
             children: [
               // TOC Sidebar
               SizedBox(
@@ -45,9 +48,10 @@ class ConstitutionScreen extends ConsumerWidget {
               ),
             ],
           );
-        },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stack) => Center(child: Text('Error: $error')),
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (error, stack) => Center(child: Text('Error: $error')),
+        ),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/constitution/constitution_screen.dart';
 import 'screens/leaders/leaders_screen.dart';
+import 'screens/leaders/leader_detail_screen.dart';
 import 'screens/map/district_map_screen.dart';
 import 'screens/settings/settings_screen.dart';
 
@@ -25,6 +26,15 @@ GoRouter router(RouterRef ref) {
       GoRoute(
         path: '/leaders',
         builder: (context, state) => const LeadersScreen(),
+        routes: [
+          GoRoute(
+            path: ':id',
+            builder: (context, state) {
+              final leaderId = state.pathParameters['id'] ?? '';
+              return LeaderDetailScreen(leaderId: leaderId);
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: '/map',

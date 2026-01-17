@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/note.dart';
@@ -29,28 +30,88 @@ class StorageService {
 
   /// Get all notes
   Map<String, Note> getNotes() {
-    final notesJson = _userDataBox.get(_notesKey, defaultValue: {});
-    // TODO: Parse JSON to Note objects
-    return {};
+    try {
+      final notesData = _userDataBox.get(_notesKey);
+
+      if (notesData == null) {
+        return {};
+      }
+
+      // Handle different storage formats
+      if (notesData is Map<String, Note>) {
+        return notesData;
+      }
+
+      if (notesData is Map) {
+        final result = <String, Note>{};
+        for (final entry in notesData.entries) {
+          final key = entry.key.toString();
+          final value = entry.value;
+
+          if (value is Note) {
+            result[key] = value;
+          } else if (value is Map<String, dynamic>) {
+            try {
+              result[key] = Note.fromJson(value);
+            } catch (e) {
+              // Skip invalid entries
+              continue;
+            }
+          } else if (value is String && value.isNotEmpty) {
+            try {
+              final json = jsonDecode(value) as Map<String, dynamic>;
+              result[key] = Note.fromJson(json);
+            } catch (e) {
+              // Skip invalid entries
+              continue;
+            }
+          }
+        }
+        return result;
+      }
+
+      return {};
+    } catch (e) {
+      // Return empty map on error
+      return {};
+    }
   }
 
   /// Save a note for an article
   Future<void> saveNote(String articleId, Note note) async {
     final notes = getNotes();
     notes[articleId] = note;
-    await _userDataBox.put(_notesKey, notes);
+
+    // Store as JSON map for proper serialization
+    await _userDataBox.put(_notesKey, notes.map(
+      (key, value) => MapEntry(key, value.toJson()),
+    ));
   }
 
   /// Delete a note
   Future<void> deleteNote(String articleId) async {
     final notes = getNotes();
     notes.remove(articleId);
-    await _userDataBox.put(_notesKey, notes);
+
+    await _userDataBox.put(_notesKey, notes.map(
+      (key, value) => MapEntry(key, value.toJson()),
+    ));
   }
 
   /// Get all bookmarks
   List<String> getBookmarks() {
-    return _userDataBox.get(_bookmarksKey, defaultValue: <String>[]);
+    final bookmarks = _userDataBox.get(_bookmarksKey);
+    if (bookmarks == null) return [];
+
+    if (bookmarks is List<String>) {
+      return bookmarks;
+    }
+
+    if (bookmarks is List) {
+      return bookmarks.map((e) => e.toString()).toList();
+    }
+
+    return [];
   }
 
   /// Toggle bookmark for an article
@@ -74,7 +135,21 @@ class StorageService {
 
   /// Get all tags
   Map<String, List<String>> getTags() {
-    return _userDataBox.get(_tagsKey, defaultValue: <String, List<String>>{});
+    final tags = _userDataBox.get(_tagsKey);
+    if (tags == null) return {};
+
+    if (tags is Map<String, List<String>>) {
+      return tags;
+    }
+
+    if (tags is Map) {
+      return tags.map((key, value) => MapEntry(
+        key.toString(),
+        value is List ? value.map((e) => e.toString()).toList() : [],
+      ));
+    }
+
+    return {};
   }
 
   /// Save tags for an article
@@ -82,6 +157,16 @@ class StorageService {
     final allTags = getTags();
     allTags[articleId] = tags;
     await _userDataBox.put(_tagsKey, allTags);
+  }
+
+  /// Get all user data as a UserData object
+  UserData getUserData() {
+    return UserData(
+      bookmarks: getBookmarks(),
+      notes: getNotes(),
+      tags: getTags(),
+      version: '$_userDataVersion',
+    );
   }
 
   /// Clear all user data
@@ -92,5 +177,34 @@ class StorageService {
   /// Close all boxes
   Future<void> close() async {
     await _userDataBox.close();
+  }
+
+  /// Export all data as JSON string
+  String exportData() {
+    final data = getUserData();
+    return jsonEncode(data.toJson());
+  }
+
+  /// Import data from JSON string
+  Future<bool> importData(String jsonData) async {
+    try {
+      final json = jsonDecode(jsonData) as Map<String, dynamic>;
+      final userData = UserData.fromJson(json);
+
+      // Import bookmarks
+      await _userDataBox.put(_bookmarksKey, userData.bookmarks);
+
+      // Import notes
+      await _userDataBox.put(_notesKey, userData.notes.map(
+        (key, value) => MapEntry(key, value.toJson()),
+      ));
+
+      // Import tags
+      await _userDataBox.put(_tagsKey, userData.tags);
+
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }

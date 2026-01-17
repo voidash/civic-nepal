@@ -24,30 +24,67 @@ flutter not found
 2. iOS/Android tooling setup
 3. `flutter pub get` and `flutter pub run build_runner build` to generate serialization code
 
-### 3. No Tests Exist Anywhere
-**Current state**: Zero test files exist in the entire codebase.
-- No `test/` directory at root level
-- No `test/` directory in `flutter_app/`
-- No browser-based tests for web app
-- No unit tests, integration tests, or end-to-end tests
+### 3. Web App Tests ✅ COMPLETE
+**Current state**: A comprehensive Node.js CLI test suite exists at `tests/test.js`.
+- 37 tests covering data validation, HTML/CSS/JS functionality, security, and accessibility
+- All tests passing as of January 2026
+- Can be run with `node tests/test.js`
 
-**Note**: Instructions in task prompt like "run the tests for that unit of code" cannot be executed because no tests exist.
+**Flutter Tests**: Zero test files exist in `flutter_app/test/`.
+- No unit tests, widget tests, or integration tests for Flutter app
 
 ### 4. Working vs Non-Working Components
 
 | Component | Status | Can Build/Run? | Location |
 |-----------|--------|----------------|----------|
 | Web app (index.html) | WORKING | Yes (browser) | `/Users/cdjk/github/probe/constitution/index.html` |
+| Web app tests | WORKING | Yes (Node.js) | `/Users/cdjk/github/probe/constitution/tests/test.js` |
 | Flutter app | CANNOT BUILD | No (needs Flutter SDK) | `/Users/cdjk/github/probe/constitution/flutter_app/` |
 | Data files | COMPLETE | N/A | Root and `assets/data/` |
 
 ### 5. Next Priorities Given Constraints
-Given the lack of Flutter SDK and no test infrastructure:
+Given the lack of Flutter SDK:
 
-1. **Focus on web app** (`index.html`) - the only component that can be built and tested
-2. **Add browser-based tests for web app** - create a `test/` directory with HTML/JS tests
-3. **Document Flutter work as blocked** - requires Flutter SDK installation to proceed
-4. **Defer Flutter work** until environment is properly set up
+1. **Web app is production-ready** - fully functional with comprehensive test coverage (37/37 tests passing)
+2. **Flutter app blocked** - requires Flutter SDK installation to build/test
+3. **Flutter TODOs tracked below** - see Flutter App Status Summary section for details
+
+---
+
+### 6. Flutter App Status Summary (January 2026)
+
+**Overall Progress**: Approximately 50% complete across all modules
+
+| Module | Completion | Notes |
+|--------|------------|-------|
+| Constitution | ~90% | Content rendering working; missing Meaning Mode, article linking |
+| Leaders | ~40% | Basic list display; missing detail screen, filter dialogs, proper leader cards |
+| Map | ~20% | Only placeholder SVG; no district interaction implemented |
+| Settings | ~80% | UI complete; some features need backend integration |
+| Tests | 0% | No test files exist in `flutter_app/test/` |
+
+### Critical Flutter TODOs
+
+1. **StorageService JSON Parsing** (`lib/services/storage_service.dart`)
+   - `getNotes()` returns empty map - JSON parsing for notes not implemented
+   - Notes persistence to Hive is incomplete
+
+2. **Leaders Module** (`lib/screens/leaders/`)
+   - `LeaderDetailScreen` - create full leader profile view with education, assets, cases
+   - `PartyFilterDialog` - filter leaders by political party
+   - `DistrictFilterDialog` - filter leaders by district
+   - `LeaderCard` widget - proper card layout with image, name, party, district
+
+3. **District Map Module** (`lib/screens/map/`)
+   - Nepal SVG map rendering with `flutter_svg`
+   - District tap detection and interaction
+   - Province filtering overlay
+   - District popup showing leader count
+   - Tap district -> navigate to filtered leaders list
+
+4. **Constitution Module** (`lib/screens/constitution/`)
+   - Meaning Mode: long-press on Nepali words to show English translations from dictionary
+   - Article linking: auto-linkify "Article 42" / "धारा ४२" references in content
 
 ---
 
@@ -75,11 +112,11 @@ Given the lack of Flutter SDK and no test infrastructure:
 
 ## Priority 5: Testing & Quality
 
-### Test Suite Implementation (January 2026)
+### Web App Tests ✅ COMPLETE (January 2026)
 
-A comprehensive Node.js CLI test suite has been created at `tests/test.js`.
+A comprehensive Node.js CLI test suite exists at `tests/test.js`.
 
-**Test Coverage:**
+**Test Coverage (37 tests, all passing):**
 - Data files validation (constitution_bilingual.json, per-sentence.json, dictionary.json)
 - HTML structure verification (DOCTYPE, meta tags, element presence)
 - CSS features testing (responsive breakpoints, print styles)
@@ -89,13 +126,17 @@ A comprehensive Node.js CLI test suite has been created at `tests/test.js`.
 - Event initialization (listeners attached after data load)
 - Accessibility checks (ARIA labels, semantic HTML)
 
-**Test Results:**
-- All 37 tests passing (as of January 2026)
-
 **Running Tests:**
 ```bash
 node tests/test.js
 ```
+
+### Flutter Tests ❌ NOT IMPLEMENTED
+- [ ] Add Flutter widget tests for Constitution module
+- [ ] Add Flutter widget tests for Leaders module
+- [ ] Add Flutter widget tests for Map module
+- [ ] Add integration tests for data loading
+- [ ] Add offline mode testing
 
 ---
 
@@ -364,16 +405,6 @@ To build the Flutter app:
 
 ---
 
-## Priority 5: Testing & Quality
-
-- [ ] Add Flutter widget tests for Constitution module
-- [ ] Add Flutter widget tests for Leaders module
-- [ ] Add Flutter widget tests for Map module
-- [ ] Add integration tests for data loading
-- [ ] Add offline mode testing
-
----
-
 ## Data Files Summary
 
 | File | Size | Status |
@@ -404,8 +435,9 @@ To build the Flutter app:
 - **NO `src/` directory exists** - documentation referencing `src/lib` is incorrect
 - **Documentation inconsistency RESOLVED** - false Zettelkasten claims removed from README.md, CLAUDE.md, AGENTS.md
 - **Flutter app** basic structure created at `flutter_app/` - requires Flutter SDK to build
+- **Web app tests** - 37/37 tests passing at `tests/test.js` (Node.js CLI)
+- **Flutter tests** - No test files exist (0% coverage)
 - **Data files** are all complete and copied to Flutter assets
 - **nepal-svg.svg** exists in `specs/` with proper district IDs (77 districts)
-- **No tests** exist for either web or Flutter components
 - **ratemyneta.com API** returns 298 leaders across 27 political parties
 - **Dictionary** structure includes both `np_to_en` and `en_to_np` mappings for bidirectional lookup

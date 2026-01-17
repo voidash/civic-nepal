@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(python3:*)",
+      "Bash(cat:*)",
+      "Bash(node:*)",
+      "Bash(chmod:*)",
+      "Bash(ls:*)",
+      "mcp__puppeteer__puppeteer_screenshot",
+      "mcp__puppeteer__puppeteer_navigate",
+      "mcp__puppeteer__puppeteer_evaluate",
+      "Bash(pdftotext:*)",
+      "Bash(pip3 install:*)",
+      "Bash(tesseract:*)",
+      "Bash(pip3 list:*)",
+      "Bash(wc:*)",
+      "Bash(crush run:*)",
+      "Bash(git checkout:*)",
+      "WebSearch"
+    ]
+  }
+}

@@ -310,6 +310,20 @@
             border-left-color: #000;
         }
 
+        .article-ref {
+            color: #000;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            cursor: pointer;
+        }
+
+        .article-ref:hover {
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 0 2px;
+        }
+
         .meaning-not-found {
             color: #999;
             font-style: italic;
@@ -506,6 +520,38 @@
         // Meaning mode state
         let dictionaryData = null;
         let meaningModeEnabled = false;
+
+        // Devanagari to Arabic numeral conversion
+        const devanagariNumerals = {'०': '0', '१': '1', '२': '2', '३': '3', '४': '4', '५': '5', '६': '6', '७': '7', '८': '8', '९': '9'};
+
+        function devanagariToArabic(str) {
+            return str.replace(/[०-९]/g, d => devanagariNumerals[d]);
+        }
+
+        // Convert article references to clickable links
+        function linkifyArticleRefs(text) {
+            // English: "Article 42" -> link
+            text = text.replace(/\b(Article)\s+(\d+)/gi, (match, prefix, num) => {
+                return `<a href="#article-${num}" class="article-ref" onclick="event.stopPropagation(); navigateToArticle('article-${num}')">${prefix} ${num}</a>`;
+            });
+
+            // Nepali: "धारा ४२" -> link
+            text = text.replace(/(धारा)\s*([०-९]+)/g, (match, prefix, num) => {
+                const arabicNum = devanagariToArabic(num);
+                return `<a href="#article-${arabicNum}" class="article-ref" onclick="event.stopPropagation(); navigateToArticle('article-${arabicNum}')">${prefix} ${num}</a>`;
+            });
+
+            return text;
+        }
+
+        function navigateToArticle(articleId) {
+            const element = document.getElementById(articleId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                setCurrentArticle(articleId);
+                updateHash(articleId);
+            }
+        }
 
         // Deep linking: Update URL hash
         function updateHash(articleId) {
@@ -769,8 +815,9 @@
                         id.textContent = item.identifier;
                         subsectionDiv.appendChild(id);
 
-                        const text = document.createTextNode(' ' + item.text);
-                        subsectionDiv.appendChild(text);
+                        const textSpan = document.createElement('span');
+                        textSpan.innerHTML = ' ' + linkifyArticleRefs(item.text);
+                        subsectionDiv.appendChild(textSpan);
 
                         if (item.items && item.items.length > 0) {
                             item.items.forEach(subItem => {
@@ -782,14 +829,15 @@
                                 subId.textContent = subItem.identifier;
                                 subDiv.appendChild(subId);
 
-                                const subText = document.createTextNode(' ' + subItem.text);
-                                subDiv.appendChild(subText);
+                                const subTextSpan = document.createElement('span');
+                                subTextSpan.innerHTML = ' ' + linkifyArticleRefs(subItem.text);
+                                subDiv.appendChild(subTextSpan);
 
                                 subsectionDiv.appendChild(subDiv);
                             });
                         }
                     } else if (item.type === 'text') {
-                        subsectionDiv.textContent = item.text;
+                        subsectionDiv.innerHTML = linkifyArticleRefs(item.text);
                     }
 
                     container.appendChild(subsectionDiv);
@@ -808,8 +856,9 @@
                         id.textContent = item.identifier;
                         subsectionDiv.appendChild(id);
 
-                        const text = document.createTextNode(' ' + item.text);
-                        subsectionDiv.appendChild(text);
+                        const textSpan = document.createElement('span');
+                        textSpan.innerHTML = ' ' + linkifyArticleRefs(item.text);
+                        subsectionDiv.appendChild(textSpan);
 
                         if (item.items && item.items.length > 0) {
                             item.items.forEach(subItem => {
@@ -821,14 +870,15 @@
                                 subId.textContent = subItem.identifier;
                                 subDiv.appendChild(subId);
 
-                                const subText = document.createTextNode(' ' + subItem.text);
-                                subDiv.appendChild(subText);
+                                const subTextSpan = document.createElement('span');
+                                subTextSpan.innerHTML = ' ' + linkifyArticleRefs(subItem.text);
+                                subDiv.appendChild(subTextSpan);
 
                                 subsectionDiv.appendChild(subDiv);
                             });
                         }
                     } else if (item.type === 'text') {
-                        subsectionDiv.textContent = item.text;
+                        subsectionDiv.innerHTML = linkifyArticleRefs(item.text);
                     }
 
                     container.appendChild(subsectionDiv);
@@ -860,14 +910,14 @@
                     if (pair.np && currentLang !== 'english') {
                         const npDiv = document.createElement('div');
                         npDiv.className = 'sentence nepali';
-                        npDiv.textContent = pair.np;
+                        npDiv.innerHTML = linkifyArticleRefs(pair.np);
                         pairDiv.appendChild(npDiv);
                     }
 
                     if (pair.en && currentLang !== 'nepali') {
                         const enDiv = document.createElement('div');
                         enDiv.className = 'sentence english';
-                        enDiv.textContent = pair.en;
+                        enDiv.innerHTML = linkifyArticleRefs(pair.en);
                         pairDiv.appendChild(enDiv);
                     }
 
@@ -961,14 +1011,14 @@
                                 if (pair.np && currentLang !== 'english') {
                                     const npDiv = document.createElement('div');
                                     npDiv.className = 'sentence nepali';
-                                    npDiv.textContent = pair.np;
+                                    npDiv.innerHTML = linkifyArticleRefs(pair.np);
                                     pairDiv.appendChild(npDiv);
                                 }
 
                                 if (pair.en && currentLang !== 'nepali') {
                                     const enDiv = document.createElement('div');
                                     enDiv.className = 'sentence english';
-                                    enDiv.textContent = pair.en;
+                                    enDiv.innerHTML = linkifyArticleRefs(pair.en);
                                     pairDiv.appendChild(enDiv);
                                 }
 

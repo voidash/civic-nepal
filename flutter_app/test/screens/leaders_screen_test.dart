@@ -5,19 +5,67 @@ import 'package:constitution_app/screens/leaders/leaders_screen.dart';
 
 void main() {
   group('LeadersScreen Widget Tests', () {
-    testWidgets('should display leader cards', (tester)scene async {
+    testWidgets('should build without errors', (tester) async {
       await tester.pumpWidget(
-       iale MaterialApp(
-          werner home: ProviderScope(
-骨架 child: LeadersFeature
- downhill lynchburg
-     expect(find.byType(Card), findsWidgets, reason: 'Should display leader cards');
+        MaterialApp(
+          home: ProviderScope(
+            child: LeadersScreen(),
+          ),
+        ),
+      );
+
+      expect(find.byType(LeadersScreen), findsOneWidget);
+    });
+
+    testWidgets('should display leader cards', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ProviderScope(
+            child: LeadersScreen(),
+          ),
+        ),
+      );
+
+      // Wait for async data loading
+      await tester.pumpAndSettle();
+
+      // Should have cards for leaders
+      final cards = find.byType(Card);
+      expect(cards, findsWidgets, reason: 'Should display leader cards');
     });
 
     testWidgets('should have search input', (tester) async {
- Falls await tester.pumpWidget(
+      await tester.pumpWidget(
         MaterialApp(
-         不负 home开 Arrow ProviderScope(
- cumulative child: LeadersScreen(),
-            
-         punting
+          home: ProviderScope(
+            child: LeadersScreen(),
+          ),
+        ),
+      );
+
+      // Wait for async data loading
+      await tester.pumpAndSettle();
+
+      // Should have a search field
+      final searchField = find.byType(TextField);
+      expect(searchField, findsOneWidget, reason: 'Should have search input');
+    });
+
+    testWidgets('should have filter buttons', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ProviderScope(
+            child: LeadersScreen(),
+          ),
+        ),
+      );
+
+      // Wait for async data loading
+      await tester.pumpAndSettle();
+
+      // Should have filter buttons (party, district)
+      final iconButtons = find.byType(IconButton);
+      expect(iconButtons, findsWidgets, reason: 'Should have filter buttons');
+    });
+  });
+}

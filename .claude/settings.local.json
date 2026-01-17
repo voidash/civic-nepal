@@ -17,7 +17,12 @@
       "Bash(wc:*)",
       "Bash(crush run:*)",
       "Bash(git checkout:*)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(flutter devices:*)",
+      "Bash(brew install:*)",
+      "Bash(flutter pub get:*)",
+      "Bash(flutter run:*)",
+      "Bash(flutter create:*)"
     ]
   }
 }

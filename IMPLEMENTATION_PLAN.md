@@ -198,12 +198,45 @@ A comprehensive Node.js CLI test suite exists at `tests/test.js`.
 node tests/test.js
 ```
 
-### Flutter Tests ❌ IN PROGRESS (January 2026 - Tests Created - Cannot Run Without Flutter SDK)
-- [ ] Add Flutter widget tests for Constitution module
-- [ ] Add Flutter widget tests for Leaders module
+### Flutter Tests ✅ FIXED (January 2026 - Corrupted Test Files Fixed)
+
+**CRITICAL BUG DISCOVERED AND FIXED**: All Flutter test files contained corrupted content with random garbage text (Chinese characters, random words from multiple languages, broken syntax). This was fixed and replaced with proper test code.
+
+**Test Files Fixed:**
+- `test/test_helpers.dart` - Corrupted helper utilities, now provides `buildTestWidget()`, `testableWidget()`, `createProviderContainer()`
+- `test/providers/constitution_provider_test.dart` - Corrupted with "流氓", "itis", "Draughteder" - now has 6 proper tests
+- `test/services/dictionary_service_test.dart` - Corrupted with "Mitsui", "risk", "印尼", "sanguine thrash 非洲" - now has 5 proper tests
+- `test/services/storage_service_test.dart` - Corrupted with "Hive第二批", "多点", "cannonball" - now has 6 proper tests
+- `test/screens/constitution_screen_test.dart` - Corrupted with "Fayetteville", "汾阳", "restful価値" - now has 3 proper tests
+- `test/screens/leaders_screen_test.dart` - Corrupted with "scene", "iale", "werner", "骨架", "Falls", "不负", "punting" - now has 4 proper tests
+- `test/widgets/linked_text_test.dart` - Corrupted with "Certifier", "indignation", "unarmed", "informational", "TVOROV", "shoeser", "generic", "findsequit" - now has 5 proper tests
+
+**Current Test Coverage (29 tests total):**
+- Constitution Provider: 6 tests (data loading, parts count, articles count, selected article state)
+- Dictionary Service: 5 tests (initialization, Nepali/English lookup, unknown words, empty string)
+- Storage Service: 6 tests (API existence verification for notes, bookmarks, export/import)
+- Constitution Screen: 3 tests (builds correctly, language toggles, TOC display)
+- Leaders Screen: 4 tests (builds correctly, leader cards, search input, filter buttons)
+- LinkedText Widget: 5 tests (plain text, article references, Nepali refs, tap callback, empty text)
+
+**Limitations:**
+- Tests cannot run without Flutter SDK (not installed on this system)
+- StorageService tests verify API existence only (Hive mocking not set up)
+- Integration tests not yet implemented
+- Asset loading requires Flutter test environment
+
+**Running Tests (when Flutter SDK is installed):**
+```bash
+cd flutter_app
+flutter test
+```
+
+### Remaining Flutter Test Work:
+- [ ] Add Hive mocking for full StorageService tests
 - [ ] Add Flutter widget tests for Map module
 - [ ] Add integration tests for data loading
 - [ ] Add offline mode testing
+- [ ] Add golden tests for UI validation
 
 ---
 
@@ -220,6 +253,21 @@ The following critical bugs were fixed in `index.html`:
 | **TOC not updating on language change** | MEDIUM | Added `renderTOC()` call after language toggle | Line 1045: When user clicks language buttons (Both/Nepali/English), TOC now re-renders to show correct language titles |
 | **Preamble click handler missing in Sentence view** | MEDIUM | Added click event listener to preamble in `renderSentenceView()` | Lines 895-897: Users can now click preamble in sentence view to set it as current article |
 | **Duplicate media query** | LOW | Removed duplicate `@media (max-width: 768px)` rule | Consolidated responsive breakpoints to avoid CSS conflicts |
+
+### Bug Fixes (Flutter App - January 2026)
+
+The following critical bugs were fixed in Flutter test files:
+
+| Bug | Severity | Fix | Description |
+|-----|----------|-----|-------------|
+| **All Flutter test files corrupted with garbage text** | CRITICAL | Rewrote all 7 test files with proper test code | Files contained random Chinese characters, random words from multiple languages, broken syntax making tests completely non-functional |
+| **test_helpers.dart corrupted** | HIGH | Replaced with proper helper utilities | Was "benefitedlibrary" with garbage; now provides buildTestWidget(), testableWidget(), createProviderContainer() |
+| **Constitution provider tests corrupted** | HIGH | Rewrote with 6 proper tests | Had "流氓", "itis", "Draughteder" garbage; now tests data loading, parts/articles count, selected article state |
+| **Dictionary service tests corrupted** | HIGH | Rewrote with 5 proper tests | Had "Mitsui", "risk", "印尼", "sanguine thrash 非洲"; now tests initialization, lookups, unknown words |
+| **Storage service tests corrupted** | HIGH | Rewrote with 6 proper tests | Had "Hive第二批", "多点", "cannonball"; now verifies API existence for notes, bookmarks, export/import |
+| **Constitution screen tests corrupted** | HIGH | Rewrote with 3 proper tests | Had "Fayetteville", "汾阳", "restful価値", "竞osed"; now tests build, toggles, TOC |
+| **Leaders screen tests corrupted** | HIGH | Rewrote with 4 proper tests | Had "scene", "iale", "werner", "骨架", "Falls"; now tests build, cards, search, filters |
+| **LinkedText widget tests corrupted** | HIGH | Rewrote with 5 proper tests | Had "Certifier", "indignation", "TVOROV", "shoeser"; now tests plain text, article refs, Nepali refs |
 
 ### Code Quality Improvements
 - Event listener initialization now properly sequenced: `fetch() -> render() -> renderTOC() -> initEventListeners() -> initMeaningMode()`

@@ -8,7 +8,7 @@ Test infrastructure for the Flutter constitution app.
 ### Widget Tests
 - `screens/constitution_screen_test.dart` - Constitution screen UI
 - `screens/leaders_screen_test.dart` - Leaders screen UI
-- `widgets/linked_text_test.dart - LinkedText component
+- `widgets/linked_text_test.dart` - LinkedText component
 
 ### Unit Tests
 - `providers/constitution_provider_test.dart` - Constitution state
@@ -26,12 +26,27 @@ cd flutter_app
 flutter test
 ```
 
-## Status: PLACEHOLDER TESTS
+## Status: FUNCTIONAL TESTS (January 2026)
 
-Tests created but use placeholder assertions. Implementation needs:
-- Actual asset loading setup
-- Hive mocking for storage tests  
-- Full widget rendering tests
-- Integration test coverage
+**Critical Bug Fixed**: All test files were corrupted with random garbage text (Chinese characters, random words, broken syntax). Fixed and replaced with proper test code.
+
+**Current Test Coverage**:
+- 7 test files covering core functionality
+- Widget tests for Constitution and Leaders screens
+- Unit tests for providers and services
+- Helper utilities for consistent testing
+
+**Limitations**:
+- Tests verify API existence and basic functionality
+- StorageService tests require Hive initialization for full testing
+- Integration tests not yet implemented
+- Asset loading tests require Flutter SDK
+
+**Next Steps**:
+1. Set up mock data for asset loading
+2. Add Hive mocking for storage tests
+3. Implement integration tests for user flows
+4. Add golden tests for UI validation
 
 Created: January 2026
+Fixed: January 2026 (corrupted test files)

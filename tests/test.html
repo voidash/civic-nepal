@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitution App Tests</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #eee; }
+        .test-result { padding: 10px; margin: 5px 0; border-left: 4px solid #666; }
+        .pass { border-left-color: #4caf50; background: #1e3a20; }
+        .fail { border-left-color: #f44336; background: #3a1e1e; }
+        .skip { border-left-color: #ff9800; background: #3a2e1e; }
+        h1 { color: #4caf50; }
+        h2 { color: #81c784; margin-top: 2rem; }
+        .summary { margin-top: 2rem; padding: 1rem; background: #2d2d2d; border-radius: 8px; }
+        .error { color: #f44336; }
+        .success { color: #4caf50; }
+    </style>
+</head>
+<body>
+    <h1>Constitution App Test Suite</h1>
+    <div id="results"></div>
+    <div id="summary" class="summary"></div>
+
+    <script>
+        const results = [];
+        let passed = 0;
+        let failed = 0;
+        let skipped = 0;
+
+        function assert(condition, message) {
+            if (condition) {
+                results.push({ status: 'pass', message });
+                passed++;
+            } else {
+                results.push({ status: 'fail', message });
+                failed++;
+            }
+        }
+
+        function skip(message) {
+            results.push({ status: 'skip', message });
+            skipped++;
+        }
+
+        function renderResults() {
+            const container = document.getElementById('results');
+            results.forEach(r => {
+                const div = document.createElement('div');
+                div.className = `test-result ${r.status}`;
+                div.textContent = `[${r.status.toUpperCase()}] ${r.message}`;
+                container.appendChild(div);
+            });
+
+            document.getElementById('summary').innerHTML = `
+                <h2>Summary</h2>
+                <p class="success">Passed: ${passed}</p>
+                <p class="error">Failed: ${failed}</p>
+                <p>Skipped: ${skipped}</p>
+                <p>Total: ${results.length}</p>
+            `;
+        }
+
+        async function runTests() {
+            console.log('Starting tests...');
+
+            // Test 1: Data files exist and load
+            try {
+                const constitution = await fetch('constitution_bilingual.json').then(r => r.json());
+                assert(constitution.parts && constitution.parts.length > 0, 'constitution_bilingual.json loads and has parts');
+                assert(constitution.parts[0].articles, 'Constitution parts have articles');
+            } catch (e) {
+                assert(false, `constitution_bilingual.json loads: ${e.message}`);
+            }
+
+            // Test 2: Per-sentence data
+            try {
+                const perSentence = await fetch('per-sentence.json').then(r => r.json());
+                assert(perSentence.preamble && perSentence.preamble.aligned_sentences, 'per-sentence.json has aligned_sentences');
+            } catch (e) {
+                assert(false, `per-sentence.json loads: ${e.message}`);
+            }
+
+            // Test 3: Dictionary data
+            try {
+                const dictionary = await fetch('dictionary.json').then(r => r.json());
+                assert(dictionary.np_to_en || dictionary.en_to_np, 'dictionary.json has translation mappings');
+            } catch (e) {
+                assert(false, `dictionary.json loads: ${e.message}`);
+            }
+
+            // Test 4: Districts data
+            try {
+                const districts = await fetch('districts.json').then(r => r.json());
+                assert(Object.keys(districts).length > 0, 'districts.json has district entries');
+            } catch (e) {
+                assert(false, `districts.json loads: ${e.message}`);
+            }
+
+            // Test 5: Check for XSS vulnerabilities in index.html
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasInnerHtmlInSensitiveContext = /innerHTML\s*=\s*[^/]*dictionary|innerHTML\s*=\s*[^/]*user/i.test(indexResponse);
+                assert(!hasInnerHtmlInSensitiveContext, 'No XSS vulnerability via innerHTML with dictionary/user data');
+            } catch (e) {
+                skip('XSS vulnerability check: Could not read index.html');
+            }
+
+            // Test 6: Devanagari numeral conversion (check function exists)
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasDevanagariConversion = /devanagariToArabic|०१२३४५६७८९/.test(indexResponse);
+                assert(hasDevanagariConversion, 'Devanagari numeral conversion exists');
+            } catch (e) {
+                skip('Devanagari numeral check: Could not read index.html');
+            }
+
+            // Test 7: Language toggle exists
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasLangToggle = /currentLang|lang-toggle/.test(indexResponse);
+                assert(hasLangToggle, 'Language toggle functionality exists');
+            } catch (e) {
+                skip('Language toggle check: Could not read index.html');
+            }
+
+            // Test 8: View mode toggle exists
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasViewToggle = /currentView|view-toggle|paragraphView|sentenceView/.test(indexResponse);
+                assert(hasViewToggle, 'View mode toggle functionality exists');
+            } catch (e) {
+                skip('View mode check: Could not read index.html');
+            }
+
+            // Test 9: Meaning mode exists
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasMeaningMode = /meaningMode|meaning-mode|showTooltip/.test(indexResponse);
+                assert(hasMeaningMode, 'Meaning mode functionality exists');
+            } catch (e) {
+                skip('Meaning mode check: Could not read index.html');
+            }
+
+            // Test 10: Article linking exists
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasLinkify = /linkifyArticleRefs|Article\\s*\\d+|धारा\\s*[०-९]+/.test(indexResponse);
+                assert(hasLinkify, 'Article linking functionality exists');
+            } catch (e) {
+                skip('Article linking check: Could not read index.html');
+            }
+
+            // Test 11: Deep linking via hash
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasHashNav = /navigateFromHash|updateHash|#article-|#preamble/.test(indexResponse);
+                assert(hasHashNav, 'Deep linking via hash functionality exists');
+            } catch (e) {
+                skip('Deep linking check: Could not read index.html');
+            }
+
+            // Test 12: Search functionality
+            try {
+                const indexResponse = await fetch('index.html').then(r => r.text());
+                const hasSearch = /searchBox|search.*addEventListener|filterArticles/i.test(indexResponse);
+                assert(hasSearch, 'Search functionality exists');
+            } catch (e) {
+                skip('Search check: Could not read index.html');
+            }
+
+            renderResults();
+        }
+
+        runTests();
+    </script>
+</body>
+</html>

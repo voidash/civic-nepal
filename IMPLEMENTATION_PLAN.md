@@ -54,6 +54,15 @@ Given the lack of Flutter SDK and no test infrastructure:
 ## Recent Updates
 
 ### January 2026
+- **Flutter constitution module completed**: Implemented full constitution viewing functionality including:
+  - Data model fixes to match actual JSON structure (ConstitutionWrapper, ConstitutionData, ArticleContent, etc.)
+  - Article content rendering with nested ContentItem support
+  - Preamble display with bilingual text
+  - Language toggle (Both/नेपाली/English)
+  - View mode toggle (Paragraph/Sentence)
+  - TOC navigation with selected article highlighting
+  - Search functionality
+  - SelectedArticleProvider for state management
 - **PROMPT_build.md src/ directory reference fixed**: The task prompt previously incorrectly claimed "application source code is in `src/*`". This documentation error has been corrected to reflect the actual codebase structure (web app at `index.html`, Flutter app at `flutter_app/lib/`).
 - **GitHub Actions CI workflow created**: `.github/workflows/update-leaders.yml` now automates weekly leader data updates from ratemyneta.com. The workflow runs every Monday at 00:00 UTC and includes:
   - Fetching leader data from the API
@@ -237,7 +246,8 @@ Per `specs/flutter-civic-app.md`, the Flutter app combines:
 - [x] Copy `specs/nepal-svg.svg` to `flutter_app/assets/images/nepal_districts.svg`
 
 ### Phase 3.2: Data Models ✅ COMPLETE
-- [x] Create `lib/models/constitution.dart` - Constitution, Part, Article, ContentItem, AlignedSentence
+- [x] Create `lib/models/constitution.dart` - ConstitutionWrapper, ConstitutionData, Preamble, Part, PartTitle, Article, ArticleTitle, ArticleContent, ContentItem, AlignedSentence
+  - **FIX (January 2026)**: Completely rewrote models to match actual JSON structure. JSON has `constitution.parts[].articles[].content.{en,np}` arrays, not single objects with text/textNp fields.
 - [x] Create `lib/models/leader.dart` - LeadersData, Leader
   - **FIX**: Added `@JsonKey(name: '_id')` annotation for `id` field to match JSON structure (`_id` key in leaders.json)
 - [x] Create `lib/models/district.dart` - DistrictData, DistrictInfo, PartyData, Party
@@ -249,6 +259,10 @@ Per `specs/flutter-civic-app.md`, the Flutter app combines:
 
 | Model | Problem | Fix |
 |-------|---------|-----|
+| `Constitution` | JSON structure has wrapper `constitution` key with nested properties | Created `ConstitutionWrapper` model and `ConstitutionData` for actual data |
+| `Article` | JSON has `content.{en,np}` as separate arrays, not combined items | Created `ArticleContent` with separate `en` and `np` arrays |
+| `Part` | JSON has `title.{en,np}` object, not flat fields | Created `PartTitle` model for nested structure |
+| `Article.title` | JSON has `title.{en,np}` object, both nullable | Created `ArticleTitle` model with nullable fields |
 | `Leader` | JSON uses `_id` key, Dart field named `id` | Added `@JsonKey(name: '_id')` annotation on line 21 |
 | `DistrictData` | JSON is flat (district keys at root), model expected nested structure | Custom `fromJson` factory manually maps the flat object to `Map<String, DistrictInfo>` |
 
@@ -261,22 +275,22 @@ Per `specs/flutter-civic-app.md`, the Flutter app combines:
 
 ### Phase 3.4: State Management (Riverpod) ✅ COMPLETE
 - [x] Create `lib/providers/constitution_provider.dart`
+  - Added `SelectedArticleProvider` for tracking current article/preamble selection
+  - Added `SelectedArticleRef` freezed union type for article references
 - [x] Create `lib/providers/leaders_provider.dart`
 - [x] Create `lib/providers/settings_provider.dart`
 
-### Phase 3.5: Constitution Module ⚠️ PARTIAL
-- [x] Create `lib/screens/constitution/constitution_screen.dart`
-- [ ] Create `lib/screens/constitution/article_detail_screen.dart` - TODO
-- [ ] Create `lib/screens/constitution/preamble_screen.dart` - TODO
-- [ ] Create `lib/widgets/constitution/article_card.dart` - TODO
-- [ ] Create `lib/widgets/constitution/language_toggle.dart` - TODO
-- [ ] Create `lib/widgets/constitution/view_mode_toggle.dart` - TODO
-- [ ] Create `lib/widgets/constitution/meaning_mode_tooltip.dart` - TODO
-- [ ] Implement language toggle (Both/Nepali/English)
-- [ ] Implement view mode toggle (Paragraph/Sentence)
-- [ ] Implement Meaning Mode (long-press word lookup)
-- [ ] Implement article linking (auto-linkify "Article 42" / "धारा ४२")
-- [ ] Implement search functionality
+### Phase 3.5: Constitution Module ✅ COMPLETE (January 2026)
+- [x] Create `lib/screens/constitution/constitution_screen.dart` with full content rendering
+- [x] Implement preamble display with bilingual support
+- [x] Implement article content rendering with nested ContentItem support
+- [x] Implement language toggle (Both/नेपाली/English) using SegmentedButton
+- [x] Implement view mode toggle (Paragraph/Sentence) using SegmentedButton
+- [x] Implement TOC navigation with article selection
+- [x] Implement search functionality (searches article titles)
+- [x] Add selected article highlighting in TOC
+- [ ] Implement Meaning Mode (long-press word lookup) - TODO
+- [ ] Implement article linking (auto-linkify "Article 42" / "धारा ४२") - TODO
 
 ### Phase 3.6: Leaders Module ⚠️ PARTIAL
 - [x] Create `lib/screens/leaders/leaders_screen.dart` with LeaderCard widget

@@ -1,12 +1,14 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/constitution.dart';
 import '../services/data_service.dart';
 
+part 'constitution_provider.freezed.dart';
 part 'constitution_provider.g.dart';
 
 /// Provider for constitution data
 @riverpod
-Future<Constitution> constitution(ConstitutionRef ref) async {
+Future<ConstitutionData> constitution(ConstitutionRef ref) async {
   return await DataService.loadConstitution();
 }
 
@@ -71,4 +73,33 @@ class SearchQuery extends _$SearchQuery {
   void clear() {
     state = '';
   }
+}
+
+/// Currently selected article (null means showing preamble)
+@riverpod
+class SelectedArticle extends _$SelectedArticle {
+  @override
+  SelectedArticleRef? build() => null;
+
+  void selectArticle(SelectedArticleRef articleRef) {
+    state = articleRef;
+  }
+
+  void selectPreamble() {
+    state = const SelectedArticleRef.preamble();
+  }
+
+  void clear() {
+    state = null;
+  }
+}
+
+/// Reference to a selected article or preamble
+@freezed
+class SelectedArticleRef with _$SelectedArticleRef {
+  const factory SelectedArticleRef.preamble() = PreambleRef;
+  const factory SelectedArticleRef.article({
+    required int partIndex,
+    required int articleIndex,
+  }) = ArticleRef;
 }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/constitution_provider.dart';
 import '../../models/constitution.dart';
 import '../../widgets/meaning_mode_overlay.dart';
 import '../../widgets/linked_text.dart';
-
-part 'constitution_screen.g.dart';
 
 /// Constitution screen with TOC and content
 class ConstitutionScreen extends ConsumerWidget {
@@ -66,7 +64,7 @@ class ConstitutionScreen extends ConsumerWidget {
       itemBuilder: (context, index) {
         if (index == 0) {
           // Preamble
-          final isSelected = selectedArticle case const SelectedArticleRef.preamble();
+          final isSelected = _isPreambleSelected(selectedArticle);
           return ListTile(
             title: const Text('Preamble'),
             subtitle: const Text('प्रस्तावना'),
@@ -85,14 +83,12 @@ class ConstitutionScreen extends ConsumerWidget {
           children: part.articles.asMap().entries.map((entry) {
             final articleIndex = entry.key;
             final article = entry.value;
-            final isSelected = selectedArticle case SelectedArticleRef.article(
-              partIndex: p,
-              articleIndex: a,
-            ) when p == partIndex && a == articleIndex;
+            // Check if selected article matches this article
+            final isSelected = _isArticleSelected(selectedArticle, partIndex, articleIndex);
 
             return ListTile(
               title: Text(_getArticleTitle(article)),
-              subtitle: article.title.np.isNotEmpty ? Text(article.title.np) : null,
+              subtitle: (article.title.np?.isNotEmpty ?? false) ? Text(article.title.np!) : null,
               selected: isSelected,
               tileColor: isSelected ? Theme.of(context).highlightColor : null,
               onTap: () {
@@ -213,7 +209,7 @@ class ConstitutionScreen extends ConsumerWidget {
         ),
         const SizedBox(height: 8),
         LinkedText(
-          text,
+          text: text,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.8,
             fontSize: language == 'नेपाली' ? 18 : 16,
@@ -242,12 +238,12 @@ class ConstitutionScreen extends ConsumerWidget {
                       article.number,
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
-                    if (article.title.en.isNotEmpty)
+                    if (article.title.en?.isNotEmpty ?? false)
                       Text(
                         article.title.en!,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
-                    if (article.title.np.isNotEmpty)
+                    if (article.title.np?.isNotEmpty ?? false)
                       Text(
                         article.title.np!,
                         style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -312,7 +308,7 @@ class ConstitutionScreen extends ConsumerWidget {
             if (item.text != null)
               Padding(
                 padding: const EdgeInsets.only(left: 16, top: 4),
-                child: LinkedText(item.text!, style: textStyle),
+                child: LinkedText(text: item.text!, style: textStyle),
               ),
             if (item.items.isNotEmpty)
               Padding(
@@ -332,7 +328,7 @@ class ConstitutionScreen extends ConsumerWidget {
     // Regular text item
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
-      child: LinkedText(item.text ?? '', style: textStyle),
+      child: LinkedText(text: item.text ?? '', style: textStyle),
     );
   }
 
@@ -390,7 +386,7 @@ class ConstitutionScreen extends ConsumerWidget {
   }
 
   String _getArticleTitle(Article article) {
-    if (article.title.en.isNotEmpty) return '${article.number} ${article.title.en}';
+    if (article.title.en?.isNotEmpty ?? false) return '${article.number} ${article.title.en}';
     return article.number;
   }
 }
@@ -473,7 +469,7 @@ class ArticleSearchDelegate extends SearchDelegate<String> {
             final result = results[index];
             return ListTile(
               title: Text('${result.article.number} ${result.article.title.en ?? ''}'),
-              subtitle: result.article.title.np.isNotEmpty
+              subtitle: (result.article.title.np?.isNotEmpty ?? false)
                   ? Text(result.article.title.np!)
                   : null,
               onTap: () {
@@ -505,4 +501,22 @@ class SearchResult {
     required this.articleIndex,
     required this.article,
   });
+}
+
+/// Helper to check if preamble is selected
+bool _isPreambleSelected(SelectedArticleRef? selectedArticle) {
+  return selectedArticle?.maybeWhen(
+    preamble: () => true,
+    article: (_, __) => false,
+    orElse: () => false,
+  ) ?? false;
+}
+
+/// Helper to check if article is selected
+bool _isArticleSelected(SelectedArticleRef? selectedArticle, int partIndex, int articleIndex) {
+  return selectedArticle?.maybeWhen(
+    preamble: () => false,
+    article: (p, a) => p == partIndex && a == articleIndex,
+    orElse: () => false,
+  ) ?? false;
 }

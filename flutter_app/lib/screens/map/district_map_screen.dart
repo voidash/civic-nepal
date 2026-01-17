@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/district.dart';
@@ -180,9 +181,8 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
     // Get districts to highlight based on province filter
     final visibleDistricts = selectedProvince == null
         ? districtData.districts
-        : districtData.districts
-            .where((d) => d.value.province == selectedProvince)
-            .map((e) => MapEntry(e.key, e.value));
+        : Map.fromEntries(districtData.districts.entries
+            .where((d) => d.value.province == selectedProvince));
 
     return InteractiveViewer(
       transformationController: _transformationController,
@@ -463,17 +463,19 @@ class _NepalMapWidgetState extends State<_NepalMapWidget> {
           setState(() => _hoveredDistrict = district);
         },
       ),
-      child: GestureDetector(
+      child: MouseRegion(
         onHover: (event) {
           // Handle hover for desktop
           final localPosition = event.localPosition;
           _findDistrictAtPosition(localPosition);
         },
-        onTapUp: (details) {
-          // Handle tap to select district
-          final localPosition = details.localPosition;
-          _findAndSelectDistrict(localPosition);
-        },
+        child: GestureDetector(
+          onTapUp: (details) {
+            // Handle tap to select district
+            final localPosition = details.localPosition;
+            _findAndSelectDistrict(localPosition);
+          },
+        ),
       ),
     );
   }

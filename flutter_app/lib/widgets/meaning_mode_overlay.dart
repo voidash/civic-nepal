@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../providers/meaning_mode_provider.dart';
 import '../services/dictionary_service.dart';
 
@@ -19,24 +20,7 @@ class MeaningModeOverlay extends ConsumerStatefulWidget {
 class _MeaningModeOverlayState extends ConsumerState<MeaningModeOverlay> {
   OverlayEntry? _overlayEntry;
   final GlobalKey _key = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-    // Initialize dictionary when widget is first created
-    Future.microtask(() {
-      ref.read(dictionaryInitializedProvider.notifier).ensureInitialized();
-    });
-
-    // Listen to lookup results
-    ref.listen<DictionaryLookupResult?>(currentLookupProvider, (previous, next) {
-      if (next != null && ref.read(meaningModeEnabledProvider)) {
-        _showMeaningTooltip(next);
-      } else {
-        _removeOverlay();
-      }
-    });
-  }
+  bool _initialized = false;
 
   @override
   void dispose() {
@@ -71,6 +55,23 @@ class _MeaningModeOverlayState extends ConsumerState<MeaningModeOverlay> {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize dictionary on first build
+    if (!_initialized) {
+      _initialized = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(dictionaryInitializedProvider.notifier).ensureInitialized();
+      });
+    }
+
+    // Listen to lookup results - must be in build method for ConsumerStatefulWidget
+    ref.listen<DictionaryLookupResult?>(currentLookupProvider, (previous, next) {
+      if (next != null && ref.read(meaningModeEnabledProvider)) {
+        _showMeaningTooltip(next);
+      } else {
+        _removeOverlay();
+      }
+    });
+
     return Container(
       key: _key,
       child: widget.child,

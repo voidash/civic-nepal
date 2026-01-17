@@ -3,6 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'constitution.freezed.dart';
 part 'constitution.g.dart';
 
+// Default value annotation for ContentItem.items
+const _emptyContentItemList = <ContentItem>[];
+
 /// Root constitution wrapper from JSON
 @freezed
 class ConstitutionWrapper with _$ConstitutionWrapper {
@@ -120,7 +123,7 @@ class ContentItem with _$ContentItem {
     required String type,
     String? identifier,
     String? text,
-    required List<ContentItem> items,
+    @Default([]) List<ContentItem> items,
   }) = _ContentItem;
 
   factory ContentItem.fromJson(Map<String, dynamic> json) =>

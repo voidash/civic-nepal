@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/settings_provider.dart';
-
-part 'settings_screen.g.dart';
 
 /// Settings screen
 class SettingsScreen extends ConsumerWidget {

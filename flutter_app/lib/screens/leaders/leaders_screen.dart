@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/leader.dart';
 import '../../models/district.dart';
-
-part 'leaders_screen.g.dart';
 
 /// Leaders screen with filters and list
 class LeadersScreen extends ConsumerStatefulWidget {
@@ -230,7 +228,7 @@ class _ActiveFiltersChips extends StatelessWidget {
               label: Text('Party: $selectedParty'),
               deleteIcon: const Icon(Icons.close, size: 18),
               onDeleted: onClearParty,
-              avatar: const Icon(Icons.partybox, size: 18),
+              avatar: const Icon(Icons.groups, size: 18),
             ),
           if (selectedDistrict != null)
             Chip(
@@ -551,7 +549,7 @@ class LeaderCard extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
-                          Icons.partybox,
+                          Icons.groups,
                           size: 14,
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),

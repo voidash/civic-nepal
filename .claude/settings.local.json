@@ -22,7 +22,11 @@
       "Bash(brew install:*)",
       "Bash(flutter pub get:*)",
       "Bash(flutter run:*)",
-      "Bash(flutter create:*)"
+      "Bash(flutter create:*)",
+      "Bash(yes:*)",
+      "Bash(flutter doctor:*)",
+      "Bash(/opt/homebrew/bin/sdkmanager:*)",
+      "Bash(dart run build_runner build:*)"
     ]
   }
 }

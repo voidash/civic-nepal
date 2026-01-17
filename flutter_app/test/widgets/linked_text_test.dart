@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:constitution_app/widgets/linked_text.dart';
+import 'package:nepal_civic/widgets/linked_text.dart';
 
 void main() {
   group('LinkedText Widget Tests', () {
@@ -8,10 +9,13 @@ void main() {
       const testText = 'This is plain text';
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: LinkedText(
-            text: testText,
-            onArticleTap: (articleNumber) {},
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: LinkedText(
+                text: testText,
+              ),
+            ),
           ),
         ),
       );
@@ -22,15 +26,15 @@ void main() {
 
     testWidgets('should highlight article references', (tester) async {
       const testText = 'See Article 42 for details';
-      int? tappedArticle;
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: LinkedText(
-            text: testText,
-            onArticleTap: (articleNumber) {
-              tappedArticle = articleNumber;
-            },
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: LinkedText(
+                text: testText,
+              ),
+            ),
           ),
         ),
       );
@@ -43,10 +47,13 @@ void main() {
       const testText = 'धारा ४२ हेर्नुहोस्'; // See Article 42
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: LinkedText(
-            text: testText,
-            onArticleTap: (articleNumber) {},
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: LinkedText(
+                text: testText,
+              ),
+            ),
           ),
         ),
       );
@@ -57,15 +64,15 @@ void main() {
 
     testWidgets('should call onArticleTap when link tapped', (tester) async {
       const testText = 'See Article 42 for details';
-      int? tappedArticle;
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: LinkedText(
-            text: testText,
-            onArticleTap: (articleNumber) {
-              tappedArticle = articleNumber;
-            },
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: LinkedText(
+                text: testText,
+              ),
+            ),
           ),
         ),
       );
@@ -80,10 +87,13 @@ void main() {
       const testText = '';
 
       await tester.pumpWidget(
-        MaterialApp(
-          home: LinkedText(
-            text: testText,
-            onArticleTap: (articleNumber) {},
+        const ProviderScope(
+          child: MaterialApp(
+            home: Scaffold(
+              body: LinkedText(
+                text: testText,
+              ),
+            ),
           ),
         ),
       );

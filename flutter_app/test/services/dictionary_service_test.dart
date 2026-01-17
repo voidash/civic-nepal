@@ -1,24 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:constitution_app/services/dictionary_service.dart';
+import 'package:nepal_civic/services/dictionary_service.dart';
 
 void main() {
-  group('DictionaryService', () {
-    late DictionaryService dictionaryService;
+  // Initialize Flutter binding for asset loading
+  TestWidgetsFlutterBinding.ensureInitialized();
 
+  group('DictionaryService', () {
     setUp(() {
-      dictionaryService = DictionaryService();
+      // Clear cache before each test
+      DictionaryService.clearCache();
     });
 
     test('should initialize without errors', () {
-      expect(dictionaryService, isNotNull);
+      expect(DictionaryService.isLoaded, isFalse);
     });
 
     test('should return translations for Nepali words', () async {
       // Test with actual Nepali words from dictionary
       const nepaliWord = 'संविधान'; // Constitution
 
-      await dictionaryService.initialize();
-      final translations = dictionaryService.getTranslations(nepaliWord);
+      await DictionaryService.loadDictionary();
+      final translations = DictionaryService.getEnglishTranslations(nepaliWord);
 
       expect(translations, isNotNull);
       // Note: Specific assertions depend on dictionary content
@@ -29,8 +31,8 @@ void main() {
       // Test reverse lookup
       const englishWord = 'constitution';
 
-      await dictionaryService.initialize();
-      final translations = dictionaryService.getTranslations(englishWord);
+      await DictionaryService.loadDictionary();
+      final translations = DictionaryService.getNepaliTranslations(englishWord);
 
       expect(translations, isNotNull);
     });
@@ -38,20 +40,29 @@ void main() {
     test('should handle unknown words gracefully', () async {
       const unknownWord = 'nonexistentword123';
 
-      await dictionaryService.initialize();
-      final translations = dictionaryService.getTranslations(unknownWord);
+      await DictionaryService.loadDictionary();
+      final translations = DictionaryService.getEnglishTranslations(unknownWord);
 
-      // Should return empty list or null for unknown words
+      // Should return empty list for unknown words
       expect(translations, isEmpty);
     });
 
     test('should handle empty string', () async {
       const emptyWord = '';
 
-      await dictionaryService.initialize();
-      final translations = dictionaryService.getTranslations(emptyWord);
+      await DictionaryService.loadDictionary();
+      final translations = DictionaryService.getEnglishTranslations(emptyWord);
 
       expect(translations, isEmpty);
+    });
+
+    test('should provide stats', () async {
+      await DictionaryService.loadDictionary();
+      final stats = DictionaryService.getStats();
+
+      expect(stats, isNotNull);
+      expect(stats.containsKey('np_to_en_count'), isTrue);
+      expect(stats.containsKey('en_to_np_count'), isTrue);
     });
   });
 }

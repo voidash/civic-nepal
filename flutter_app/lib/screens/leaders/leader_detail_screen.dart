@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../models/leader.dart';
 import '../../providers/leaders_provider.dart';
@@ -151,7 +153,7 @@ class LeaderDetailScreen extends ConsumerWidget {
 
                       // Party and district
                       _SectionCard(
-                        icon: Icons.partybox,
+                        icon: Icons.groups,
                         title: 'Party',
                         child: Text(
                           leader.party,

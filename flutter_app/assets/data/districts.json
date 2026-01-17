@@ -1,0 +1,310 @@
+{
+  "jhapa": {
+    "name": "Jhapa",
+    "province": 1
+  },
+  "okhaldhunga": {
+    "name": "Okhaldhunga",
+    "province": 1
+  },
+  "ilam": {
+    "name": "Ilam",
+    "province": 1
+  },
+  "dhankuta": {
+    "name": "Dhankuta",
+    "province": 1
+  },
+  "khotang": {
+    "name": "Khotang",
+    "province": 1
+  },
+  "bhojpur": {
+    "name": "Bhojpur",
+    "province": 1
+  },
+  "terhathum": {
+    "name": "Tehrathum",
+    "province": 1
+  },
+  "taplejung": {
+    "name": "Taplejung",
+    "province": 1
+  },
+  "sankhuwasabha": {
+    "name": "Sankhuwasabha",
+    "province": 1
+  },
+  "panchthar": {
+    "name": "Panchthar",
+    "province": 1
+  },
+  "solukhumbu": {
+    "name": "Solukhumbu",
+    "province": 1
+  },
+  "sunsari": {
+    "name": "Sunsari",
+    "province": 1
+  },
+  "udayapur": {
+    "name": "Udayapur",
+    "province": 1
+  },
+  "morang": {
+    "name": "Morang",
+    "province": 1
+  },
+  "saptari": {
+    "name": "Saptari",
+    "province": 2
+  },
+  "rautahat": {
+    "name": "Rautahat",
+    "province": 2
+  },
+  "siraha": {
+    "name": "Siraha",
+    "province": 2
+  },
+  "mahottari": {
+    "name": "Mahottari",
+    "province": 2
+  },
+  "dhanusha": {
+    "name": "Dhanusha",
+    "province": 2
+  },
+  "sarlahi": {
+    "name": "Sarlahi",
+    "province": 2
+  },
+  "parsa": {
+    "name": "Parsa",
+    "province": 2
+  },
+  "bara": {
+    "name": "Bara",
+    "province": 2
+  },
+  "kavrepalanchok": {
+    "name": "Kavrepalanchok",
+    "province": 3
+  },
+  "sindhupalchok": {
+    "name": "Sindhupalchok",
+    "province": 3
+  },
+  "dhading": {
+    "name": "Dhading",
+    "province": 3
+  },
+  "nuwakot": {
+    "name": "Nuwakot",
+    "province": 3
+  },
+  "rasuwa": {
+    "name": "Rasuwa",
+    "province": 3
+  },
+  "chitwan": {
+    "name": "Chitwan",
+    "province": 3
+  },
+  "makwanpur": {
+    "name": "Makwanpur",
+    "province": 3
+  },
+  "sindhuli": {
+    "name": "Sindhuli",
+    "province": 3
+  },
+  "ramechhap": {
+    "name": "Ramechhap",
+    "province": 3
+  },
+  "dolakha": {
+    "name": "Dolakha",
+    "province": 3
+  },
+  "lalitpur": {
+    "name": "Lalitpur",
+    "province": 3
+  },
+  "kathmandu": {
+    "name": "Kathmandu",
+    "province": 3
+  },
+  "bhaktapur": {
+    "name": "Bhaktapur",
+    "province": 3
+  },
+  "mustang": {
+    "name": "Mustang",
+    "province": 4
+  },
+  "manang": {
+    "name": "Manang",
+    "province": 4
+  },
+  "myagdi": {
+    "name": "Myagdi",
+    "province": 4
+  },
+  "kaski": {
+    "name": "Kaski",
+    "province": 4
+  },
+  "lamjung": {
+    "name": "Lamjung",
+    "province": 4
+  },
+  "baglung": {
+    "name": "Baglung",
+    "province": 4
+  },
+  "parbat": {
+    "name": "Parbat",
+    "province": 4
+  },
+  "syangja": {
+    "name": "Syangja",
+    "province": 4
+  },
+  "tanahu": {
+    "name": "Tanahu",
+    "province": 4
+  },
+  "gorkha": {
+    "name": "Gorkha",
+    "province": 4
+  },
+  "nawalparasi (bardaghat susta east)": {
+    "name": "Nawalparasi (Bardaghat Susta East)",
+    "province": 4
+  },
+  "nawalparasi (bardaghat susta west)": {
+    "name": "Nawalparasi (Bardaghat Susta West)",
+    "province": 5
+  },
+  "eastern-rukum": {
+    "name": "Eastern Rukum",
+    "province": 5
+  },
+  "bardiya": {
+    "name": "Bardiya",
+    "province": 5
+  },
+  "banke": {
+    "name": "Banke",
+    "province": 5
+  },
+  "rolpa": {
+    "name": "Rolpa",
+    "province": 5
+  },
+  "dang": {
+    "name": "Dang",
+    "province": 5
+  },
+  "kapilvastu": {
+    "name": "Kapilvastu",
+    "province": 5
+  },
+  "rupandehi": {
+    "name": "Rupandehi",
+    "province": 5
+  },
+  "palpa": {
+    "name": "Palpa",
+    "province": 5
+  },
+  "arghakhanchi": {
+    "name": "Arghakhanchi",
+    "province": 5
+  },
+  "pyuthan": {
+    "name": "Pyuthan",
+    "province": 5
+  },
+  "gulmi": {
+    "name": "Gulmi",
+    "province": 5
+  },
+  "dolpa": {
+    "name": "Dolpa",
+    "province": 6
+  },
+  "jumla": {
+    "name": "Jumla",
+    "province": 6
+  },
+  "mugu": {
+    "name": "Mugu",
+    "province": 6
+  },
+  "humla": {
+    "name": "Humla",
+    "province": 6
+  },
+  "western-rukum": {
+    "name": "Western Rukum",
+    "province": 6
+  },
+  "jajarkot": {
+    "name": "Jajarkot",
+    "province": 6
+  },
+  "kalikot": {
+    "name": "Kalikot",
+    "province": 6
+  },
+  "dailekh": {
+    "name": "Dailekh",
+    "province": 6
+  },
+  "salyan": {
+    "name": "Salyan",
+    "province": 6
+  },
+  "surkhet": {
+    "name": "Surkhet",
+    "province": 6
+  },
+  "kailali": {
+    "name": "Kailali",
+    "province": 7
+  },
+  "kanchanpur": {
+    "name": "Kanchanpur",
+    "province": 7
+  },
+  "doti": {
+    "name": "Doti",
+    "province": 7
+  },
+  "achham": {
+    "name": "Achham",
+    "province": 7
+  },
+  "dadeldhura": {
+    "name": "Dadeldhura",
+    "province": 7
+  },
+  "bajura": {
+    "name": "Bajura",
+    "province": 7
+  },
+  "baitadi": {
+    "name": "Baitadi",
+    "province": 7
+  },
+  "darchula": {
+    "name": "Darchula",
+    "province": 7
+  },
+  "bajhang": {
+    "name": "Bajhang",
+    "province": 7
+  }
+}

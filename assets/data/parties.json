@@ -1,0 +1,195 @@
+{
+  "version": "2026-01-17",
+  "count": 27,
+  "parties": [
+    {
+      "id": "nepali-congress",
+      "name": "Nepali Congress",
+      "shortName": "NC",
+      "color": "#00A0DD",
+      "leaderCount": 90
+    },
+    {
+      "id": "nepal-communist-party-uml",
+      "name": "Nepal Communist Party (UML)",
+      "shortName": "UML",
+      "color": "#0A4D3C",
+      "leaderCount": 79
+    },
+    {
+      "id": "nepal-communist-party-maoist-center",
+      "name": "Nepal Communist Party (Maoist Center)",
+      "shortName": "Maoist Center",
+      "color": "#D32F2F",
+      "leaderCount": 33
+    },
+    {
+      "id": "rastriya-swotantra-party",
+      "name": "Rastriya Swotantra Party",
+      "shortName": "RSP",
+      "color": "#FF6B35",
+      "leaderCount": 20
+    },
+    {
+      "id": "rastriya-prajatantra-party",
+      "name": "Rastriya Prajatantra Party",
+      "shortName": "RPP",
+      "color": "#9C27B0",
+      "leaderCount": 15
+    },
+    {
+      "id": "communist-party-of-nepal-unified-socialist",
+      "name": "Communist Party of Nepal (Unified Socialist)",
+      "shortName": "Unified Socialist",
+      "color": "#E91E63",
+      "leaderCount": 11
+    },
+    {
+      "id": "independent",
+      "name": "Independent",
+      "shortName": "Ind",
+      "color": "#607D8B",
+      "leaderCount": 7
+    },
+    {
+      "id": "peoples-socialist-party",
+      "name": "People's Socialist Party",
+      "shortName": "PSP",
+      "color": "#FF9800",
+      "leaderCount": 7
+    },
+    {
+      "id": "janamat-party",
+      "name": "Janamat Party",
+      "shortName": "Janamat",
+      "color": "#4CAF50",
+      "leaderCount": 6
+    },
+    {
+      "id": "janata-samajbadi-party-nepal",
+      "name": "Janata Samajbadi Party Nepal",
+      "shortName": "JSPN",
+      "color": "#8BC34A",
+      "leaderCount": 6
+    },
+    {
+      "id": "loktantrik-samajwadi-party-nepal",
+      "name": "Loktantrik Samajwadi Party Nepal",
+      "shortName": "LSPN",
+      "color": "#CDDC39",
+      "leaderCount": 4
+    },
+    {
+      "id": "nagarik-unmukti-party",
+      "name": "Nagarik Unmukti Party",
+      "shortName": "NUP",
+      "color": "#00BCD4",
+      "leaderCount": 4
+    },
+    {
+      "id": "none",
+      "name": "None",
+      "shortName": "None",
+      "color": "#757575",
+      "leaderCount": 2
+    },
+    {
+      "id": "former-king",
+      "name": "Former King",
+      "shortName": "Former King",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "communist-party-of-nepal-unified-marxist–leninist",
+      "name": "Communist Party of Nepal (Unified Marxist–Leninist)",
+      "shortName": "Communist Party of N",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "communist-party-nepal-uml",
+      "name": "Communist Party Nepal (UML)",
+      "shortName": "Communist Party Nepa",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "unaffiliated",
+      "name": "Unaffiliated",
+      "shortName": "Unaffiliated",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "nepal-socialist-party",
+      "name": "Nepal Socialist Party",
+      "shortName": "Nepal Socialist Part",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "communist-party-of-nepal",
+      "name": "Communist Party of Nepal",
+      "shortName": "Communist Party of N",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "scientific-socialist-communist-party,-nepal",
+      "name": "Scientific Socialist Communist Party, Nepal",
+      "shortName": "Scientific Socialist",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "ministry-of-education",
+      "name": "Ministry of Education",
+      "shortName": "Ministry of Educatio",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "ministry-of-finance",
+      "name": "Ministry of Finance",
+      "shortName": "Ministry of Finance",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "energy-minister",
+      "name": "Energy Minister",
+      "shortName": "Energy Minister",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "ministry-of-home-affairs",
+      "name": "Ministry of Home Affairs",
+      "shortName": "Ministry of Home Aff",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "nepal-workers-peasants-party",
+      "name": "Nepal Workers Peasants Party",
+      "shortName": "Nepal Workers Peasan",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "rastriya-janamorcha",
+      "name": "Rastriya Janamorcha",
+      "shortName": "Rastriya Janamorcha",
+      "color": "#757575",
+      "leaderCount": 1
+    },
+    {
+      "id": "aam-janata-party",
+      "name": "Aam Janata Party",
+      "shortName": "Aam Janata Party",
+      "color": "#757575",
+      "leaderCount": 1
+    }
+  ]
+}

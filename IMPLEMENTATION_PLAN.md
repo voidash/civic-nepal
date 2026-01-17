@@ -2,8 +2,10 @@
 
 ## CRITICAL NOTES
 
-### 1. NO `src/` Directory Exists
-**Task prompt error**: The task prompt (`PROMPT_build.md` line 3) claims "application source code is in `src/*`" but **NO `src/` directory exists** in the codebase. This is a critical documentation error.
+### 1. `src/` Directory Reference (FIXED)
+**Former task prompt error**: The task prompt (`PROMPT_build.md` line 3) previously claimed "application source code is in `src/*`" but **NO `src/` directory exists** in the codebase.
+
+**Resolution**: This documentation error has been **FIXED** in `PROMPT_build.md` (January 2026).
 
 **Actual codebase structure**:
 - Web app: `/Users/cdjk/github/probe/constitution/index.html` (single file, ~1,196 lines)
@@ -46,6 +48,19 @@ Given the lack of Flutter SDK and no test infrastructure:
 2. **Add browser-based tests for web app** - create a `test/` directory with HTML/JS tests
 3. **Document Flutter work as blocked** - requires Flutter SDK installation to proceed
 4. **Defer Flutter work** until environment is properly set up
+
+---
+
+## Recent Updates
+
+### January 2026
+- **PROMPT_build.md src/ directory reference fixed**: The task prompt previously incorrectly claimed "application source code is in `src/*`". This documentation error has been corrected to reflect the actual codebase structure (web app at `index.html`, Flutter app at `flutter_app/lib/`).
+- **GitHub Actions CI workflow created**: `.github/workflows/update-leaders.yml` now automates weekly leader data updates from ratemyneta.com. The workflow runs every Monday at 00:00 UTC and includes:
+  - Fetching leader data from the API
+  - Normalizing district names
+  - Downloading leader images
+  - Committing updated JSON files
+  - Manual trigger via `workflow_dispatch` for on-demand updates
 
 ---
 
@@ -326,17 +341,17 @@ To build the Flutter app:
 - [x] Download leader images to `assets/images/leaders/{id}.jpg`
 - [x] Generate `leaders.json`, `districts.json`, `parties.json`
 
-### Phase 4.2: CI Pipeline (GitHub Actions)
-- [ ] Create `.github/workflows/update-leaders.yml`
-- [ ] Schedule weekly runs (Monday 00:00 UTC)
-- [ ] Steps: fetch -> normalize -> download images -> commit
+### Phase 4.2: CI Pipeline (GitHub Actions) ✅ COMPLETE
+- [x] Create `.github/workflows/update-leaders.yml`
+- [x] Schedule weekly runs (Monday 00:00 UTC)
+- [x] Steps: fetch -> normalize -> download images -> commit
+  - **Note**: Workflow also includes manual trigger via `workflow_dispatch`
 - [ ] Upload to CDN and update manifest.json (optional)
 
 ---
 
 ## Priority 5: Testing & Quality
 
-- [x] Add browser console error checking for web app -> COMPLETED via tests/test.js
 - [ ] Add Flutter widget tests for Constitution module
 - [ ] Add Flutter widget tests for Leaders module
 - [ ] Add Flutter widget tests for Map module

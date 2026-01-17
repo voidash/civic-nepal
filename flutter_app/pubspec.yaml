@@ -15,6 +15,7 @@ dependencies:
 
   # SVG rendering
   flutter_svg: ^2.0.0
+  path_parsing: ^1.0.1
 
   # Local storage
   hive_flutter: ^1.1.0
@@ -34,6 +35,18 @@ dependencies:
 
   # Path provider for file system access
   path_provider: ^2.1.0
+
+  # Image tools (picker, manipulation, sharing, gallery save)
+  image_picker: ^1.0.0
+  image: ^4.0.0
+  share_plus: ^7.0.0
+  gal: ^2.3.0
+
+  # URL launcher for opening websites
+  url_launcher: ^6.0.0
+
+  # Nepali date utilities (tested library)
+  nepali_utils: ^3.0.1
 
   # Unicode characters (Devanagari)
   flutter_localizations:
@@ -63,4 +76,11 @@ flutter:
     - assets/data/leaders.json
     - assets/data/parties.json
     - assets/data/districts.json
+    - assets/data/gov_services.json
+    - assets/data/know_your_rights.json
+    - assets/data/nepali_calendar_events.json
+    - assets/data/nepali_calendar_auspicious.json
+    - assets/data/ministers.json
+    - assets/data/data_version.json
     - assets/images/nepal_districts.svg
+    - assets/images/leaders/

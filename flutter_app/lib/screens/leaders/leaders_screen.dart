@@ -51,15 +51,6 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
               },
             ),
             _SortOption(
-              label: 'Votes',
-              value: 'votes',
-              current: currentSort,
-              onTap: () {
-                ref.read(leadersSortOptionProvider.notifier).setSortOption('votes');
-                context.pop();
-              },
-            ),
-            _SortOption(
               label: 'District',
               value: 'district',
               current: currentSort,
@@ -81,15 +72,10 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
     final selectedParty = ref.watch(selectedPartyProvider);
     final selectedDistrict = ref.watch(selectedDistrictProvider);
 
-    // Apply search filter
+    // Apply fuzzy search filter
     final searchFilteredLeaders = _searchQuery.isEmpty
         ? filteredLeaders
-        : filteredLeaders
-            .where((l) =>
-                l.name.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-                l.party.toLowerCase().contains(_searchQuery.toLowerCase()) ||
-                (l.district?.toLowerCase().contains(_searchQuery.toLowerCase()) ?? false))
-            .toList();
+        : _fuzzySearchLeaders(filteredLeaders, _searchQuery);
 
     return Scaffold(
       appBar: AppBar(
@@ -199,6 +185,46 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
         ],
       ),
     );
+  }
+
+  /// Fuzzy search leaders by name, party, or district
+  List<Leader> _fuzzySearchLeaders(List<Leader> leaders, String query) {
+    final normalizedQuery = query.toLowerCase().trim();
+    if (normalizedQuery.isEmpty) return leaders;
+
+    final scored = leaders.map((leader) {
+      final nameScore = _fuzzyScore(leader.name.toLowerCase(), normalizedQuery);
+      final partyScore = _fuzzyScore(leader.party.toLowerCase(), normalizedQuery);
+      final districtScore = leader.district != null
+          ? _fuzzyScore(leader.district!.toLowerCase(), normalizedQuery)
+          : 0.0;
+      final bestScore = [nameScore, partyScore, districtScore].reduce((a, b) => a > b ? a : b);
+      return (leader: leader, score: bestScore);
+    }).toList();
+
+    scored.sort((a, b) => b.score.compareTo(a.score));
+    return scored.where((s) => s.score > 0.3).map((s) => s.leader).toList();
+  }
+
+  double _fuzzyScore(String text, String query) {
+    if (text == query) return 1.0;
+    if (text.contains(query)) return 0.9;
+    if (text.startsWith(query)) return 0.85;
+    for (final word in text.split(RegExp(r'\s+'))) {
+      if (word.startsWith(query)) return 0.8;
+    }
+    if (_isSubsequence(query, text)) return 0.5 + (query.length / text.length * 0.3);
+    final overlap = query.split('').toSet().intersection(text.split('').toSet()).length / query.length;
+    if (overlap > 0.6) return overlap * 0.5;
+    return 0.0;
+  }
+
+  bool _isSubsequence(String query, String text) {
+    int qi = 0;
+    for (int ti = 0; ti < text.length && qi < query.length; ti++) {
+      if (text[ti] == query[qi]) qi++;
+    }
+    return qi == query.length;
   }
 }
 
@@ -498,7 +524,7 @@ class _DistrictFilterSheet extends ConsumerWidget {
   }
 }
 
-/// Leader card widget
+/// Leader card widget - shows name, party, district, and bio snippet
 class LeaderCard extends StatelessWidget {
   final Leader leader;
 
@@ -509,6 +535,11 @@ class LeaderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get first ~100 chars of biography as snippet
+    final bioSnippet = leader.biography.length > 100
+        ? '${leader.biography.substring(0, 100).replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ')}...'
+        : leader.biography.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ');
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
@@ -516,6 +547,7 @@ class LeaderCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Leader image
               Hero(
@@ -523,7 +555,7 @@ class LeaderCard extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 32,
                   backgroundImage: leader.imageUrl.isNotEmpty
-                      ? NetworkImage(leader.imageUrl)
+                      ? _getImageProvider(leader.imageUrl)
                       : null,
                   child: leader.imageUrl.isEmpty
                       ? Text(
@@ -546,61 +578,66 @@ class LeaderCard extends StatelessWidget {
                           ),
                     ),
                     const SizedBox(height: 4),
-                    Row(
+                    // Party and District
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 4,
                       children: [
-                        Icon(
-                          Icons.groups,
-                          size: 14,
-                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.groups,
+                              size: 14,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                            const SizedBox(width: 4),
+                            Flexible(
+                              child: Text(
+                                leader.party,
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            leader.party,
-                            style: Theme.of(context).textTheme.bodySmall,
-                            overflow: TextOverflow.ellipsis,
+                        if (leader.district != null)
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                size: 14,
+                                color: Theme.of(context).colorScheme.onSurfaceVariant,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                leader.district!,
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                            ],
                           ),
-                        ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 14,
+                    if (bioSnippet.isNotEmpty) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        bioSnippet,
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
-                        const SizedBox(width: 4),
-                        Expanded(
-                          child: Text(
-                            leader.district ?? 'Unknown district',
-                            style: Theme.of(context).textTheme.bodySmall,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
                   ],
                 ),
               ),
-              const SizedBox(width: 8),
-              // Vote count
-              Column(
-                children: [
-                  Icon(
-                    Icons.arrow_upward,
-                    color: Colors.green.shade700,
-                    size: 16,
-                  ),
-                  Text(
-                    _formatVotes(leader.totalVotes),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green.shade700,
-                        ),
-                  ),
-                ],
+              Icon(
+                Icons.chevron_right,
+                color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
             ],
           ),
@@ -609,12 +646,11 @@ class LeaderCard extends StatelessWidget {
     );
   }
 
-  String _formatVotes(int votes) {
-    if (votes >= 1000000) {
-      return '${(votes / 1000000).toStringAsFixed(1)}M';
-    } else if (votes >= 1000) {
-      return '${(votes / 1000).toStringAsFixed(1)}K';
+  ImageProvider _getImageProvider(String imageUrl) {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return NetworkImage(imageUrl);
+    } else {
+      return AssetImage(imageUrl);
     }
-    return votes.toString();
   }
 }

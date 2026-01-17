@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Nepal Civic</string>
+    <string name="widget_description">Shows today\'s Nepali date (BS) on your home screen</string>
+</resources>

@@ -25,18 +25,10 @@ class SettingsScreen extends ConsumerWidget {
                   ref.read(settingsProvider.notifier).setLanguagePreference(value);
                 },
               ),
-              _ViewModeSetting(
-                value: settings.viewModeDefault,
+              _ThemeSetting(
+                value: settings.themeMode,
                 onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setViewModeDefault(value);
-                },
-              ),
-              _SwitchSetting(
-                title: 'Meaning Mode',
-                subtitle: 'Long-press words to see translations',
-                value: settings.meaningModeEnabled,
-                onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setMeaningModeEnabled(value);
+                  ref.read(settingsProvider.notifier).setThemeMode(value);
                 },
               ),
               const Divider(),
@@ -209,6 +201,127 @@ class _TileSetting extends StatelessWidget {
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
       trailing: const Icon(Icons.chevron_right),
+      onTap: onTap,
+    );
+  }
+}
+
+class _ThemeSetting extends StatelessWidget {
+  final String value;
+  final ValueChanged<String> onChanged;
+  const _ThemeSetting({required this.value, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: const Text('Theme'),
+      subtitle: Text(_getDisplayTheme(value)),
+      leading: Icon(_getThemeIcon(value)),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => _showThemeDialog(context),
+    );
+  }
+
+  String _getDisplayTheme(String value) {
+    switch (value) {
+      case 'light':
+        return 'Light';
+      case 'dark':
+        return 'Dark';
+      default:
+        return 'System';
+    }
+  }
+
+  IconData _getThemeIcon(String value) {
+    switch (value) {
+      case 'light':
+        return Icons.light_mode;
+      case 'dark':
+        return Icons.dark_mode;
+      default:
+        return Icons.brightness_auto;
+    }
+  }
+
+  void _showThemeDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Choose Theme'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _ThemeOption(
+              title: 'System',
+              subtitle: 'Follow device settings',
+              icon: Icons.brightness_auto,
+              isSelected: value == 'system',
+              onTap: () {
+                onChanged('system');
+                Navigator.pop(ctx);
+              },
+            ),
+            _ThemeOption(
+              title: 'Light',
+              subtitle: 'Always light theme',
+              icon: Icons.light_mode,
+              isSelected: value == 'light',
+              onTap: () {
+                onChanged('light');
+                Navigator.pop(ctx);
+              },
+            ),
+            _ThemeOption(
+              title: 'Dark',
+              subtitle: 'Always dark theme',
+              icon: Icons.dark_mode,
+              isSelected: value == 'dark',
+              onTap: () {
+                onChanged('dark');
+                Navigator.pop(ctx);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ThemeOption extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _ThemeOption({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: isSelected ? Theme.of(context).colorScheme.primary : null,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontWeight: isSelected ? FontWeight.bold : null,
+          color: isSelected ? Theme.of(context).colorScheme.primary : null,
+        ),
+      ),
+      subtitle: Text(subtitle),
+      trailing: isSelected
+          ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
+          : null,
       onTap: onTap,
     );
   }

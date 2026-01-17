@@ -1,0 +1,82 @@
+name: Update Dynamic Data
+
+on:
+  # Run manually from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      update_type:
+        description: 'What to update'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - ministers
+          - calendar
+
+  # Run weekly on Sunday at midnight UTC
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4
+
+      - name: Update Ministers
+        if: ${{ github.event.inputs.update_type == 'all' || github.event.inputs.update_type == 'ministers' || github.event_name == 'schedule' }}
+        run: |
+          cd flutter_app
+          python scripts/update_ministers.py || echo "Ministers update failed - may need manual intervention"
+
+      - name: Update version file
+        run: |
+          cd flutter_app/assets/data
+          # Update the last_updated timestamp
+          python3 -c "
+          import json
+          from datetime import datetime
+          with open('data_version.json', 'r') as f:
+              data = json.load(f)
+          data['last_updated'] = datetime.now().strftime('%Y-%m-%d')
+          with open('data_version.json', 'w') as f:
+              json.dump(data, f, indent=2)
+          "
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "chore: update dynamic data [automated]"
+          git push
+
+      - name: Create summary
+        run: |
+          echo "## Data Update Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Update type:** ${{ github.event.inputs.update_type || 'scheduled' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes:** ${{ steps.check_changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY

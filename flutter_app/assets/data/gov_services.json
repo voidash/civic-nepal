@@ -1,0 +1,376 @@
+{
+  "categories": [
+    {
+      "id": "documents",
+      "name": "Documents",
+      "nameNp": "कागजातहरू",
+      "icon": "description",
+      "services": [
+        {
+          "name": "National ID Card",
+          "nameNp": "राष्ट्रिय परिचयपत्र",
+          "description": "Apply for National Identity Card online",
+          "url": "https://nidmc.gov.np"
+        },
+        {
+          "name": "Passport",
+          "nameNp": "राहदानी",
+          "description": "Department of Passports - Apply and track passport",
+          "url": "https://nepalpassport.gov.np"
+        },
+        {
+          "name": "Driving License",
+          "nameNp": "सवारी चालक अनुमतिपत्र",
+          "description": "Department of Transport Management",
+          "url": "https://dotm.gov.np"
+        },
+        {
+          "name": "PAN Registration",
+          "nameNp": "स्थायी लेखा नम्बर",
+          "description": "Permanent Account Number registration",
+          "url": "https://ird.gov.np"
+        },
+        {
+          "name": "Birth/Death Certificate",
+          "nameNp": "जन्म/मृत्यु प्रमाणपत्र",
+          "description": "Vital Registration online services",
+          "url": "https://donidcr.gov.np"
+        },
+        {
+          "name": "Vehicle Registration",
+          "nameNp": "गाडी दर्ता",
+          "description": "Vehicle ownership and registration",
+          "url": "https://dotm.gov.np"
+        }
+      ]
+    },
+    {
+      "id": "tax_finance",
+      "name": "Tax & Finance",
+      "nameNp": "कर र वित्त",
+      "icon": "account_balance",
+      "services": [
+        {
+          "name": "Inland Revenue Department",
+          "nameNp": "आन्तरिक राजस्व विभाग",
+          "description": "Tax filing, TDS, VAT returns",
+          "url": "https://ird.gov.np"
+        },
+        {
+          "name": "Nepal Rastra Bank",
+          "nameNp": "नेपाल राष्ट्र बैंक",
+          "description": "Central Bank of Nepal",
+          "url": "https://nrb.org.np"
+        },
+        {
+          "name": "Customs Department",
+          "nameNp": "भन्सार विभाग",
+          "description": "Import/export customs services",
+          "url": "https://customs.gov.np"
+        },
+        {
+          "name": "Finance Ministry",
+          "nameNp": "अर्थ मन्त्रालय",
+          "description": "Ministry of Finance Nepal",
+          "url": "https://mof.gov.np"
+        },
+        {
+          "name": "Nepal Stock Exchange",
+          "nameNp": "नेपाल स्टक एक्सचेन्ज",
+          "description": "NEPSE trading and information",
+          "url": "https://nepalstock.com"
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "name": "Health",
+      "nameNp": "स्वास्थ्य",
+      "icon": "local_hospital",
+      "services": [
+        {
+          "name": "Ministry of Health",
+          "nameNp": "स्वास्थ्य मन्त्रालय",
+          "description": "Ministry of Health and Population",
+          "url": "https://mohp.gov.np"
+        },
+        {
+          "name": "Health Insurance Board",
+          "nameNp": "स्वास्थ्य बीमा बोर्ड",
+          "description": "National health insurance services",
+          "url": "https://hib.gov.np"
+        },
+        {
+          "name": "Department of Health Services",
+          "nameNp": "स्वास्थ्य सेवा विभाग",
+          "description": "Public health services",
+          "url": "https://dohs.gov.np"
+        },
+        {
+          "name": "Bir Hospital",
+          "nameNp": "वीर अस्पताल",
+          "description": "National Academy of Medical Sciences",
+          "url": "https://nams.org.np"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "nameNp": "शिक्षा",
+      "icon": "school",
+      "services": [
+        {
+          "name": "Ministry of Education",
+          "nameNp": "शिक्षा मन्त्रालय",
+          "description": "Ministry of Education, Science and Technology",
+          "url": "https://moest.gov.np"
+        },
+        {
+          "name": "NEB",
+          "nameNp": "राष्ट्रिय परीक्षा बोर्ड",
+          "description": "National Examination Board - SEE results",
+          "url": "https://neb.gov.np"
+        },
+        {
+          "name": "Tribhuvan University",
+          "nameNp": "त्रिभुवन विश्वविद्यालय",
+          "description": "TU admissions and results",
+          "url": "https://tribhuvan-university.edu.np"
+        },
+        {
+          "name": "Kathmandu University",
+          "nameNp": "काठमाडौं विश्वविद्यालय",
+          "description": "KU admissions and information",
+          "url": "https://ku.edu.np"
+        },
+        {
+          "name": "CTEVT",
+          "nameNp": "प्राविधिक शिक्षा तथा व्यावसायिक तालिम परिषद्",
+          "description": "Technical and Vocational Education",
+          "url": "https://ctevt.org.np"
+        }
+      ]
+    },
+    {
+      "id": "utilities",
+      "name": "Utilities",
+      "nameNp": "सेवाहरू",
+      "icon": "electrical_services",
+      "services": [
+        {
+          "name": "Nepal Electricity Authority",
+          "nameNp": "नेपाल विद्युत प्राधिकरण",
+          "description": "Pay electricity bills online",
+          "url": "https://nea.org.np"
+        },
+        {
+          "name": "Nepal Telecom",
+          "nameNp": "नेपाल टेलिकम",
+          "description": "Mobile, landline, internet services",
+          "url": "https://ntc.net.np"
+        },
+        {
+          "name": "Kathmandu Upatyaka Khanepani",
+          "nameNp": "काठमाडौं उपत्यका खानेपानी",
+          "description": "Water supply and billing",
+          "url": "https://kathmanduwater.org"
+        },
+        {
+          "name": "Ncell",
+          "nameNp": "एनसेल",
+          "description": "Ncell mobile services",
+          "url": "https://ncell.axiata.com"
+        }
+      ]
+    },
+    {
+      "id": "government",
+      "name": "Government",
+      "nameNp": "सरकार",
+      "icon": "account_balance_wallet",
+      "services": [
+        {
+          "name": "Office of Prime Minister",
+          "nameNp": "प्रधानमन्त्री तथा मन्त्रिपरिषद्को कार्यालय",
+          "description": "Prime Minister's Office Nepal",
+          "url": "https://opmcm.gov.np"
+        },
+        {
+          "name": "Parliament of Nepal",
+          "nameNp": "संघीय संसद",
+          "description": "Federal Parliament",
+          "url": "https://parliament.gov.np"
+        },
+        {
+          "name": "Supreme Court",
+          "nameNp": "सर्वोच्च अदालत",
+          "description": "Supreme Court of Nepal",
+          "url": "https://supremecourt.gov.np"
+        },
+        {
+          "name": "Election Commission",
+          "nameNp": "निर्वाचन आयोग",
+          "description": "Election Commission Nepal",
+          "url": "https://election.gov.np"
+        },
+        {
+          "name": "Nepal Police",
+          "nameNp": "नेपाल प्रहरी",
+          "description": "Nepal Police services",
+          "url": "https://nepalpolice.gov.np"
+        },
+        {
+          "name": "Nagarik App",
+          "nameNp": "नागरिक एप",
+          "description": "Government digital services app",
+          "url": "https://nagarikapp.gov.np"
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "nameNp": "व्यापार",
+      "icon": "business",
+      "services": [
+        {
+          "name": "Company Registrar",
+          "nameNp": "कम्पनी रजिस्ट्रारको कार्यालय",
+          "description": "Register and manage companies",
+          "url": "https://ocr.gov.np"
+        },
+        {
+          "name": "Department of Industry",
+          "nameNp": "उद्योग विभाग",
+          "description": "Industrial registration",
+          "url": "https://doi.gov.np"
+        },
+        {
+          "name": "Trade and Export Promotion Centre",
+          "nameNp": "व्यापार तथा निर्यात प्रवर्द्धन केन्द्र",
+          "description": "TEPC export services",
+          "url": "https://tepc.gov.np"
+        },
+        {
+          "name": "Securities Board",
+          "nameNp": "नेपाल धितोपत्र बोर्ड",
+          "description": "SEBON securities regulation",
+          "url": "https://sebon.gov.np"
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "name": "Travel & Immigration",
+      "nameNp": "यात्रा र आप्रवासन",
+      "icon": "flight",
+      "services": [
+        {
+          "name": "Department of Immigration",
+          "nameNp": "अध्यागमन विभाग",
+          "description": "Visa and immigration services",
+          "url": "https://immigration.gov.np"
+        },
+        {
+          "name": "Civil Aviation Authority",
+          "nameNp": "नेपाल नागरिक उड्डयन प्राधिकरण",
+          "description": "CAAN aviation services",
+          "url": "https://caanepal.gov.np"
+        },
+        {
+          "name": "Nepal Tourism Board",
+          "nameNp": "नेपाल पर्यटन बोर्ड",
+          "description": "Tourism information and permits",
+          "url": "https://ntb.gov.np"
+        },
+        {
+          "name": "Foreign Employment Board",
+          "nameNp": "वैदेशिक रोजगार बोर्ड",
+          "description": "Foreign employment services",
+          "url": "https://feb.gov.np"
+        }
+      ]
+    },
+    {
+      "id": "complaints",
+      "name": "Complaints & Rights",
+      "nameNp": "उजुरी र अधिकार",
+      "icon": "gavel",
+      "services": [
+        {
+          "name": "National Human Rights Commission",
+          "nameNp": "राष्ट्रिय मानव अधिकार आयोग",
+          "description": "File human rights violation complaints",
+          "url": "https://nhrcnepal.org"
+        },
+        {
+          "name": "National Women Commission",
+          "nameNp": "राष्ट्रिय महिला आयोग",
+          "description": "Women's rights complaints and protection",
+          "url": "https://nwc.gov.np"
+        },
+        {
+          "name": "National Dalit Commission",
+          "nameNp": "राष्ट्रिय दलित आयोग",
+          "description": "Caste discrimination complaints",
+          "url": "https://ndc.gov.np"
+        },
+        {
+          "name": "National Information Commission",
+          "nameNp": "राष्ट्रिय सूचना आयोग",
+          "description": "RTI appeals and information access",
+          "url": "https://nic.gov.np"
+        },
+        {
+          "name": "Department of Labour",
+          "nameNp": "श्रम विभाग",
+          "description": "Labour complaints and disputes",
+          "url": "https://dol.gov.np"
+        },
+        {
+          "name": "Department of Commerce",
+          "nameNp": "वाणिज्य विभाग",
+          "description": "Consumer complaints and trade issues",
+          "url": "https://doc.gov.np"
+        },
+        {
+          "name": "Child Helpline (1098)",
+          "nameNp": "बाल हेल्पलाइन (१०९८)",
+          "description": "Report child abuse, trafficking, labour",
+          "url": "https://chn.org.np"
+        },
+        {
+          "name": "Women Helpline (1145)",
+          "nameNp": "महिला हेल्पलाइन (११४५)",
+          "description": "Domestic violence and women's safety",
+          "url": "https://nepalpolice.gov.np/women-cell"
+        },
+        {
+          "name": "Department of Environment",
+          "nameNp": "वातावरण विभाग",
+          "description": "Pollution and environmental complaints",
+          "url": "https://doe.gov.np"
+        },
+        {
+          "name": "Food Quality Lab",
+          "nameNp": "खाद्य प्रविधि तथा गुण नियन्त्रण",
+          "description": "Food safety complaints",
+          "url": "https://dftqc.gov.np"
+        },
+        {
+          "name": "Press Council Nepal",
+          "nameNp": "प्रेस काउन्सिल नेपाल",
+          "description": "Media and press complaints",
+          "url": "https://presscouncilnepal.gov.np"
+        },
+        {
+          "name": "Public Service Commission",
+          "nameNp": "लोक सेवा आयोग",
+          "description": "Government job complaints and reservations",
+          "url": "https://psc.gov.np"
+        }
+      ]
+    }
+  ]
+}

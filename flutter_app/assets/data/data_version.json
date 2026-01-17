@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "last_updated": "2025-01-18",
+  "files": {
+    "ministers.json": {
+      "version": 1,
+      "updated": "2025-01-18"
+    },
+    "nepali_calendar_events.json": {
+      "version": 1,
+      "updated": "2025-01-18"
+    },
+    "nepali_calendar_auspicious.json": {
+      "version": 1,
+      "updated": "2025-01-18"
+    },
+    "leaders.json": {
+      "version": 1,
+      "updated": "2025-01-18"
+    },
+    "gov_services.json": {
+      "version": 1,
+      "updated": "2025-01-18"
+    }
+  }
+}

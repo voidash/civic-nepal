@@ -1,0 +1,1474 @@
+{
+  "disclaimer": {
+    "en": "This is educational information only, not legal advice. Consult a lawyer for your specific situation.",
+    "np": "यो शैक्षिक जानकारी मात्र हो, कानूनी सल्लाह होइन। आफ्नो विशेष परिस्थितिको लागि वकिलसँग सल्लाह लिनुहोस्।"
+  },
+  "categories": [
+    {
+      "id": "police",
+      "icon": "shield",
+      "title": {
+        "en": "Police & Arrest",
+        "np": "प्रहरी र गिरफ्तारी"
+      },
+      "subtitle": {
+        "en": "Know your rights when dealing with law enforcement",
+        "np": "प्रहरीसँग व्यवहार गर्दा आफ्नो हक जान्नुहोस्"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Police stopped you on the street",
+            "np": "प्रहरीले सडकमा रोक्यो"
+          },
+          "yourRight": {
+            "en": "You have the right to know the reason for being stopped. You cannot be arrested without being informed of the ground of arrest.",
+            "np": "तपाईंलाई रोकिएको कारण जान्ने हक छ। गिरफ्तारीको आधार नजनाई गिरफ्तार गर्न मिल्दैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 4,
+            "articleNumber": "20",
+            "articleTitle": {
+              "en": "Rights relating to justice",
+              "np": "न्याय सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Stay calm. Ask politely: 'May I know why I am being stopped?'",
+            "np": "शान्त रहनुहोस्। विनम्रतापूर्वक सोध्नुहोस्: 'मलाई किन रोकिएको हो जान्न पाउँ?'"
+          }
+        },
+        {
+          "situation": {
+            "en": "You are being arrested",
+            "np": "तपाईंलाई गिरफ्तार गरिँदैछ"
+          },
+          "yourRight": {
+            "en": "You must be produced before a judicial authority within 24 hours of arrest. You have the right to consult a legal practitioner of your choice.",
+            "np": "गिरफ्तारी भएको २४ घण्टाभित्र न्यायिक अधिकारी समक्ष उपस्थित गराउनुपर्छ। आफूले छानेको कानून व्यवसायीसँग सल्लाह लिने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 4,
+            "articleNumber": "20",
+            "articleTitle": {
+              "en": "Rights relating to justice",
+              "np": "न्याय सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Ask for a lawyer immediately. Do not sign anything without legal counsel.",
+            "np": "तुरुन्त वकिल माग्नुहोस्। कानूनी सल्लाह बिना कुनै कागजातमा हस्ताक्षर नगर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Police are using force or torture",
+            "np": "प्रहरीले बल प्रयोग वा यातना दिँदैछ"
+          },
+          "yourRight": {
+            "en": "No person in detention shall be subjected to physical or mental torture or to cruel, inhuman or degrading treatment.",
+            "np": "थुनामा रहेको कुनै पनि व्यक्तिलाई शारीरिक वा मानसिक यातना वा क्रूर, अमानवीय वा अपमानजनक व्यवहार गर्न हुँदैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 6,
+            "articleNumber": "22",
+            "articleTitle": {
+              "en": "Right against torture",
+              "np": "यातना विरुद्धको हक"
+            }
+          },
+          "tip": {
+            "en": "Remember details: time, place, officers involved. Report to National Human Rights Commission.",
+            "np": "विवरण सम्झनुहोस्: समय, स्थान, संलग्न अधिकारी। राष्ट्रिय मानव अधिकार आयोगमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Detained without charges for too long",
+            "np": "आरोप बिना लामो समय थुनामा"
+          },
+          "yourRight": {
+            "en": "No person shall be held in preventive detention for more than the period prescribed by law. Detention must be reviewed by a court.",
+            "np": "कुनै पनि व्यक्तिलाई कानूनले तोकेको अवधिभन्दा बढी निवारक नजरबन्दमा राख्न हुँदैन। थुना अदालतबाट समीक्षा हुनुपर्छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 7,
+            "articleNumber": "23",
+            "articleTitle": {
+              "en": "Right against preventive detention",
+              "np": "निवारक नजरबन्द विरुद्धको हक"
+            }
+          },
+          "tip": {
+            "en": "File habeas corpus petition in court if detained illegally.",
+            "np": "अवैध थुनामा परेमा अदालतमा बन्दी प्रत्यक्षीकरण निवेदन दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Police searching your home",
+            "np": "प्रहरीले घर खानतलासी गर्दैछ"
+          },
+          "yourRight": {
+            "en": "The privacy of person, residence, property, documents, data, correspondence is inviolable except in accordance with law.",
+            "np": "व्यक्ति, आवास, सम्पत्ति, कागजात, तथ्यांक, पत्राचारको गोपनीयता कानून बमोजिम बाहेक अनुल्लंघनीय छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 12,
+            "articleNumber": "28",
+            "articleTitle": {
+              "en": "Right to privacy",
+              "np": "गोपनीयताको हक"
+            }
+          },
+          "tip": {
+            "en": "Ask for search warrant. Note down badge numbers and time of search.",
+            "np": "खानतलासी अनुमतिपत्र माग्नुहोस्। ब्याज नम्बर र खानतलासीको समय नोट गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "You are a crime victim",
+            "np": "तपाईं अपराधको शिकार हुनुहुन्छ"
+          },
+          "yourRight": {
+            "en": "Crime victims have the right to justice including social rehabilitation and compensation.",
+            "np": "अपराध पीडितलाई सामाजिक पुनर्स्थापना र क्षतिपूर्ति सहित न्यायको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 5,
+            "articleNumber": "21",
+            "articleTitle": {
+              "en": "Right of victim of crime",
+              "np": "अपराध पीडितको हक"
+            }
+          },
+          "tip": {
+            "en": "File FIR immediately. Victim assistance available at District Court.",
+            "np": "तुरुन्त प्राथमिकी दर्ता गर्नुहोस्। जिल्ला अदालतमा पीडित सहायता उपलब्ध छ।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "workplace",
+      "icon": "work",
+      "title": {
+        "en": "Workplace Rights",
+        "np": "कार्यस्थलको हक"
+      },
+      "subtitle": {
+        "en": "Protection against exploitation at work",
+        "np": "कामको ठाउँमा शोषण विरुद्ध सुरक्षा"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Employer not paying fair wages",
+            "np": "रोजगारदाताले उचित तलब दिँदैन"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to employment. You are entitled to appropriate remuneration, facilities and social security.",
+            "np": "प्रत्येक नागरिकलाई रोजगारीको हक छ। उचित पारिश्रमिक, सुविधा र सामाजिक सुरक्षा पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 17,
+            "articleNumber": "33",
+            "articleTitle": {
+              "en": "Right to employment",
+              "np": "रोजगारीको हक"
+            }
+          },
+          "tip": {
+            "en": "Document everything. File complaint at Labour Office.",
+            "np": "सबै कुराको अभिलेख राख्नुहोस्। श्रम कार्यालयमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Forced to work overtime without pay",
+            "np": "भुक्तानी बिना ओभरटाइम काम गर्न बाध्य"
+          },
+          "yourRight": {
+            "en": "No person shall be subjected to forced labour. Forced labour in any form is prohibited.",
+            "np": "कुनै पनि व्यक्तिलाई बाध्यकारी श्रममा लगाइने छैन। कुनै पनि प्रकारको बाध्यकारी श्रम निषेध छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 13,
+            "articleNumber": "29",
+            "articleTitle": {
+              "en": "Right against exploitation",
+              "np": "शोषण विरुद्धको हक"
+            }
+          },
+          "tip": {
+            "en": "Keep records of hours worked. Labour laws require overtime compensation.",
+            "np": "काम गरेको घण्टाको रेकर्ड राख्नुहोस्। श्रम कानूनले ओभरटाइम क्षतिपूर्ति अनिवार्य गर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Unsafe working conditions",
+            "np": "असुरक्षित कार्य वातावरण"
+          },
+          "yourRight": {
+            "en": "Every employee has the right to appropriate working environment and conditions.",
+            "np": "प्रत्येक कर्मचारीलाई उचित कार्य वातावरण र सर्तहरूको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 18,
+            "articleNumber": "34",
+            "articleTitle": {
+              "en": "Right to labour",
+              "np": "श्रमको हक"
+            }
+          },
+          "tip": {
+            "en": "Report to Labour Office. Employers must provide safe conditions.",
+            "np": "श्रम कार्यालयमा रिपोर्ट गर्नुहोस्। रोजगारदाताले सुरक्षित वातावरण प्रदान गर्नुपर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Fired without proper process",
+            "np": "उचित प्रक्रिया बिना बर्खास्त"
+          },
+          "yourRight": {
+            "en": "Employees have the right to form and join trade unions. Collective bargaining rights are protected.",
+            "np": "कर्मचारीहरूलाई ट्रेड युनियन गठन गर्ने र सामेल हुने हक छ। सामूहिक सौदाबाजीको अधिकार सुरक्षित छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 18,
+            "articleNumber": "34",
+            "articleTitle": {
+              "en": "Right to labour",
+              "np": "श्रमको हक"
+            }
+          },
+          "tip": {
+            "en": "Contact your union. Labour court handles wrongful termination cases.",
+            "np": "आफ्नो युनियनलाई सम्पर्क गर्नुहोस्। श्रम अदालतले गलत बर्खास्तीका मुद्दा हेर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Workplace sexual harassment",
+            "np": "कार्यस्थलमा यौन उत्पीडन"
+          },
+          "yourRight": {
+            "en": "No woman shall be subjected to physical, mental, sexual, psychological violence. Workplace harassment is prohibited.",
+            "np": "कुनै पनि महिलालाई शारीरिक, मानसिक, यौन, मनोवैज्ञानिक हिंसामा पार्न हुँदैन। कार्यस्थल उत्पीडन निषेध छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 22,
+            "articleNumber": "38",
+            "articleTitle": {
+              "en": "Rights of women",
+              "np": "महिलाको हक"
+            }
+          },
+          "tip": {
+            "en": "Report to internal committee. File complaint at Women's Cell if no action.",
+            "np": "आन्तरिक समितिमा रिपोर्ट गर्नुहोस्। कारबाही नभए महिला सेलमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Denied maternity leave",
+            "np": "प्रसूति बिदा अस्वीकार"
+          },
+          "yourRight": {
+            "en": "Women have special rights relating to safe motherhood and reproductive health.",
+            "np": "महिलाको सुरक्षित मातृत्व र प्रजनन स्वास्थ्य सम्बन्धी विशेष हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 22,
+            "articleNumber": "38",
+            "articleTitle": {
+              "en": "Rights of women",
+              "np": "महिलाको हक"
+            }
+          },
+          "tip": {
+            "en": "Labour law mandates 98 days paid maternity leave. File complaint at Labour Office.",
+            "np": "श्रम कानूनले ९८ दिन तलबी प्रसूति बिदा अनिवार्य गर्छ। श्रम कार्यालयमा उजुरी दिनुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "women",
+      "icon": "woman",
+      "title": {
+        "en": "Women's Rights",
+        "np": "महिला अधिकार"
+      },
+      "subtitle": {
+        "en": "Constitutional protections for women",
+        "np": "महिलाको लागि संवैधानिक सुरक्षा"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Facing discrimination at work or home",
+            "np": "काममा वा घरमा भेदभाव सामना"
+          },
+          "yourRight": {
+            "en": "Women have the right to equal lineage and to participate in all state structures based on proportional inclusion.",
+            "np": "महिलाको समान वंशको हक छ र समानुपातिक समावेशीको आधारमा सबै राज्य संरचनामा सहभागी हुने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 22,
+            "articleNumber": "38",
+            "articleTitle": {
+              "en": "Rights of women",
+              "np": "महिलाको हक"
+            }
+          },
+          "tip": {
+            "en": "File complaint at National Women Commission or local Women Cell.",
+            "np": "राष्ट्रिय महिला आयोग वा स्थानीय महिला सेलमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Denied property rights",
+            "np": "सम्पत्तिको हकबाट वञ्चित"
+          },
+          "yourRight": {
+            "en": "Women have equal rights to ancestral property. No discrimination based on gender in property rights.",
+            "np": "महिलाको पैतृक सम्पत्तिमा समान हक छ। सम्पत्तिको हकमा लिङ्गको आधारमा भेदभाव हुनेछैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 2,
+            "articleNumber": "18",
+            "articleTitle": {
+              "en": "Right to equality",
+              "np": "समानताको हक"
+            }
+          },
+          "tip": {
+            "en": "Consult a lawyer for property cases. Land Revenue Office handles disputes.",
+            "np": "सम्पत्तिका मुद्दाहरूको लागि वकिलसँग सल्लाह लिनुहोस्। मालपोत कार्यालयले विवाद समाधान गर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Reproductive health issues",
+            "np": "प्रजनन स्वास्थ्य समस्या"
+          },
+          "yourRight": {
+            "en": "Women have special rights relating to safe motherhood and reproductive health.",
+            "np": "महिलाको सुरक्षित मातृत्व र प्रजनन स्वास्थ्य सम्बन्धी विशेष हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 22,
+            "articleNumber": "38",
+            "articleTitle": {
+              "en": "Rights of women",
+              "np": "महिलाको हक"
+            }
+          },
+          "tip": {
+            "en": "Government hospitals must provide free safe delivery services.",
+            "np": "सरकारी अस्पतालले निःशुल्क सुरक्षित प्रसव सेवा दिनुपर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Domestic violence",
+            "np": "घरेलु हिंसा"
+          },
+          "yourRight": {
+            "en": "No woman shall be subjected to physical, mental, sexual, psychological or other violence. This applies in family and public life.",
+            "np": "कुनै पनि महिलालाई शारीरिक, मानसिक, यौन, मनोवैज्ञानिक वा अन्य हिंसामा पार्न हुँदैन। यो परिवार र सार्वजनिक जीवनमा लागू हुन्छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 22,
+            "articleNumber": "38",
+            "articleTitle": {
+              "en": "Rights of women",
+              "np": "महिलाको हक"
+            }
+          },
+          "tip": {
+            "en": "Call 1145 (helpline). File complaint at Women's Cell or local police.",
+            "np": "११४५ (हेल्पलाइन) मा फोन गर्नुहोस्। महिला सेल वा स्थानीय प्रहरीमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Child marriage pressure",
+            "np": "बाल विवाहको दबाब"
+          },
+          "yourRight": {
+            "en": "Child marriage is prohibited. The minimum age for marriage is 20 years for both men and women.",
+            "np": "बाल विवाह निषेध छ। विवाहको न्यूनतम उमेर पुरुष र महिला दुवैको लागि २० वर्ष हो।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 22,
+            "articleNumber": "38",
+            "articleTitle": {
+              "en": "Rights of women",
+              "np": "महिलाको हक"
+            }
+          },
+          "tip": {
+            "en": "Report to local ward office or call child helpline 1098.",
+            "np": "स्थानीय वडा कार्यालयमा रिपोर्ट गर्नुहोस् वा बाल हेल्पलाइन १०९८ मा फोन गर्नुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "children",
+      "icon": "child_care",
+      "title": {
+        "en": "Children's Rights",
+        "np": "बालबालिकाको हक"
+      },
+      "subtitle": {
+        "en": "Protection and rights of children",
+        "np": "बालबालिकाको सुरक्षा र अधिकार"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Child being forced to work",
+            "np": "बच्चालाई काम गर्न बाध्य पारिँदैछ"
+          },
+          "yourRight": {
+            "en": "No child shall be employed in factories, mines or similar hazardous work. Child labour is prohibited.",
+            "np": "कुनै पनि बालबालिकालाई कारखाना, खानी वा त्यस्तै खतरनाक काममा लगाउने छैन। बाल श्रम निषेध छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 23,
+            "articleNumber": "39",
+            "articleTitle": {
+              "en": "Rights of the child",
+              "np": "बालबालिकाको हक"
+            }
+          },
+          "tip": {
+            "en": "Report to Child Welfare Board or call 1098. Child labour is punishable.",
+            "np": "बाल कल्याण समितिमा रिपोर्ट गर्नुहोस् वा १०९८ मा फोन गर्नुहोस्। बाल श्रम दण्डनीय छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Child abuse or neglect",
+            "np": "बालबालिका दुर्व्यवहार वा बेवास्ता"
+          },
+          "yourRight": {
+            "en": "Every child has the right to be protected from physical, mental or any other form of exploitation.",
+            "np": "प्रत्येक बालबालिकालाई शारीरिक, मानसिक वा अन्य कुनै प्रकारको शोषणबाट सुरक्षित हुने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 23,
+            "articleNumber": "39",
+            "articleTitle": {
+              "en": "Rights of the child",
+              "np": "बालबालिकाको हक"
+            }
+          },
+          "tip": {
+            "en": "Call 1098 (Child Helpline). Report to District Child Welfare Board.",
+            "np": "१०९८ (बाल हेल्पलाइन) मा फोन गर्नुहोस्। जिल्ला बाल कल्याण समितिमा रिपोर्ट गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Child denied education",
+            "np": "बच्चालाई शिक्षाबाट वञ्चित"
+          },
+          "yourRight": {
+            "en": "Every child has the right to elementary child development, care and basic education. Free and compulsory basic education.",
+            "np": "प्रत्येक बालबालिकालाई प्रारम्भिक बाल विकास, हेरचाह र आधारभूत शिक्षाको हक छ। निःशुल्क र अनिवार्य आधारभूत शिक्षा।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 23,
+            "articleNumber": "39",
+            "articleTitle": {
+              "en": "Rights of the child",
+              "np": "बालबालिकाको हक"
+            }
+          },
+          "tip": {
+            "en": "Every child must be enrolled in school. Report to Education Office.",
+            "np": "प्रत्येक बच्चालाई विद्यालयमा भर्ना गर्नुपर्छ। शिक्षा कार्यालयमा रिपोर्ट गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Child trafficking or exploitation",
+            "np": "बाल ओसारपसार वा शोषण"
+          },
+          "yourRight": {
+            "en": "No child shall be subjected to buying, selling or trafficking in any form. Helpless children are entitled to state care.",
+            "np": "कुनै पनि बालबालिकालाई कुनै पनि रूपमा किनबेच वा ओसारपसार गर्न हुँदैन। असहाय बालबालिकाले राज्यको हेरचाह पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 23,
+            "articleNumber": "39",
+            "articleTitle": {
+              "en": "Rights of the child",
+              "np": "बालबालिकाको हक"
+            }
+          },
+          "tip": {
+            "en": "Call 1098 immediately. Report to police. Human trafficking is serious crime.",
+            "np": "तुरुन्त १०९८ मा फोन गर्नुहोस्। प्रहरीमा रिपोर्ट गर्नुहोस्। मानव ओसारपसार गम्भीर अपराध हो।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "dalit",
+      "icon": "diversity_3",
+      "title": {
+        "en": "Dalit Rights",
+        "np": "दलित अधिकार"
+      },
+      "subtitle": {
+        "en": "Rights against untouchability and caste discrimination",
+        "np": "छुवाछूत र जातीय भेदभाव विरुद्धको हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Denied entry to public places",
+            "np": "सार्वजनिक स्थानमा प्रवेश रोकियो"
+          },
+          "yourRight": {
+            "en": "No person shall be subjected to any form of untouchability or discrimination based on caste in any public or private place.",
+            "np": "कुनै पनि व्यक्तिलाई कुनै पनि सार्वजनिक वा निजी स्थानमा जातको आधारमा कुनै पनि प्रकारको छुवाछूत वा भेदभाव गर्न हुँदैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 8,
+            "articleNumber": "24",
+            "articleTitle": {
+              "en": "Right against untouchability and discrimination",
+              "np": "छुवाछूत तथा भेदभाव विरुद्धको हक"
+            }
+          },
+          "tip": {
+            "en": "This is a criminal offense. File FIR at police station.",
+            "np": "यो फौजदारी अपराध हो। प्रहरी चौकीमा प्राथमिकी दर्ता गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Caste-based denial of goods or services",
+            "np": "जातको आधारमा सामान वा सेवा अस्वीकार"
+          },
+          "yourRight": {
+            "en": "No one shall be denied goods, services or facilities available to the general public on grounds of caste.",
+            "np": "जातको आधारमा सर्वसाधारणलाई उपलब्ध सामान, सेवा वा सुविधाबाट कसैलाई वञ्चित गर्न हुँदैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 8,
+            "articleNumber": "24",
+            "articleTitle": {
+              "en": "Right against untouchability and discrimination",
+              "np": "छुवाछूत तथा भेदभाव विरुद्धको हक"
+            }
+          },
+          "tip": {
+            "en": "Violation is punishable. Report to National Dalit Commission.",
+            "np": "उल्लंघन दण्डनीय छ। राष्ट्रिय दलित आयोगमा रिपोर्ट गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Caste-based abuse or humiliation",
+            "np": "जातको आधारमा गाली वा अपमान"
+          },
+          "yourRight": {
+            "en": "No person belonging to any caste shall be humiliated or discriminated against in any workplace or public place.",
+            "np": "कुनै पनि जातको व्यक्तिलाई कुनै पनि कार्यस्थल वा सार्वजनिक स्थानमा अपमान वा भेदभाव गर्न हुँदैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 8,
+            "articleNumber": "24",
+            "articleTitle": {
+              "en": "Right against untouchability and discrimination",
+              "np": "छुवाछूत तथा भेदभाव विरुद्धको हक"
+            }
+          },
+          "tip": {
+            "en": "Caste-based discrimination is crime with 3-5 years imprisonment.",
+            "np": "जातीय भेदभाव ३-५ वर्ष कैद हुने अपराध हो।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Denied job due to caste",
+            "np": "जातको कारण रोजगारीबाट वञ्चित"
+          },
+          "yourRight": {
+            "en": "Dalit community has special right to employment in state structures based on proportional inclusive principle.",
+            "np": "दलित समुदायलाई समानुपातिक समावेशी सिद्धान्तको आधारमा राज्य संरचनामा रोजगारीको विशेष हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 24,
+            "articleNumber": "40",
+            "articleTitle": {
+              "en": "Rights of Dalit",
+              "np": "दलितको हक"
+            }
+          },
+          "tip": {
+            "en": "Government jobs have reservation for Dalits. Contact Public Service Commission.",
+            "np": "सरकारी जागिरमा दलितको लागि आरक्षण छ। लोक सेवा आयोगमा सम्पर्क गर्नुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "senior",
+      "icon": "elderly",
+      "title": {
+        "en": "Senior Citizens",
+        "np": "ज्येष्ठ नागरिक"
+      },
+      "subtitle": {
+        "en": "Rights of elderly persons",
+        "np": "वृद्ध व्यक्तिहरूको हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Neglected by family",
+            "np": "परिवारले बेवास्ता गर्यो"
+          },
+          "yourRight": {
+            "en": "Senior citizens have the right to special protection and social security from the State.",
+            "np": "ज्येष्ठ नागरिकलाई राज्यबाट विशेष सुरक्षा र सामाजिक सुरक्षाको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 25,
+            "articleNumber": "41",
+            "articleTitle": {
+              "en": "Rights of senior citizens",
+              "np": "ज्येष्ठ नागरिकको हक"
+            }
+          },
+          "tip": {
+            "en": "Old age allowance available at ward office. Senior citizen homes available.",
+            "np": "वडा कार्यालयमा वृद्ध भत्ता उपलब्ध छ। वृद्धाश्रम उपलब्ध छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Denied pension or benefits",
+            "np": "पेन्सन वा सुविधाबाट वञ्चित"
+          },
+          "yourRight": {
+            "en": "Senior citizens are entitled to social security benefits including old age allowance.",
+            "np": "ज्येष्ठ नागरिकहरू वृद्ध भत्ता लगायत सामाजिक सुरक्षा सुविधाहरूको हकदार हुन्।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 27,
+            "articleNumber": "43",
+            "articleTitle": {
+              "en": "Right to social security",
+              "np": "सामाजिक सुरक्षाको हक"
+            }
+          },
+          "tip": {
+            "en": "Apply at local ward office. Required: citizenship, age proof.",
+            "np": "स्थानीय वडा कार्यालयमा आवेदन दिनुहोस्। आवश्यक: नागरिकता, उमेर प्रमाण।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Property taken by children",
+            "np": "सन्तानहरूले सम्पत्ति लिए"
+          },
+          "yourRight": {
+            "en": "Senior citizens have the right to property and protection from abuse by family members.",
+            "np": "ज्येष्ठ नागरिकलाई सम्पत्तिको हक र परिवारका सदस्यहरूको दुर्व्यवहारबाट सुरक्षाको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 25,
+            "articleNumber": "41",
+            "articleTitle": {
+              "en": "Rights of senior citizens",
+              "np": "ज्येष्ठ नागरिकको हक"
+            }
+          },
+          "tip": {
+            "en": "Senior Citizen Act protects property rights. Consult lawyer.",
+            "np": "ज्येष्ठ नागरिक ऐनले सम्पत्तिको हक सुरक्षित गर्छ। वकिलसँग सल्लाह लिनुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "property",
+      "icon": "home",
+      "title": {
+        "en": "Property Rights",
+        "np": "सम्पत्तिको हक"
+      },
+      "subtitle": {
+        "en": "Your rights regarding land and property",
+        "np": "जग्गा र सम्पत्ति सम्बन्धी हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Landlord trying to evict illegally",
+            "np": "घरधनीले अवैध रूपमा निकाल्ने प्रयास"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to acquire, own, sell and dispose of property. No person shall be deprived of property except in accordance with law.",
+            "np": "प्रत्येक नागरिकलाई सम्पत्ति आर्जन गर्ने, भोग गर्ने, बेच्ने र हक छोड्ने हक छ। कानून बमोजिम बाहेक कसैको सम्पत्ति खोसिने छैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 9,
+            "articleNumber": "25",
+            "articleTitle": {
+              "en": "Right relating to property",
+              "np": "सम्पत्तिको हक"
+            }
+          },
+          "tip": {
+            "en": "Check your rental agreement. Eviction requires proper legal notice.",
+            "np": "आफ्नो भाडा सम्झौता जाँच्नुहोस्। निकासीको लागि उचित कानूनी सूचना चाहिन्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Government acquiring your land",
+            "np": "सरकारले तपाईंको जग्गा लिँदैछ"
+          },
+          "yourRight": {
+            "en": "The State shall not acquire or create any encumbrance on the property except for public interest. Just compensation must be paid.",
+            "np": "राज्यले सार्वजनिक हितको लागि बाहेक सम्पत्ति अधिग्रहण वा बोझ सिर्जना गर्ने छैन। उचित क्षतिपूर्ति भुक्तानी गर्नुपर्छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 9,
+            "articleNumber": "25",
+            "articleTitle": {
+              "en": "Right relating to property",
+              "np": "सम्पत्तिको हक"
+            }
+          },
+          "tip": {
+            "en": "Get legal counsel. You're entitled to fair market value compensation.",
+            "np": "कानूनी सल्लाह लिनुहोस्। तपाईंले बजार मूल्य अनुसारको क्षतिपूर्ति पाउनुपर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Land encroachment by neighbors",
+            "np": "छिमेकीहरूले जग्गा अतिक्रमण"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to own and protect their property. Encroachment is illegal.",
+            "np": "प्रत्येक नागरिकलाई आफ्नो सम्पत्तिको स्वामित्व र सुरक्षा गर्ने हक छ। अतिक्रमण गैरकानूनी हो।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 9,
+            "articleNumber": "25",
+            "articleTitle": {
+              "en": "Right relating to property",
+              "np": "सम्पत्तिको हक"
+            }
+          },
+          "tip": {
+            "en": "Get land surveyed by Survey Office. File complaint at land revenue office.",
+            "np": "नापी कार्यालयबाट जग्गा नाप्नुहोस्। मालपोत कार्यालयमा उजुरी दिनुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "speech",
+      "icon": "campaign",
+      "title": {
+        "en": "Freedom of Speech",
+        "np": "अभिव्यक्ति स्वतन्त्रता"
+      },
+      "subtitle": {
+        "en": "Your right to speak, assemble, and protest",
+        "np": "बोल्ने, भेला हुने र विरोध गर्ने हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Stopped from peaceful protest",
+            "np": "शान्तिपूर्ण विरोधबाट रोकियो"
+          },
+          "yourRight": {
+            "en": "Every citizen has the freedom to assemble peaceably and without arms. You can form unions and associations.",
+            "np": "प्रत्येक नागरिकलाई शान्तिपूर्ण रूपमा र निहत्था भएर भेला हुने स्वतन्त्रता छ। संघ, संस्था गठन गर्न सक्नुहुन्छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 1,
+            "articleNumber": "17",
+            "articleTitle": {
+              "en": "Right to freedom",
+              "np": "स्वतन्त्रताको हक"
+            }
+          },
+          "tip": {
+            "en": "Peaceful assembly is protected. Violence nullifies this protection.",
+            "np": "शान्तिपूर्ण भेला सुरक्षित छ। हिंसाले यो सुरक्षा हटाउँछ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Social media post removed or threatened",
+            "np": "सामाजिक सञ्जालको पोस्ट हटाइयो वा धम्की"
+          },
+          "yourRight": {
+            "en": "Every citizen has freedom of opinion and expression. This includes freedom of press and publication.",
+            "np": "प्रत्येक नागरिकलाई विचार र अभिव्यक्तिको स्वतन्त्रता छ। यसमा प्रेस र प्रकाशनको स्वतन्त्रता समावेश छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 1,
+            "articleNumber": "17",
+            "articleTitle": {
+              "en": "Right to freedom",
+              "np": "स्वतन्त्रताको हक"
+            }
+          },
+          "tip": {
+            "en": "Limits exist for defamation, incitement to violence. Know the boundaries.",
+            "np": "अपमान, हिंसाको उक्साहटको लागि सीमा छ। सीमाहरू जान्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Media or press being censored",
+            "np": "मिडिया वा प्रेस सेन्सर भइरहेको छ"
+          },
+          "yourRight": {
+            "en": "There shall be no prior censorship of publication, broadcasting or display of news. Press freedom is guaranteed.",
+            "np": "समाचारको प्रकाशन, प्रसारण वा प्रदर्शनमा पूर्व सेन्सरसिप हुने छैन। प्रेस स्वतन्त्रता सुनिश्चित छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 3,
+            "articleNumber": "20",
+            "articleTitle": {
+              "en": "Right to communication",
+              "np": "संचारको हक"
+            }
+          },
+          "tip": {
+            "en": "Press Council handles complaints against censorship.",
+            "np": "प्रेस काउन्सिलले सेन्सरसिप विरुद्धका गुनासोहरू हेर्छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Practicing your religion restricted",
+            "np": "धर्म पालनमा प्रतिबन्ध"
+          },
+          "yourRight": {
+            "en": "Every person has the freedom to profess, practice and protect their religion according to their faith.",
+            "np": "प्रत्येक व्यक्तिलाई आफ्नो विश्वास अनुसार धर्म मान्ने, पालन गर्ने र संरक्षण गर्ने स्वतन्त्रता छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 10,
+            "articleNumber": "26",
+            "articleTitle": {
+              "en": "Right to freedom of religion",
+              "np": "धार्मिक स्वतन्त्रताको हक"
+            }
+          },
+          "tip": {
+            "en": "Forced conversion is prohibited. Religious freedom is protected.",
+            "np": "जबरजस्ती धर्म परिवर्तन निषेध छ। धार्मिक स्वतन्त्रता सुरक्षित छ।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "information",
+      "icon": "info",
+      "title": {
+        "en": "Right to Information",
+        "np": "सूचनाको हक"
+      },
+      "subtitle": {
+        "en": "Access government information",
+        "np": "सरकारी सूचनामा पहुँच"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Government office not providing information",
+            "np": "सरकारी कार्यालयले सूचना दिँदैन"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to demand and receive information on any matter of public interest.",
+            "np": "प्रत्येक नागरिकलाई सार्वजनिक चासोको कुनै पनि विषयमा सूचना माग गर्ने र प्राप्त गर्ने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 11,
+            "articleNumber": "27",
+            "articleTitle": {
+              "en": "Right to information",
+              "np": "सूचनाको हक"
+            }
+          },
+          "tip": {
+            "en": "File RTI application. Response required within 15 days.",
+            "np": "सूचनाको हक आवेदन दिनुहोस्। १५ दिनभित्र जवाफ अनिवार्य छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Denied access to your own records",
+            "np": "आफ्नै अभिलेखमा पहुँच रोकियो"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to information about themselves held by any public body.",
+            "np": "प्रत्येक नागरिकलाई कुनै पनि सार्वजनिक निकायले राखेको आफ्नो बारेमा जानकारी पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 11,
+            "articleNumber": "27",
+            "articleTitle": {
+              "en": "Right to information",
+              "np": "सूचनाको हक"
+            }
+          },
+          "tip": {
+            "en": "Apply to the Information Officer of that office. Appeal to National Information Commission if denied.",
+            "np": "त्यो कार्यालयको सूचना अधिकारीलाई आवेदन दिनुहोस्। अस्वीकार भए राष्ट्रिय सूचना आयोगमा पुनरावेदन दिनुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "icon": "local_hospital",
+      "title": {
+        "en": "Healthcare Rights",
+        "np": "स्वास्थ्य हक"
+      },
+      "subtitle": {
+        "en": "Your right to basic health services",
+        "np": "आधारभूत स्वास्थ्य सेवामा तपाईंको हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Hospital denying emergency treatment",
+            "np": "अस्पताले आपतकालीन उपचार दिँदैन"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to free basic health services. No one shall be deprived of emergency health services.",
+            "np": "प्रत्येक नागरिकलाई निःशुल्क आधारभूत स्वास्थ्य सेवाको हक छ। कसैलाई आपतकालीन स्वास्थ्य सेवाबाट वञ्चित गरिने छैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 19,
+            "articleNumber": "35",
+            "articleTitle": {
+              "en": "Right relating to health",
+              "np": "स्वास्थ्य सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Emergency care cannot be denied. Report to Health Ministry if refused.",
+            "np": "आपतकालीन उपचार अस्वीकार गर्न मिल्दैन। अस्वीकार भए स्वास्थ्य मन्त्रालयमा रिपोर्ट गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Cannot afford hospital bills",
+            "np": "अस्पताल बिल तिर्न सक्दिन"
+          },
+          "yourRight": {
+            "en": "Indigent citizens have the right to free health care services from the state.",
+            "np": "गरिब नागरिकहरूलाई राज्यबाट निःशुल्क स्वास्थ्य सेवाको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 19,
+            "articleNumber": "35",
+            "articleTitle": {
+              "en": "Right relating to health",
+              "np": "स्वास्थ्य सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Apply for poor patient fund. Health insurance schemes available at ward.",
+            "np": "गरिब बिरामी कोषमा आवेदन दिनुहोस्। वडामा स्वास्थ्य बीमा योजना उपलब्ध छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Lack of clean drinking water",
+            "np": "सफा खानेपानीको अभाव"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to access clean drinking water and sanitation.",
+            "np": "प्रत्येक नागरिकलाई सफा खानेपानी र सरसफाइमा पहुँचको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 19,
+            "articleNumber": "35",
+            "articleTitle": {
+              "en": "Right relating to health",
+              "np": "स्वास्थ्य सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Report to ward office. Water supply is local government responsibility.",
+            "np": "वडा कार्यालयमा रिपोर्ट गर्नुहोस्। खानेपानी आपूर्ति स्थानीय सरकारको जिम्मेवारी हो।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "icon": "school",
+      "title": {
+        "en": "Education Rights",
+        "np": "शिक्षाको हक"
+      },
+      "subtitle": {
+        "en": "Right to education for all",
+        "np": "सबैको लागि शिक्षाको हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Child denied school admission",
+            "np": "बच्चालाई स्कूल भर्नाबाट रोकियो"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to free education up to basic level and free education up to secondary level.",
+            "np": "प्रत्येक नागरिकलाई आधारभूत तहसम्म निःशुल्क शिक्षा र माध्यमिक तहसम्म निःशुल्क शिक्षाको हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 15,
+            "articleNumber": "31",
+            "articleTitle": {
+              "en": "Right relating to education",
+              "np": "शिक्षा सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Government schools must admit all children. Complain to Education Office.",
+            "np": "सरकारी स्कूलले सबै बालबालिकालाई भर्ना गर्नुपर्छ। शिक्षा कार्यालयमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "School charging illegal fees",
+            "np": "स्कूलले गैरकानूनी शुल्क लिँदैछ"
+          },
+          "yourRight": {
+            "en": "Basic education is free and compulsory. Additional illegal fees cannot be charged.",
+            "np": "आधारभूत शिक्षा निःशुल्क र अनिवार्य छ। थप गैरकानूनी शुल्क लिन मिल्दैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 15,
+            "articleNumber": "31",
+            "articleTitle": {
+              "en": "Right relating to education",
+              "np": "शिक्षा सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Report to District Education Office. Illegal fee collection is punishable.",
+            "np": "जिल्ला शिक्षा कार्यालयमा रिपोर्ट गर्नुहोस्। गैरकानूनी शुल्क संकलन दण्डनीय छ।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Mother tongue education denied",
+            "np": "मातृभाषा शिक्षाबाट वञ्चित"
+          },
+          "yourRight": {
+            "en": "Every Nepali community has the right to get education in their mother tongue up to secondary level.",
+            "np": "प्रत्येक नेपाली समुदायलाई माध्यमिक तहसम्म आफ्नो मातृभाषामा शिक्षा पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 15,
+            "articleNumber": "31",
+            "articleTitle": {
+              "en": "Right relating to education",
+              "np": "शिक्षा सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Request mother tongue classes at local government level.",
+            "np": "स्थानीय सरकार स्तरमा मातृभाषा कक्षाको अनुरोध गर्नुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "environment",
+      "icon": "park",
+      "title": {
+        "en": "Environmental Rights",
+        "np": "वातावरण हक"
+      },
+      "subtitle": {
+        "en": "Right to clean and healthy environment",
+        "np": "स्वच्छ र स्वस्थ वातावरणको हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Factory polluting your area",
+            "np": "कारखानाले तपाईंको क्षेत्र प्रदूषित गर्दैछ"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to live in a clean and healthy environment.",
+            "np": "प्रत्येक नागरिकलाई स्वच्छ र स्वस्थ वातावरणमा बस्ने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 14,
+            "articleNumber": "30",
+            "articleTitle": {
+              "en": "Right to clean environment",
+              "np": "स्वच्छ वातावरणको हक"
+            }
+          },
+          "tip": {
+            "en": "Report to Department of Environment. Polluters are liable for compensation.",
+            "np": "वातावरण विभागमा रिपोर्ट गर्नुहोस्। प्रदूषणकर्ताहरू क्षतिपूर्तिको लागि उत्तरदायी छन्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Damaged by environmental harm",
+            "np": "वातावरणीय हानिबाट क्षतिग्रस्त"
+          },
+          "yourRight": {
+            "en": "Victims of environmental pollution or degradation have the right to compensation from polluters.",
+            "np": "वातावरणीय प्रदूषण वा क्षयबाट पीडितहरूलाई प्रदूषणकर्ताबाट क्षतिपूर्ति पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 14,
+            "articleNumber": "30",
+            "articleTitle": {
+              "en": "Right to clean environment",
+              "np": "स्वच्छ वातावरणको हक"
+            }
+          },
+          "tip": {
+            "en": "Document the damage. File case at District Court for compensation.",
+            "np": "क्षतिको अभिलेख राख्नुहोस्। क्षतिपूर्तिको लागि जिल्ला अदालतमा मुद्दा दायर गर्नुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "icon": "restaurant",
+      "title": {
+        "en": "Right to Food",
+        "np": "खाद्य हक"
+      },
+      "subtitle": {
+        "en": "Protection from hunger and food insecurity",
+        "np": "भोक र खाद्य असुरक्षाबाट सुरक्षा"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Cannot afford food for family",
+            "np": "परिवारको लागि खाना किन्न सक्दिन"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to food sovereignty. No citizen shall be kept in a condition of starvation.",
+            "np": "प्रत्येक नागरिकलाई खाद्य सार्वभौमसत्ताको हक छ। कुनै पनि नागरिकलाई भोकमरीको अवस्थामा राख्ने छैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 20,
+            "articleNumber": "36",
+            "articleTitle": {
+              "en": "Right relating to food",
+              "np": "खाद्य सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Contact ward office for food assistance programs.",
+            "np": "खाद्य सहायता कार्यक्रमहरूको लागि वडा कार्यालयमा सम्पर्क गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Sold adulterated food",
+            "np": "मिसावट गरिएको खाना बिक्री"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to safe and quality food. Adulterated food is prohibited.",
+            "np": "प्रत्येक नागरिकलाई सुरक्षित र गुणस्तरीय खानाको हक छ। मिसावट गरिएको खाना निषेध छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 20,
+            "articleNumber": "36",
+            "articleTitle": {
+              "en": "Right relating to food",
+              "np": "खाद्य सम्बन्धी हक"
+            }
+          },
+          "tip": {
+            "en": "Report to Department of Food Technology. Keep samples as evidence.",
+            "np": "खाद्य प्रविधि विभागमा रिपोर्ट गर्नुहोस्। प्रमाणको रूपमा नमूना राख्नुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "consumer",
+      "icon": "shopping_cart",
+      "title": {
+        "en": "Consumer Rights",
+        "np": "उपभोक्ता हक"
+      },
+      "subtitle": {
+        "en": "Protection as a consumer",
+        "np": "उपभोक्ताको रूपमा सुरक्षा"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Sold defective product or cheated",
+            "np": "खराब सामान बिक्री वा ठगी"
+          },
+          "yourRight": {
+            "en": "Every consumer has the right to quality goods and services. You have the right to compensation for loss caused by substandard goods.",
+            "np": "प्रत्येक उपभोक्तालाई गुणस्तरीय वस्तु र सेवाको हक छ। निम्न स्तरको सामानबाट हानि भएमा क्षतिपूर्ति पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 28,
+            "articleNumber": "44",
+            "articleTitle": {
+              "en": "Rights of the consumer",
+              "np": "उपभोक्ताको हक"
+            }
+          },
+          "tip": {
+            "en": "File complaint at Consumer Forum or Department of Commerce.",
+            "np": "उपभोक्ता मञ्च वा वाणिज्य विभागमा उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Overcharged or price gouging",
+            "np": "अत्यधिक मूल्य वा मूल्य वृद्धि"
+          },
+          "yourRight": {
+            "en": "Consumers have the right to information about quality, quantity and price of goods and services.",
+            "np": "उपभोक्ताहरूलाई वस्तु र सेवाको गुणस्तर, परिमाण र मूल्यको जानकारी पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 28,
+            "articleNumber": "44",
+            "articleTitle": {
+              "en": "Rights of the consumer",
+              "np": "उपभोक्ताको हक"
+            }
+          },
+          "tip": {
+            "en": "Check MRP on products. Report to Department of Commerce for price violations.",
+            "np": "उत्पादनहरूमा MRP जाँच्नुहोस्। मूल्य उल्लंघनको लागि वाणिज्य विभागमा रिपोर्ट गर्नुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Service provider not delivering",
+            "np": "सेवा प्रदायकले सेवा दिँदैन"
+          },
+          "yourRight": {
+            "en": "Consumers have the right to get compensation if services paid for are not delivered.",
+            "np": "भुक्तानी गरिएका सेवाहरू प्राप्त नभएमा उपभोक्ताहरूलाई क्षतिपूर्ति पाउने हक छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 28,
+            "articleNumber": "44",
+            "articleTitle": {
+              "en": "Rights of the consumer",
+              "np": "उपभोक्ताको हक"
+            }
+          },
+          "tip": {
+            "en": "Keep receipts and contracts. File complaint at Consumer Court.",
+            "np": "रसिद र करार राख्नुहोस्। उपभोक्ता अदालतमा उजुरी दिनुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "privacy",
+      "icon": "lock",
+      "title": {
+        "en": "Privacy Rights",
+        "np": "गोपनीयता हक"
+      },
+      "subtitle": {
+        "en": "Protection of personal information",
+        "np": "व्यक्तिगत जानकारीको सुरक्षा"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Personal data shared without consent",
+            "np": "सहमति बिना व्यक्तिगत डाटा साझा गरियो"
+          },
+          "yourRight": {
+            "en": "The privacy of personal matters, documents, data and correspondence is inviolable except in accordance with law.",
+            "np": "व्यक्तिगत कुरा, कागजात, तथ्यांक र पत्राचारको गोपनीयता कानून बमोजिम बाहेक अनुल्लंघनीय छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 12,
+            "articleNumber": "28",
+            "articleTitle": {
+              "en": "Right to privacy",
+              "np": "गोपनीयताको हक"
+            }
+          },
+          "tip": {
+            "en": "Privacy Act 2018 protects personal data. File complaint if violated.",
+            "np": "गोपनीयता ऐन २०७५ ले व्यक्तिगत डाटा सुरक्षित गर्छ। उल्लंघन भए उजुरी दिनुहोस्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Communications being monitored",
+            "np": "सञ्चार निगरानीमा छ"
+          },
+          "yourRight": {
+            "en": "No person's correspondence or private communications shall be opened or intercepted except in accordance with law.",
+            "np": "कुनै पनि व्यक्तिको पत्राचार वा निजी सञ्चार कानून बमोजिम बाहेक खोल्ने वा अवरोध गर्ने छैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 12,
+            "articleNumber": "28",
+            "articleTitle": {
+              "en": "Right to privacy",
+              "np": "गोपनीयताको हक"
+            }
+          },
+          "tip": {
+            "en": "Surveillance requires court order. Report illegal monitoring to NHRC.",
+            "np": "निगरानीको लागि अदालतको आदेश चाहिन्छ। गैरकानूनी निगरानी NHRC मा रिपोर्ट गर्नुहोस्।"
+          }
+        }
+      ]
+    },
+    {
+      "id": "housing",
+      "icon": "house",
+      "title": {
+        "en": "Right to Housing",
+        "np": "आवासको हक"
+      },
+      "subtitle": {
+        "en": "Right to shelter and housing",
+        "np": "आश्रय र आवासको हक"
+      },
+      "rights": [
+        {
+          "situation": {
+            "en": "Homeless or lacking shelter",
+            "np": "गृहहीन वा आश्रयको अभाव"
+          },
+          "yourRight": {
+            "en": "Every citizen has the right to appropriate housing. No citizen shall be evicted arbitrarily.",
+            "np": "प्रत्येक नागरिकलाई उपयुक्त आवासको हक छ। कुनै पनि नागरिकलाई मनमानी ढंगले बेदखल गरिने छैन।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 21,
+            "articleNumber": "37",
+            "articleTitle": {
+              "en": "Right to housing",
+              "np": "आवासको हक"
+            }
+          },
+          "tip": {
+            "en": "Contact ward office for housing assistance. Shelter homes available.",
+            "np": "आवास सहायताको लागि वडा कार्यालयमा सम्पर्क गर्नुहोस्। आश्रय गृहहरू उपलब्ध छन्।"
+          }
+        },
+        {
+          "situation": {
+            "en": "Squatter settlement being demolished",
+            "np": "सुकुम्बासी बस्ती भत्काइँदैछ"
+          },
+          "yourRight": {
+            "en": "Landless squatters are entitled to housing based on law. Forced eviction without rehabilitation is prohibited.",
+            "np": "भूमिहीन सुकुम्बासीहरू कानून बमोजिम आवासको हकदार छन्। पुनर्स्थापना बिना जबरजस्ती बेदखली निषेध छ।"
+          },
+          "articleRef": {
+            "partIndex": 2,
+            "articleIndex": 21,
+            "articleNumber": "37",
+            "articleTitle": {
+              "en": "Right to housing",
+              "np": "आवासको हक"
+            }
+          },
+          "tip": {
+            "en": "Proper notice and rehabilitation must be provided before relocation.",
+            "np": "स्थानान्तरण अघि उचित सूचना र पुनर्स्थापना प्रदान गर्नुपर्छ।"
+          }
+        }
+      ]
+    }
+  ]
+}

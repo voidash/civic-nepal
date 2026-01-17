@@ -10,12 +10,26 @@ _$DistrictInfoImpl _$$DistrictInfoImplFromJson(Map<String, dynamic> json) =>
     _$DistrictInfoImpl(
       name: json['name'] as String,
       province: (json['province'] as num).toInt(),
+      nameNp: json['nameNp'] as String?,
+      headquarters: json['headquarters'] as String?,
+      population: (json['population'] as num?)?.toInt(),
+      area: (json['area'] as num?)?.toInt(),
+      wikiUrl: json['wikiUrl'] as String?,
+      websiteUrl: json['websiteUrl'] as String?,
+      famousFor: json['famousFor'] as String?,
     );
 
 Map<String, dynamic> _$$DistrictInfoImplToJson(_$DistrictInfoImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'province': instance.province,
+      'nameNp': instance.nameNp,
+      'headquarters': instance.headquarters,
+      'population': instance.population,
+      'area': instance.area,
+      'wikiUrl': instance.wikiUrl,
+      'websiteUrl': instance.websiteUrl,
+      'famousFor': instance.famousFor,
     };
 
 _$PartyDataImpl _$$PartyDataImplFromJson(Map<String, dynamic> json) =>

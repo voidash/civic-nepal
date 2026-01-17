@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/constitution.dart';
+import '../models/know_your_rights.dart';
 import '../services/data_service.dart';
 
 part 'constitution_provider.freezed.dart';
@@ -22,6 +23,12 @@ Future<Map<String, dynamic>> perSentenceData(PerSentenceDataRef ref) async {
 @riverpod
 Future<Map<String, dynamic>> dictionary(DictionaryRef ref) async {
   return await DataService.loadDictionary();
+}
+
+/// Provider for Know Your Rights data
+@riverpod
+Future<KnowYourRightsData> knowYourRights(KnowYourRightsRef ref) async {
+  return await DataService.loadKnowYourRights();
 }
 
 /// Language mode: 'both', 'nepali', 'english'
@@ -75,7 +82,7 @@ class SearchQuery extends _$SearchQuery {
   }
 }
 
-/// Currently selected article (null means showing preamble)
+/// Currently selected article (defaults to null to show Know Your Rights)
 @riverpod
 class SelectedArticle extends _$SelectedArticle {
   @override

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp"
+    android:background="@drawable/widget_background">
+
+    <!-- Day number (large) -->
+    <TextView
+        android:id="@+id/tv_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15"
+        android:textSize="48sp"
+        android:textColor="#DC143C"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- Month and Year -->
+    <TextView
+        android:id="@+id/tv_month_year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="पुष २०८२"
+        android:textSize="16sp"
+        android:textColor="#333333"
+        android:textStyle="bold" />
+
+    <!-- Weekday -->
+    <TextView
+        android:id="@+id/tv_weekday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="शनिबार"
+        android:textSize="12sp"
+        android:textColor="#666666"
+        android:layout_marginTop="2dp" />
+
+    <!-- English date (small) -->
+    <TextView
+        android:id="@+id/tv_english_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jan 18, 2026"
+        android:textSize="11sp"
+        android:textColor="#999999"
+        android:layout_marginTop="4dp" />
+
+</LinearLayout>

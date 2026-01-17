@@ -51,23 +51,7 @@ class LeaderDetailScreen extends ConsumerWidget {
                     fit: StackFit.expand,
                     children: [
                       leader.imageUrl.isNotEmpty
-                          ? Image.network(
-                              leader.imageUrl,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) {
-                                return Container(
-                                  color: Theme.of(context).colorScheme.surfaceVariant,
-                                  child: Center(
-                                    child: Text(
-                                      leader.name[0],
-                                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                                            color: Theme.of(context).colorScheme.onSurfaceVariant,
-                                          ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            )
+                          ? _buildLeaderImage(context, leader)
                           : Container(
                               color: Theme.of(context).colorScheme.surfaceVariant,
                               child: Center(
@@ -117,39 +101,6 @@ class LeaderDetailScreen extends ConsumerWidget {
                             ),
                       ),
                       const SizedBox(height: 16),
-
-                      // Info cards row
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _InfoCard(
-                              icon: Icons.how_to_vote,
-                              label: 'Total Votes',
-                              value: '${leader.totalVotes}',
-                              color: Colors.green,
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _InfoCard(
-                              icon: Icons.thumb_up,
-                              label: 'Upvotes',
-                              value: '${leader.upvotes}',
-                              color: Colors.blue,
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _InfoCard(
-                              icon: Icons.thumb_down,
-                              label: 'Downvotes',
-                              value: '${leader.downvotes}',
-                              color: Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 24),
 
                       // Party and district
                       _SectionCard(
@@ -223,43 +174,34 @@ class LeaderDetailScreen extends ConsumerWidget {
       ),
     );
   }
-}
 
-class _InfoCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
-  final Color color;
+  Widget _buildLeaderImage(BuildContext context, Leader leader) {
+    final isNetworkImage = leader.imageUrl.startsWith('http://') || leader.imageUrl.startsWith('https://');
 
-  const _InfoCard({
-    required this.icon,
-    required this.label,
-    required this.value,
-    required this.color,
-  });
+    if (isNetworkImage) {
+      return Image.network(
+        leader.imageUrl,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) => _buildFallbackImage(context, leader),
+      );
+    } else {
+      return Image.asset(
+        leader.imageUrl,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) => _buildFallbackImage(context, leader),
+      );
+    }
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            Icon(icon, color: color, size: 20),
-            const SizedBox(height: 4),
-            Text(
-              value,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: color,
-                    fontWeight: FontWeight.bold,
-                  ),
-            ),
-            Text(
-              label,
-              style: Theme.of(context).textTheme.bodySmall,
-              textAlign: TextAlign.center,
-            ),
-          ],
+  Widget _buildFallbackImage(BuildContext context, Leader leader) {
+    return Container(
+      color: Theme.of(context).colorScheme.surfaceVariant,
+      child: Center(
+        child: Text(
+          leader.name.isNotEmpty ? leader.name[0] : '?',
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
         ),
       ),
     );

@@ -1,0 +1,298 @@
+{
+  "lastUpdated": "2025-01",
+  "source": "https://opmcm.gov.np/pages/ministers-pages/",
+  "cabinet": [
+    {
+      "name": "Sushila Karki",
+      "nameNp": "सुशिला कार्की",
+      "position": "Prime Minister",
+      "positionNp": "प्रधानमन्त्री",
+      "ministries": ["Defence"],
+      "ministriesNp": ["रक्षा"]
+    },
+    {
+      "name": "Rameshwar Prasad Khanal",
+      "nameNp": "रामेश्वर प्रसाद खनाल",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Finance", "Federal Affairs & General Administration"],
+      "ministriesNp": ["अर्थ", "संघीय मामिला तथा सामान्य प्रशासन"]
+    },
+    {
+      "name": "Om Prakash Aryal",
+      "nameNp": "ओम प्रकाश अर्याल",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Home"],
+      "ministriesNp": ["गृह"]
+    },
+    {
+      "name": "Anil Kumar Sinha",
+      "nameNp": "अनिल कुमार सिन्हा",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Industry, Commerce & Supply", "Law, Justice & Parliamentary Affairs", "Culture, Tourism & Civil Aviation", "Energy, Water Resources & Irrigation"],
+      "ministriesNp": ["उद्योग, वाणिज्य तथा आपूर्ति", "कानून, न्याय तथा संसदीय मामिला", "संस्कृति, पर्यटन तथा नागरिक उड्डयन", "ऊर्जा, जलस्रोत तथा सिंचाइ"]
+    },
+    {
+      "name": "Mahavir Pun",
+      "nameNp": "महावीर पुन",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Education, Science & Technology"],
+      "ministriesNp": ["शिक्षा, विज्ञान तथा प्रविधि"]
+    },
+    {
+      "name": "Madan Prasad Pariiyar",
+      "nameNp": "मदन प्रसाद परियार",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Agriculture & Livestock", "Water Supply"],
+      "ministriesNp": ["कृषि तथा पशुपंक्षी", "खानेपानी"]
+    },
+    {
+      "name": "Jagdish Kharel",
+      "nameNp": "जगदीश खरेल",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Communications & Information Technology"],
+      "ministriesNp": ["सञ्चार तथा सूचना प्रविधि"]
+    },
+    {
+      "name": "Sudha Gautam",
+      "nameNp": "सुधा गौतम",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Health & Population"],
+      "ministriesNp": ["स्वास्थ्य तथा जनसंख्या"]
+    },
+    {
+      "name": "Bablu Gupta",
+      "nameNp": "बबलु गुप्ता",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Youth & Sports"],
+      "ministriesNp": ["युवा तथा खेलकुद"]
+    },
+    {
+      "name": "Kumar Ingnam",
+      "nameNp": "कुमार इङ्नाम",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Land Management, Cooperatives & Poverty Alleviation", "Urban Development"],
+      "ministriesNp": ["भूमि व्यवस्थापन, सहकारी तथा गरिबी निवारण", "सहरी विकास"]
+    },
+    {
+      "name": "Rajendra Singh Bhandari",
+      "nameNp": "राजेन्द्र सिंह भण्डारी",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Labour, Employment & Social Security"],
+      "ministriesNp": ["श्रम, रोजगार तथा सामाजिक सुरक्षा"]
+    },
+    {
+      "name": "Madhavprasad Chaulagain",
+      "nameNp": "माधवप्रसाद चौलागाईं",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Forests & Environment", "Physical Infrastructure & Transport"],
+      "ministriesNp": ["वन तथा वातावरण", "भौतिक पूर्वाधार तथा यातायात"]
+    },
+    {
+      "name": "Shradha Shrestha",
+      "nameNp": "श्रद्धा श्रेष्ठ",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Women, Children & Senior Citizens"],
+      "ministriesNp": ["महिला, बालबालिका तथा ज्येष्ठ नागरिक"]
+    },
+    {
+      "name": "Balanand Sharma",
+      "nameNp": "बलानन्द शर्मा",
+      "position": "Minister",
+      "positionNp": "मन्त्री",
+      "ministries": ["Foreign Affairs"],
+      "ministriesNp": ["परराष्ट्र"]
+    }
+  ],
+  "governmentStructure": {
+    "executive": {
+      "title": "Executive",
+      "titleNp": "कार्यपालिका",
+      "description": "Implements laws and runs the government",
+      "descriptionNp": "कानून कार्यान्वयन गर्ने र सरकार चलाउने",
+      "hierarchy": [
+        {
+          "role": "President",
+          "roleNp": "राष्ट्रपति",
+          "description": "Head of State, ceremonial role",
+          "descriptionNp": "राज्यको प्रमुख, औपचारिक भूमिका"
+        },
+        {
+          "role": "Prime Minister",
+          "roleNp": "प्रधानमन्त्री",
+          "description": "Head of Government, leads Cabinet",
+          "descriptionNp": "सरकारको प्रमुख, मन्त्रिपरिषद्को नेतृत्व"
+        },
+        {
+          "role": "Council of Ministers",
+          "roleNp": "मन्त्रिपरिषद्",
+          "description": "Cabinet of ministers heading ministries",
+          "descriptionNp": "मन्त्रालयहरूको नेतृत्व गर्ने मन्त्रीहरूको परिषद्"
+        }
+      ]
+    },
+    "legislative": {
+      "title": "Legislature",
+      "titleNp": "व्यवस्थापिका",
+      "description": "Makes laws through Federal Parliament",
+      "descriptionNp": "संघीय संसद मार्फत कानून बनाउने",
+      "houses": [
+        {
+          "name": "House of Representatives",
+          "nameNp": "प्रतिनिधि सभा",
+          "seats": 275,
+          "election": "Direct election by citizens",
+          "electionNp": "नागरिकद्वारा प्रत्यक्ष निर्वाचन",
+          "term": "5 years",
+          "termNp": "५ वर्ष",
+          "composition": "165 First-Past-The-Post + 110 Proportional Representation",
+          "compositionNp": "१६५ प्रत्यक्ष + ११० समानुपातिक"
+        },
+        {
+          "name": "National Assembly",
+          "nameNp": "राष्ट्रिय सभा",
+          "seats": 59,
+          "election": "Indirect election by electoral college",
+          "electionNp": "निर्वाचन मण्डलद्वारा अप्रत्यक्ष निर्वाचन",
+          "term": "6 years (1/3 retire every 2 years)",
+          "termNp": "६ वर्ष (प्रत्येक २ वर्षमा १/३ अवकाश)",
+          "composition": "56 elected from provinces + 3 nominated by President",
+          "compositionNp": "५६ प्रदेशबाट निर्वाचित + ३ राष्ट्रपतिद्वारा मनोनीत"
+        }
+      ]
+    },
+    "judiciary": {
+      "title": "Judiciary",
+      "titleNp": "न्यायपालिका",
+      "description": "Interprets laws and delivers justice",
+      "descriptionNp": "कानूनको व्याख्या गर्ने र न्याय प्रदान गर्ने",
+      "hierarchy": [
+        {
+          "court": "Supreme Court",
+          "courtNp": "सर्वोच्च अदालत",
+          "location": "Kathmandu",
+          "locationNp": "काठमाडौं",
+          "description": "Highest court, constitutional matters",
+          "descriptionNp": "सर्वोच्च अदालत, संवैधानिक मामिलाहरू"
+        },
+        {
+          "court": "High Courts",
+          "courtNp": "उच्च अदालतहरू",
+          "count": 7,
+          "description": "One per province, appellate jurisdiction",
+          "descriptionNp": "प्रत्येक प्रदेशमा एक, पुनरावेदन अधिकारक्षेत्र"
+        },
+        {
+          "court": "District Courts",
+          "courtNp": "जिल्ला अदालतहरू",
+          "count": 77,
+          "description": "One per district, trial courts",
+          "descriptionNp": "प्रत्येक जिल्लामा एक, प्रारम्भिक अदालतहरू"
+        }
+      ]
+    },
+    "federalism": {
+      "title": "Federal Structure",
+      "titleNp": "संघीय संरचना",
+      "description": "Three tiers of government",
+      "descriptionNp": "सरकारको तीन तह",
+      "levels": [
+        {
+          "level": "Federal Government",
+          "levelNp": "संघीय सरकार",
+          "description": "National level governance from Kathmandu",
+          "descriptionNp": "काठमाडौंबाट राष्ट्रिय स्तरको शासन"
+        },
+        {
+          "level": "Provincial Governments",
+          "levelNp": "प्रदेश सरकारहरू",
+          "count": 7,
+          "description": "7 provinces with elected assemblies and governments",
+          "descriptionNp": "७ प्रदेश निर्वाचित सभा र सरकारहरू सहित"
+        },
+        {
+          "level": "Local Governments",
+          "levelNp": "स्थानीय सरकारहरू",
+          "count": 753,
+          "breakdown": "6 Metropolitan Cities + 11 Sub-metropolitan + 276 Municipalities + 460 Rural Municipalities",
+          "breakdownNp": "६ महानगरपालिका + ११ उपमहानगरपालिका + २७६ नगरपालिका + ४६० गाउँपालिका",
+          "description": "Closest government to citizens",
+          "descriptionNp": "नागरिकहरूको नजिकको सरकार"
+        }
+      ]
+    }
+  },
+  "legislativeProcess": {
+    "title": "How a Bill Becomes Law",
+    "titleNp": "विधेयक कानून कसरी बन्छ",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Bill Introduction",
+        "titleNp": "विधेयक प्रस्तुत",
+        "description": "Government or MP introduces bill in either house",
+        "descriptionNp": "सरकार वा सांसदले कुनै पनि सदनमा विधेयक प्रस्तुत गर्छ"
+      },
+      {
+        "step": 2,
+        "title": "Committee Review",
+        "titleNp": "समिति समीक्षा",
+        "description": "Relevant parliamentary committee examines the bill",
+        "descriptionNp": "सम्बन्धित संसदीय समितिले विधेयक जाँच गर्छ"
+      },
+      {
+        "step": 3,
+        "title": "House Debate",
+        "titleNp": "सदनमा बहस",
+        "description": "Full house debates and votes on the bill",
+        "descriptionNp": "पूर्ण सदनले विधेयकमा छलफल र मतदान गर्छ"
+      },
+      {
+        "step": 4,
+        "title": "Second House",
+        "titleNp": "दोस्रो सदन",
+        "description": "Bill goes to other house for approval",
+        "descriptionNp": "विधेयक स्वीकृतिको लागि अर्को सदनमा जान्छ"
+      },
+      {
+        "step": 5,
+        "title": "Joint Sitting",
+        "titleNp": "संयुक्त बैठक",
+        "description": "If houses disagree, joint sitting resolves differences",
+        "descriptionNp": "सदनहरू असहमत भएमा संयुक्त बैठकले मतभेद समाधान गर्छ"
+      },
+      {
+        "step": 6,
+        "title": "Presidential Assent",
+        "titleNp": "राष्ट्रपतिको स्वीकृति",
+        "description": "President signs bill into law within 15 days",
+        "descriptionNp": "राष्ट्रपतिले १५ दिनभित्र विधेयकमा हस्ताक्षर गरी कानून बनाउँछ"
+      }
+    ],
+    "specialBills": [
+      {
+        "type": "Money Bill",
+        "typeNp": "आर्थिक विधेयक",
+        "note": "Can only be introduced in House of Representatives",
+        "noteNp": "प्रतिनिधि सभामा मात्र प्रस्तुत गर्न सकिन्छ"
+      },
+      {
+        "type": "Constitutional Amendment",
+        "typeNp": "संविधान संशोधन",
+        "note": "Requires 2/3 majority in both houses",
+        "noteNp": "दुवै सदनमा दुई-तिहाइ बहुमत आवश्यक"
+      }
+    ]
+  }
+}

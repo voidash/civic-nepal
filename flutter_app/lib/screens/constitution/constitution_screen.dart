@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../providers/constitution_provider.dart';
 import '../../models/constitution.dart';
-import '../../widgets/meaning_mode_overlay.dart';
+import '../../models/know_your_rights.dart';
 import '../../widgets/linked_text.dart';
 
 /// Constitution screen with TOC and content
@@ -13,12 +14,19 @@ class ConstitutionScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final constitutionAsync = ref.watch(constitutionProvider);
     final selectedArticle = ref.watch(selectedArticleProvider);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isWideScreen = screenWidth >= 800;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Constitution of Nepal'),
+        leading: isWideScreen ? null : Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
+        ),
+        title: const Text('Know Your Rights'),
         actions: [
-          const MeaningModeToggleButton(),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
@@ -30,39 +38,69 @@ class ConstitutionScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: MeaningModeOverlay(
-        child: constitutionAsync.when(
-          data: (constitution) {
-            return Row(
-            children: [
-              // TOC Sidebar
-              SizedBox(
-                width: 300,
-                child: _buildTOC(context, ref, constitution),
-              ),
-              const VerticalDivider(width: 1),
-              // Main Content Area
-              Expanded(
-                child: _buildContentArea(context, ref, constitution, selectedArticle),
-              ),
-            ],
-          );
-          },
-          loading: () => const Center(child: CircularProgressIndicator()),
-          error: (error, stack) => Center(child: Text('Error: $error')),
+      // Disable edge swipe to prevent accidental opening
+      drawerEdgeDragWidth: 0,
+      drawer: isWideScreen ? null : constitutionAsync.whenOrNull(
+        data: (constitution) => Drawer(
+          child: SafeArea(
+            child: _buildTOC(context, ref, constitution, closeDrawer: true),
+          ),
         ),
+      ),
+      body: constitutionAsync.when(
+        data: (constitution) {
+          if (isWideScreen) {
+            return Row(
+              children: [
+                // TOC Sidebar for wide screens
+                SizedBox(
+                  width: 300,
+                  child: _buildTOC(context, ref, constitution),
+                ),
+                const VerticalDivider(width: 1),
+                // Main Content Area
+                Expanded(
+                  child: _buildContentArea(context, ref, constitution, selectedArticle),
+                ),
+              ],
+            );
+          } else {
+            // Full width content on mobile
+            return _buildContentArea(context, ref, constitution, selectedArticle);
+          }
+        },
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (error, stack) => Center(child: Text('Error: $error')),
       ),
     );
   }
 
-  Widget _buildTOC(BuildContext context, WidgetRef ref, ConstitutionData constitution) {
+  Widget _buildTOC(BuildContext context, WidgetRef ref, ConstitutionData constitution, {bool closeDrawer = false}) {
     final selectedArticle = ref.watch(selectedArticleProvider);
 
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: constitution.parts.length + 1, // +1 for preamble
+      itemCount: constitution.parts.length + 2, // +1 for preamble, +1 for Know Your Rights
       itemBuilder: (context, index) {
         if (index == 0) {
+          // Know Your Rights
+          final isSelected = selectedArticle == null;
+          return ListTile(
+            leading: Icon(
+              Icons.gavel,
+              color: isSelected ? Theme.of(context).colorScheme.primary : null,
+            ),
+            title: const Text('Know Your Rights'),
+            subtitle: const Text('आफ्नो हक जान्नुहोस्'),
+            selected: isSelected,
+            tileColor: isSelected ? Theme.of(context).highlightColor : null,
+            onTap: () {
+              ref.read(selectedArticleProvider.notifier).clear();
+              if (closeDrawer) Navigator.of(context).pop();
+            },
+          );
+        }
+        if (index == 1) {
           // Preamble
           final isSelected = _isPreambleSelected(selectedArticle);
           return ListTile(
@@ -72,10 +110,11 @@ class ConstitutionScreen extends ConsumerWidget {
             tileColor: isSelected ? Theme.of(context).highlightColor : null,
             onTap: () {
               ref.read(selectedArticleProvider.notifier).selectPreamble();
+              if (closeDrawer) Navigator.of(context).pop();
             },
           );
         }
-        final partIndex = index - 1;
+        final partIndex = index - 2;
         final part = constitution.parts[partIndex];
         return ExpansionTile(
           title: Text(_getPartTitle(part)),
@@ -98,6 +137,7 @@ class ConstitutionScreen extends ConsumerWidget {
                     articleIndex: articleIndex,
                   ),
                 );
+                if (closeDrawer) Navigator.of(context).pop();
               },
             );
           }).toList(),
@@ -126,30 +166,286 @@ class ConstitutionScreen extends ConsumerWidget {
   }
 
   Widget _buildWelcome(BuildContext context, WidgetRef ref) {
-    return Center(
+    final rightsAsync = ref.watch(knowYourRightsProvider);
+
+    return rightsAsync.when(
+      data: (rights) => _buildKnowYourRights(context, ref, rights),
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (e, _) => Center(child: Text('Error loading rights: $e')),
+    );
+  }
+
+  Widget _buildKnowYourRights(BuildContext context, WidgetRef ref, KnowYourRightsData rights) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            Icons.menu_book,
-            size: 64,
-            color: Colors.grey[400],
-          ),
-          const SizedBox(height: 16),
+          // Header
           Text(
-            'Select an article to view',
-            style: Theme.of(context).textTheme.titleLarge,
+            'Know Your Rights',
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 4),
           Text(
-            'Or tap the preamble to begin',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            'आफ्नो हक जान्नुहोस्',
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
               color: Colors.grey[600],
             ),
+          ),
+          const SizedBox(height: 16),
+
+          // Disclaimer
+          Builder(
+            builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF3D2E00) : Colors.amber.shade50,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: isDark ? const Color(0xFF6B5000) : Colors.amber.shade200,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.info_outline,
+                      color: isDark ? Colors.amber.shade300 : Colors.amber.shade700,
+                      size: 20,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Text(
+                        rights.disclaimer.en,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: isDark ? Colors.amber.shade200 : Colors.amber.shade900,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 24),
+
+          // Categories
+          ...rights.categories.map((category) =>
+            _buildCategoryCard(context, ref, category),
           ),
         ],
       ),
     );
+  }
+
+  Widget _buildCategoryCard(BuildContext context, WidgetRef ref, RightsCategory category) {
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: ExpansionTile(
+        leading: Icon(_getIconData(category.icon), color: Theme.of(context).colorScheme.primary),
+        title: Text(
+          category.title.en,
+          style: const TextStyle(fontWeight: FontWeight.w600),
+        ),
+        subtitle: Text(
+          category.title.np,
+          style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+        ),
+        children: category.rights.map((right) =>
+          _buildRightItem(context, ref, right),
+        ).toList(),
+      ),
+    );
+  }
+
+  Widget _buildRightItem(BuildContext context, WidgetRef ref, RightItem right) {
+    return InkWell(
+      onTap: () {
+        // Navigate to the referenced article
+        ref.read(selectedArticleProvider.notifier).selectArticle(
+          SelectedArticleRef.article(
+            partIndex: right.articleRef.partIndex,
+            articleIndex: right.articleRef.articleIndex,
+          ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          border: Border(top: BorderSide(color: Theme.of(context).dividerColor)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Situation
+            Builder(builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Row(
+                children: [
+                  Icon(Icons.help_outline, size: 16,
+                    color: isDark ? Colors.blue.shade300 : Colors.blue.shade700),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      right.situation.en,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: isDark ? Colors.blue.shade200 : Colors.blue.shade800,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }),
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.only(left: 24),
+              child: Text(
+                right.situation.np,
+                style: TextStyle(fontSize: 13, color: Theme.of(context).textTheme.bodySmall?.color),
+              ),
+            ),
+            const SizedBox(height: 12),
+
+            // Your Right
+            Text(
+              right.yourRight.en,
+              style: const TextStyle(height: 1.5),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              right.yourRight.np,
+              style: TextStyle(fontSize: 13, color: Colors.grey[700], height: 1.5),
+            ),
+            const SizedBox(height: 12),
+
+            // Practical Tip
+            Builder(builder: (context) {
+              final isDark = Theme.of(context).brightness == Brightness.dark;
+              return Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: isDark ? const Color(0xFF1B3D1B) : Colors.green.shade50,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(Icons.lightbulb_outline, size: 16,
+                      color: isDark ? Colors.green.shade300 : Colors.green.shade700),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            right.tip.en,
+                            style: TextStyle(fontSize: 13,
+                              color: isDark ? Colors.green.shade200 : Colors.green.shade800),
+                          ),
+                          Text(
+                            right.tip.np,
+                            style: TextStyle(fontSize: 12,
+                              color: isDark ? Colors.green.shade300 : Colors.green.shade600),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }),
+            const SizedBox(height: 12),
+
+            // Link to article and complaint filing
+            Row(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      Icon(Icons.article_outlined, size: 14, color: Theme.of(context).colorScheme.primary),
+                      const SizedBox(width: 6),
+                      Flexible(
+                        child: Text(
+                          'Article ${right.articleRef.articleNumber}',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Theme.of(context).colorScheme.primary,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => context.push('/tools/gov-services?category=complaints'),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.gavel, size: 14, color: Colors.orange.shade700),
+                      const SizedBox(width: 4),
+                      Text(
+                        'File Complaint',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.orange.shade700,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  IconData _getIconData(String iconName) {
+    switch (iconName) {
+      case 'shield':
+        return Icons.shield;
+      case 'work':
+        return Icons.work;
+      case 'woman':
+        return Icons.woman;
+      case 'home':
+        return Icons.home;
+      case 'house':
+        return Icons.house;
+      case 'campaign':
+        return Icons.campaign;
+      case 'info':
+        return Icons.info;
+      case 'local_hospital':
+        return Icons.local_hospital;
+      case 'school':
+        return Icons.school;
+      case 'shopping_cart':
+        return Icons.shopping_cart;
+      case 'child_care':
+        return Icons.child_care;
+      case 'diversity_3':
+        return Icons.diversity_3;
+      case 'elderly':
+        return Icons.elderly;
+      case 'park':
+        return Icons.park;
+      case 'restaurant':
+        return Icons.restaurant;
+      case 'lock':
+        return Icons.lock;
+      default:
+        return Icons.gavel;
+    }
   }
 
   Widget _buildPreamble(BuildContext context, WidgetRef ref, Preamble preamble) {
@@ -160,30 +456,29 @@ class ConstitutionScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Preamble',
-                      style: Theme.of(context).textTheme.headlineMedium,
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'प्रस्तावना',
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                  ],
+              Text(
+                'Preamble',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'प्रस्तावना',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.grey[600],
                 ),
               ),
-              _buildLanguageToggle(context, ref),
-              const SizedBox(width: 8),
-              _buildViewModeToggle(context, ref),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _buildLanguageToggle(context, ref),
+                  _buildViewModeToggle(context, ref),
+                ],
+              ),
             ],
           ),
           const SizedBox(height: 24),
@@ -227,35 +522,34 @@ class ConstitutionScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      article.number,
-                      style: Theme.of(context).textTheme.headlineSmall,
-                    ),
-                    if (article.title.en?.isNotEmpty ?? false)
-                      Text(
-                        article.title.en!,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                    if (article.title.np?.isNotEmpty ?? false)
-                      Text(
-                        article.title.np!,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                  ],
-                ),
+              Text(
+                article.number,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
-              _buildLanguageToggle(context, ref),
-              const SizedBox(width: 8),
-              _buildViewModeToggle(context, ref),
+              if (article.title.en?.isNotEmpty ?? false)
+                Text(
+                  article.title.en!,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              if (article.title.np?.isNotEmpty ?? false)
+                Text(
+                  article.title.np!,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Colors.grey[600],
+                  ),
+                ),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _buildLanguageToggle(context, ref),
+                  _buildViewModeToggle(context, ref),
+                ],
+              ),
             ],
           ),
           const SizedBox(height: 24),

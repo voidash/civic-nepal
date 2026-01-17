@@ -1,0 +1,46 @@
+{
+  "remote_base_url": "https://raw.githubusercontent.com/user/nepal-civic/main/flutter_app/assets/data",
+  "files": {
+    "ministers.json": {
+      "update_frequency": "on_change",
+      "can_fetch_remote": true,
+      "description": "Current cabinet ministers"
+    },
+    "nepali_calendar_events.json": {
+      "update_frequency": "yearly",
+      "can_fetch_remote": true,
+      "description": "Nepali calendar events and holidays"
+    },
+    "nepali_calendar_auspicious.json": {
+      "update_frequency": "yearly",
+      "can_fetch_remote": true,
+      "description": "Auspicious days in Nepali calendar"
+    },
+    "leaders.json": {
+      "update_frequency": "on_election",
+      "can_fetch_remote": true,
+      "description": "Political leaders by district"
+    },
+    "gov_services.json": {
+      "update_frequency": "occasionally",
+      "can_fetch_remote": true,
+      "description": "Government services directory"
+    },
+    "constitution_bilingual.json": {
+      "update_frequency": "rarely",
+      "can_fetch_remote": false,
+      "description": "Constitution text - bundled only"
+    },
+    "know_your_rights.json": {
+      "update_frequency": "static",
+      "can_fetch_remote": false,
+      "description": "Know your rights educational content"
+    },
+    "districts.json": {
+      "update_frequency": "static",
+      "can_fetch_remote": false,
+      "description": "District boundaries and info"
+    }
+  },
+  "version_file": "data_version.json"
+}

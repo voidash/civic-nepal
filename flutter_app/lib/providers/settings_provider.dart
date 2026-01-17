@@ -10,6 +10,7 @@ class Settings extends _$Settings {
   static const String _keyViewMode = 'view_mode_default';
   static const String _keyMeaningMode = 'meaning_mode_enabled';
   static const String _keyAutoCheckUpdates = 'auto_check_updates';
+  static const String _keyThemeMode = 'theme_mode';
 
   @override
   Future<SettingsData> build() async {
@@ -19,6 +20,7 @@ class Settings extends _$Settings {
       viewModeDefault: prefs.getString(_keyViewMode) ?? 'paragraph',
       meaningModeEnabled: prefs.getBool(_keyMeaningMode) ?? true,
       autoCheckUpdates: prefs.getBool(_keyAutoCheckUpdates) ?? true,
+      themeMode: prefs.getString(_keyThemeMode) ?? 'system',
     );
   }
 
@@ -49,6 +51,13 @@ class Settings extends _$Settings {
     await prefs.setBool(_keyAutoCheckUpdates, enabled);
     state = AsyncValue.data(current.copyWith(autoCheckUpdates: enabled));
   }
+
+  Future<void> setThemeMode(String mode) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyThemeMode, mode);
+    state = AsyncValue.data(current.copyWith(themeMode: mode));
+  }
 }
 
 /// Immutable settings data class
@@ -57,12 +66,14 @@ class SettingsData {
   final String viewModeDefault;
   final bool meaningModeEnabled;
   final bool autoCheckUpdates;
+  final String themeMode; // 'light', 'dark', 'system'
 
   const SettingsData({
     required this.languagePreference,
     required this.viewModeDefault,
     required this.meaningModeEnabled,
     required this.autoCheckUpdates,
+    required this.themeMode,
   });
 
   SettingsData copyWith({
@@ -70,12 +81,14 @@ class SettingsData {
     String? viewModeDefault,
     bool? meaningModeEnabled,
     bool? autoCheckUpdates,
+    String? themeMode,
   }) {
     return SettingsData(
       languagePreference: languagePreference ?? this.languagePreference,
       viewModeDefault: viewModeDefault ?? this.viewModeDefault,
       meaningModeEnabled: meaningModeEnabled ?? this.meaningModeEnabled,
       autoCheckUpdates: autoCheckUpdates ?? this.autoCheckUpdates,
+      themeMode: themeMode ?? this.themeMode,
     );
   }
 }

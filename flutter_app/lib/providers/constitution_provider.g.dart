@@ -64,6 +64,26 @@ final dictionaryProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef DictionaryRef = AutoDisposeFutureProviderRef<Map<String, dynamic>>;
+String _$knowYourRightsHash() => r'df6abff48b41397464d33ed4bb9815699293c387';
+
+/// Provider for Know Your Rights data
+///
+/// Copied from [knowYourRights].
+@ProviderFor(knowYourRights)
+final knowYourRightsProvider =
+    AutoDisposeFutureProvider<KnowYourRightsData>.internal(
+  knowYourRights,
+  name: r'knowYourRightsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$knowYourRightsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef KnowYourRightsRef = AutoDisposeFutureProviderRef<KnowYourRightsData>;
 String _$languageModeHash() => r'14a13491af31c2b0b51ce354710a0caa67e8c94e';
 
 /// Language mode: 'both', 'nepali', 'english'
@@ -116,7 +136,7 @@ final searchQueryProvider =
 typedef _$SearchQuery = AutoDisposeNotifier<String>;
 String _$selectedArticleHash() => r'c9f4a06fbe6a06af2501bc76c27ce99831847a42';
 
-/// Currently selected article (null means showing preamble)
+/// Currently selected article (defaults to null to show Know Your Rights)
 ///
 /// Copied from [SelectedArticle].
 @ProviderFor(SelectedArticle)

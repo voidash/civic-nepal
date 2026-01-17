@@ -1,310 +1,729 @@
 {
   "jhapa": {
     "name": "Jhapa",
-    "province": 1
+    "nameNp": "झापा",
+    "province": 1,
+    "headquarters": "Chandragadhi",
+    "population": 962871,
+    "area": 1606,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jhapa_District",
+    "famousFor": "Tea gardens, Birtamod, Damak"
   },
   "okhaldhunga": {
     "name": "Okhaldhunga",
-    "province": 1
+    "nameNp": "ओखलढुंगा",
+    "province": 1,
+    "headquarters": "Siddhicharan",
+    "population": 147984,
+    "area": 1074,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Okhaldhunga_District"
   },
   "ilam": {
     "name": "Ilam",
-    "province": 1
+    "nameNp": "इलाम",
+    "province": 1,
+    "headquarters": "Ilam",
+    "population": 296518,
+    "area": 1703,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ilam_District",
+    "famousFor": "Tea gardens, Kanyam, Mai Pokhari"
   },
   "dhankuta": {
     "name": "Dhankuta",
-    "province": 1
+    "nameNp": "धनकुटा",
+    "province": 1,
+    "headquarters": "Dhankuta",
+    "population": 167029,
+    "area": 891,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dhankuta_District"
   },
   "khotang": {
     "name": "Khotang",
-    "province": 1
+    "nameNp": "खोटाङ",
+    "province": 1,
+    "headquarters": "Diktel",
+    "population": 206312,
+    "area": 1591,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Khotang_District"
   },
   "bhojpur": {
     "name": "Bhojpur",
-    "province": 1
+    "nameNp": "भोजपुर",
+    "province": 1,
+    "headquarters": "Bhojpur",
+    "population": 182459,
+    "area": 1507,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bhojpur_District,_Nepal"
   },
   "terhathum": {
-    "name": "Tehrathum",
-    "province": 1
+    "name": "Terhathum",
+    "nameNp": "तेह्रथुम",
+    "province": 1,
+    "headquarters": "Myanglung",
+    "population": 101577,
+    "area": 679,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Terhathum_District"
   },
   "taplejung": {
     "name": "Taplejung",
-    "province": 1
+    "nameNp": "ताप्लेजुङ",
+    "province": 1,
+    "headquarters": "Phungling",
+    "population": 127461,
+    "area": 3646,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Taplejung_District",
+    "famousFor": "Kanchenjunga, trekking routes"
   },
   "sankhuwasabha": {
     "name": "Sankhuwasabha",
-    "province": 1
+    "nameNp": "संखुवासभा",
+    "province": 1,
+    "headquarters": "Khandbari",
+    "population": 158742,
+    "area": 3480,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sankhuwasabha_District",
+    "famousFor": "Makalu, Arun Valley"
   },
   "panchthar": {
     "name": "Panchthar",
-    "province": 1
+    "nameNp": "पाँचथर",
+    "province": 1,
+    "headquarters": "Phidim",
+    "population": 191860,
+    "area": 1241,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Panchthar_District"
   },
   "solukhumbu": {
     "name": "Solukhumbu",
-    "province": 1
+    "nameNp": "सोलुखुम्बु",
+    "province": 1,
+    "headquarters": "Salleri",
+    "population": 105886,
+    "area": 3312,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Solukhumbu_District",
+    "famousFor": "Mount Everest, Namche Bazaar, Sagarmatha National Park"
   },
   "sunsari": {
     "name": "Sunsari",
-    "province": 1
+    "nameNp": "सुनसरी",
+    "province": 1,
+    "headquarters": "Inaruwa",
+    "population": 927777,
+    "area": 1257,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sunsari_District",
+    "famousFor": "Biratnagar, industrial hub"
   },
   "udayapur": {
     "name": "Udayapur",
-    "province": 1
+    "nameNp": "उदयपुर",
+    "province": 1,
+    "headquarters": "Gaighat",
+    "population": 317532,
+    "area": 2063,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Udayapur_District"
   },
   "morang": {
     "name": "Morang",
-    "province": 1
+    "nameNp": "मोरङ",
+    "province": 1,
+    "headquarters": "Biratnagar",
+    "population": 1147862,
+    "area": 1855,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Morang_District",
+    "famousFor": "Biratnagar, largest industrial city"
   },
   "saptari": {
     "name": "Saptari",
-    "province": 2
+    "nameNp": "सप्तरी",
+    "province": 2,
+    "headquarters": "Rajbiraj",
+    "population": 704294,
+    "area": 1363,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Saptari_District"
   },
   "rautahat": {
     "name": "Rautahat",
-    "province": 2
+    "nameNp": "रौतहट",
+    "province": 2,
+    "headquarters": "Gaur",
+    "population": 754745,
+    "area": 1126,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rautahat_District"
   },
   "siraha": {
     "name": "Siraha",
-    "province": 2
+    "nameNp": "सिराहा",
+    "province": 2,
+    "headquarters": "Siraha",
+    "population": 702388,
+    "area": 1188,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Siraha_District"
   },
   "mahottari": {
     "name": "Mahottari",
-    "province": 2
+    "nameNp": "महोत्तरी",
+    "province": 2,
+    "headquarters": "Jaleshwar",
+    "population": 686724,
+    "area": 1002,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mahottari_District"
   },
   "dhanusha": {
     "name": "Dhanusha",
-    "province": 2
+    "nameNp": "धनुषा",
+    "province": 2,
+    "headquarters": "Janakpur",
+    "population": 843220,
+    "area": 1180,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dhanusha_District",
+    "famousFor": "Janakpur, Janaki Temple, Ram Sita Vivah"
   },
   "sarlahi": {
     "name": "Sarlahi",
-    "province": 2
+    "nameNp": "सर्लाही",
+    "province": 2,
+    "headquarters": "Malangwa",
+    "population": 799892,
+    "area": 1259,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sarlahi_District"
   },
   "parsa": {
     "name": "Parsa",
-    "province": 2
+    "nameNp": "पर्सा",
+    "province": 2,
+    "headquarters": "Birgunj",
+    "population": 660662,
+    "area": 1353,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Parsa_District",
+    "famousFor": "Birgunj, major trade point with India"
   },
   "bara": {
     "name": "Bara",
-    "province": 2
+    "nameNp": "बारा",
+    "province": 2,
+    "headquarters": "Kalaiya",
+    "population": 752698,
+    "area": 1190,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bara_District"
   },
   "kavrepalanchok": {
     "name": "Kavrepalanchok",
-    "province": 3
+    "nameNp": "काभ्रेपलाञ्चोक",
+    "province": 3,
+    "headquarters": "Dhulikhel",
+    "population": 399233,
+    "area": 1396,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kavrepalanchok_District",
+    "famousFor": "Dhulikhel, Panauti, ancient temples"
   },
   "sindhupalchok": {
     "name": "Sindhupalchok",
-    "province": 3
+    "nameNp": "सिन्धुपाल्चोक",
+    "province": 3,
+    "headquarters": "Chautara",
+    "population": 287798,
+    "area": 2542,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sindhupalchok_District"
   },
   "dhading": {
     "name": "Dhading",
-    "province": 3
+    "nameNp": "धादिङ",
+    "province": 3,
+    "headquarters": "Nilkantha",
+    "population": 336067,
+    "area": 1926,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dhading_District"
   },
   "nuwakot": {
     "name": "Nuwakot",
-    "province": 3
+    "nameNp": "नुवाकोट",
+    "province": 3,
+    "headquarters": "Bidur",
+    "population": 277471,
+    "area": 1121,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nuwakot_District",
+    "famousFor": "Nuwakot Durbar, historical significance"
   },
   "rasuwa": {
     "name": "Rasuwa",
-    "province": 3
+    "nameNp": "रसुवा",
+    "province": 3,
+    "headquarters": "Dhunche",
+    "population": 43300,
+    "area": 1544,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rasuwa_District",
+    "famousFor": "Langtang National Park, Gosaikunda"
   },
   "chitwan": {
     "name": "Chitwan",
-    "province": 3
+    "nameNp": "चितवन",
+    "province": 3,
+    "headquarters": "Bharatpur",
+    "population": 708420,
+    "area": 2218,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Chitwan_District",
+    "famousFor": "Chitwan National Park, one-horned rhino, Bharatpur"
   },
   "makwanpur": {
     "name": "Makwanpur",
-    "province": 3
+    "nameNp": "मकवानपुर",
+    "province": 3,
+    "headquarters": "Hetauda",
+    "population": 458574,
+    "area": 2426,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Makwanpur_District",
+    "famousFor": "Hetauda Industrial District"
   },
   "sindhuli": {
     "name": "Sindhuli",
-    "province": 3
+    "nameNp": "सिन्धुली",
+    "province": 3,
+    "headquarters": "Sindhulimadhi",
+    "population": 296192,
+    "area": 2491,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Sindhuli_District"
   },
   "ramechhap": {
     "name": "Ramechhap",
-    "province": 3
+    "nameNp": "रामेछाप",
+    "province": 3,
+    "headquarters": "Manthali",
+    "population": 202646,
+    "area": 1546,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Ramechhap_District"
   },
   "dolakha": {
     "name": "Dolakha",
-    "province": 3
+    "nameNp": "दोलखा",
+    "province": 3,
+    "headquarters": "Charikot",
+    "population": 186557,
+    "area": 2191,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dolakha_District"
   },
   "lalitpur": {
     "name": "Lalitpur",
-    "province": 3
+    "nameNp": "ललितपुर",
+    "province": 3,
+    "headquarters": "Lalitpur",
+    "population": 548401,
+    "area": 385,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lalitpur_District,_Nepal",
+    "famousFor": "Patan Durbar Square, UNESCO World Heritage Site, fine arts"
   },
   "kathmandu": {
     "name": "Kathmandu",
-    "province": 3
+    "nameNp": "काठमाडौं",
+    "province": 3,
+    "headquarters": "Kathmandu",
+    "population": 2041587,
+    "area": 395,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kathmandu_District",
+    "websiteUrl": "https://kathmandu.gov.np",
+    "famousFor": "Capital city, Pashupatinath, Boudhanath, Swayambhunath"
   },
   "bhaktapur": {
     "name": "Bhaktapur",
-    "province": 3
+    "nameNp": "भक्तपुर",
+    "province": 3,
+    "headquarters": "Bhaktapur",
+    "population": 340023,
+    "area": 119,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bhaktapur_District",
+    "famousFor": "Bhaktapur Durbar Square, Juju Dhau, Newari culture"
   },
   "mustang": {
     "name": "Mustang",
-    "province": 4
+    "nameNp": "मुस्ताङ",
+    "province": 4,
+    "headquarters": "Jomsom",
+    "population": 14981,
+    "area": 3573,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mustang_District",
+    "famousFor": "Upper Mustang, Lo Manthang, Muktinath"
   },
   "manang": {
     "name": "Manang",
-    "province": 4
+    "nameNp": "मनाङ",
+    "province": 4,
+    "headquarters": "Chame",
+    "population": 5645,
+    "area": 2246,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Manang_District",
+    "famousFor": "Annapurna Circuit, Tilicho Lake"
   },
   "myagdi": {
     "name": "Myagdi",
-    "province": 4
+    "nameNp": "म्याग्दी",
+    "province": 4,
+    "headquarters": "Beni",
+    "population": 101319,
+    "area": 2297,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Myagdi_District"
   },
   "kaski": {
     "name": "Kaski",
-    "province": 4
+    "nameNp": "कास्की",
+    "province": 4,
+    "headquarters": "Pokhara",
+    "population": 531602,
+    "area": 2017,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kaski_District",
+    "famousFor": "Pokhara, Phewa Lake, Annapurna, tourism hub"
   },
   "lamjung": {
     "name": "Lamjung",
-    "province": 4
+    "nameNp": "लमजुङ",
+    "province": 4,
+    "headquarters": "Besisahar",
+    "population": 167724,
+    "area": 1692,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Lamjung_District"
   },
   "baglung": {
     "name": "Baglung",
-    "province": 4
+    "nameNp": "बागलुङ",
+    "province": 4,
+    "headquarters": "Baglung",
+    "population": 268613,
+    "area": 1784,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Baglung_District"
   },
   "parbat": {
     "name": "Parbat",
-    "province": 4
+    "nameNp": "पर्वत",
+    "province": 4,
+    "headquarters": "Kusma",
+    "population": 146590,
+    "area": 494,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Parbat_District"
   },
   "syangja": {
     "name": "Syangja",
-    "province": 4
+    "nameNp": "स्याङ्जा",
+    "province": 4,
+    "headquarters": "Putalibazar",
+    "population": 266089,
+    "area": 1164,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Syangja_District"
   },
   "tanahu": {
     "name": "Tanahu",
-    "province": 4
+    "nameNp": "तनहुँ",
+    "province": 4,
+    "headquarters": "Damauli",
+    "population": 336823,
+    "area": 1546,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Tanahu_District"
   },
   "gorkha": {
     "name": "Gorkha",
-    "province": 4
+    "nameNp": "गोरखा",
+    "province": 4,
+    "headquarters": "Gorkha",
+    "population": 264991,
+    "area": 3610,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gorkha_District",
+    "famousFor": "Gorkha Durbar, birthplace of unified Nepal, Manaslu"
   },
   "nawalparasi (bardaghat susta east)": {
     "name": "Nawalparasi (Bardaghat Susta East)",
-    "province": 4
+    "nameNp": "नवलपरासी (बर्दघाट सुस्ता पूर्व)",
+    "province": 4,
+    "headquarters": "Kawasoti",
+    "population": 328420,
+    "area": 1043,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Nawalpur_District"
   },
   "nawalparasi (bardaghat susta west)": {
     "name": "Nawalparasi (Bardaghat Susta West)",
-    "province": 5
+    "nameNp": "नवलपरासी (बर्दघाट सुस्ता पश्चिम)",
+    "province": 5,
+    "headquarters": "Bardaghat",
+    "population": 315694,
+    "area": 1311,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Parasi_District"
   },
   "eastern-rukum": {
     "name": "Eastern Rukum",
-    "province": 5
+    "nameNp": "पूर्वी रुकुम",
+    "province": 5,
+    "headquarters": "Rukumkot",
+    "population": 54895,
+    "area": 1161,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rukum_District"
   },
   "bardiya": {
     "name": "Bardiya",
-    "province": 5
+    "nameNp": "बर्दिया",
+    "province": 5,
+    "headquarters": "Gulariya",
+    "population": 462380,
+    "area": 2025,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bardiya_District",
+    "famousFor": "Bardiya National Park, tigers, elephants"
   },
   "banke": {
     "name": "Banke",
-    "province": 5
+    "nameNp": "बाँके",
+    "province": 5,
+    "headquarters": "Nepalgunj",
+    "population": 550142,
+    "area": 2337,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Banke_District",
+    "famousFor": "Nepalgunj, gateway to western Nepal"
   },
   "rolpa": {
     "name": "Rolpa",
-    "province": 5
+    "nameNp": "रोल्पा",
+    "province": 5,
+    "headquarters": "Libang",
+    "population": 234418,
+    "area": 1879,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rolpa_District"
   },
   "dang": {
     "name": "Dang",
-    "province": 5
+    "nameNp": "दाङ",
+    "province": 5,
+    "headquarters": "Ghorahi",
+    "population": 635412,
+    "area": 2955,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dang_District,_Nepal"
   },
   "kapilvastu": {
     "name": "Kapilvastu",
-    "province": 5
+    "nameNp": "कपिलवस्तु",
+    "province": 5,
+    "headquarters": "Kapilvastu",
+    "population": 597573,
+    "area": 1738,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kapilvastu_District",
+    "famousFor": "Birthplace region of Buddha, Lumbini nearby"
   },
   "rupandehi": {
     "name": "Rupandehi",
-    "province": 5
+    "nameNp": "रुपन्देही",
+    "province": 5,
+    "headquarters": "Siddharthanagar",
+    "population": 1035080,
+    "area": 1360,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rupandehi_District",
+    "famousFor": "Lumbini (Buddha's birthplace), UNESCO World Heritage Site"
   },
   "palpa": {
     "name": "Palpa",
-    "province": 5
+    "nameNp": "पाल्पा",
+    "province": 5,
+    "headquarters": "Tansen",
+    "population": 244170,
+    "area": 1373,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Palpa_District",
+    "famousFor": "Tansen, Rani Mahal, historical town"
   },
   "arghakhanchi": {
     "name": "Arghakhanchi",
-    "province": 5
+    "nameNp": "अर्घाखाँची",
+    "province": 5,
+    "headquarters": "Sandhikharka",
+    "population": 197632,
+    "area": 1193,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Arghakhanchi_District"
   },
   "pyuthan": {
     "name": "Pyuthan",
-    "province": 5
+    "nameNp": "प्युठान",
+    "province": 5,
+    "headquarters": "Khalanga",
+    "population": 236640,
+    "area": 1309,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Pyuthan_District"
   },
   "gulmi": {
     "name": "Gulmi",
-    "province": 5
+    "nameNp": "गुल्मी",
+    "province": 5,
+    "headquarters": "Tamghas",
+    "population": 265649,
+    "area": 1149,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Gulmi_District"
   },
   "dolpa": {
     "name": "Dolpa",
-    "province": 6
+    "nameNp": "डोल्पा",
+    "province": 6,
+    "headquarters": "Dunai",
+    "population": 40916,
+    "area": 7889,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dolpa_District",
+    "famousFor": "Shey Phoksundo National Park, Phoksundo Lake"
   },
   "jumla": {
     "name": "Jumla",
-    "province": 6
+    "nameNp": "जुम्ला",
+    "province": 6,
+    "headquarters": "Khalanga",
+    "population": 115499,
+    "area": 2531,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jumla_District",
+    "famousFor": "Red rice, Rara Lake nearby"
   },
   "mugu": {
     "name": "Mugu",
-    "province": 6
+    "nameNp": "मुगु",
+    "province": 6,
+    "headquarters": "Gamgadhi",
+    "population": 63029,
+    "area": 3535,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Mugu_District",
+    "famousFor": "Rara Lake, Rara National Park"
   },
   "humla": {
     "name": "Humla",
-    "province": 6
+    "nameNp": "हुम्ला",
+    "province": 6,
+    "headquarters": "Simikot",
+    "population": 56313,
+    "area": 5655,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Humla_District",
+    "famousFor": "Mount Kailash pilgrimage route"
   },
   "western-rukum": {
     "name": "Western Rukum",
-    "province": 6
+    "nameNp": "पश्चिमी रुकुम",
+    "province": 6,
+    "headquarters": "Musikot",
+    "population": 133869,
+    "area": 1524,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Rukum_District"
   },
   "jajarkot": {
     "name": "Jajarkot",
-    "province": 6
+    "nameNp": "जाजरकोट",
+    "province": 6,
+    "headquarters": "Khalanga",
+    "population": 186361,
+    "area": 2230,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Jajarkot_District"
   },
   "kalikot": {
     "name": "Kalikot",
-    "province": 6
+    "nameNp": "कालिकोट",
+    "province": 6,
+    "headquarters": "Manma",
+    "population": 145517,
+    "area": 1741,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kalikot_District"
   },
   "dailekh": {
     "name": "Dailekh",
-    "province": 6
+    "nameNp": "दैलेख",
+    "province": 6,
+    "headquarters": "Narayan",
+    "population": 277435,
+    "area": 1502,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dailekh_District"
   },
   "salyan": {
     "name": "Salyan",
-    "province": 6
+    "nameNp": "सल्यान",
+    "province": 6,
+    "headquarters": "Khalanga",
+    "population": 259557,
+    "area": 1462,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Salyan_District,_Nepal"
   },
   "surkhet": {
     "name": "Surkhet",
-    "province": 6
+    "nameNp": "सुर्खेत",
+    "province": 6,
+    "headquarters": "Birendranagar",
+    "population": 400874,
+    "area": 2451,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Surkhet_District",
+    "famousFor": "Provincial capital of Karnali Province"
   },
   "kailali": {
     "name": "Kailali",
-    "province": 7
+    "nameNp": "कैलाली",
+    "province": 7,
+    "headquarters": "Dhangadhi",
+    "population": 890783,
+    "area": 3235,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kailali_District",
+    "famousFor": "Dhangadhi, Shuklaphanta National Park"
   },
   "kanchanpur": {
     "name": "Kanchanpur",
-    "province": 7
+    "nameNp": "कञ्चनपुर",
+    "province": 7,
+    "headquarters": "Bhimdatta",
+    "population": 504688,
+    "area": 1610,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Kanchanpur_District"
   },
   "doti": {
     "name": "Doti",
-    "province": 7
+    "nameNp": "डोटी",
+    "province": 7,
+    "headquarters": "Dipayal",
+    "population": 212918,
+    "area": 2025,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Doti_District"
   },
   "achham": {
     "name": "Achham",
-    "province": 7
+    "nameNp": "अछाम",
+    "province": 7,
+    "headquarters": "Mangalsen",
+    "population": 252646,
+    "area": 1680,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Achham_District"
   },
   "dadeldhura": {
     "name": "Dadeldhura",
-    "province": 7
+    "nameNp": "डडेल्धुरा",
+    "province": 7,
+    "headquarters": "Amargadhi",
+    "population": 142094,
+    "area": 1538,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Dadeldhura_District"
   },
   "bajura": {
     "name": "Bajura",
-    "province": 7
+    "nameNp": "बझुरा",
+    "province": 7,
+    "headquarters": "Martadi",
+    "population": 140343,
+    "area": 2188,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bajura_District"
   },
   "baitadi": {
     "name": "Baitadi",
-    "province": 7
+    "nameNp": "बैतडी",
+    "province": 7,
+    "headquarters": "Dasharathchand",
+    "population": 261673,
+    "area": 1519,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Baitadi_District"
   },
   "darchula": {
     "name": "Darchula",
-    "province": 7
+    "nameNp": "दार्चुला",
+    "province": 7,
+    "headquarters": "Khalanga",
+    "population": 135268,
+    "area": 2322,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Darchula_District",
+    "famousFor": "Api Himal, border with India and Tibet"
   },
   "bajhang": {
     "name": "Bajhang",
-    "province": 7
+    "nameNp": "बझाङ",
+    "province": 7,
+    "headquarters": "Chainpur",
+    "population": 196968,
+    "area": 3422,
+    "wikiUrl": "https://en.wikipedia.org/wiki/Bajhang_District"
   }
 }

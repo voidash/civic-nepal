@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/district.dart';
 import '../../models/leader.dart';
+import '../../services/svg_path_parser.dart';
 
 part 'district_map_screen.g.dart';
 
@@ -116,7 +119,16 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
     final districtsAsync = ref.watch(districtsProvider);
     final selectedProvince = ref.watch(selectedProvinceProvider);
 
-    return Scaffold(
+    return PopScope(
+      // Intercept back gesture when panel is open
+      canPop: selectedDistrict == null,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop && selectedDistrict != null) {
+          // Close the panel instead of popping the screen
+          ref.read(selectedDistrictProvider.notifier).clear();
+        }
+      },
+      child: Scaffold(
       appBar: AppBar(
         title: const Text('Nepal Districts'),
         actions: [
@@ -174,6 +186,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stack) => Center(child: Text('Error: $error')),
       ),
+    ),
     );
   }
 
@@ -195,7 +208,12 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
         child: _NepalMapWidget(
           districts: visibleDistricts,
           onDistrictTap: (districtName) {
-            ref.read(selectedDistrictProvider.notifier).setDistrict(districtName);
+            if (districtName.isEmpty) {
+              // Tapped outside any district - close panel
+              ref.read(selectedDistrictProvider.notifier).clear();
+            } else {
+              ref.read(selectedDistrictProvider.notifier).setDistrict(districtName);
+            }
           },
         ),
       ),
@@ -203,6 +221,16 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
   }
 
   Widget _buildLeadersPanel(String districtName) {
+    final districtsAsync = ref.watch(districtsProvider);
+    final districtInfo = districtsAsync.whenData((data) {
+      return data.districts.entries
+          .firstWhere(
+            (e) => e.value.name == districtName,
+            orElse: () => const MapEntry('', DistrictInfo(name: '', province: 0)),
+          )
+          .value;
+    });
+
     return Container(
       width: 350,
       decoration: BoxDecoration(
@@ -216,7 +244,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
       ),
       child: Column(
         children: [
-          // Header
+          // Header with district info
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -226,32 +254,42 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
                 ),
               ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        districtName,
-                        style: Theme.of(context).textTheme.titleLarge,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        'Leaders from this district',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurfaceVariant,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            districtName,
+                            style: Theme.of(context).textTheme.titleLarge,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          if (districtInfo.hasValue && districtInfo.value!.nameNp != null)
+                            Text(
+                              districtInfo.value!.nameNp!,
+                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                  ),
                             ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.close),
+                      onPressed: () =>
+                          ref.read(selectedDistrictProvider.notifier).clear(),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  icon: const Icon(Icons.close),
-                  onPressed: () =>
-                      ref.read(selectedDistrictProvider.notifier).clear(),
-                ),
+                if (districtInfo.hasValue) ...[
+                  const SizedBox(height: 12),
+                  _DistrictDetailsCard(info: districtInfo.value!),
+                ],
               ],
             ),
           ),
@@ -261,6 +299,161 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// District details card showing enhanced info
+class _DistrictDetailsCard extends StatelessWidget {
+  final DistrictInfo info;
+
+  const _DistrictDetailsCard({required this.info});
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Province and Headquarters
+            Row(
+              children: [
+                _InfoItem(
+                  icon: Icons.flag,
+                  label: 'Province ${info.province}',
+                ),
+                const SizedBox(width: 16),
+                if (info.headquarters != null)
+                  Expanded(
+                    child: _InfoItem(
+                      icon: Icons.location_city,
+                      label: info.headquarters!,
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            // Population and Area
+            Row(
+              children: [
+                if (info.population != null)
+                  _InfoItem(
+                    icon: Icons.people,
+                    label: _formatNumber(info.population!),
+                  ),
+                if (info.population != null && info.area != null)
+                  const SizedBox(width: 16),
+                if (info.area != null)
+                  _InfoItem(
+                    icon: Icons.square_foot,
+                    label: '${_formatNumber(info.area!)} km²',
+                  ),
+              ],
+            ),
+            // Famous for
+            if (info.famousFor != null) ...[
+              const SizedBox(height: 8),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Icon(
+                    Icons.star,
+                    size: 14,
+                    color: Colors.amber[700],
+                  ),
+                  const SizedBox(width: 4),
+                  Expanded(
+                    child: Text(
+                      info.famousFor!,
+                      style: Theme.of(context).textTheme.bodySmall,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+            // Action buttons
+            if (info.wikiUrl != null || info.websiteUrl != null) ...[
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  if (info.wikiUrl != null)
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: () => _launchUrl(info.wikiUrl!),
+                        icon: const Icon(Icons.language, size: 16),
+                        label: const Text('Wikipedia'),
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          visualDensity: VisualDensity.compact,
+                        ),
+                      ),
+                    ),
+                  if (info.wikiUrl != null && info.websiteUrl != null)
+                    const SizedBox(width: 8),
+                  if (info.websiteUrl != null)
+                    Expanded(
+                      child: OutlinedButton.icon(
+                        onPressed: () => _launchUrl(info.websiteUrl!),
+                        icon: const Icon(Icons.public, size: 16),
+                        label: const Text('Website'),
+                        style: OutlinedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          visualDensity: VisualDensity.compact,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  String _formatNumber(int number) {
+    if (number >= 1000000) {
+      return '${(number / 1000000).toStringAsFixed(1)}M';
+    } else if (number >= 1000) {
+      return '${(number / 1000).toStringAsFixed(0)}K';
+    }
+    return number.toString();
+  }
+}
+
+class _InfoItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+
+  const _InfoItem({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 14, color: Theme.of(context).colorScheme.primary),
+        const SizedBox(width: 4),
+        Text(
+          label,
+          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                fontWeight: FontWeight.w500,
+              ),
+        ),
+      ],
     );
   }
 }
@@ -362,7 +555,7 @@ class _DistrictLeadersList extends ConsumerWidget {
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundImage: leader.imageUrl.isNotEmpty
-                      ? NetworkImage(leader.imageUrl)
+                      ? _getImageProvider(leader.imageUrl)
                       : null,
                   child: leader.imageUrl.isEmpty
                       ? Text(leader.name[0])
@@ -370,20 +563,7 @@ class _DistrictLeadersList extends ConsumerWidget {
                 ),
                 title: Text(leader.name),
                 subtitle: Text(leader.party),
-                trailing: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.arrow_upward,
-                      color: Colors.green.shade700,
-                      size: 14,
-                    ),
-                    Text(
-                      '${leader.totalVotes}',
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                ),
+                trailing: const Icon(Icons.chevron_right),
                 onTap: () => context.push('/leaders/${leader.id}'),
               ),
             );
@@ -403,6 +583,13 @@ class _DistrictLeadersList extends ConsumerWidget {
       ),
     );
   }
+
+  ImageProvider _getImageProvider(String imageUrl) {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return NetworkImage(imageUrl);
+    }
+    return AssetImage(imageUrl);
+  }
 }
 
 /// Interactive Nepal SVG Map Widget
@@ -420,299 +607,81 @@ class _NepalMapWidget extends StatefulWidget {
 }
 
 class _NepalMapWidgetState extends State<_NepalMapWidget> {
-  String? _hoveredDistrict;
-  final Map<String, GlobalKey> _districtKeys = {};
+  final SvgPathParser _pathParser = SvgPathParser();
+  final GlobalKey _mapKey = GlobalKey();
+  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    // Initialize keys for all districts
-    for (final district in widget.districts.keys) {
-      _districtKeys[district] = GlobalKey();
+    _loadSvgPaths();
+  }
+
+  Future<void> _loadSvgPaths() async {
+    await _pathParser.loadSvg('assets/images/nepal_districts.svg');
+    if (mounted) {
+      setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String>(
-      future: _loadSvg(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
-        if (snapshot.hasError) {
-          return Center(child: Text('Error: ${snapshot.error}'));
-        }
-        if (!snapshot.hasData) {
-          return const Center(child: Text('Map not available'));
-        }
-
-        // For now, show a placeholder until proper SVG parsing is implemented
-        return _buildPlaceholderMap();
-      },
-    );
-  }
-
-  Widget _buildPlaceholderMap() {
-    return CustomPaint(
-      size: const Size(1225, 817),
-      painter: _NepalMapPainter(
-        districts: widget.districts,
-        hoveredDistrict: _hoveredDistrict,
-        onDistrictHover: (district) {
-          setState(() => _hoveredDistrict = district);
-        },
-      ),
-      child: MouseRegion(
-        onHover: (event) {
-          // Handle hover for desktop
-          final localPosition = event.localPosition;
-          _findDistrictAtPosition(localPosition);
-        },
-        child: GestureDetector(
-          onTapUp: (details) {
-            // Handle tap to select district
-            final localPosition = details.localPosition;
-            _findAndSelectDistrict(localPosition);
-          },
+    return Stack(
+      children: [
+        // Render the actual SVG map
+        SvgPicture.asset(
+          'assets/images/nepal_districts.svg',
+          key: _mapKey,
+          width: 1225,
+          height: 817,
+          fit: BoxFit.contain,
         ),
-      ),
-    );
-  }
-
-  void _findDistrictAtPosition(Offset position) {
-    // This is a simplified implementation
-    // In production, you would use proper SVG hit testing
-    // or use a package like flutter_svg with custom painters
-  }
-
-  void _findAndSelectDistrict(Offset position) {
-    // This is a simplified implementation
-    // Show a dialog to select district for now
-    _showDistrictSelector();
-  }
-
-  void _showDistrictSelector() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (context) => _DistrictSelectorSheet(
-        districts: widget.districts,
-        onDistrictTap: widget.onDistrictTap,
-      ),
-    );
-  }
-
-  Future<String> _loadSvg() async {
-    // This would load the actual SVG from assets
-    // For now, we're using a custom painter approach
-    return '';
-  }
-}
-
-/// Custom painter for Nepal map (simplified)
-class _NepalMapPainter extends CustomPainter {
-  final Map<String, DistrictInfo> districts;
-  final String? hoveredDistrict;
-  final void Function(String?) onDistrictHover;
-
-  _NepalMapPainter({
-    required this.districts,
-    required this.hoveredDistrict,
-    required this.onDistrictHover,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    // Draw a simplified Nepal outline
-    final paint = Paint()
-      ..color = Colors.grey.shade300
-      ..style = PaintingStyle.fill;
-
-    final strokePaint = Paint()
-      ..color = Colors.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
-
-    // Draw Nepal outline (simplified path)
-    final path = Path();
-    // This is a very simplified representation
-    // In production, you would use the actual SVG paths
-    path.moveTo(400, 100);
-    path.lineTo(800, 100);
-    path.lineTo(900, 300);
-    path.lineTo(800, 500);
-    path.lineTo(600, 700);
-    path.lineTo(400, 700);
-    path.lineTo(200, 500);
-    path.lineTo(100, 300);
-    path.close();
-
-    canvas.drawPath(path, paint);
-    canvas.drawPath(path, strokePaint);
-
-    // Draw province indicators
-    _drawProvinceIndicators(canvas, size);
-  }
-
-  void _drawProvinceIndicators(Canvas canvas, Size size) {
-    // Group districts by province
-    final provinces = <int, List<String>>{};
-    for (final entry in districts.entries) {
-      provinces.putIfAbsent(entry.value.province, () => []).add(entry.key);
-    }
-
-    // Draw circles for each province
-    final positions = [
-      const Offset(300, 200), // P1
-      const Offset(500, 150), // P2
-      const Offset(700, 250), // P3
-      const Offset(600, 400), // P4
-      const Offset(400, 450), // P5
-      const Offset(250, 350), // P6
-      const Offset(350, 550), // P7
-    ];
-
-    final colors = [
-      Colors.red,
-      Colors.blue,
-      Colors.green,
-      Colors.orange,
-      Colors.purple,
-      Colors.teal,
-      Colors.pink,
-    ];
-
-    for (int i = 0; i < provinces.length && i < positions.length; i++) {
-      final provinceNumber = i + 1;
-      final hasDistricts = provinces.containsKey(provinceNumber);
-
-      if (hasDistricts) {
-        final paint = Paint()
-          ..color = colors[i].withOpacity(0.6)
-          ..style = PaintingStyle.fill;
-
-        canvas.drawCircle(positions[i], 40, paint);
-
-        // Draw province number
-        final textPainter = TextPainter(
-          text: TextSpan(
-            text: 'P$provinceNumber',
-            style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
+        // Overlay for tap detection with hit testing
+        Positioned.fill(
+          child: GestureDetector(
+            onTapUp: _isLoading ? null : _handleTap,
+            behavior: HitTestBehavior.translucent,
+          ),
+        ),
+        if (_isLoading)
+          const Positioned.fill(
+            child: Center(
+              child: CircularProgressIndicator(),
             ),
           ),
-          textDirection: TextDirection.ltr,
-        );
-        textPainter.layout();
-        textPainter.paint(
-          canvas,
-          positions[i] - Offset(textPainter.width / 2, textPainter.height / 2),
-        );
-
-        // Draw district count
-        final countPainter = TextPainter(
-          text: TextSpan(
-            text: '${provinces[provinceNumber]!.length} districts',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 10,
-            ),
-          ),
-          textDirection: TextDirection.ltr,
-        );
-        countPainter.layout();
-        countPainter.paint(
-          canvas,
-          positions[i] - Offset(countPainter.width / 2, -countPainter.height - 5),
-        );
-      }
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _NepalMapPainter oldDelegate) {
-    return oldDelegate.hoveredDistrict != hoveredDistrict;
-  }
-}
-
-/// District selector bottom sheet
-class _DistrictSelectorSheet extends StatelessWidget {
-  final Map<String, DistrictInfo> districts;
-  final void Function(String districtName) onDistrictTap;
-
-  const _DistrictSelectorSheet({
-    required this.districts,
-    required this.onDistrictTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // Group by province
-    final provinces = <int, List<MapEntry<String, DistrictInfo>>>{};
-    for (final entry in districts.entries) {
-      provinces.putIfAbsent(entry.value.province, () => []).add(entry);
-    }
-
-    return DraggableScrollableSheet(
-      initialChildSize: 0.7,
-      minChildSize: 0.4,
-      maxChildSize: 0.95,
-      expand: false,
-      builder: (context, scrollController) {
-        return Container(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: 16),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(2),
-                  ),
-                ),
-              ),
-              Text(
-                'Select District',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-              const Divider(),
-              Expanded(
-                child: ListView.builder(
-                  controller: scrollController,
-                  itemCount: provinces.keys.length,
-                  itemBuilder: (context, index) {
-                    final province = provinces.keys.toList()..sort();
-                    province.sort();
-                    final currentProvince = province[index];
-                    final districtList = provinces[currentProvince]!;
-
-                    return ExpansionTile(
-                      title: Text('Province $currentProvince'),
-                      subtitle: Text('${districtList.length} districts'),
-                      children: districtList.map((entry) {
-                        return ListTile(
-                          title: Text(entry.value.name),
-                          onTap: () {
-                            onDistrictTap(entry.value.name);
-                            context.pop();
-                          },
-                        );
-                      }).toList(),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
+      ],
     );
+  }
+
+  void _handleTap(TapUpDetails details) {
+    final renderBox = _mapKey.currentContext?.findRenderObject() as RenderBox?;
+    if (renderBox == null) return;
+
+    final localPosition = renderBox.globalToLocal(details.globalPosition);
+    final size = renderBox.size;
+
+    // Convert screen coordinates to SVG coordinates
+    final svgPoint = _pathParser.screenToSvg(localPosition, size);
+
+    // Find which district was tapped
+    final districtId = _pathParser.hitTest(svgPoint);
+
+    if (districtId != null) {
+      // Convert district ID to proper name (e.g., "jhapa" -> "Jhapa")
+      final districtName = _formatDistrictName(districtId);
+      widget.onDistrictTap(districtName);
+    } else {
+      // Tapped outside any district - signal to close panel
+      widget.onDistrictTap('');
+    }
+  }
+
+  String _formatDistrictName(String id) {
+    // Convert snake_case/lowercase to Title Case
+    // e.g., "jhapa" -> "Jhapa", "okhaldhunga" -> "Okhaldhunga"
+    return id.split('_').map((word) {
+      if (word.isEmpty) return word;
+      return word[0].toUpperCase() + word.substring(1).toLowerCase();
+    }).join(' ');
   }
 }

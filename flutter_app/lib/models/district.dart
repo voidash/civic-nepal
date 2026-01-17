@@ -28,6 +28,13 @@ class DistrictInfo with _$DistrictInfo {
   const factory DistrictInfo({
     required String name,
     required int province,
+    String? nameNp,
+    String? headquarters,
+    int? population,
+    int? area,
+    String? wikiUrl,
+    String? websiteUrl,
+    String? famousFor,
   }) = _DistrictInfo;
 
   factory DistrictInfo.fromJson(Map<String, dynamic> json) =>

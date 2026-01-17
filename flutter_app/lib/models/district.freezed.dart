@@ -160,6 +160,13 @@ DistrictInfo _$DistrictInfoFromJson(Map<String, dynamic> json) {
 mixin _$DistrictInfo {
   String get name => throw _privateConstructorUsedError;
   int get province => throw _privateConstructorUsedError;
+  String? get nameNp => throw _privateConstructorUsedError;
+  String? get headquarters => throw _privateConstructorUsedError;
+  int? get population => throw _privateConstructorUsedError;
+  int? get area => throw _privateConstructorUsedError;
+  String? get wikiUrl => throw _privateConstructorUsedError;
+  String? get websiteUrl => throw _privateConstructorUsedError;
+  String? get famousFor => throw _privateConstructorUsedError;
 
   /// Serializes this DistrictInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -177,7 +184,16 @@ abstract class $DistrictInfoCopyWith<$Res> {
           DistrictInfo value, $Res Function(DistrictInfo) then) =
       _$DistrictInfoCopyWithImpl<$Res, DistrictInfo>;
   @useResult
-  $Res call({String name, int province});
+  $Res call(
+      {String name,
+      int province,
+      String? nameNp,
+      String? headquarters,
+      int? population,
+      int? area,
+      String? wikiUrl,
+      String? websiteUrl,
+      String? famousFor});
 }
 
 /// @nodoc
@@ -197,6 +213,13 @@ class _$DistrictInfoCopyWithImpl<$Res, $Val extends DistrictInfo>
   $Res call({
     Object? name = null,
     Object? province = null,
+    Object? nameNp = freezed,
+    Object? headquarters = freezed,
+    Object? population = freezed,
+    Object? area = freezed,
+    Object? wikiUrl = freezed,
+    Object? websiteUrl = freezed,
+    Object? famousFor = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -207,6 +230,34 @@ class _$DistrictInfoCopyWithImpl<$Res, $Val extends DistrictInfo>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as int,
+      nameNp: freezed == nameNp
+          ? _value.nameNp
+          : nameNp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      headquarters: freezed == headquarters
+          ? _value.headquarters
+          : headquarters // ignore: cast_nullable_to_non_nullable
+              as String?,
+      population: freezed == population
+          ? _value.population
+          : population // ignore: cast_nullable_to_non_nullable
+              as int?,
+      area: freezed == area
+          ? _value.area
+          : area // ignore: cast_nullable_to_non_nullable
+              as int?,
+      wikiUrl: freezed == wikiUrl
+          ? _value.wikiUrl
+          : wikiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      websiteUrl: freezed == websiteUrl
+          ? _value.websiteUrl
+          : websiteUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      famousFor: freezed == famousFor
+          ? _value.famousFor
+          : famousFor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -219,7 +270,16 @@ abstract class _$$DistrictInfoImplCopyWith<$Res>
       __$$DistrictInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int province});
+  $Res call(
+      {String name,
+      int province,
+      String? nameNp,
+      String? headquarters,
+      int? population,
+      int? area,
+      String? wikiUrl,
+      String? websiteUrl,
+      String? famousFor});
 }
 
 /// @nodoc
@@ -237,6 +297,13 @@ class __$$DistrictInfoImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? province = null,
+    Object? nameNp = freezed,
+    Object? headquarters = freezed,
+    Object? population = freezed,
+    Object? area = freezed,
+    Object? wikiUrl = freezed,
+    Object? websiteUrl = freezed,
+    Object? famousFor = freezed,
   }) {
     return _then(_$DistrictInfoImpl(
       name: null == name
@@ -247,6 +314,34 @@ class __$$DistrictInfoImplCopyWithImpl<$Res>
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as int,
+      nameNp: freezed == nameNp
+          ? _value.nameNp
+          : nameNp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      headquarters: freezed == headquarters
+          ? _value.headquarters
+          : headquarters // ignore: cast_nullable_to_non_nullable
+              as String?,
+      population: freezed == population
+          ? _value.population
+          : population // ignore: cast_nullable_to_non_nullable
+              as int?,
+      area: freezed == area
+          ? _value.area
+          : area // ignore: cast_nullable_to_non_nullable
+              as int?,
+      wikiUrl: freezed == wikiUrl
+          ? _value.wikiUrl
+          : wikiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      websiteUrl: freezed == websiteUrl
+          ? _value.websiteUrl
+          : websiteUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      famousFor: freezed == famousFor
+          ? _value.famousFor
+          : famousFor // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -254,7 +349,16 @@ class __$$DistrictInfoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$DistrictInfoImpl implements _DistrictInfo {
-  const _$DistrictInfoImpl({required this.name, required this.province});
+  const _$DistrictInfoImpl(
+      {required this.name,
+      required this.province,
+      this.nameNp,
+      this.headquarters,
+      this.population,
+      this.area,
+      this.wikiUrl,
+      this.websiteUrl,
+      this.famousFor});
 
   factory _$DistrictInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$DistrictInfoImplFromJson(json);
@@ -263,10 +367,24 @@ class _$DistrictInfoImpl implements _DistrictInfo {
   final String name;
   @override
   final int province;
+  @override
+  final String? nameNp;
+  @override
+  final String? headquarters;
+  @override
+  final int? population;
+  @override
+  final int? area;
+  @override
+  final String? wikiUrl;
+  @override
+  final String? websiteUrl;
+  @override
+  final String? famousFor;
 
   @override
   String toString() {
-    return 'DistrictInfo(name: $name, province: $province)';
+    return 'DistrictInfo(name: $name, province: $province, nameNp: $nameNp, headquarters: $headquarters, population: $population, area: $area, wikiUrl: $wikiUrl, websiteUrl: $websiteUrl, famousFor: $famousFor)';
   }
 
   @override
@@ -276,12 +394,24 @@ class _$DistrictInfoImpl implements _DistrictInfo {
             other is _$DistrictInfoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.province, province) ||
-                other.province == province));
+                other.province == province) &&
+            (identical(other.nameNp, nameNp) || other.nameNp == nameNp) &&
+            (identical(other.headquarters, headquarters) ||
+                other.headquarters == headquarters) &&
+            (identical(other.population, population) ||
+                other.population == population) &&
+            (identical(other.area, area) || other.area == area) &&
+            (identical(other.wikiUrl, wikiUrl) || other.wikiUrl == wikiUrl) &&
+            (identical(other.websiteUrl, websiteUrl) ||
+                other.websiteUrl == websiteUrl) &&
+            (identical(other.famousFor, famousFor) ||
+                other.famousFor == famousFor));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, name, province);
+  int get hashCode => Object.hash(runtimeType, name, province, nameNp,
+      headquarters, population, area, wikiUrl, websiteUrl, famousFor);
 
   /// Create a copy of DistrictInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -302,7 +432,14 @@ class _$DistrictInfoImpl implements _DistrictInfo {
 abstract class _DistrictInfo implements DistrictInfo {
   const factory _DistrictInfo(
       {required final String name,
-      required final int province}) = _$DistrictInfoImpl;
+      required final int province,
+      final String? nameNp,
+      final String? headquarters,
+      final int? population,
+      final int? area,
+      final String? wikiUrl,
+      final String? websiteUrl,
+      final String? famousFor}) = _$DistrictInfoImpl;
 
   factory _DistrictInfo.fromJson(Map<String, dynamic> json) =
       _$DistrictInfoImpl.fromJson;
@@ -311,6 +448,20 @@ abstract class _DistrictInfo implements DistrictInfo {
   String get name;
   @override
   int get province;
+  @override
+  String? get nameNp;
+  @override
+  String? get headquarters;
+  @override
+  int? get population;
+  @override
+  int? get area;
+  @override
+  String? get wikiUrl;
+  @override
+  String? get websiteUrl;
+  @override
+  String? get famousFor;
 
   /// Create a copy of DistrictInfo
   /// with the given fields replaced by the non-null parameter values.

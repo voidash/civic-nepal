@@ -7,10 +7,11 @@ import '../models/district.dart';
 /// Service for loading JSON data from assets
 class DataService {
   /// Load constitution data from assets
-  static Future<Constitution> loadConstitution() async {
+  static Future<ConstitutionData> loadConstitution() async {
     final jsonString = await rootBundle.loadString('assets/data/constitution_bilingual.json');
     final json = jsonDecode(jsonString) as Map<String, dynamic>;
-    return Constitution.fromJson(json);
+    final wrapper = ConstitutionWrapper.fromJson(json);
+    return wrapper.constitution;
   }
 
   /// Load per-sentence aligned data from assets

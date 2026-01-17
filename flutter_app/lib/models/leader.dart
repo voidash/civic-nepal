@@ -18,7 +18,7 @@ class LeadersData with _$LeadersData {
 @freezed
 class Leader with _$Leader {
   const factory Leader({
-    required String id,
+    @JsonKey(name: '_id') required String id,
     required String name,
     required String party,
     required String position,

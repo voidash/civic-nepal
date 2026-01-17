@@ -255,24 +255,6 @@
             font-size: 1.2rem;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .part-title {
-                font-size: 1.5rem;
-            }
-
-            .article {
-                padding-left: 1rem;
-            }
-        }
-
         .toc-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -608,6 +590,7 @@
 
                 render();
                 renderTOC();
+                initEventListeners();
                 initMeaningMode();
 
                 // Handle deep linking on load
@@ -657,7 +640,16 @@
 
                     const titleNp = article.title.np || '';
                     const titleEn = article.title.en || '';
-                    link.textContent = `${article.number}. ${titleNp || titleEn}`;
+                    // Display title based on current language setting
+                    let displayTitle;
+                    if (currentLang === 'both') {
+                        displayTitle = titleNp && titleEn ? `${titleNp} / ${titleEn}` : titleNp || titleEn;
+                    } else if (currentLang === 'nepali') {
+                        displayTitle = titleNp || titleEn;
+                    } else {
+                        displayTitle = titleEn || titleNp;
+                    }
+                    link.textContent = `${article.number}. ${displayTitle}`;
 
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
@@ -897,6 +889,13 @@
                 const preambleDiv = document.createElement('div');
                 preambleDiv.className = 'preamble';
                 preambleDiv.id = 'preamble';
+                preambleDiv.style.cursor = 'pointer';
+
+                // Click handler for preamble (same as paragraph view)
+                preambleDiv.addEventListener('click', () => {
+                    setCurrentArticle('preamble');
+                    updateHash('preamble');
+                });
 
                 const title = document.createElement('div');
                 title.className = 'preamble-title';
@@ -1034,25 +1033,29 @@
             });
         }
 
-        // Language toggle
-        document.querySelectorAll('.lang-toggle button[data-lang]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.lang-toggle button[data-lang]').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentLang = btn.dataset.lang;
-                render();
+        // Initialize event listeners after data is loaded
+        function initEventListeners() {
+            // Language toggle
+            document.querySelectorAll('.lang-toggle button[data-lang]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.lang-toggle button[data-lang]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentLang = btn.dataset.lang;
+                    render();
+                    renderTOC(); // Update TOC to reflect language change
+                });
             });
-        });
 
-        // View mode toggle
-        document.querySelectorAll('.lang-toggle button[data-view]').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.lang-toggle button[data-view]').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                currentView = btn.dataset.view;
-                render();
+            // View mode toggle
+            document.querySelectorAll('.lang-toggle button[data-view]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.lang-toggle button[data-view]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentView = btn.dataset.view;
+                    render();
+                });
             });
-        });
+        }
 
         // Meaning Mode
         function initMeaningMode() {
@@ -1134,7 +1137,10 @@
                 translations.forEach(t => {
                     const item = document.createElement('div');
                     item.className = 'meaning-item';
-                    item.innerHTML = `<div class="meaning-en">${t}</div>`;
+                    const enDiv = document.createElement('div');
+                    enDiv.className = 'meaning-en';
+                    enDiv.textContent = t; // Use textContent to prevent XSS
+                    item.appendChild(enDiv);
                     translationsEl.appendChild(item);
                 });
 

@@ -3,14 +3,24 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'district.freezed.dart';
 part 'district.g.dart';
 
+// DistrictData is a Map<String, DistrictInfo> at the top level
+// The fromJson factory expects the raw JSON object
 @freezed
 class DistrictData with _$DistrictData {
-  const factory DistrictData(
-    Map<String, DistrictInfo> districts,
-  ) = _DistrictData;
+  const factory DistrictData({
+    required Map<String, DistrictInfo> districts,
+  }) = _DistrictData;
 
-  factory DistrictData.fromJson(Map<String, dynamic> json) =>
-      _$DistrictDataFromJson(json);
+  factory DistrictData.fromJson(Map<String, dynamic> json) {
+    return DistrictData(
+      districts: json.map(
+        (key, value) => MapEntry(
+          key,
+          DistrictInfo.fromJson(value as Map<String, dynamic>),
+        ),
+      ),
+    );
+  }
 }
 
 @freezed

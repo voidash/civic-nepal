@@ -1,5 +1,25 @@
 # IMPLEMENTATION_PLAN.md
 
+## Recent Updates & Bug Fixes
+
+### Bug Fixes (January 2026)
+
+The following critical bugs were fixed in `index.html`:
+
+| Bug | Severity | Fix | Description |
+|-----|----------|-----|-------------|
+| **Event listeners attached before data loads** | CRITICAL | Moved `initEventListeners()` and `initMeaningMode()` inside the data fetch promise | Event listeners were being attached before constitution data was loaded, causing potential crashes if user interacted before fetch completed |
+| **XSS vulnerability in Meaning Mode** | HIGH | Changed `innerHTML` to `textContent` for dictionary translations | Line 1142: `enDiv.textContent = t;` instead of `innerHTML`. This prevents malicious script injection if dictionary data is ever compromised |
+| **TOC not updating on language change** | MEDIUM | Added `renderTOC()` call after language toggle | Line 1045: When user clicks language buttons (Both/Nepali/English), TOC now re-renders to show correct language titles |
+| **Preamble click handler missing in Sentence view** | MEDIUM | Added click event listener to preamble in `renderSentenceView()` | Lines 895-897: Users can now click preamble in sentence view to set it as current article |
+| **Duplicate media query** | LOW | Removed duplicate `@media (max-width: 768px)` rule | Consolidated responsive breakpoints to avoid CSS conflicts |
+
+### Code Quality Improvements
+- Event listener initialization now properly sequenced: `fetch() -> render() -> renderTOC() -> initEventListeners() -> initMeaningMode()`
+- Meaning Mode tooltip now safely renders user-generated content using `textContent` instead of `innerHTML`
+
+---
+
 ## Project Overview
 
 This project consists of two components:
@@ -32,23 +52,23 @@ The following documentation files claimed Zettelkasten features that **DID NOT E
 
 ## Web App: Verified COMPLETE Features
 
-These features exist and function correctly in `index.html` (verified by code inspection):
+These features exist and function correctly in `index.html` (verified by code inspection, January 2026):
 
 | Feature | Status | Implementation Location |
 |---------|--------|------------------------|
 | Two-column layout (TOC sidebar + main content) | COMPLETE | Lines 23-43 (CSS grid), 467-500 (HTML) |
-| Language toggle (Both/Nepali/English) | COMPLETE | Lines 485-489 (HTML), 1037-1045 (JS handler) |
-| View mode toggle (Paragraph/Sentence) | COMPLETE | Lines 490-493 (HTML), 1047-1055 (JS handler) |
-| Meaning Mode (text selection -> dictionary lookup) | COMPLETE | Lines 338-417 (CSS), 503-511 (HTML), 1057-1168 (JS) |
-| Article linking (auto-linkify "Article 42" / "धारा ४२") | COMPLETE | Lines 532-545 (linkifyArticleRefs function) |
-| Deep linking via URL hash (`#article-42`, `#preamble`) | COMPLETE | Lines 556-573 (navigateFromHash, updateHash) |
-| Search functionality (filters articles and TOC) | COMPLETE | Lines 1171-1193 (search event handler) |
-| Responsive design (collapses to single column on mobile) | COMPLETE | Lines 258-274, 419-452 (media queries) |
-| Print stylesheet (hides sidebars and controls) | COMPLETE | Lines 454-463 (@media print) |
-| Paragraph view rendering | COMPLETE | Lines 683-802 (renderParagraphView) |
-| Sentence view rendering | COMPLETE | Lines 889-1034 (renderSentenceView) |
-| TOC rendering with click navigation | COMPLETE | Lines 625-673 (renderTOC) |
-| Devanagari numeral conversion | COMPLETE | Lines 524-529 (devanagariToArabic) |
+| Language toggle (Both/Nepali/English) | COMPLETE | Lines 485-489 (HTML), 1037-1046 (JS handler, now calls renderTOC) |
+| View mode toggle (Paragraph/Sentence) | COMPLETE | Lines 490-493 (HTML), 1049-1056 (JS handler) |
+| Meaning Mode (text selection -> dictionary lookup) | COMPLETE | Lines 338-417 (CSS), 503-511 (HTML), 1061-1168 (JS, XSS fix at line 1142) |
+| Article linking (auto-linkify "Article 42" / "धारा ४२") | COMPLETE | Lines 514-537 (linkifyArticleRefs function) |
+| Deep linking via URL hash (`#article-42`, `#preamble`) | COMPLETE | Lines 539-572 (navigateFromHash, updateHash) |
+| Search functionality (filters articles and TOC) | COMPLETE | Lines 1177-1196 (search event handler) |
+| Responsive design (collapses to single column on mobile) | COMPLETE | Lines 401-433 (@media queries) |
+| Print stylesheet (hides sidebars and controls) | COMPLETE | Lines 435-444 (@media print) |
+| Paragraph view rendering | COMPLETE | Lines 675-879 (renderParagraphView) |
+| Sentence view rendering | COMPLETE | Lines 881-1035 (renderSentenceView, includes preamble click handler) |
+| TOC rendering with click navigation | COMPLETE | Lines 608-673 (renderTOC) |
+| Devanagari numeral conversion | COMPLETE | Lines 509-512 (devanagariToArabic) |
 
 ---
 
@@ -65,9 +85,9 @@ These features exist and function correctly in `index.html` (verified by code in
 
 ---
 
-## Priority 1: Web App - Zettelkasten Features (OPTIONAL - Not Implemented)
+## Priority 1: Web App - Zettelkasten Features (NOT IMPLEMENTED)
 
-**Status**: DOCUMENTED BUT NOT IMPLEMENTED
+**Status**: NEVER IMPLEMENTED - These features are optional and have NOT been built. The documentation previously incorrectly claimed these features existed. They remain as a future roadmap item.
 
 ### Phase 2.1: localStorage Infrastructure
 - [ ] Define `constitution-kb` localStorage schema
@@ -129,8 +149,20 @@ Per `specs/flutter-civic-app.md`, the Flutter app combines:
 ### Phase 3.2: Data Models ✅ COMPLETE
 - [x] Create `lib/models/constitution.dart` - Constitution, Part, Article, ContentItem, AlignedSentence
 - [x] Create `lib/models/leader.dart` - LeadersData, Leader
+  - **FIX**: Added `@JsonKey(name: '_id')` annotation for `id` field to match JSON structure (`_id` key in leaders.json)
 - [x] Create `lib/models/district.dart` - DistrictData, DistrictInfo, PartyData, Party
+  - **FIX**: Custom `fromJson` implementation to handle flat JSON structure (top-level object with district keys as strings, not nested under a `districts` property)
 - [x] Create `lib/models/note.dart` - Note, Bookmark, UserData
+
+### Phase 3.2.1: JSON Serialization Fixes (January 2026)
+**Issue**: The auto-generated freezed code couldn't deserialize the JSON data files correctly.
+
+| Model | Problem | Fix |
+|-------|---------|-----|
+| `Leader` | JSON uses `_id` key, Dart field named `id` | Added `@JsonKey(name: '_id')` annotation on line 21 |
+| `DistrictData` | JSON is flat (district keys at root), model expected nested structure | Custom `fromJson` factory manually maps the flat object to `Map<String, DistrictInfo>` |
+
+**Remaining Requirement**: Run `flutter pub run build_runner build` to regenerate `.freezed.dart` and `.g.dart` files after these model changes.
 
 ### Phase 3.3: Data Services ✅ COMPLETE
 - [x] Create `lib/services/data_service.dart` - Load JSON assets
@@ -196,8 +228,10 @@ To build the Flutter app:
 1. Install Flutter SDK (https://flutter.dev/docs/get-started/install)
 2. Run `cd flutter_app`
 3. Run `flutter pub get` to install dependencies
-4. Run `dart run build_runner build` to generate freezed/riverpod code
+4. Run `flutter pub run build_runner build` to generate freezed/riverpod code (required for JSON serialization)
 5. Run `flutter run` to launch the app
+
+**Note**: Step 4 is critical - the `.freezed.dart` and `.g.dart` files are generated from the model annotations. Without this step, the app will not compile.
 
 ---
 

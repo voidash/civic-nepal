@@ -29,15 +29,20 @@ GoRouter router(RouterRef ref) {
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     redirect: (context, state) {
+      final path = state.uri.path;
+      debugPrint('GoRouter redirect called with path: $path');
+
       final uri = state.uri;
       // Handle deep links from widgets
       if (uri.scheme == 'nepalcivic' && uri.host.isNotEmpty) {
         return '/${uri.host}${uri.path}';
       }
       // Redirect root to /home
-      if (state.uri.path == '/' || state.uri.path.isEmpty) {
+      if (path == '/' || path.isEmpty) {
+        debugPrint('Redirecting to /home');
         return '/home';
       }
+      debugPrint('No redirect needed for: $path');
       return null;
     },
     routes: [

@@ -82,7 +82,7 @@ class SearchQuery extends _$SearchQuery {
   }
 }
 
-/// Currently selected article (defaults to null to show Know Your Rights)
+/// Currently selected article (defaults to null = Know Your Rights)
 @riverpod
 class SelectedArticle extends _$SelectedArticle {
   @override
@@ -101,7 +101,7 @@ class SelectedArticle extends _$SelectedArticle {
   }
 }
 
-/// Reference to a selected article or preamble
+/// Reference to a selected article, part, or preamble
 @freezed
 class SelectedArticleRef with _$SelectedArticleRef {
   const factory SelectedArticleRef.preamble() = PreambleRef;
@@ -109,4 +109,7 @@ class SelectedArticleRef with _$SelectedArticleRef {
     required int partIndex,
     required int articleIndex,
   }) = ArticleRef;
+  const factory SelectedArticleRef.part({
+    required int partIndex,
+  }) = PartRef;
 }

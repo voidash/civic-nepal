@@ -217,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      sha256: "09bad715f418841f976c77db72d5398dc1253c21fb9c0c7f0b0b985860b2d58e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   custom_lint_core:
     dependency: transitive
     description:
@@ -241,6 +249,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  dbus:
+    dependency: transitive
+    description:
+      name: dbus
+      sha256: "79e0c23480ff85dc68de79e2cd6334add97e48f7f4865d17686dd6ea81a47e8c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.11"
   fake_async:
     dependency: transitive
     description:
@@ -326,6 +342,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_local_notifications:
+    dependency: "direct main"
+    description:
+      name: flutter_local_notifications
+      sha256: "674173fd3c9eda9d4c8528da2ce0ea69f161577495a9cc835a2a4ecd7eadeb35"
+      url: "https://pub.dev"
+    source: hosted
+    version: "17.2.4"
+  flutter_local_notifications_linux:
+    dependency: transitive
+    description:
+      name: flutter_local_notifications_linux
+      sha256: c49bd06165cad9beeb79090b18cd1eb0296f4bf4b23b84426e37dd7c027fc3af
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
+  flutter_local_notifications_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_local_notifications_platform_interface
+      sha256: "85f8d07fe708c1bdcf45037f2c0109753b26ae077e9d9e899d55971711a4ea66"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -453,6 +493,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.5"
+  html:
+    dependency: "direct main"
+    description:
+      name: html
+      sha256: "6d1264f2dffa1b1101c25a91dff0dc2daee4c18e87cd8538729773c073dbf602"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.6"
   http:
     dependency: "direct main"
     description:
@@ -550,7 +598,7 @@ packages:
     source: hosted
     version: "0.2.2"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: "3df61194eb431efc39c4ceba583b95633a403f46c9fd341e550ce0bfa50e9aa5"
@@ -1090,6 +1138,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.7"
+  timezone:
+    dependency: transitive
+    description:
+      name: timezone
+      sha256: "2236ec079a174ce07434e89fcd3fcda430025eb7692244139a9cf54fdcf1fc7d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.4"
   timing:
     dependency: transitive
     description:
@@ -1258,6 +1314,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.15.0"
+  workmanager:
+    dependency: "direct main"
+    description:
+      name: workmanager
+      sha256: "065673b2a465865183093806925419d311a9a5e0995aa74ccf8920fd695e2d10"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.0+3"
+  workmanager_android:
+    dependency: transitive
+    description:
+      name: workmanager_android
+      sha256: "9ae744db4ef891f5fcd2fb8671fccc712f4f96489a487a1411e0c8675e5e8cb7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.0+2"
+  workmanager_apple:
+    dependency: transitive
+    description:
+      name: workmanager_apple
+      sha256: "1cc12ae3cbf5535e72f7ba4fde0c12dd11b757caf493a28e22d684052701f2ca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.1+2"
+  workmanager_platform_interface:
+    dependency: transitive
+    description:
+      name: workmanager_platform_interface
+      sha256: f40422f10b970c67abb84230b44da22b075147637532ac501729256fcea10a47
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.1+1"
   xdg_directories:
     dependency: transitive
     description:

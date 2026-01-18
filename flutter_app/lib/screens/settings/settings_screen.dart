@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/settings_provider.dart';
+import '../../services/notification_service.dart';
+import '../../widgets/home_title.dart';
 
 /// Settings screen
 class SettingsScreen extends ConsumerWidget {
@@ -9,20 +12,21 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settingsAsync = ref.watch(settingsProvider);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: HomeTitle(child: Text(l10n.settings)),
       ),
       body: settingsAsync.when(
         data: (settings) {
           return ListView(
             children: [
-              const _SectionHeader('Language & Display'),
-              _LanguageSetting(
-                value: settings.languagePreference,
+              _SectionHeader(l10n.languageDisplay),
+              _AppLocaleSetting(
+                value: settings.appLocale,
                 onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setLanguagePreference(value);
+                  ref.read(settingsProvider.notifier).setAppLocale(value);
                 },
               ),
               _ThemeSetting(
@@ -32,63 +36,87 @@ class SettingsScreen extends ConsumerWidget {
                 },
               ),
               const Divider(),
-              const _SectionHeader('Data & Updates'),
+              _SectionHeader(l10n.dataUpdates),
               _SwitchSetting(
-                title: 'Auto-check for updates',
-                subtitle: 'Check for new data on app launch',
+                title: l10n.autoCheckUpdates,
+                subtitle: l10n.autoCheckUpdatesDesc,
                 value: settings.autoCheckUpdates,
                 onChanged: (value) {
                   ref.read(settingsProvider.notifier).setAutoCheckUpdates(value);
                 },
               ),
               _TileSetting(
-                title: 'Check for updates now',
-                subtitle: 'Download latest leader data',
+                title: l10n.checkUpdatesNow,
+                subtitle: l10n.checkUpdatesNowDesc,
                 onTap: () {
-                  _checkForUpdates(context);
+                  _checkForUpdates(context, l10n);
                 },
               ),
               _TileSetting(
-                title: 'Clear cache',
-                subtitle: 'Free up storage space',
+                title: l10n.clearCache,
+                subtitle: l10n.clearCacheDesc,
                 onTap: () {
-                  _clearCache(context);
+                  _clearCache(context, l10n);
                 },
               ),
               const Divider(),
-              const _SectionHeader('About'),
+              _SectionHeader(l10n.notifications),
+              _SwitchSetting(
+                title: l10n.stickyDateNotification,
+                subtitle: l10n.stickyDateNotificationDesc,
+                value: settings.stickyDateNotification,
+                onChanged: (value) async {
+                  await ref.read(settingsProvider.notifier).setStickyDateNotification(value);
+                  if (value) {
+                    await NotificationService.requestPermissions();
+                    await NotificationService.showStickyDateNotification();
+                  } else {
+                    await NotificationService.cancelStickyDateNotification();
+                  }
+                },
+              ),
+              _SwitchSetting(
+                title: l10n.ipoAlerts,
+                subtitle: l10n.ipoAlertsDesc,
+                value: settings.ipoNotifications,
+                onChanged: (value) {
+                  ref.read(settingsProvider.notifier).setIpoNotifications(value);
+                },
+              ),
+              const Divider(),
+              _SectionHeader(l10n.about),
               _TileSetting(
-                title: 'About',
-                subtitle: 'Nepal Civic App v1.0.0',
+                title: l10n.about,
+                subtitle: l10n.appVersion,
                 onTap: () {
-                  _showAboutDialog(context);
+                  _showAboutDialog(context, l10n);
                 },
               ),
             ],
           );
         },
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stack) => Center(child: Text('Error: $error')),
+        error: (error, stack) => Center(child: Text('${l10n.error}: $error')),
       ),
     );
   }
 
-  void _checkForUpdates(BuildContext context) {
+  void _checkForUpdates(BuildContext context, AppLocalizations l10n) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Checking for updates...')),
+      SnackBar(content: Text(l10n.checkingUpdates)),
     );
   }
 
-  void _clearCache(BuildContext context) {
+  void _clearCache(BuildContext context, AppLocalizations l10n) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Cache cleared')),
+      SnackBar(content: Text(l10n.cacheCleared)),
     );
   }
 
-  void _showAboutDialog(BuildContext context) {
+  void _showAboutDialog(BuildContext context, AppLocalizations l10n) {
     showAboutDialog(
       context: context,
-      applicationName: 'Nepal Civic',
+      applicationName: l10n.appName,
       applicationVersion: '1.0.0',
       applicationLegalese: '© 2026 Nepal Civic Project',
     );
@@ -113,34 +141,94 @@ class _SectionHeader extends StatelessWidget {
   }
 }
 
-class _LanguageSetting extends StatelessWidget {
+class _AppLocaleSetting extends StatelessWidget {
   final String value;
   final ValueChanged<String> onChanged;
-  const _LanguageSetting({required this.value, required this.onChanged});
+  const _AppLocaleSetting({required this.value, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return ListTile(
-      title: const Text('Language'),
+      title: Text(l10n.language),
       subtitle: Text(_getDisplayLanguage(value)),
+      leading: const Icon(Icons.language),
       trailing: const Icon(Icons.chevron_right),
-      onTap: () {
-        // Show language selection dialog
-      },
+      onTap: () => _showLanguageDialog(context, l10n),
     );
   }
 
   String _getDisplayLanguage(String value) {
     switch (value) {
-      case 'both':
-        return 'Both Languages';
-      case 'nepali':
-        return 'नेपाली (Nepali)';
-      case 'english':
+      case 'en':
         return 'English';
+      case 'ne':
+        return 'नेपाली (Nepali)';
+      case 'new':
+        return 'नेपाल भाषा (Newari)';
       default:
-        return 'Both Languages';
+        return 'नेपाली (Nepali)';
     }
+  }
+
+  void _showLanguageDialog(BuildContext context, AppLocalizations l10n) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text(l10n.chooseLanguage),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final locale in AppLocale.values)
+              _LanguageOption(
+                title: locale.displayName,
+                subtitle: locale.nativeName,
+                isSelected: value == locale.code,
+                onTap: () {
+                  onChanged(locale.code);
+                  Navigator.pop(ctx);
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LanguageOption extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const _LanguageOption({
+    required this.title,
+    required this.subtitle,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        Icons.language,
+        color: isSelected ? Theme.of(context).colorScheme.primary : null,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(
+          fontWeight: isSelected ? FontWeight.bold : null,
+          color: isSelected ? Theme.of(context).colorScheme.primary : null,
+        ),
+      ),
+      subtitle: Text(subtitle),
+      trailing: isSelected
+          ? Icon(Icons.check, color: Theme.of(context).colorScheme.primary)
+          : null,
+      onTap: onTap,
+    );
   }
 }
 
@@ -213,23 +301,24 @@ class _ThemeSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return ListTile(
-      title: const Text('Theme'),
-      subtitle: Text(_getDisplayTheme(value)),
+      title: Text(l10n.theme),
+      subtitle: Text(_getDisplayTheme(value, l10n)),
       leading: Icon(_getThemeIcon(value)),
       trailing: const Icon(Icons.chevron_right),
-      onTap: () => _showThemeDialog(context),
+      onTap: () => _showThemeDialog(context, l10n),
     );
   }
 
-  String _getDisplayTheme(String value) {
+  String _getDisplayTheme(String value, AppLocalizations l10n) {
     switch (value) {
       case 'light':
-        return 'Light';
+        return l10n.themeLight;
       case 'dark':
-        return 'Dark';
+        return l10n.themeDark;
       default:
-        return 'System';
+        return l10n.themeSystem;
     }
   }
 
@@ -244,17 +333,17 @@ class _ThemeSetting extends StatelessWidget {
     }
   }
 
-  void _showThemeDialog(BuildContext context) {
+  void _showThemeDialog(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text('Choose Theme'),
+        title: Text(l10n.chooseTheme),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             _ThemeOption(
-              title: 'System',
-              subtitle: 'Follow device settings',
+              title: l10n.themeSystem,
+              subtitle: l10n.themeSystemDesc,
               icon: Icons.brightness_auto,
               isSelected: value == 'system',
               onTap: () {
@@ -263,8 +352,8 @@ class _ThemeSetting extends StatelessWidget {
               },
             ),
             _ThemeOption(
-              title: 'Light',
-              subtitle: 'Always light theme',
+              title: l10n.themeLight,
+              subtitle: l10n.themeLightDesc,
               icon: Icons.light_mode,
               isSelected: value == 'light',
               onTap: () {
@@ -273,8 +362,8 @@ class _ThemeSetting extends StatelessWidget {
               },
             ),
             _ThemeOption(
-              title: 'Dark',
-              subtitle: 'Always dark theme',
+              title: l10n.themeDark,
+              subtitle: l10n.themeDarkDesc,
               icon: Icons.dark_mode,
               isSelected: value == 'dark',
               onTap: () {

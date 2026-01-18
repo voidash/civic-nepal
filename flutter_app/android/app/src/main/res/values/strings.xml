@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Nepal Civic</string>
     <string name="widget_description">Shows today\'s Nepali date (BS) on your home screen</string>
+    <string name="month_widget_description">Shows the full Nepali month calendar with current day highlighted</string>
 </resources>

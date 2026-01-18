@@ -1,18 +1,30 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
-import 'package:gal/gal.dart';
 import 'package:image/image.dart' as img;
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
+
+// Platform-specific implementations for save/share
+import 'image_service_mobile.dart' if (dart.library.html) 'image_service_web.dart'
+    as platform;
+
+/// Picked image result that works cross-platform
+class PickedImage {
+  final Uint8List bytes;
+  final String? path; // Only available on mobile
+  final String name;
+
+  PickedImage({required this.bytes, this.path, required this.name});
+
+  int get size => bytes.length;
+}
 
 /// Service for image picking, manipulation, and sharing
 class ImageService {
   static final ImagePicker _picker = ImagePicker();
 
-  /// Pick an image from gallery
-  static Future<File?> pickFromGallery() async {
+  /// Pick an image from gallery (works on web and mobile)
+  static Future<PickedImage?> pickFromGallery() async {
     try {
       final XFile? pickedFile = await _picker.pickImage(
         source: ImageSource.gallery,
@@ -20,15 +32,26 @@ class ImageService {
         maxHeight: 2000,
       );
       if (pickedFile == null) return null;
-      return File(pickedFile.path);
+
+      final bytes = await pickedFile.readAsBytes();
+      return PickedImage(
+        bytes: bytes,
+        path: kIsWeb ? null : pickedFile.path,
+        name: pickedFile.name,
+      );
     } catch (e) {
       debugPrint('Error picking image from gallery: $e');
       return null;
     }
   }
 
-  /// Pick an image from camera
-  static Future<File?> pickFromCamera() async {
+  /// Pick an image from camera (not available on web)
+  static Future<PickedImage?> pickFromCamera() async {
+    if (kIsWeb) {
+      debugPrint('Camera not available on web');
+      return null;
+    }
+
     try {
       final XFile? pickedFile = await _picker.pickImage(
         source: ImageSource.camera,
@@ -36,7 +59,13 @@ class ImageService {
         maxHeight: 2000,
       );
       if (pickedFile == null) return null;
-      return File(pickedFile.path);
+
+      final bytes = await pickedFile.readAsBytes();
+      return PickedImage(
+        bytes: bytes,
+        path: pickedFile.path,
+        name: pickedFile.name,
+      );
     } catch (e) {
       debugPrint('Error picking image from camera: $e');
       return null;
@@ -44,27 +73,14 @@ class ImageService {
   }
 
   /// Merge two images vertically (top image above bottom image)
-  static Future<File?> mergeImagesVertically(File topImage, File bottomImage) async {
+  /// Works on both web and mobile
+  static Future<Uint8List?> mergeImagesVertically(Uint8List topBytes, Uint8List bottomBytes) async {
     try {
-      // Decode images in isolate to avoid UI blocking
-      final Uint8List topBytes = await topImage.readAsBytes();
-      final Uint8List bottomBytes = await bottomImage.readAsBytes();
-
       final result = await compute(_mergeImagesCompute, {
         'top': topBytes,
         'bottom': bottomBytes,
       });
-
-      if (result == null) return null;
-
-      // Save to temp file
-      final directory = await getTemporaryDirectory();
-      final timestamp = DateTime.now().millisecondsSinceEpoch;
-      final outputPath = '${directory.path}/merged_citizenship_$timestamp.jpg';
-      final outputFile = File(outputPath);
-      await outputFile.writeAsBytes(result);
-
-      return outputFile;
+      return result;
     } catch (e) {
       debugPrint('Error merging images: $e');
       return null;
@@ -106,25 +122,14 @@ class ImageService {
   }
 
   /// Compress an image to target size (default 500KB)
-  static Future<File?> compressImage(File inputFile, {int targetSizeKB = 500}) async {
+  /// Works on both web and mobile
+  static Future<Uint8List?> compressImage(Uint8List inputBytes, {int targetSizeKB = 500}) async {
     try {
-      final Uint8List inputBytes = await inputFile.readAsBytes();
-
       final result = await compute(_compressImageCompute, {
         'bytes': inputBytes,
         'targetSizeKB': targetSizeKB,
       });
-
-      if (result == null) return null;
-
-      // Save to temp file
-      final directory = await getTemporaryDirectory();
-      final timestamp = DateTime.now().millisecondsSinceEpoch;
-      final outputPath = '${directory.path}/compressed_$timestamp.jpg';
-      final outputFile = File(outputPath);
-      await outputFile.writeAsBytes(result);
-
-      return outputFile;
+      return result;
     } catch (e) {
       debugPrint('Error compressing image: $e');
       return null;
@@ -188,37 +193,16 @@ class ImageService {
     return '${(bytes / (1024 * 1024)).toStringAsFixed(2)} MB';
   }
 
-  /// Save file to device gallery (Photos app)
-  static Future<bool> saveToGallery(File file, {String? album}) async {
-    try {
-      // Check if we have permission
-      final hasAccess = await Gal.hasAccess(toAlbum: album != null);
-      if (!hasAccess) {
-        final granted = await Gal.requestAccess(toAlbum: album != null);
-        if (!granted) {
-          debugPrint('Gallery access denied');
-          return false;
-        }
-      }
-
-      // Save to gallery
-      await Gal.putImage(file.path, album: album);
-      return true;
-    } catch (e) {
-      debugPrint('Error saving to gallery: $e');
-      return false;
-    }
+  /// Save bytes to device gallery (mobile only) or trigger download (web)
+  static Future<bool> saveImage(Uint8List bytes, {String? album, String filename = 'image.jpg'}) async {
+    return platform.saveImageToGallery(bytes, album: album, filename: filename);
   }
 
-  /// Share a file
-  static Future<void> shareFile(File file, {String? subject}) async {
-    try {
-      await Share.shareXFiles(
-        [XFile(file.path)],
-        subject: subject,
-      );
-    } catch (e) {
-      debugPrint('Error sharing file: $e');
-    }
+  /// Share image bytes
+  static Future<void> shareImage(Uint8List bytes, {String? subject, String filename = 'image.jpg'}) async {
+    await platform.shareImageFile(bytes, subject: subject, filename: filename);
   }
+
+  /// Check if camera is available
+  static bool get isCameraAvailable => !kIsWeb;
 }

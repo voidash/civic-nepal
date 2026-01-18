@@ -4,10 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/district.dart';
 import '../../models/leader.dart';
 import '../../services/svg_path_parser.dart';
+import '../../widgets/home_title.dart';
 
 part 'district_map_screen.g.dart';
 
@@ -71,6 +73,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
   void _showProvinceFilter(BuildContext context) {
     final provinces = [1, 2, 3, 4, 5, 6, 7];
     final selectedProvince = ref.watch(selectedProvinceProvider);
+    final l10n = AppLocalizations.of(context);
 
     showModalBottomSheet(
       context: context,
@@ -84,7 +87,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Filter by Province',
+                  l10n.filterByProvince,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 if (selectedProvince != null)
@@ -93,13 +96,13 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
                       ref.read(selectedProvinceProvider.notifier).clear();
                       context.pop();
                     },
-                    child: const Text('Clear'),
+                    child: Text(l10n.clear),
                   ),
               ],
             ),
             const Divider(),
             ...provinces.map((province) => RadioListTile<int>(
-                  title: Text('Province $province'),
+                  title: Text(l10n.provinceNumber(province)),
                   value: province,
                   groupValue: selectedProvince,
                   onChanged: (value) {
@@ -118,6 +121,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
     final selectedDistrict = ref.watch(selectedDistrictProvider);
     final districtsAsync = ref.watch(districtsProvider);
     final selectedProvince = ref.watch(selectedProvinceProvider);
+    final l10n = AppLocalizations.of(context);
 
     return PopScope(
       // Intercept back gesture when panel is open
@@ -130,7 +134,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
       },
       child: Scaffold(
       appBar: AppBar(
-        title: const Text('Nepal Districts'),
+        title: HomeTitle(child: Text(l10n.nepalDistricts)),
         actions: [
           if (selectedProvince != null)
             Chip(
@@ -140,12 +144,12 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
             ),
           IconButton(
             icon: const Icon(Icons.filter_list),
-            tooltip: 'Filter by Province',
+            tooltip: l10n.filterByProvince,
             onPressed: () => _showProvinceFilter(context),
           ),
           IconButton(
             icon: const Icon(Icons.zoom_out_map),
-            tooltip: 'Reset Zoom',
+            tooltip: l10n.resetZoom,
             onPressed: () {
               _transformationController.value = Matrix4.identity();
             },
@@ -184,7 +188,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
           ],
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stack) => Center(child: Text('Error: $error')),
+        error: (error, stack) => Center(child: Text('${l10n.error}: $error')),
       ),
     ),
     );
@@ -297,6 +301,18 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
           Expanded(
             child: _DistrictLeadersList(districtName: districtName),
           ),
+          // View All Leaders button
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: OutlinedButton.icon(
+              onPressed: () => context.push('/leaders'),
+              icon: const Icon(Icons.people),
+              label: Text(AppLocalizations.of(context).viewAllLeaders),
+              style: OutlinedButton.styleFrom(
+                minimumSize: const Size(double.infinity, 44),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -387,35 +403,40 @@ class _DistrictDetailsCard extends StatelessWidget {
             // Action buttons
             if (info.wikiUrl != null || info.websiteUrl != null) ...[
               const SizedBox(height: 12),
-              Row(
-                children: [
-                  if (info.wikiUrl != null)
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () => _launchUrl(info.wikiUrl!),
-                        icon: const Icon(Icons.language, size: 16),
-                        label: const Text('Wikipedia'),
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          visualDensity: VisualDensity.compact,
+              Builder(
+                builder: (context) {
+                  final l10n = AppLocalizations.of(context);
+                  return Row(
+                    children: [
+                      if (info.wikiUrl != null)
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: () => _launchUrl(info.wikiUrl!),
+                            icon: const Icon(Icons.language, size: 16),
+                            label: const Text('Wikipedia'),
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              visualDensity: VisualDensity.compact,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  if (info.wikiUrl != null && info.websiteUrl != null)
-                    const SizedBox(width: 8),
-                  if (info.websiteUrl != null)
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () => _launchUrl(info.websiteUrl!),
-                        icon: const Icon(Icons.public, size: 16),
-                        label: const Text('Website'),
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          visualDensity: VisualDensity.compact,
+                      if (info.wikiUrl != null && info.websiteUrl != null)
+                        const SizedBox(width: 8),
+                      if (info.websiteUrl != null)
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: () => _launchUrl(info.websiteUrl!),
+                            icon: const Icon(Icons.public, size: 16),
+                            label: const Text('Website'),
+                            style: OutlinedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              visualDensity: VisualDensity.compact,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                ],
+                    ],
+                  );
+                },
               ),
             ],
           ],
@@ -523,6 +544,7 @@ class _DistrictLeadersList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final leadersAsync = ref.watch(leadersForDistrictProvider(districtName));
+    final l10n = AppLocalizations.of(context);
 
     return leadersAsync.when(
       data: (leaders) {
@@ -534,7 +556,7 @@ class _DistrictLeadersList extends ConsumerWidget {
                 const Icon(Icons.person_off, size: 48, color: Colors.grey),
                 const SizedBox(height: 16),
                 Text(
-                  'No leaders found\nfor $districtName',
+                  l10n.noLeadersDistrict(districtName),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.grey,
@@ -577,7 +599,7 @@ class _DistrictLeadersList extends ConsumerWidget {
           children: [
             const Icon(Icons.error_outline, size: 48, color: Colors.red),
             const SizedBox(height: 16),
-            Text('Error: $error'),
+            Text('${l10n.error}: $error'),
           ],
         ),
       ),

@@ -121,24 +121,28 @@
       "titleNp": "कार्यपालिका",
       "description": "Implements laws and runs the government",
       "descriptionNp": "कानून कार्यान्वयन गर्ने र सरकार चलाउने",
+      "constitutionRef": {"partIndex": 6},
       "hierarchy": [
         {
           "role": "President",
           "roleNp": "राष्ट्रपति",
           "description": "Head of State, ceremonial role",
-          "descriptionNp": "राज्यको प्रमुख, औपचारिक भूमिका"
+          "descriptionNp": "राज्यको प्रमुख, औपचारिक भूमिका",
+          "constitutionRef": {"partIndex": 5, "partTitle": "President and Vice-President", "partTitleNp": "राष्ट्रपति र उपराष्ट्रपति"}
         },
         {
           "role": "Prime Minister",
           "roleNp": "प्रधानमन्त्री",
           "description": "Head of Government, leads Cabinet",
-          "descriptionNp": "सरकारको प्रमुख, मन्त्रिपरिषद्को नेतृत्व"
+          "descriptionNp": "सरकारको प्रमुख, मन्त्रिपरिषद्को नेतृत्व",
+          "constitutionRef": {"partIndex": 6, "partTitle": "Federal Executive", "partTitleNp": "संघीय कार्यपालिका"}
         },
         {
           "role": "Council of Ministers",
           "roleNp": "मन्त्रिपरिषद्",
           "description": "Cabinet of ministers heading ministries",
-          "descriptionNp": "मन्त्रालयहरूको नेतृत्व गर्ने मन्त्रीहरूको परिषद्"
+          "descriptionNp": "मन्त्रालयहरूको नेतृत्व गर्ने मन्त्रीहरूको परिषद्",
+          "constitutionRef": {"partIndex": 6, "partTitle": "Federal Executive", "partTitleNp": "संघीय कार्यपालिका"}
         }
       ]
     },
@@ -147,6 +151,7 @@
       "titleNp": "व्यवस्थापिका",
       "description": "Makes laws through Federal Parliament",
       "descriptionNp": "संघीय संसद मार्फत कानून बनाउने",
+      "constitutionRef": {"partIndex": 7, "partTitle": "Federal Legislature", "partTitleNp": "संघीय व्यवस्थापिका"},
       "houses": [
         {
           "name": "House of Representatives",
@@ -157,7 +162,8 @@
           "term": "5 years",
           "termNp": "५ वर्ष",
           "composition": "165 First-Past-The-Post + 110 Proportional Representation",
-          "compositionNp": "१६५ प्रत्यक्ष + ११० समानुपातिक"
+          "compositionNp": "१६५ प्रत्यक्ष + ११० समानुपातिक",
+          "constitutionRef": {"partIndex": 7, "partTitle": "Federal Legislature", "partTitleNp": "संघीय व्यवस्थापिका"}
         },
         {
           "name": "National Assembly",
@@ -168,7 +174,8 @@
           "term": "6 years (1/3 retire every 2 years)",
           "termNp": "६ वर्ष (प्रत्येक २ वर्षमा १/३ अवकाश)",
           "composition": "56 elected from provinces + 3 nominated by President",
-          "compositionNp": "५६ प्रदेशबाट निर्वाचित + ३ राष्ट्रपतिद्वारा मनोनीत"
+          "compositionNp": "५६ प्रदेशबाट निर्वाचित + ३ राष्ट्रपतिद्वारा मनोनीत",
+          "constitutionRef": {"partIndex": 7, "partTitle": "Federal Legislature", "partTitleNp": "संघीय व्यवस्थापिका"}
         }
       ]
     },
@@ -177,6 +184,7 @@
       "titleNp": "न्यायपालिका",
       "description": "Interprets laws and delivers justice",
       "descriptionNp": "कानूनको व्याख्या गर्ने र न्याय प्रदान गर्ने",
+      "constitutionRef": {"partIndex": 10, "partTitle": "Judiciary", "partTitleNp": "न्यायपालिका"},
       "hierarchy": [
         {
           "court": "Supreme Court",
@@ -184,21 +192,24 @@
           "location": "Kathmandu",
           "locationNp": "काठमाडौं",
           "description": "Highest court, constitutional matters",
-          "descriptionNp": "सर्वोच्च अदालत, संवैधानिक मामिलाहरू"
+          "descriptionNp": "सर्वोच्च अदालत, संवैधानिक मामिलाहरू",
+          "constitutionRef": {"partIndex": 10, "partTitle": "Judiciary", "partTitleNp": "न्यायपालिका"}
         },
         {
           "court": "High Courts",
           "courtNp": "उच्च अदालतहरू",
           "count": 7,
           "description": "One per province, appellate jurisdiction",
-          "descriptionNp": "प्रत्येक प्रदेशमा एक, पुनरावेदन अधिकारक्षेत्र"
+          "descriptionNp": "प्रत्येक प्रदेशमा एक, पुनरावेदन अधिकारक्षेत्र",
+          "constitutionRef": {"partIndex": 10, "partTitle": "Judiciary", "partTitleNp": "न्यायपालिका"}
         },
         {
           "court": "District Courts",
           "courtNp": "जिल्ला अदालतहरू",
           "count": 77,
           "description": "One per district, trial courts",
-          "descriptionNp": "प्रत्येक जिल्लामा एक, प्रारम्भिक अदालतहरू"
+          "descriptionNp": "प्रत्येक जिल्लामा एक, प्रारम्भिक अदालतहरू",
+          "constitutionRef": {"partIndex": 10, "partTitle": "Judiciary", "partTitleNp": "न्यायपालिका"}
         }
       ]
     },
@@ -207,19 +218,22 @@
       "titleNp": "संघीय संरचना",
       "description": "Three tiers of government",
       "descriptionNp": "सरकारको तीन तह",
+      "constitutionRef": {"partIndex": 4, "partTitle": "Structure of State and Distribution of State Power", "partTitleNp": "राज्यको स्वरूप र राज्यशक्तिको बाँडफाँड"},
       "levels": [
         {
           "level": "Federal Government",
           "levelNp": "संघीय सरकार",
           "description": "National level governance from Kathmandu",
-          "descriptionNp": "काठमाडौंबाट राष्ट्रिय स्तरको शासन"
+          "descriptionNp": "काठमाडौंबाट राष्ट्रिय स्तरको शासन",
+          "constitutionRef": {"partIndex": 6, "partTitle": "Federal Executive", "partTitleNp": "संघीय कार्यपालिका"}
         },
         {
           "level": "Provincial Governments",
           "levelNp": "प्रदेश सरकारहरू",
           "count": 7,
           "description": "7 provinces with elected assemblies and governments",
-          "descriptionNp": "७ प्रदेश निर्वाचित सभा र सरकारहरू सहित"
+          "descriptionNp": "७ प्रदेश निर्वाचित सभा र सरकारहरू सहित",
+          "constitutionRef": {"partIndex": 12, "partTitle": "State Executive", "partTitleNp": "प्रदेश कार्यपालिका"}
         },
         {
           "level": "Local Governments",
@@ -228,7 +242,8 @@
           "breakdown": "6 Metropolitan Cities + 11 Sub-metropolitan + 276 Municipalities + 460 Rural Municipalities",
           "breakdownNp": "६ महानगरपालिका + ११ उपमहानगरपालिका + २७६ नगरपालिका + ४६० गाउँपालिका",
           "description": "Closest government to citizens",
-          "descriptionNp": "नागरिकहरूको नजिकको सरकार"
+          "descriptionNp": "नागरिकहरूको नजिकको सरकार",
+          "constitutionRef": {"partIndex": 16, "partTitle": "Local Executive", "partTitleNp": "स्थानीय कार्यपालिका"}
         }
       ]
     }

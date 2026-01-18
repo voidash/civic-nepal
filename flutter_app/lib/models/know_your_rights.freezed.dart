@@ -14,51 +14,60 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-BilingualText _$BilingualTextFromJson(Map<String, dynamic> json) {
-  return _BilingualText.fromJson(json);
+LocalizedText _$LocalizedTextFromJson(Map<String, dynamic> json) {
+  return _LocalizedText.fromJson(json);
 }
 
 /// @nodoc
-mixin _$BilingualText {
+mixin _$LocalizedText {
   String get en => throw _privateConstructorUsedError;
   String get np => throw _privateConstructorUsedError;
+  @JsonKey(name: 'new')
+  String? get newari => throw _privateConstructorUsedError;
+  String? get mai => throw _privateConstructorUsedError;
 
-  /// Serializes this BilingualText to a JSON map.
+  /// Serializes this LocalizedText to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of BilingualText
+  /// Create a copy of LocalizedText
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $BilingualTextCopyWith<BilingualText> get copyWith =>
+  $LocalizedTextCopyWith<LocalizedText> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BilingualTextCopyWith<$Res> {
-  factory $BilingualTextCopyWith(
-          BilingualText value, $Res Function(BilingualText) then) =
-      _$BilingualTextCopyWithImpl<$Res, BilingualText>;
+abstract class $LocalizedTextCopyWith<$Res> {
+  factory $LocalizedTextCopyWith(
+          LocalizedText value, $Res Function(LocalizedText) then) =
+      _$LocalizedTextCopyWithImpl<$Res, LocalizedText>;
   @useResult
-  $Res call({String en, String np});
+  $Res call(
+      {String en,
+      String np,
+      @JsonKey(name: 'new') String? newari,
+      String? mai});
 }
 
 /// @nodoc
-class _$BilingualTextCopyWithImpl<$Res, $Val extends BilingualText>
-    implements $BilingualTextCopyWith<$Res> {
-  _$BilingualTextCopyWithImpl(this._value, this._then);
+class _$LocalizedTextCopyWithImpl<$Res, $Val extends LocalizedText>
+    implements $LocalizedTextCopyWith<$Res> {
+  _$LocalizedTextCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of BilingualText
+  /// Create a copy of LocalizedText
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? en = null,
     Object? np = null,
+    Object? newari = freezed,
+    Object? mai = freezed,
   }) {
     return _then(_value.copyWith(
       en: null == en
@@ -69,38 +78,52 @@ class _$BilingualTextCopyWithImpl<$Res, $Val extends BilingualText>
           ? _value.np
           : np // ignore: cast_nullable_to_non_nullable
               as String,
+      newari: freezed == newari
+          ? _value.newari
+          : newari // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mai: freezed == mai
+          ? _value.mai
+          : mai // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$BilingualTextImplCopyWith<$Res>
-    implements $BilingualTextCopyWith<$Res> {
-  factory _$$BilingualTextImplCopyWith(
-          _$BilingualTextImpl value, $Res Function(_$BilingualTextImpl) then) =
-      __$$BilingualTextImplCopyWithImpl<$Res>;
+abstract class _$$LocalizedTextImplCopyWith<$Res>
+    implements $LocalizedTextCopyWith<$Res> {
+  factory _$$LocalizedTextImplCopyWith(
+          _$LocalizedTextImpl value, $Res Function(_$LocalizedTextImpl) then) =
+      __$$LocalizedTextImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String en, String np});
+  $Res call(
+      {String en,
+      String np,
+      @JsonKey(name: 'new') String? newari,
+      String? mai});
 }
 
 /// @nodoc
-class __$$BilingualTextImplCopyWithImpl<$Res>
-    extends _$BilingualTextCopyWithImpl<$Res, _$BilingualTextImpl>
-    implements _$$BilingualTextImplCopyWith<$Res> {
-  __$$BilingualTextImplCopyWithImpl(
-      _$BilingualTextImpl _value, $Res Function(_$BilingualTextImpl) _then)
+class __$$LocalizedTextImplCopyWithImpl<$Res>
+    extends _$LocalizedTextCopyWithImpl<$Res, _$LocalizedTextImpl>
+    implements _$$LocalizedTextImplCopyWith<$Res> {
+  __$$LocalizedTextImplCopyWithImpl(
+      _$LocalizedTextImpl _value, $Res Function(_$LocalizedTextImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of BilingualText
+  /// Create a copy of LocalizedText
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? en = null,
     Object? np = null,
+    Object? newari = freezed,
+    Object? mai = freezed,
   }) {
-    return _then(_$BilingualTextImpl(
+    return _then(_$LocalizedTextImpl(
       en: null == en
           ? _value.en
           : en // ignore: cast_nullable_to_non_nullable
@@ -109,75 +132,103 @@ class __$$BilingualTextImplCopyWithImpl<$Res>
           ? _value.np
           : np // ignore: cast_nullable_to_non_nullable
               as String,
+      newari: freezed == newari
+          ? _value.newari
+          : newari // ignore: cast_nullable_to_non_nullable
+              as String?,
+      mai: freezed == mai
+          ? _value.mai
+          : mai // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BilingualTextImpl implements _BilingualText {
-  const _$BilingualTextImpl({required this.en, required this.np});
+class _$LocalizedTextImpl extends _LocalizedText {
+  const _$LocalizedTextImpl(
+      {required this.en,
+      required this.np,
+      @JsonKey(name: 'new') this.newari,
+      this.mai})
+      : super._();
 
-  factory _$BilingualTextImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BilingualTextImplFromJson(json);
+  factory _$LocalizedTextImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocalizedTextImplFromJson(json);
 
   @override
   final String en;
   @override
   final String np;
+  @override
+  @JsonKey(name: 'new')
+  final String? newari;
+  @override
+  final String? mai;
 
   @override
   String toString() {
-    return 'BilingualText(en: $en, np: $np)';
+    return 'LocalizedText(en: $en, np: $np, newari: $newari, mai: $mai)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BilingualTextImpl &&
+            other is _$LocalizedTextImpl &&
             (identical(other.en, en) || other.en == en) &&
-            (identical(other.np, np) || other.np == np));
+            (identical(other.np, np) || other.np == np) &&
+            (identical(other.newari, newari) || other.newari == newari) &&
+            (identical(other.mai, mai) || other.mai == mai));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, en, np);
+  int get hashCode => Object.hash(runtimeType, en, np, newari, mai);
 
-  /// Create a copy of BilingualText
+  /// Create a copy of LocalizedText
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$BilingualTextImplCopyWith<_$BilingualTextImpl> get copyWith =>
-      __$$BilingualTextImplCopyWithImpl<_$BilingualTextImpl>(this, _$identity);
+  _$$LocalizedTextImplCopyWith<_$LocalizedTextImpl> get copyWith =>
+      __$$LocalizedTextImplCopyWithImpl<_$LocalizedTextImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BilingualTextImplToJson(
+    return _$$LocalizedTextImplToJson(
       this,
     );
   }
 }
 
-abstract class _BilingualText implements BilingualText {
-  const factory _BilingualText(
+abstract class _LocalizedText extends LocalizedText {
+  const factory _LocalizedText(
       {required final String en,
-      required final String np}) = _$BilingualTextImpl;
+      required final String np,
+      @JsonKey(name: 'new') final String? newari,
+      final String? mai}) = _$LocalizedTextImpl;
+  const _LocalizedText._() : super._();
 
-  factory _BilingualText.fromJson(Map<String, dynamic> json) =
-      _$BilingualTextImpl.fromJson;
+  factory _LocalizedText.fromJson(Map<String, dynamic> json) =
+      _$LocalizedTextImpl.fromJson;
 
   @override
   String get en;
   @override
   String get np;
+  @override
+  @JsonKey(name: 'new')
+  String? get newari;
+  @override
+  String? get mai;
 
-  /// Create a copy of BilingualText
+  /// Create a copy of LocalizedText
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BilingualTextImplCopyWith<_$BilingualTextImpl> get copyWith =>
+  _$$LocalizedTextImplCopyWith<_$LocalizedTextImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -190,7 +241,7 @@ mixin _$ArticleReference {
   int get partIndex => throw _privateConstructorUsedError;
   int get articleIndex => throw _privateConstructorUsedError;
   String get articleNumber => throw _privateConstructorUsedError;
-  BilingualText get articleTitle => throw _privateConstructorUsedError;
+  LocalizedText get articleTitle => throw _privateConstructorUsedError;
 
   /// Serializes this ArticleReference to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -212,9 +263,9 @@ abstract class $ArticleReferenceCopyWith<$Res> {
       {int partIndex,
       int articleIndex,
       String articleNumber,
-      BilingualText articleTitle});
+      LocalizedText articleTitle});
 
-  $BilingualTextCopyWith<$Res> get articleTitle;
+  $LocalizedTextCopyWith<$Res> get articleTitle;
 }
 
 /// @nodoc
@@ -253,7 +304,7 @@ class _$ArticleReferenceCopyWithImpl<$Res, $Val extends ArticleReference>
       articleTitle: null == articleTitle
           ? _value.articleTitle
           : articleTitle // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
     ) as $Val);
   }
 
@@ -261,8 +312,8 @@ class _$ArticleReferenceCopyWithImpl<$Res, $Val extends ArticleReference>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get articleTitle {
-    return $BilingualTextCopyWith<$Res>(_value.articleTitle, (value) {
+  $LocalizedTextCopyWith<$Res> get articleTitle {
+    return $LocalizedTextCopyWith<$Res>(_value.articleTitle, (value) {
       return _then(_value.copyWith(articleTitle: value) as $Val);
     });
   }
@@ -280,10 +331,10 @@ abstract class _$$ArticleReferenceImplCopyWith<$Res>
       {int partIndex,
       int articleIndex,
       String articleNumber,
-      BilingualText articleTitle});
+      LocalizedText articleTitle});
 
   @override
-  $BilingualTextCopyWith<$Res> get articleTitle;
+  $LocalizedTextCopyWith<$Res> get articleTitle;
 }
 
 /// @nodoc
@@ -320,7 +371,7 @@ class __$$ArticleReferenceImplCopyWithImpl<$Res>
       articleTitle: null == articleTitle
           ? _value.articleTitle
           : articleTitle // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
     ));
   }
 }
@@ -344,7 +395,7 @@ class _$ArticleReferenceImpl implements _ArticleReference {
   @override
   final String articleNumber;
   @override
-  final BilingualText articleTitle;
+  final LocalizedText articleTitle;
 
   @override
   String toString() {
@@ -393,7 +444,7 @@ abstract class _ArticleReference implements ArticleReference {
       {required final int partIndex,
       required final int articleIndex,
       required final String articleNumber,
-      required final BilingualText articleTitle}) = _$ArticleReferenceImpl;
+      required final LocalizedText articleTitle}) = _$ArticleReferenceImpl;
 
   factory _ArticleReference.fromJson(Map<String, dynamic> json) =
       _$ArticleReferenceImpl.fromJson;
@@ -405,7 +456,7 @@ abstract class _ArticleReference implements ArticleReference {
   @override
   String get articleNumber;
   @override
-  BilingualText get articleTitle;
+  LocalizedText get articleTitle;
 
   /// Create a copy of ArticleReference
   /// with the given fields replaced by the non-null parameter values.
@@ -421,10 +472,10 @@ RightItem _$RightItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RightItem {
-  BilingualText get situation => throw _privateConstructorUsedError;
-  BilingualText get yourRight => throw _privateConstructorUsedError;
+  LocalizedText get situation => throw _privateConstructorUsedError;
+  LocalizedText get yourRight => throw _privateConstructorUsedError;
   ArticleReference get articleRef => throw _privateConstructorUsedError;
-  BilingualText get tip => throw _privateConstructorUsedError;
+  LocalizedText get tip => throw _privateConstructorUsedError;
 
   /// Serializes this RightItem to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -442,15 +493,15 @@ abstract class $RightItemCopyWith<$Res> {
       _$RightItemCopyWithImpl<$Res, RightItem>;
   @useResult
   $Res call(
-      {BilingualText situation,
-      BilingualText yourRight,
+      {LocalizedText situation,
+      LocalizedText yourRight,
       ArticleReference articleRef,
-      BilingualText tip});
+      LocalizedText tip});
 
-  $BilingualTextCopyWith<$Res> get situation;
-  $BilingualTextCopyWith<$Res> get yourRight;
+  $LocalizedTextCopyWith<$Res> get situation;
+  $LocalizedTextCopyWith<$Res> get yourRight;
   $ArticleReferenceCopyWith<$Res> get articleRef;
-  $BilingualTextCopyWith<$Res> get tip;
+  $LocalizedTextCopyWith<$Res> get tip;
 }
 
 /// @nodoc
@@ -477,11 +528,11 @@ class _$RightItemCopyWithImpl<$Res, $Val extends RightItem>
       situation: null == situation
           ? _value.situation
           : situation // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       yourRight: null == yourRight
           ? _value.yourRight
           : yourRight // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       articleRef: null == articleRef
           ? _value.articleRef
           : articleRef // ignore: cast_nullable_to_non_nullable
@@ -489,7 +540,7 @@ class _$RightItemCopyWithImpl<$Res, $Val extends RightItem>
       tip: null == tip
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
     ) as $Val);
   }
 
@@ -497,8 +548,8 @@ class _$RightItemCopyWithImpl<$Res, $Val extends RightItem>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get situation {
-    return $BilingualTextCopyWith<$Res>(_value.situation, (value) {
+  $LocalizedTextCopyWith<$Res> get situation {
+    return $LocalizedTextCopyWith<$Res>(_value.situation, (value) {
       return _then(_value.copyWith(situation: value) as $Val);
     });
   }
@@ -507,8 +558,8 @@ class _$RightItemCopyWithImpl<$Res, $Val extends RightItem>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get yourRight {
-    return $BilingualTextCopyWith<$Res>(_value.yourRight, (value) {
+  $LocalizedTextCopyWith<$Res> get yourRight {
+    return $LocalizedTextCopyWith<$Res>(_value.yourRight, (value) {
       return _then(_value.copyWith(yourRight: value) as $Val);
     });
   }
@@ -527,8 +578,8 @@ class _$RightItemCopyWithImpl<$Res, $Val extends RightItem>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get tip {
-    return $BilingualTextCopyWith<$Res>(_value.tip, (value) {
+  $LocalizedTextCopyWith<$Res> get tip {
+    return $LocalizedTextCopyWith<$Res>(_value.tip, (value) {
       return _then(_value.copyWith(tip: value) as $Val);
     });
   }
@@ -543,19 +594,19 @@ abstract class _$$RightItemImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {BilingualText situation,
-      BilingualText yourRight,
+      {LocalizedText situation,
+      LocalizedText yourRight,
       ArticleReference articleRef,
-      BilingualText tip});
+      LocalizedText tip});
 
   @override
-  $BilingualTextCopyWith<$Res> get situation;
+  $LocalizedTextCopyWith<$Res> get situation;
   @override
-  $BilingualTextCopyWith<$Res> get yourRight;
+  $LocalizedTextCopyWith<$Res> get yourRight;
   @override
   $ArticleReferenceCopyWith<$Res> get articleRef;
   @override
-  $BilingualTextCopyWith<$Res> get tip;
+  $LocalizedTextCopyWith<$Res> get tip;
 }
 
 /// @nodoc
@@ -580,11 +631,11 @@ class __$$RightItemImplCopyWithImpl<$Res>
       situation: null == situation
           ? _value.situation
           : situation // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       yourRight: null == yourRight
           ? _value.yourRight
           : yourRight // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       articleRef: null == articleRef
           ? _value.articleRef
           : articleRef // ignore: cast_nullable_to_non_nullable
@@ -592,7 +643,7 @@ class __$$RightItemImplCopyWithImpl<$Res>
       tip: null == tip
           ? _value.tip
           : tip // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
     ));
   }
 }
@@ -610,13 +661,13 @@ class _$RightItemImpl implements _RightItem {
       _$$RightItemImplFromJson(json);
 
   @override
-  final BilingualText situation;
+  final LocalizedText situation;
   @override
-  final BilingualText yourRight;
+  final LocalizedText yourRight;
   @override
   final ArticleReference articleRef;
   @override
-  final BilingualText tip;
+  final LocalizedText tip;
 
   @override
   String toString() {
@@ -660,22 +711,22 @@ class _$RightItemImpl implements _RightItem {
 
 abstract class _RightItem implements RightItem {
   const factory _RightItem(
-      {required final BilingualText situation,
-      required final BilingualText yourRight,
+      {required final LocalizedText situation,
+      required final LocalizedText yourRight,
       required final ArticleReference articleRef,
-      required final BilingualText tip}) = _$RightItemImpl;
+      required final LocalizedText tip}) = _$RightItemImpl;
 
   factory _RightItem.fromJson(Map<String, dynamic> json) =
       _$RightItemImpl.fromJson;
 
   @override
-  BilingualText get situation;
+  LocalizedText get situation;
   @override
-  BilingualText get yourRight;
+  LocalizedText get yourRight;
   @override
   ArticleReference get articleRef;
   @override
-  BilingualText get tip;
+  LocalizedText get tip;
 
   /// Create a copy of RightItem
   /// with the given fields replaced by the non-null parameter values.
@@ -693,8 +744,8 @@ RightsCategory _$RightsCategoryFromJson(Map<String, dynamic> json) {
 mixin _$RightsCategory {
   String get id => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
-  BilingualText get title => throw _privateConstructorUsedError;
-  BilingualText get subtitle => throw _privateConstructorUsedError;
+  LocalizedText get title => throw _privateConstructorUsedError;
+  LocalizedText get subtitle => throw _privateConstructorUsedError;
   List<RightItem> get rights => throw _privateConstructorUsedError;
 
   /// Serializes this RightsCategory to a JSON map.
@@ -716,12 +767,12 @@ abstract class $RightsCategoryCopyWith<$Res> {
   $Res call(
       {String id,
       String icon,
-      BilingualText title,
-      BilingualText subtitle,
+      LocalizedText title,
+      LocalizedText subtitle,
       List<RightItem> rights});
 
-  $BilingualTextCopyWith<$Res> get title;
-  $BilingualTextCopyWith<$Res> get subtitle;
+  $LocalizedTextCopyWith<$Res> get title;
+  $LocalizedTextCopyWith<$Res> get subtitle;
 }
 
 /// @nodoc
@@ -757,11 +808,11 @@ class _$RightsCategoryCopyWithImpl<$Res, $Val extends RightsCategory>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       subtitle: null == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       rights: null == rights
           ? _value.rights
           : rights // ignore: cast_nullable_to_non_nullable
@@ -773,8 +824,8 @@ class _$RightsCategoryCopyWithImpl<$Res, $Val extends RightsCategory>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get title {
-    return $BilingualTextCopyWith<$Res>(_value.title, (value) {
+  $LocalizedTextCopyWith<$Res> get title {
+    return $LocalizedTextCopyWith<$Res>(_value.title, (value) {
       return _then(_value.copyWith(title: value) as $Val);
     });
   }
@@ -783,8 +834,8 @@ class _$RightsCategoryCopyWithImpl<$Res, $Val extends RightsCategory>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get subtitle {
-    return $BilingualTextCopyWith<$Res>(_value.subtitle, (value) {
+  $LocalizedTextCopyWith<$Res> get subtitle {
+    return $LocalizedTextCopyWith<$Res>(_value.subtitle, (value) {
       return _then(_value.copyWith(subtitle: value) as $Val);
     });
   }
@@ -801,14 +852,14 @@ abstract class _$$RightsCategoryImplCopyWith<$Res>
   $Res call(
       {String id,
       String icon,
-      BilingualText title,
-      BilingualText subtitle,
+      LocalizedText title,
+      LocalizedText subtitle,
       List<RightItem> rights});
 
   @override
-  $BilingualTextCopyWith<$Res> get title;
+  $LocalizedTextCopyWith<$Res> get title;
   @override
-  $BilingualTextCopyWith<$Res> get subtitle;
+  $LocalizedTextCopyWith<$Res> get subtitle;
 }
 
 /// @nodoc
@@ -842,11 +893,11 @@ class __$$RightsCategoryImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       subtitle: null == subtitle
           ? _value.subtitle
           : subtitle // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       rights: null == rights
           ? _value._rights
           : rights // ignore: cast_nullable_to_non_nullable
@@ -874,9 +925,9 @@ class _$RightsCategoryImpl implements _RightsCategory {
   @override
   final String icon;
   @override
-  final BilingualText title;
+  final LocalizedText title;
   @override
-  final BilingualText subtitle;
+  final LocalizedText subtitle;
   final List<RightItem> _rights;
   @override
   List<RightItem> get rights {
@@ -929,8 +980,8 @@ abstract class _RightsCategory implements RightsCategory {
   const factory _RightsCategory(
       {required final String id,
       required final String icon,
-      required final BilingualText title,
-      required final BilingualText subtitle,
+      required final LocalizedText title,
+      required final LocalizedText subtitle,
       required final List<RightItem> rights}) = _$RightsCategoryImpl;
 
   factory _RightsCategory.fromJson(Map<String, dynamic> json) =
@@ -941,9 +992,9 @@ abstract class _RightsCategory implements RightsCategory {
   @override
   String get icon;
   @override
-  BilingualText get title;
+  LocalizedText get title;
   @override
-  BilingualText get subtitle;
+  LocalizedText get subtitle;
   @override
   List<RightItem> get rights;
 
@@ -961,7 +1012,7 @@ KnowYourRightsData _$KnowYourRightsDataFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$KnowYourRightsData {
-  BilingualText get disclaimer => throw _privateConstructorUsedError;
+  LocalizedText get disclaimer => throw _privateConstructorUsedError;
   List<RightsCategory> get categories => throw _privateConstructorUsedError;
 
   /// Serializes this KnowYourRightsData to a JSON map.
@@ -980,9 +1031,9 @@ abstract class $KnowYourRightsDataCopyWith<$Res> {
           KnowYourRightsData value, $Res Function(KnowYourRightsData) then) =
       _$KnowYourRightsDataCopyWithImpl<$Res, KnowYourRightsData>;
   @useResult
-  $Res call({BilingualText disclaimer, List<RightsCategory> categories});
+  $Res call({LocalizedText disclaimer, List<RightsCategory> categories});
 
-  $BilingualTextCopyWith<$Res> get disclaimer;
+  $LocalizedTextCopyWith<$Res> get disclaimer;
 }
 
 /// @nodoc
@@ -1007,7 +1058,7 @@ class _$KnowYourRightsDataCopyWithImpl<$Res, $Val extends KnowYourRightsData>
       disclaimer: null == disclaimer
           ? _value.disclaimer
           : disclaimer // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -1019,8 +1070,8 @@ class _$KnowYourRightsDataCopyWithImpl<$Res, $Val extends KnowYourRightsData>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $BilingualTextCopyWith<$Res> get disclaimer {
-    return $BilingualTextCopyWith<$Res>(_value.disclaimer, (value) {
+  $LocalizedTextCopyWith<$Res> get disclaimer {
+    return $LocalizedTextCopyWith<$Res>(_value.disclaimer, (value) {
       return _then(_value.copyWith(disclaimer: value) as $Val);
     });
   }
@@ -1034,10 +1085,10 @@ abstract class _$$KnowYourRightsDataImplCopyWith<$Res>
       __$$KnowYourRightsDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BilingualText disclaimer, List<RightsCategory> categories});
+  $Res call({LocalizedText disclaimer, List<RightsCategory> categories});
 
   @override
-  $BilingualTextCopyWith<$Res> get disclaimer;
+  $LocalizedTextCopyWith<$Res> get disclaimer;
 }
 
 /// @nodoc
@@ -1060,7 +1111,7 @@ class __$$KnowYourRightsDataImplCopyWithImpl<$Res>
       disclaimer: null == disclaimer
           ? _value.disclaimer
           : disclaimer // ignore: cast_nullable_to_non_nullable
-              as BilingualText,
+              as LocalizedText,
       categories: null == categories
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
@@ -1081,7 +1132,7 @@ class _$KnowYourRightsDataImpl implements _KnowYourRightsData {
       _$$KnowYourRightsDataImplFromJson(json);
 
   @override
-  final BilingualText disclaimer;
+  final LocalizedText disclaimer;
   final List<RightsCategory> _categories;
   @override
   List<RightsCategory> get categories {
@@ -1130,7 +1181,7 @@ class _$KnowYourRightsDataImpl implements _KnowYourRightsData {
 
 abstract class _KnowYourRightsData implements KnowYourRightsData {
   const factory _KnowYourRightsData(
-          {required final BilingualText disclaimer,
+          {required final LocalizedText disclaimer,
           required final List<RightsCategory> categories}) =
       _$KnowYourRightsDataImpl;
 
@@ -1138,7 +1189,7 @@ abstract class _KnowYourRightsData implements KnowYourRightsData {
       _$KnowYourRightsDataImpl.fromJson;
 
   @override
-  BilingualText get disclaimer;
+  LocalizedText get disclaimer;
   @override
   List<RightsCategory> get categories;
 

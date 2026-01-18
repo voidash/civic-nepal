@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/leader.dart';
 import '../../models/district.dart';
+import '../../widgets/home_title.dart';
 
 /// Leaders screen with filters and list
 class LeadersScreen extends ConsumerStatefulWidget {
@@ -33,16 +35,17 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
 
   void _showSortDialog(BuildContext context, WidgetRef ref) {
     final currentSort = ref.read(leadersSortOptionProvider);
+    final l10n = AppLocalizations.of(context);
 
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sort by'),
+        title: Text(l10n.sortBy),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             _SortOption(
-              label: 'Name',
+              label: l10n.name,
               value: 'name',
               current: currentSort,
               onTap: () {
@@ -51,7 +54,7 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
               },
             ),
             _SortOption(
-              label: 'District',
+              label: l10n.district,
               value: 'district',
               current: currentSort,
               onTap: () {
@@ -71,6 +74,7 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
     final filteredLeaders = ref.watch(filteredLeadersProvider);
     final selectedParty = ref.watch(selectedPartyProvider);
     final selectedDistrict = ref.watch(selectedDistrictProvider);
+    final l10n = AppLocalizations.of(context);
 
     // Apply fuzzy search filter
     final searchFilteredLeaders = _searchQuery.isEmpty
@@ -79,16 +83,16 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Leaders'),
+        title: HomeTitle(child: Text(l10n.leaders)),
         actions: [
           IconButton(
             icon: const Icon(Icons.sort),
-            tooltip: 'Sort',
+            tooltip: l10n.sort,
             onPressed: () => _showSortDialog(context, ref),
           ),
           IconButton(
             icon: const Icon(Icons.filter_list),
-            tooltip: 'Filter',
+            tooltip: l10n.filter,
             onPressed: () => _showFilterDialog(context, ref),
           ),
         ],
@@ -110,7 +114,7 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'Search leaders...',
+                hintText: l10n.searchLeaders,
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _searchQuery.isNotEmpty
                     ? IconButton(
@@ -146,8 +150,8 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
                           _searchQuery.isNotEmpty ||
                                   selectedParty != null ||
                                   selectedDistrict != null
-                              ? 'No leaders match your filters'
-                              : 'No leaders found',
+                              ? l10n.noLeadersMatch
+                              : l10n.noLeadersFound,
                           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                                 color: Colors.grey,
                               ),
@@ -171,11 +175,11 @@ class _LeadersScreenState extends ConsumerState<LeadersScreen> {
                   children: [
                     const Icon(Icons.error_outline, size: 64, color: Colors.red),
                     const SizedBox(height: 16),
-                    Text('Error: $error'),
+                    Text('${l10n.error}: $error'),
                     const SizedBox(height: 16),
                     FilledButton(
                       onPressed: () => ref.invalidate(leadersProvider),
-                      child: const Text('Retry'),
+                      child: Text(l10n.retry),
                     ),
                   ],
                 ),
@@ -244,6 +248,7 @@ class _ActiveFiltersChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       child: Wrap(
@@ -251,14 +256,14 @@ class _ActiveFiltersChips extends StatelessWidget {
         children: [
           if (selectedParty != null)
             Chip(
-              label: Text('Party: $selectedParty'),
+              label: Text('${l10n.party}: $selectedParty'),
               deleteIcon: const Icon(Icons.close, size: 18),
               onDeleted: onClearParty,
               avatar: const Icon(Icons.groups, size: 18),
             ),
           if (selectedDistrict != null)
             Chip(
-              label: Text('District: $selectedDistrict'),
+              label: Text('${l10n.district}: $selectedDistrict'),
               deleteIcon: const Icon(Icons.close, size: 18),
               onDeleted: onClearDistrict,
               avatar: const Icon(Icons.location_on, size: 18),
@@ -305,6 +310,7 @@ class _FilterBottomSheet extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final partiesAsync = ref.watch(partiesProvider);
     final districtsAsync = ref.watch(districtsProvider);
+    final l10n = AppLocalizations.of(context);
 
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
@@ -335,7 +341,7 @@ class _FilterBottomSheet extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Filters',
+                    l10n.filters,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   TextButton(
@@ -344,14 +350,14 @@ class _FilterBottomSheet extends ConsumerWidget {
                       ref.read(selectedDistrictProvider.notifier).clear();
                       context.pop();
                     },
-                    child: const Text('Clear All'),
+                    child: Text(l10n.clearAll),
                   ),
                 ],
               ),
               const Divider(),
 
               // Party filter section
-              const Text('Party', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(l10n.party, style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               Expanded(
                 child: partiesAsync.when(
@@ -366,7 +372,7 @@ class _FilterBottomSheet extends ConsumerWidget {
 
                         return CheckboxListTile(
                           title: Text(party.name),
-                          subtitle: Text('${party.leaderCount} leaders'),
+                          subtitle: Text(l10n.leadersCount(party.leaderCount)),
                           secondary: CircleAvatar(
                             backgroundColor: Color(
                               int.parse(party.color.replaceFirst('#', '0xFF')),
@@ -384,7 +390,7 @@ class _FilterBottomSheet extends ConsumerWidget {
                     );
                   },
                   loading: () => const Center(child: CircularProgressIndicator()),
-                  error: (error, stack) => Text('Error loading parties: $error'),
+                  error: (error, stack) => Text('${l10n.error}: $error'),
                 ),
               ),
 
@@ -398,7 +404,7 @@ class _FilterBottomSheet extends ConsumerWidget {
                     _showDistrictFilter(context, ref);
                   },
                   icon: const Icon(Icons.location_on),
-                  label: const Text('Filter by District'),
+                  label: Text(l10n.filterByDistrict),
                 ),
               ),
             ],
@@ -424,6 +430,7 @@ class _DistrictFilterSheet extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final districtsAsync = ref.watch(districtsProvider);
+    final l10n = AppLocalizations.of(context);
 
     return DraggableScrollableSheet(
       initialChildSize: 0.7,
@@ -454,7 +461,7 @@ class _DistrictFilterSheet extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Select District',
+                    l10n.selectDistrict,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
                   TextButton(
@@ -462,7 +469,7 @@ class _DistrictFilterSheet extends ConsumerWidget {
                       ref.read(selectedDistrictProvider.notifier).clear();
                       context.pop();
                     },
-                    child: const Text('Clear'),
+                    child: Text(l10n.clear),
                   ),
                 ],
               ),
@@ -488,8 +495,8 @@ class _DistrictFilterSheet extends ConsumerWidget {
                         final districtList = provinces[currentProvince]!;
 
                     return ExpansionTile(
-                      title: Text('Province $currentProvince'),
-                      subtitle: Text('${districtList.length} districts'),
+                      title: Text(l10n.provinceNumber(currentProvince)),
+                      subtitle: Text(l10n.districtsCount(districtList.length)),
                       children: districtList.map((entry) {
                         final districtId = entry.key;
                         final info = entry.value;
@@ -513,7 +520,7 @@ class _DistrictFilterSheet extends ConsumerWidget {
                 );
                   },
                   loading: () => const Center(child: CircularProgressIndicator()),
-                  error: (error, stack) => Text('Error loading districts: $error'),
+                  error: (error, stack) => Text('${l10n.error}: $error'),
                 ),
               ),
             ],

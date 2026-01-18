@@ -2,16 +2,21 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../l10n/app_localizations.dart';
+import '../../providers/constitution_provider.dart';
+import '../../widgets/home_title.dart';
 
 /// Screen explaining how Nepal's government works
-class HowNepalWorksScreen extends StatefulWidget {
+class HowNepalWorksScreen extends ConsumerStatefulWidget {
   const HowNepalWorksScreen({super.key});
 
   @override
-  State<HowNepalWorksScreen> createState() => _HowNepalWorksScreenState();
+  ConsumerState<HowNepalWorksScreen> createState() => _HowNepalWorksScreenState();
 }
 
-class _HowNepalWorksScreenState extends State<HowNepalWorksScreen>
+class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   Map<String, dynamic>? _data;
@@ -45,30 +50,44 @@ class _HowNepalWorksScreenState extends State<HowNepalWorksScreen>
     }
   }
 
+  void _navigateToConstitution(int partIndex) {
+    // Select the part in the constitution provider
+    ref.read(selectedArticleProvider.notifier).selectArticle(
+      SelectedArticleRef.part(partIndex: partIndex),
+    );
+    // Navigate to constitution screen
+    context.push('/constitution');
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('How Nepal Works'),
+        title: HomeTitle(child: Text(l10n.howNepalWorks)),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'Structure', icon: Icon(Icons.account_tree, size: 20)),
-            Tab(text: 'Law Making', icon: Icon(Icons.gavel, size: 20)),
-            Tab(text: 'Cabinet', icon: Icon(Icons.groups, size: 20)),
+          labelColor: Theme.of(context).colorScheme.onPrimary,
+          unselectedLabelColor: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.7),
+          indicatorColor: Theme.of(context).colorScheme.onPrimary,
+          tabs: [
+            Tab(text: l10n.structure, icon: const Icon(Icons.account_tree, size: 20)),
+            Tab(text: l10n.lawMaking, icon: const Icon(Icons.gavel, size: 20)),
+            Tab(text: l10n.cabinet, icon: const Icon(Icons.groups, size: 20)),
           ],
         ),
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _data == null
-              ? const Center(child: Text('Failed to load data'))
+              ? Center(child: Text(l10n.failedLoadData))
               : TabBarView(
                   controller: _tabController,
                   children: [
                     _GovernmentStructureTab(
                         data: _data!['governmentStructure']
-                            as Map<String, dynamic>),
+                            as Map<String, dynamic>,
+                        onNavigateToConstitution: _navigateToConstitution),
                     _LegislativeProcessTab(
                         data: _data!['legislativeProcess']
                             as Map<String, dynamic>),
@@ -85,8 +104,12 @@ class _HowNepalWorksScreenState extends State<HowNepalWorksScreen>
 /// Tab showing government structure
 class _GovernmentStructureTab extends StatelessWidget {
   final Map<String, dynamic> data;
+  final void Function(int partIndex) onNavigateToConstitution;
 
-  const _GovernmentStructureTab({required this.data});
+  const _GovernmentStructureTab({
+    required this.data,
+    required this.onNavigateToConstitution,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -121,6 +144,8 @@ class _GovernmentStructureTab extends StatelessWidget {
               role: hierarchy[i]['role'] as String,
               roleNp: hierarchy[i]['roleNp'] as String,
               description: hierarchy[i]['description'] as String,
+              constitutionRef: hierarchy[i]['constitutionRef'] as Map<String, dynamic>?,
+              onTap: onNavigateToConstitution,
             ),
             if (i < hierarchy.length - 1)
               const Icon(Icons.arrow_downward, color: Colors.blue, size: 20),
@@ -133,6 +158,7 @@ class _GovernmentStructureTab extends StatelessWidget {
   Widget _buildLegislativeSection(
       BuildContext context, Map<String, dynamic> leg) {
     final houses = leg['houses'] as List<dynamic>;
+    final l10n = AppLocalizations.of(context);
     return _StructureCard(
       icon: Icons.how_to_vote,
       color: Colors.green,
@@ -141,9 +167,9 @@ class _GovernmentStructureTab extends StatelessWidget {
       description: leg['description'] as String,
       child: Column(
         children: [
-          const Text(
-            'Federal Parliament (Bicameral)',
-            style: TextStyle(fontWeight: FontWeight.w600),
+          Text(
+            l10n.federalParliament,
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           const Text(
             'संघीय संसद (द्विसदनात्मक)',
@@ -161,6 +187,8 @@ class _GovernmentStructureTab extends StatelessWidget {
                     seats: houses[i]['seats'] as int,
                     election: houses[i]['election'] as String,
                     composition: houses[i]['composition'] as String,
+                    constitutionRef: houses[i]['constitutionRef'] as Map<String, dynamic>?,
+                    onTap: onNavigateToConstitution,
                   ),
                 ),
                 if (i < houses.length - 1) const SizedBox(width: 8),
@@ -189,6 +217,8 @@ class _GovernmentStructureTab extends StatelessWidget {
               courtNp: hierarchy[i]['courtNp'] as String,
               description: hierarchy[i]['description'] as String,
               count: hierarchy[i]['count'] as int?,
+              constitutionRef: hierarchy[i]['constitutionRef'] as Map<String, dynamic>?,
+              onTap: onNavigateToConstitution,
             ),
             if (i < hierarchy.length - 1)
               const Icon(Icons.arrow_downward, color: Colors.purple, size: 20),
@@ -216,6 +246,8 @@ class _GovernmentStructureTab extends StatelessWidget {
               description: level['description'] as String,
               count: level['count'] as int?,
               breakdown: level['breakdown'] as String?,
+              constitutionRef: level['constitutionRef'] as Map<String, dynamic>?,
+              onTap: onNavigateToConstitution,
             ),
         ],
       ),
@@ -303,41 +335,64 @@ class _HierarchyItem extends StatelessWidget {
   final String role;
   final String roleNp;
   final String description;
+  final Map<String, dynamic>? constitutionRef;
+  final void Function(int partIndex)? onTap;
 
   const _HierarchyItem({
     required this.role,
     required this.roleNp,
     required this.description,
+    this.constitutionRef,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.blue.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.blue.withValues(alpha: 0.3)),
-      ),
-      child: Column(
-        children: [
-          Text(
-            role,
-            style: const TextStyle(fontWeight: FontWeight.w600),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            roleNp,
-            style: const TextStyle(fontSize: 12),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            description,
-            style: TextStyle(fontSize: 11, color: Colors.grey[600]),
-            textAlign: TextAlign.center,
-          ),
-        ],
+    final hasTap = constitutionRef != null && onTap != null;
+    return InkWell(
+      onTap: hasTap ? () => onTap!(constitutionRef!['partIndex'] as int) : null,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.blue.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.blue.withValues(alpha: 0.3)),
+        ),
+        child: Column(
+          children: [
+            Text(
+              role,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              roleNp,
+              style: const TextStyle(fontSize: 12),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              description,
+              style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+              textAlign: TextAlign.center,
+            ),
+            if (hasTap) ...[
+              const SizedBox(height: 6),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.article_outlined, size: 12, color: Colors.blue[700]),
+                  const SizedBox(width: 4),
+                  Text(
+                    'See in Constitution',
+                    style: TextStyle(fontSize: 10, color: Colors.blue[700]),
+                  ),
+                ],
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }
@@ -349,6 +404,8 @@ class _HouseCard extends StatelessWidget {
   final int seats;
   final String election;
   final String composition;
+  final Map<String, dynamic>? constitutionRef;
+  final void Function(int partIndex)? onTap;
 
   const _HouseCard({
     required this.name,
@@ -356,52 +413,74 @@ class _HouseCard extends StatelessWidget {
     required this.seats,
     required this.election,
     required this.composition,
+    this.constitutionRef,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.green.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.green.withValues(alpha: 0.3)),
-      ),
-      child: Column(
-        children: [
-          Text(
-            name,
-            style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            nameNp,
-            style: const TextStyle(fontSize: 11),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 6),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(12),
+    final l10n = AppLocalizations.of(context);
+    final hasTap = constitutionRef != null && onTap != null;
+    return InkWell(
+      onTap: hasTap ? () => onTap!(constitutionRef!['partIndex'] as int) : null,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.green.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.green.withValues(alpha: 0.3)),
+        ),
+        child: Column(
+          children: [
+            Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
+              textAlign: TextAlign.center,
             ),
-            child: Text(
-              '$seats seats',
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 12,
+            Text(
+              nameNp,
+              style: const TextStyle(fontSize: 11),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 6),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                l10n.seats(seats),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 6),
-          Text(
-            election,
-            style: TextStyle(fontSize: 10, color: Colors.grey[600]),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(height: 6),
+            Text(
+              election,
+              style: TextStyle(fontSize: 10, color: Colors.grey[600]),
+              textAlign: TextAlign.center,
+            ),
+            if (hasTap) ...[
+              const SizedBox(height: 6),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.article_outlined, size: 12, color: Colors.green[700]),
+                  const SizedBox(width: 4),
+                  Text(
+                    'See in Constitution',
+                    style: TextStyle(fontSize: 10, color: Colors.green[700]),
+                  ),
+                ],
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }
@@ -412,65 +491,88 @@ class _CourtItem extends StatelessWidget {
   final String courtNp;
   final String description;
   final int? count;
+  final Map<String, dynamic>? constitutionRef;
+  final void Function(int partIndex)? onTap;
 
   const _CourtItem({
     required this.court,
     required this.courtNp,
     required this.description,
     this.count,
+    this.constitutionRef,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.purple.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.purple.withValues(alpha: 0.3)),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                court,
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-              if (count != null) ...[
-                const SizedBox(width: 8),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                    color: Colors.purple,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    '$count',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 11,
-                      fontWeight: FontWeight.bold,
+    final hasTap = constitutionRef != null && onTap != null;
+    return InkWell(
+      onTap: hasTap ? () => onTap!(constitutionRef!['partIndex'] as int) : null,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.purple.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.purple.withValues(alpha: 0.3)),
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  court,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
+                ),
+                if (count != null) ...[
+                  const SizedBox(width: 8),
+                  Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: Colors.purple,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      '$count',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
+                ],
               ],
+            ),
+            Text(
+              courtNp,
+              style: const TextStyle(fontSize: 12),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              description,
+              style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+              textAlign: TextAlign.center,
+            ),
+            if (hasTap) ...[
+              const SizedBox(height: 6),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.article_outlined, size: 12, color: Colors.purple[700]),
+                  const SizedBox(width: 4),
+                  Text(
+                    'See in Constitution',
+                    style: TextStyle(fontSize: 10, color: Colors.purple[700]),
+                  ),
+                ],
+              ),
             ],
-          ),
-          Text(
-            courtNp,
-            style: const TextStyle(fontSize: 12),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            description,
-            style: TextStyle(fontSize: 11, color: Colors.grey[600]),
-            textAlign: TextAlign.center,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -482,6 +584,8 @@ class _FederalLevelItem extends StatelessWidget {
   final String description;
   final int? count;
   final String? breakdown;
+  final Map<String, dynamic>? constitutionRef;
+  final void Function(int partIndex)? onTap;
 
   const _FederalLevelItem({
     required this.level,
@@ -489,75 +593,95 @@ class _FederalLevelItem extends StatelessWidget {
     required this.description,
     this.count,
     this.breakdown,
+    this.constitutionRef,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.orange.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.orange.withValues(alpha: 0.3)),
-      ),
-      child: Row(
-        children: [
-          if (count != null)
-            Container(
-              width: 40,
-              height: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                '$count',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
+    final hasTap = constitutionRef != null && onTap != null;
+    return InkWell(
+      onTap: hasTap ? () => onTap!(constitutionRef!['partIndex'] as int) : null,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 8),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.orange.withValues(alpha: 0.1),
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(color: Colors.orange.withValues(alpha: 0.3)),
+        ),
+        child: Row(
+          children: [
+            if (count != null)
+              Container(
+                width: 40,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(8),
                 ),
-              ),
-            )
-          else
-            Container(
-              width: 40,
-              height: 40,
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: Colors.orange,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: const Icon(Icons.flag, color: Colors.white, size: 20),
-            ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  level,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  levelNp,
-                  style: const TextStyle(fontSize: 12),
-                ),
-                Text(
-                  description,
-                  style: TextStyle(fontSize: 11, color: Colors.grey[600]),
-                ),
-                if (breakdown != null)
-                  Text(
-                    breakdown!,
-                    style: TextStyle(fontSize: 10, color: Colors.grey[500]),
+                child: Text(
+                  '$count',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
-              ],
+                ),
+              )
+            else
+              Container(
+                width: 40,
+                height: 40,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: const Icon(Icons.flag, color: Colors.white, size: 20),
+              ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    level,
+                    style: const TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  Text(
+                    levelNp,
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  Text(
+                    description,
+                    style: TextStyle(fontSize: 11, color: Colors.grey[600]),
+                  ),
+                  if (breakdown != null)
+                    Text(
+                      breakdown!,
+                      style: TextStyle(fontSize: 10, color: Colors.grey[500]),
+                    ),
+                  if (hasTap) ...[
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Icon(Icons.article_outlined, size: 12, color: Colors.orange[700]),
+                        const SizedBox(width: 4),
+                        Text(
+                          'See in Constitution',
+                          style: TextStyle(fontSize: 10, color: Colors.orange[700]),
+                        ),
+                      ],
+                    ),
+                  ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -574,6 +698,7 @@ class _LegislativeProcessTab extends StatelessWidget {
     final steps = data['steps'] as List<dynamic>;
     final specialBills = data['specialBills'] as List<dynamic>;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context);
 
     return ListView(
       padding: const EdgeInsets.all(16),
@@ -610,7 +735,7 @@ class _LegislativeProcessTab extends StatelessWidget {
 
         // Special bills
         Text(
-          'Special Types of Bills',
+          l10n.specialBills,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
@@ -775,6 +900,7 @@ class _CabinetTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context);
     return Column(
       children: [
         // Last updated banner
@@ -787,12 +913,12 @@ class _CabinetTab extends StatelessWidget {
               const Icon(Icons.update, size: 16),
               const SizedBox(width: 8),
               Text(
-                'Last updated: $lastUpdated',
+                l10n.lastUpdatedDate(lastUpdated),
                 style: TextStyle(fontSize: 12, color: Colors.grey[600]),
               ),
               const Spacer(),
               Text(
-                'Source: opmcm.gov.np',
+                l10n.sourceOpmcm,
                 style: TextStyle(fontSize: 11, color: Colors.grey[500]),
               ),
             ],

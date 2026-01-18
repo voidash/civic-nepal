@@ -1,7 +1,9 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../services/image_service.dart';
+import '../../widgets/home_title.dart';
 
 /// Compression target options
 enum CompressionTarget {
@@ -24,9 +26,8 @@ class ImageCompressorScreen extends StatefulWidget {
 }
 
 class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
-  File? _originalImage;
-  File? _compressedImage;
-  int _originalSize = 0;
+  PickedImage? _originalImage;
+  Uint8List? _compressedImage;
   int _compressedSize = 0;
   bool _isProcessing = false;
   CompressionTarget _selectedTarget = CompressionTarget.kb500;
@@ -35,15 +36,13 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
     final source = await _showImageSourceDialog();
     if (source == null) return;
 
-    final File? picked = source == _ImageSource.camera
+    final PickedImage? picked = source == _ImageSource.camera
         ? await ImageService.pickFromCamera()
         : await ImageService.pickFromGallery();
 
     if (picked != null) {
-      final size = await picked.length();
       setState(() {
         _originalImage = picked;
-        _originalSize = size;
         _compressedImage = null;
         _compressedSize = 0;
       });
@@ -51,6 +50,13 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
   }
 
   Future<_ImageSource?> _showImageSourceDialog() async {
+    final l10n = AppLocalizations.of(context);
+
+    // On web, camera is not available
+    if (!ImageService.isCameraAvailable) {
+      return _ImageSource.gallery;
+    }
+
     return showModalBottomSheet<_ImageSource>(
       context: context,
       builder: (context) => SafeArea(
@@ -59,12 +65,12 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
           children: [
             ListTile(
               leading: const Icon(Icons.photo_library),
-              title: const Text('Gallery'),
+              title: Text(l10n.gallery),
               onTap: () => Navigator.pop(context, _ImageSource.gallery),
             ),
             ListTile(
               leading: const Icon(Icons.camera_alt),
-              title: const Text('Camera'),
+              title: Text(l10n.camera),
               onTap: () => Navigator.pop(context, _ImageSource.camera),
             ),
           ],
@@ -80,15 +86,14 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
 
     try {
       final compressed = await ImageService.compressImage(
-        _originalImage!,
+        _originalImage!.bytes,
         targetSizeKB: _selectedTarget.sizeKB,
       );
 
       if (compressed != null && mounted) {
-        final size = await compressed.length();
         setState(() {
           _compressedImage = compressed;
-          _compressedSize = size;
+          _compressedSize = compressed.length;
         });
       } else if (mounted) {
         _showError('Failed to compress image. Please try again.');
@@ -113,9 +118,10 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
   Future<void> _saveImage() async {
     if (_compressedImage == null) return;
 
-    final success = await ImageService.saveToGallery(
+    final success = await ImageService.saveImage(
       _compressedImage!,
       album: 'Nepal Civic',
+      filename: 'compressed.jpg',
     );
 
     if (mounted) {
@@ -130,9 +136,10 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
 
   Future<void> _shareImage() async {
     if (_compressedImage == null) return;
-    await ImageService.shareFile(
+    await ImageService.shareImage(
       _compressedImage!,
       subject: 'Compressed Image',
+      filename: 'compressed.jpg',
     );
   }
 
@@ -140,32 +147,42 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
     setState(() {
       _originalImage = null;
       _compressedImage = null;
-      _originalSize = 0;
       _compressedSize = 0;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Image Compressor'),
+        title: HomeTitle(child: Text(l10n.imageCompressor)),
         actions: [
           if (_originalImage != null)
             IconButton(
               icon: const Icon(Icons.refresh),
               onPressed: _reset,
-              tooltip: 'Reset',
+              tooltip: l10n.reset,
             ),
         ],
       ),
-      body: _originalImage == null
-          ? _buildEmptyState()
-          : _buildCompressionView(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 600),
+              child: _originalImage == null
+                  ? _buildEmptyState()
+                  : _buildCompressionView(),
+            ),
+          );
+        },
+      ),
     );
   }
 
   Widget _buildEmptyState() {
+    final l10n = AppLocalizations.of(context);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(32),
@@ -186,12 +203,12 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
             ),
             const SizedBox(height: 24),
             Text(
-              'Compress Images',
+              l10n.compressImages,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 8),
             Text(
-              'Reduce image file size while maintaining quality',
+              l10n.compressDesc,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.grey[600]),
             ),
@@ -199,7 +216,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
             FilledButton.icon(
               onPressed: _pickImage,
               icon: const Icon(Icons.add_photo_alternate),
-              label: const Text('Select Image'),
+              label: Text(l10n.selectImage),
               style: FilledButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 32,
@@ -214,6 +231,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
   }
 
   Widget _buildCompressionView() {
+    final l10n = AppLocalizations.of(context);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -226,8 +244,8 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
               children: [
                 AspectRatio(
                   aspectRatio: 1.5,
-                  child: Image.file(
-                    _compressedImage ?? _originalImage!,
+                  child: Image.memory(
+                    _compressedImage ?? _originalImage!.bytes,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -237,8 +255,8 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
                     children: [
                       Expanded(
                         child: _SizeInfo(
-                          label: 'Original',
-                          size: _originalSize,
+                          label: l10n.original,
+                          size: _originalImage!.size,
                           color: Colors.grey,
                         ),
                       ),
@@ -247,7 +265,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: _SizeInfo(
-                            label: 'Compressed',
+                            label: l10n.compressed,
                             size: _compressedSize,
                             color: _compressedSize <= _selectedTarget.sizeKB * 1024
                                 ? Colors.green
@@ -266,7 +284,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
           // Compression savings banner
           if (_compressedImage != null) ...[
             _CompressionSavingsBanner(
-              originalSize: _originalSize,
+              originalSize: _originalImage!.size,
               compressedSize: _compressedSize,
               targetKB: _selectedTarget.sizeKB,
             ),
@@ -281,7 +299,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Target Size',
+                    l10n.targetSize,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(height: 12),
@@ -321,7 +339,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
                       ),
                     )
                   : const Icon(Icons.compress),
-              label: Text(_isProcessing ? 'Compressing...' : 'Compress'),
+              label: Text(_isProcessing ? l10n.compressing : l10n.compress),
               style: FilledButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16),
               ),
@@ -333,7 +351,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
                   child: OutlinedButton.icon(
                     onPressed: _saveImage,
                     icon: const Icon(Icons.save_alt),
-                    label: const Text('Save'),
+                    label: Text(l10n.save),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                     ),
@@ -344,7 +362,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
                   child: FilledButton.icon(
                     onPressed: _shareImage,
                     icon: const Icon(Icons.share),
-                    label: const Text('Share'),
+                    label: Text(l10n.share),
                     style: FilledButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 14),
                     ),
@@ -359,7 +377,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
             OutlinedButton.icon(
               onPressed: _isProcessing ? null : _compressImage,
               icon: const Icon(Icons.refresh),
-              label: const Text('Compress Again'),
+              label: Text(l10n.compressAgain),
             ),
           ],
         ],

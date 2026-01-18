@@ -1,7 +1,9 @@
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../services/image_service.dart';
+import '../../widgets/home_title.dart';
 
 /// Screen for merging front and back citizenship photos into a single image
 class CitizenshipMergerScreen extends StatefulWidget {
@@ -12,16 +14,16 @@ class CitizenshipMergerScreen extends StatefulWidget {
 }
 
 class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
-  File? _frontImage;
-  File? _backImage;
-  File? _mergedImage;
+  PickedImage? _frontImage;
+  PickedImage? _backImage;
+  Uint8List? _mergedImage;
   bool _isProcessing = false;
 
   Future<void> _pickImage(bool isFront) async {
     final source = await _showImageSourceDialog();
     if (source == null) return;
 
-    final File? picked = source == ImageSource.camera
+    final PickedImage? picked = source == ImageSource.camera
         ? await ImageService.pickFromCamera()
         : await ImageService.pickFromGallery();
 
@@ -39,6 +41,13 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
   }
 
   Future<ImageSource?> _showImageSourceDialog() async {
+    final l10n = AppLocalizations.of(context);
+
+    // On web, camera is not available, so just pick from gallery
+    if (!ImageService.isCameraAvailable) {
+      return ImageSource.gallery;
+    }
+
     return showModalBottomSheet<ImageSource>(
       context: context,
       builder: (context) => SafeArea(
@@ -47,12 +56,12 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
           children: [
             ListTile(
               leading: const Icon(Icons.photo_library),
-              title: const Text('Gallery'),
+              title: Text(l10n.gallery),
               onTap: () => Navigator.pop(context, ImageSource.gallery),
             ),
             ListTile(
               leading: const Icon(Icons.camera_alt),
-              title: const Text('Camera'),
+              title: Text(l10n.camera),
               onTap: () => Navigator.pop(context, ImageSource.camera),
             ),
           ],
@@ -68,8 +77,8 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
 
     try {
       final merged = await ImageService.mergeImagesVertically(
-        _frontImage!,
-        _backImage!,
+        _frontImage!.bytes,
+        _backImage!.bytes,
       );
 
       if (merged != null && mounted) {
@@ -97,9 +106,10 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
   Future<void> _saveImage() async {
     if (_mergedImage == null) return;
 
-    final success = await ImageService.saveToGallery(
+    final success = await ImageService.saveImage(
       _mergedImage!,
       album: 'Nepal Civic',
+      filename: 'citizenship_merged.jpg',
     );
 
     if (mounted) {
@@ -114,9 +124,10 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
 
   Future<void> _shareImage() async {
     if (_mergedImage == null) return;
-    await ImageService.shareFile(
+    await ImageService.shareImage(
       _mergedImage!,
       subject: 'Citizenship Photo',
+      filename: 'citizenship_merged.jpg',
     );
   }
 
@@ -130,25 +141,37 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Citizenship Photo Merger'),
+        title: HomeTitle(child: Text(l10n.citizenshipPhotoMerger)),
         actions: [
           if (_frontImage != null || _backImage != null)
             IconButton(
               icon: const Icon(Icons.refresh),
               onPressed: _reset,
-              tooltip: 'Reset',
+              tooltip: l10n.reset,
             ),
         ],
       ),
-      body: _mergedImage != null
-          ? _buildMergedResultView()
-          : _buildImageSelectionView(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final isWide = constraints.maxWidth > 600;
+          return Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 800),
+              child: _mergedImage != null
+                  ? _buildMergedResultView(isWide)
+                  : _buildImageSelectionView(isWide),
+            ),
+          );
+        },
+      ),
     );
   }
 
-  Widget _buildImageSelectionView() {
+  Widget _buildImageSelectionView(bool isWide) {
+    final l10n = AppLocalizations.of(context);
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -162,10 +185,10 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
                 children: [
                   Icon(Icons.info_outline, color: Colors.blue[700], size: 32),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Add front and back photos of your citizenship card to merge them into a single image.',
+                  Text(
+                    l10n.mergerInstructions,
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 14),
                   ),
                 ],
               ),
@@ -173,24 +196,48 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
           ),
           const SizedBox(height: 24),
 
-          // Front image
-          _ImagePickerCard(
-            title: 'Front Side',
-            titleNp: 'अगाडिको भाग',
-            image: _frontImage,
-            onTap: () => _pickImage(true),
-            icon: Icons.credit_card,
-          ),
-          const SizedBox(height: 16),
-
-          // Back image
-          _ImagePickerCard(
-            title: 'Back Side',
-            titleNp: 'पछाडिको भाग',
-            image: _backImage,
-            onTap: () => _pickImage(false),
-            icon: Icons.credit_card_outlined,
-          ),
+          // Image picker cards - side by side on wide screens
+          if (isWide)
+            Row(
+              children: [
+                Expanded(
+                  child: _ImagePickerCard(
+                    title: l10n.frontSide,
+                    titleNp: 'अगाडिको भाग',
+                    imageBytes: _frontImage?.bytes,
+                    onTap: () => _pickImage(true),
+                    icon: Icons.credit_card,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: _ImagePickerCard(
+                    title: l10n.backSide,
+                    titleNp: 'पछाडिको भाग',
+                    imageBytes: _backImage?.bytes,
+                    onTap: () => _pickImage(false),
+                    icon: Icons.credit_card_outlined,
+                  ),
+                ),
+              ],
+            )
+          else ...[
+            _ImagePickerCard(
+              title: l10n.frontSide,
+              titleNp: 'अगाडिको भाग',
+              imageBytes: _frontImage?.bytes,
+              onTap: () => _pickImage(true),
+              icon: Icons.credit_card,
+            ),
+            const SizedBox(height: 16),
+            _ImagePickerCard(
+              title: l10n.backSide,
+              titleNp: 'पछाडिको भाग',
+              imageBytes: _backImage?.bytes,
+              onTap: () => _pickImage(false),
+              icon: Icons.credit_card_outlined,
+            ),
+          ],
           const SizedBox(height: 24),
 
           // Merge button
@@ -208,7 +255,7 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
                     ),
                   )
                 : const Icon(Icons.merge_type),
-            label: Text(_isProcessing ? 'Processing...' : 'Merge Photos'),
+            label: Text(_isProcessing ? l10n.processing : l10n.mergePhotos),
             style: FilledButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
@@ -218,7 +265,8 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
     );
   }
 
-  Widget _buildMergedResultView() {
+  Widget _buildMergedResultView(bool isWide) {
+    final l10n = AppLocalizations.of(context);
     return Column(
       children: [
         // Merged image preview
@@ -228,7 +276,7 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
             maxScale: 4.0,
             child: Padding(
               padding: const EdgeInsets.all(16),
-              child: Image.file(
+              child: Image.memory(
                 _mergedImage!,
                 fit: BoxFit.contain,
               ),
@@ -239,15 +287,9 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
         // File size info
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: FutureBuilder<int>(
-            future: _mergedImage!.length(),
-            builder: (context, snapshot) {
-              final size = snapshot.data ?? 0;
-              return Text(
-                'Size: ${ImageService.getFileSizeString(size)}',
-                style: TextStyle(color: Colors.grey[600]),
-              );
-            },
+          child: Text(
+            l10n.fileSize(ImageService.getFileSizeString(_mergedImage!.length)),
+            style: TextStyle(color: Colors.grey[600]),
           ),
         ),
         const SizedBox(height: 8),
@@ -257,25 +299,34 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: OutlinedButton.icon(
-                    onPressed: _saveImage,
-                    icon: const Icon(Icons.save_alt),
-                    label: const Text('Save'),
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
+                SizedBox(
+                  width: isWide ? 200 : null,
+                  child: Expanded(
+                    flex: isWide ? 0 : 1,
+                    child: OutlinedButton.icon(
+                      onPressed: _saveImage,
+                      icon: const Icon(Icons.save_alt),
+                      label: Text(l10n.save),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(width: 16),
-                Expanded(
-                  child: FilledButton.icon(
-                    onPressed: _shareImage,
-                    icon: const Icon(Icons.share),
-                    label: const Text('Share'),
-                    style: FilledButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
+                SizedBox(
+                  width: isWide ? 200 : null,
+                  child: Expanded(
+                    flex: isWide ? 0 : 1,
+                    child: FilledButton.icon(
+                      onPressed: _shareImage,
+                      icon: const Icon(Icons.share),
+                      label: Text(l10n.share),
+                      style: FilledButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                      ),
                     ),
                   ),
                 ),
@@ -293,14 +344,14 @@ enum ImageSource { gallery, camera }
 class _ImagePickerCard extends StatelessWidget {
   final String title;
   final String titleNp;
-  final File? image;
+  final Uint8List? imageBytes;
   final VoidCallback onTap;
   final IconData icon;
 
   const _ImagePickerCard({
     required this.title,
     required this.titleNp,
-    required this.image,
+    required this.imageBytes,
     required this.onTap,
     required this.icon,
   });
@@ -311,13 +362,13 @@ class _ImagePickerCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        child: image != null
+        child: imageBytes != null
             ? Stack(
                 children: [
                   AspectRatio(
                     aspectRatio: 1.6,
-                    child: Image.file(
-                      image!,
+                    child: Image.memory(
+                      imageBytes!,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -360,43 +411,48 @@ class _ImagePickerCard extends StatelessWidget {
                   ),
                 ],
               )
-            : Container(
-                padding: const EdgeInsets.symmetric(vertical: 40),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primaryContainer,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Icon(
-                        icon,
-                        size: 32,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Text(
-                      'Add $title',
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    Text(
-                      titleNp,
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[600],
+            : Builder(
+                builder: (context) {
+                  final l10n = AppLocalizations.of(context);
+                  return Container(
+                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primaryContainer,
+                            shape: BoxShape.circle,
                           ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Tap to select',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            color: Colors.grey[500],
+                          child: Icon(
+                            icon,
+                            size: 32,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          l10n.addTitle(title),
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        Text(
+                          titleNp,
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: Colors.grey[600],
+                              ),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          l10n.tapToSelect,
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: Colors.grey[500],
+                              ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  );
+                },
               ),
       ),
     );

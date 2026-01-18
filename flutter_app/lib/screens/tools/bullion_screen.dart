@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../../l10n/app_localizations.dart';
+import '../../widgets/home_title.dart';
 
 class BullionScreen extends StatefulWidget {
   const BullionScreen({super.key});
@@ -69,9 +71,10 @@ class _BullionScreenState extends State<BullionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gold & Silver'),
+        title: HomeTitle(child: Text(l10n.goldSilver)),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -84,6 +87,7 @@ class _BullionScreenState extends State<BullionScreen> {
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context);
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -99,7 +103,7 @@ class _BullionScreenState extends State<BullionScreen> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _fetchData,
-              child: const Text('Retry'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -107,7 +111,7 @@ class _BullionScreenState extends State<BullionScreen> {
     }
 
     if (_data == null || _data!.isEmpty) {
-      return const Center(child: Text('No data available'));
+      return Center(child: Text(l10n.noData));
     }
 
     final today = _data!.first;
@@ -124,30 +128,43 @@ class _BullionScreenState extends State<BullionScreen> {
             // Source info
             if (_source != null)
               Text(
-                'Source: $_source',
+                l10n.source(_source!),
                 style: TextStyle(fontSize: 12, color: Colors.grey[500]),
               ),
             const SizedBox(height: 16),
 
             // Today's prices
             Text(
-              'Today (${today.bsDate})',
+              '${l10n.today} (${today.bsDate})',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 12),
 
-            // Gold card
+            // Gold Hallmark card
             _buildPriceCard(
               context,
               icon: Icons.circle,
               iconColor: const Color(0xFFFFD700),
-              title: 'Gold (Hallmark)',
+              title: l10n.goldHallmark,
               titleNp: 'सुन (हलमार्क)',
-              price: today.goldHallmark,
-              previousPrice: yesterday?.goldHallmark,
-              unit: 'per tola',
+              price: today.goldHallmarkTola,
+              previousPrice: yesterday?.goldHallmarkTola,
+              unit: l10n.perTola,
+            ),
+            const SizedBox(height: 12),
+
+            // Gold Tejabi card
+            _buildPriceCard(
+              context,
+              icon: Icons.circle,
+              iconColor: const Color(0xFFDAA520),
+              title: l10n.goldTejabi,
+              titleNp: 'सुन (तेजाबी)',
+              price: today.goldTejabiTola,
+              previousPrice: yesterday?.goldTejabiTola,
+              unit: l10n.perTola,
             ),
             const SizedBox(height: 12),
 
@@ -156,18 +173,18 @@ class _BullionScreenState extends State<BullionScreen> {
               context,
               icon: Icons.circle,
               iconColor: const Color(0xFFC0C0C0),
-              title: 'Silver',
+              title: l10n.silver,
               titleNp: 'चाँदी',
-              price: today.silver,
-              previousPrice: yesterday?.silver,
-              unit: 'per tola',
+              price: today.silverTola,
+              previousPrice: yesterday?.silverTola,
+              unit: l10n.perTola,
             ),
 
             const SizedBox(height: 24),
 
             // Weekly history
             Text(
-              'This Week',
+              l10n.thisWeek,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -183,18 +200,28 @@ class _BullionScreenState extends State<BullionScreen> {
                     // Header
                     Row(
                       children: [
-                        const Expanded(flex: 2, child: Text('Date', style: TextStyle(fontWeight: FontWeight.bold))),
+                        Expanded(flex: 3, child: Text(l10n.date, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13))),
                         Expanded(
+                          flex: 2,
                           child: Text(
-                            'Gold',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amber[700]),
+                            l10n.hallmark,
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amber[700], fontSize: 13),
                             textAlign: TextAlign.right,
                           ),
                         ),
-                        const Expanded(
+                        Expanded(
+                          flex: 2,
                           child: Text(
-                            'Silver',
-                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+                            l10n.tejabi,
+                            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.amber[800], fontSize: 13),
+                            textAlign: TextAlign.right,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            l10n.silver,
+                            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 13),
                             textAlign: TextAlign.right,
                           ),
                         ),
@@ -207,25 +234,38 @@ class _BullionScreenState extends State<BullionScreen> {
                           child: Row(
                             children: [
                               Expanded(
-                                flex: 2,
+                                flex: 3,
                                 child: Text(
                                   day.bsDate,
                                   style: TextStyle(
+                                    fontSize: 12,
                                     color: day == today ? Theme.of(context).colorScheme.primary : null,
                                     fontWeight: day == today ? FontWeight.w600 : null,
                                   ),
                                 ),
                               ),
                               Expanded(
+                                flex: 2,
                                 child: Text(
-                                  _formatPrice(day.goldHallmark),
+                                  _formatPrice(day.goldHallmarkTola),
                                   textAlign: TextAlign.right,
+                                  style: const TextStyle(fontSize: 12),
                                 ),
                               ),
                               Expanded(
+                                flex: 2,
                                 child: Text(
-                                  _formatPrice(day.silver),
+                                  _formatPrice(day.goldTejabiTola),
                                   textAlign: TextAlign.right,
+                                  style: const TextStyle(fontSize: 12),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Text(
+                                  _formatPrice(day.silverTola),
+                                  textAlign: TextAlign.right,
+                                  style: const TextStyle(fontSize: 12),
                                 ),
                               ),
                             ],
@@ -344,25 +384,38 @@ class _BullionScreenState extends State<BullionScreen> {
 class BullionDay {
   final String date;
   final String bsDate;
-  final double goldHallmark;
-  final double goldTejabi;
-  final double silver;
+  // Per tola prices
+  final double goldHallmarkTola;
+  final double goldTejabiTola;
+  final double silverTola;
+  // Per 10gm prices
+  final double goldHallmark10g;
+  final double goldTejabi10g;
+  final double silver10g;
 
   BullionDay({
     required this.date,
     required this.bsDate,
-    required this.goldHallmark,
-    required this.goldTejabi,
-    required this.silver,
+    required this.goldHallmarkTola,
+    required this.goldTejabiTola,
+    required this.silverTola,
+    required this.goldHallmark10g,
+    required this.goldTejabi10g,
+    required this.silver10g,
   });
 
   factory BullionDay.fromJson(String date, Map<String, dynamic> json) {
     return BullionDay(
       date: date,
       bsDate: json['bs'] as String? ?? date,
-      goldHallmark: (json['g_ha'] as num?)?.toDouble() ?? 0,
-      goldTejabi: (json['g_te'] as num?)?.toDouble() ?? 0,
-      silver: (json['t_ha'] as num?)?.toDouble() ?? 0, // t_ha appears to be silver
+      // t_* = per tola prices
+      goldHallmarkTola: (json['t_ha'] as num?)?.toDouble() ?? 0,
+      goldTejabiTola: (json['t_te'] as num?)?.toDouble() ?? 0,
+      silverTola: (json['t_s'] as num?)?.toDouble() ?? 0,
+      // g_* = per 10gm prices
+      goldHallmark10g: (json['g_ha'] as num?)?.toDouble() ?? 0,
+      goldTejabi10g: (json['g_te'] as num?)?.toDouble() ?? 0,
+      silver10g: (json['g_s'] as num?)?.toDouble() ?? 0,
     );
   }
 }

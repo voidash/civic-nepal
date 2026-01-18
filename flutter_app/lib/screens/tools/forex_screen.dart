@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../../l10n/app_localizations.dart';
+import '../../widgets/home_title.dart';
 
 class ForexScreen extends StatefulWidget {
   const ForexScreen({super.key});
@@ -60,9 +62,10 @@ class _ForexScreenState extends State<ForexScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Forex Rates'),
+        title: HomeTitle(child: Text(l10n.forexRates)),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -75,6 +78,7 @@ class _ForexScreenState extends State<ForexScreen> {
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context);
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -90,7 +94,7 @@ class _ForexScreenState extends State<ForexScreen> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _fetchRates,
-              child: const Text('Retry'),
+              child: Text(l10n.retry),
             ),
           ],
         ),
@@ -98,7 +102,7 @@ class _ForexScreenState extends State<ForexScreen> {
     }
 
     if (_rates == null || _rates!.isEmpty) {
-      return const Center(child: Text('No data available'));
+      return Center(child: Text(l10n.noData));
     }
 
     return Column(
@@ -111,7 +115,7 @@ class _ForexScreenState extends State<ForexScreen> {
           child: Column(
             children: [
               Text(
-                'Nepal Rastra Bank Rates',
+                l10n.nrbRates,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -128,12 +132,12 @@ class _ForexScreenState extends State<ForexScreen> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           color: Colors.grey[100],
-          child: const Row(
+          child: Row(
             children: [
-              SizedBox(width: 40),
-              Expanded(flex: 2, child: Text('Currency', style: TextStyle(fontWeight: FontWeight.bold))),
-              Expanded(child: Text('Buy', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.right)),
-              Expanded(child: Text('Sell', style: TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.right)),
+              const SizedBox(width: 40),
+              Expanded(flex: 2, child: Text(l10n.currency, style: const TextStyle(fontWeight: FontWeight.bold))),
+              Expanded(child: Text(l10n.buy, style: const TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.right)),
+              Expanded(child: Text(l10n.sell, style: const TextStyle(fontWeight: FontWeight.bold), textAlign: TextAlign.right)),
             ],
           ),
         ),

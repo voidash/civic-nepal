@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="8dp"
+    android:padding="12dp"
     android:background="@drawable/widget_background">
 
     <!-- Day number (large) -->
@@ -15,9 +15,13 @@
         android:layout_height="wrap_content"
         android:text="15"
         android:textSize="48sp"
-        android:textColor="#DC143C"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-medium" />
+        android:fontFamily="sans-serif-medium"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2" />
 
     <!-- Month and Year -->
     <TextView
@@ -26,8 +30,12 @@
         android:layout_height="wrap_content"
         android:text="पुष २०८२"
         android:textSize="16sp"
-        android:textColor="#333333"
-        android:textStyle="bold" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:shadowColor="#000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2" />
 
     <!-- Weekday -->
     <TextView
@@ -36,7 +44,7 @@
         android:layout_height="wrap_content"
         android:text="शनिबार"
         android:textSize="12sp"
-        android:textColor="#666666"
+        android:textColor="#CCCCCC"
         android:layout_marginTop="2dp" />
 
     <!-- English date (small) -->
@@ -46,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="Jan 18, 2026"
         android:textSize="11sp"
-        android:textColor="#999999"
+        android:textColor="#AAAAAA"
         android:layout_marginTop="4dp" />
 
 </LinearLayout>

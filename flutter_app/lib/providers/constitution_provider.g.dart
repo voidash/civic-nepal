@@ -136,7 +136,7 @@ final searchQueryProvider =
 typedef _$SearchQuery = AutoDisposeNotifier<String>;
 String _$selectedArticleHash() => r'c9f4a06fbe6a06af2501bc76c27ce99831847a42';
 
-/// Currently selected article (defaults to null to show Know Your Rights)
+/// Currently selected article (defaults to null = Know Your Rights)
 ///
 /// Copied from [SelectedArticle].
 @ProviderFor(SelectedArticle)

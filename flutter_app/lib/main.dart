@@ -1,10 +1,69 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'app.dart';
 import 'providers/settings_provider.dart';
+import 'services/notification_service.dart';
+import 'services/background_service.dart';
+import 'l10n/app_localizations.dart';
 
-void main() {
+/// Custom delegate that provides fallback for unsupported locales
+/// Newari ('new') falls back to Nepali ('ne') for Material components
+class _FallbackMaterialLocalizationsDelegate extends LocalizationsDelegate<MaterialLocalizations> {
+  const _FallbackMaterialLocalizationsDelegate();
+
+  // Supported locales by GlobalMaterialLocalizations (subset relevant to us)
+  static const _supportedLocales = {'en', 'ne'};
+
+  @override
+  bool isSupported(Locale locale) => true; // We handle all locales with fallback
+
+  @override
+  Future<MaterialLocalizations> load(Locale locale) {
+    // Use the locale if supported, otherwise fall back to Nepali
+    final effectiveLocale = _supportedLocales.contains(locale.languageCode)
+        ? locale
+        : const Locale('ne');
+    return GlobalMaterialLocalizations.delegate.load(effectiveLocale);
+  }
+
+  @override
+  bool shouldReload(_FallbackMaterialLocalizationsDelegate old) => false;
+}
+
+/// Custom delegate for Cupertino localizations with fallback
+class _FallbackCupertinoLocalizationsDelegate extends LocalizationsDelegate<CupertinoLocalizations> {
+  const _FallbackCupertinoLocalizationsDelegate();
+
+  static const _supportedLocales = {'en', 'ne'};
+
+  @override
+  bool isSupported(Locale locale) => true;
+
+  @override
+  Future<CupertinoLocalizations> load(Locale locale) {
+    final effectiveLocale = _supportedLocales.contains(locale.languageCode)
+        ? locale
+        : const Locale('ne');
+    return GlobalCupertinoLocalizations.delegate.load(effectiveLocale);
+  }
+
+  @override
+  bool shouldReload(_FallbackCupertinoLocalizationsDelegate old) => false;
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize platform-specific services (not available on web)
+  if (!kIsWeb) {
+    await NotificationService.initialize();
+    await BackgroundService.initialize();
+    await BackgroundService.registerIpoCheckTask();
+  }
+
   runApp(
     const ProviderScope(
       child: NepalCivicApp(),
@@ -29,33 +88,36 @@ class NepalCivicApp extends ConsumerWidget {
           ),
         ),
       ),
-      error: (_, __) => _buildApp(ref, ThemeMode.system),
+      error: (_, __) => _buildApp(ref, ThemeMode.system, 'ne'),
       data: (settings) {
         final themeMode = switch (settings.themeMode) {
           'light' => ThemeMode.light,
           'dark' => ThemeMode.dark,
           _ => ThemeMode.system,
         };
-        return _buildApp(ref, themeMode);
+        return _buildApp(ref, themeMode, settings.appLocale);
       },
     );
   }
 
-  Widget _buildApp(WidgetRef ref, ThemeMode themeMode) {
+  Widget _buildApp(WidgetRef ref, ThemeMode themeMode, String localeCode) {
+    final appLocale = AppLocale.fromCode(localeCode);
+
     return MaterialApp.router(
       title: 'Nepal Civic',
       debugShowCheckedModeBanner: false,
       theme: _buildLightTheme(),
       darkTheme: _buildDarkTheme(),
       themeMode: themeMode,
+      locale: appLocale.locale,
       localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
+        AppLocalizations.delegate,
+        _FallbackMaterialLocalizationsDelegate(),
         GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+        _FallbackCupertinoLocalizationsDelegate(),
       ],
-      supportedLocales: const [
-        Locale('ne'), // Nepali
-        Locale('en'), // English
+      supportedLocales: [
+        for (final locale in AppLocale.values) locale.locale,
       ],
       routerConfig: ref.watch(routerProvider),
     );

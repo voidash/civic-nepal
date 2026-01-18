@@ -4,84 +4,78 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../l10n/app_localizations.dart';
 import '../../services/nepali_date_service.dart';
+import '../../widgets/home_title.dart';
+import '../tools/nepali_calendar_screen.dart';
+import '../tools/ipo_shares_screen.dart';
 import '../constitution/constitution_screen.dart';
-import '../government/how_nepal_works_screen.dart';
-import '../map/district_map_screen.dart' show DistrictMapScreen, selectedDistrictProvider;
-import '../../providers/constitution_provider.dart' show selectedArticleProvider;
 
 part 'home_screen.g.dart';
 
-/// Home screen with 4-tab bottom navigation: Home | Rights | Government | Map
+/// Home screen with 4-tab bottom navigation: Calendar | Home | IPO | Rights
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentIndex = ref.watch(_currentTabProvider);
-    // Watch map's selected district to handle back gesture correctly
-    final selectedDistrict = ref.watch(selectedDistrictProvider);
-    // Watch constitution's selected article for Rights tab
-    final selectedArticle = ref.watch(selectedArticleProvider);
-    // Check if on map tab with panel open
-    final mapPanelOpen = currentIndex == 3 && selectedDistrict != null;
-    // Check if on Rights tab with article selected (not on Know Your Rights)
-    final articleSelected = currentIndex == 1 && selectedArticle != null;
+    final tabHistory = ref.watch(_tabHistoryProvider);
+    final currentIndex = tabHistory.last;
 
-    return PopScope(
-      // Only allow pop (exit) when on Home tab
-      canPop: currentIndex == 0,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop) {
-          if (articleSelected) {
-            // Return to Know Your Rights page
-            ref.read(selectedArticleProvider.notifier).clear();
-          } else if (mapPanelOpen) {
-            // Close map panel first
-            ref.read(selectedDistrictProvider.notifier).clear();
-          } else if (currentIndex != 0) {
-            // Go back to Home tab instead of exiting
-            ref.read(_currentTabProvider.notifier).setIndex(0);
+    return HomeTabSwitcher(
+      onSwitchToHome: () => ref.read(_tabHistoryProvider.notifier).goHome(),
+      child: PopScope(
+        // Only allow pop (exit) when tab history has only one item
+        canPop: tabHistory.length <= 1,
+        onPopInvokedWithResult: (didPop, result) {
+          if (!didPop) {
+            // Go back to previous tab
+            ref.read(_tabHistoryProvider.notifier).popTab();
           }
-        }
-      },
-      child: Scaffold(
-        body: IndexedStack(
-          index: currentIndex,
-          children: const [
-            _HomeTab(),
-            ConstitutionTab(),
-            HowNepalWorksScreen(),
-            MapTab(),
-          ],
-        ),
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: currentIndex,
-          onDestinationSelected: (index) {
-            ref.read(_currentTabProvider.notifier).setIndex(index);
+        },
+        child: Scaffold(
+          body: IndexedStack(
+            index: currentIndex,
+            children: const [
+              NepaliCalendarScreen(),
+              _HomeTab(),
+              IpoSharesScreen(),
+              ConstitutionScreen(),
+            ],
+          ),
+          bottomNavigationBar: Builder(
+          builder: (context) {
+            final l10n = AppLocalizations.of(context);
+            return NavigationBar(
+              selectedIndex: currentIndex,
+              onDestinationSelected: (index) {
+                ref.read(_tabHistoryProvider.notifier).pushTab(index);
+              },
+              destinations: [
+                NavigationDestination(
+                  icon: const Icon(Icons.calendar_month_outlined),
+                  selectedIcon: const Icon(Icons.calendar_month),
+                  label: l10n.navCalendar,
+                ),
+                NavigationDestination(
+                  icon: const Icon(Icons.home_outlined),
+                  selectedIcon: const Icon(Icons.home),
+                  label: l10n.navHome,
+                ),
+                NavigationDestination(
+                  icon: const Icon(Icons.show_chart_outlined),
+                  selectedIcon: const Icon(Icons.show_chart),
+                  label: l10n.navIpo,
+                ),
+                NavigationDestination(
+                  icon: const Icon(Icons.gavel_outlined),
+                  selectedIcon: const Icon(Icons.gavel),
+                  label: l10n.navRights,
+                ),
+              ],
+            );
           },
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.gavel_outlined),
-              selectedIcon: Icon(Icons.gavel),
-              label: 'Rights',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.account_balance_outlined),
-              selectedIcon: Icon(Icons.account_balance),
-              label: 'Govt',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.map_outlined),
-              selectedIcon: Icon(Icons.map),
-              label: 'Map',
-            ),
-          ],
+        ),
         ),
       ),
     );
@@ -134,13 +128,15 @@ class _HomeTabState extends State<_HomeTab> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Nepal Civic'),
-            Text(
+            Text(l10n.appName),
+            const Text(
               'नेपाल नागरिक',
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
             ),
@@ -150,7 +146,7 @@ class _HomeTabState extends State<_HomeTab> {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () => context.push('/settings'),
-            tooltip: 'Settings',
+            tooltip: l10n.settings,
           ),
         ],
       ),
@@ -169,13 +165,13 @@ class _HomeTabState extends State<_HomeTab> {
               const SizedBox(height: 20),
 
               // Quick access grid
-              const _SectionHeader(title: 'Explore', titleNp: 'अन्वेषण'),
+              _SectionHeader(title: l10n.explore, titleNp: 'अन्वेषण'),
               const SizedBox(height: 12),
-              const _QuickAccessGrid(),
+              _QuickAccessGrid(l10n: l10n),
               const SizedBox(height: 24),
 
               // Utilities section
-              const _SectionHeader(title: 'Utilities', titleNp: 'उपकरणहरू'),
+              _SectionHeader(title: l10n.utilities, titleNp: 'उपकरणहरू'),
               const SizedBox(height: 12),
               // First row
               Row(
@@ -183,7 +179,7 @@ class _HomeTabState extends State<_HomeTab> {
                   Expanded(
                     child: _UtilityGridCard(
                       icon: Icons.badge,
-                      title: 'Citizenship Merger',
+                      title: l10n.citizenshipMerger,
                       titleNp: 'नागरिकता मर्जर',
                       color: const Color(0xFF7B1FA2),
                       onTap: () => context.push('/tools/citizenship-merger'),
@@ -193,7 +189,7 @@ class _HomeTabState extends State<_HomeTab> {
                   Expanded(
                     child: _UtilityGridCard(
                       icon: Icons.compress,
-                      title: 'Image < 300KB',
+                      title: l10n.imageCompressor,
                       titleNp: 'फोटो कम्प्रेस',
                       color: const Color(0xFF1976D2),
                       onTap: () => context.push('/tools/image-compressor'),
@@ -208,7 +204,7 @@ class _HomeTabState extends State<_HomeTab> {
                   Expanded(
                     child: _UtilityGridCard(
                       icon: Icons.calendar_month,
-                      title: 'Calendar',
+                      title: l10n.calendar,
                       titleNp: 'पात्रो',
                       color: const Color(0xFFC62828),
                       onTap: () => context.push('/tools/nepali-calendar'),
@@ -218,7 +214,7 @@ class _HomeTabState extends State<_HomeTab> {
                   Expanded(
                     child: _UtilityGridCard(
                       icon: Icons.swap_horiz,
-                      title: 'Date Convert',
+                      title: l10n.dateConvert,
                       titleNp: 'मिति परिवर्तक',
                       color: const Color(0xFFE65100),
                       onTap: () => context.push('/tools/date-converter'),
@@ -233,7 +229,7 @@ class _HomeTabState extends State<_HomeTab> {
                   Expanded(
                     child: _UtilityGridCard(
                       icon: Icons.currency_exchange,
-                      title: 'Forex',
+                      title: l10n.forex,
                       titleNp: 'विदेशी मुद्रा',
                       color: const Color(0xFF2E7D32),
                       onTap: () => context.push('/tools/forex'),
@@ -243,29 +239,12 @@ class _HomeTabState extends State<_HomeTab> {
                   Expanded(
                     child: _UtilityGridCard(
                       icon: Icons.diamond,
-                      title: 'Gold/Silver',
+                      title: l10n.goldSilver,
                       titleNp: 'सुन/चाँदी',
                       color: const Color(0xFFFFB300),
                       onTap: () => context.push('/tools/bullion'),
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 12),
-              // Fourth row - Gov Services
-              Row(
-                children: [
-                  Expanded(
-                    child: _UtilityGridCard(
-                      icon: Icons.account_balance,
-                      title: 'Gov Services',
-                      titleNp: 'सरकारी सेवा',
-                      color: const Color(0xFF00695C),
-                      onTap: () => context.push('/tools/gov-services'),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  const Expanded(child: SizedBox()), // Empty slot
                 ],
               ),
               const SizedBox(height: 24),
@@ -412,43 +391,44 @@ class _SectionHeader extends StatelessWidget {
   }
 }
 
-class _QuickAccessGrid extends ConsumerWidget {
-  const _QuickAccessGrid();
+class _QuickAccessGrid extends StatelessWidget {
+  const _QuickAccessGrid({required this.l10n});
+
+  final AppLocalizations l10n;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final primaryColor = Theme.of(context).colorScheme.primary;
+  Widget build(BuildContext context) {
     final secondaryColor = Theme.of(context).colorScheme.secondary;
 
     return Row(
       children: [
         Expanded(
           child: _QuickAccessCard(
-            icon: Icons.gavel,
-            title: 'Rights',
-            titleNp: 'संविधान',
-            color: primaryColor,
-            onTap: () => ref.read(_currentTabProvider.notifier).setIndex(1),
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: _QuickAccessCard(
             icon: Icons.account_balance,
-            title: 'Govt',
+            title: l10n.govt,
             titleNp: 'सरकार',
             color: secondaryColor,
-            onTap: () => ref.read(_currentTabProvider.notifier).setIndex(2),
+            onTap: () => context.push('/government'),
           ),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: _QuickAccessCard(
             icon: Icons.map,
-            title: 'Map',
+            title: l10n.map,
             titleNp: 'नक्सा',
-            color: const Color(0xFF2E7D32), // Green for geography
-            onTap: () => ref.read(_currentTabProvider.notifier).setIndex(3),
+            color: const Color(0xFF2E7D32),
+            onTap: () => context.push('/map'),
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: _QuickAccessCard(
+            icon: Icons.gavel,
+            title: l10n.rights,
+            titleNp: 'अधिकार',
+            color: const Color(0xFF6A1B9A),
+            onTap: () => context.push('/constitution'),
           ),
         ),
       ],
@@ -559,30 +539,29 @@ class _UtilityGridCard extends StatelessWidget {
 }
 
 @riverpod
-class _CurrentTab extends _$CurrentTab {
+class _TabHistory extends _$TabHistory {
   @override
-  int build() => 0; // Start with Home tab
+  List<int> build() => [1]; // Start with Home tab
 
-  void setIndex(int index) {
-    state = index;
+  int get currentIndex => state.last;
+
+  void pushTab(int index) {
+    if (state.last != index) {
+      state = [...state, index];
+    }
   }
-}
 
-// Tab widgets
-class ConstitutionTab extends StatelessWidget {
-  const ConstitutionTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const ConstitutionScreen();
+  /// Go back to previous tab. Returns true if there was a previous tab.
+  bool popTab() {
+    if (state.length > 1) {
+      state = state.sublist(0, state.length - 1);
+      return true;
+    }
+    return false;
   }
-}
 
-class MapTab extends StatelessWidget {
-  const MapTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const DistrictMapScreen();
+  /// Go directly to home tab, clearing history
+  void goHome() {
+    state = [1];
   }
 }

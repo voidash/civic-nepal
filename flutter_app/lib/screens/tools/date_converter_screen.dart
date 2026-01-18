@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../services/nepali_date_service.dart';
+import '../../widgets/home_title.dart';
 
 /// Screen for converting between BS and AD dates
 class DateConverterScreen extends StatefulWidget {
@@ -92,14 +94,15 @@ class _DateConverterScreenState extends State<DateConverterScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Date Converter'),
+        title: HomeTitle(child: Text(l10n.dateConverter)),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: 'BS → AD'),
-            Tab(text: 'AD → BS'),
+          tabs: [
+            Tab(text: l10n.bsToAd),
+            Tab(text: l10n.adToBs),
           ],
         ),
       ),

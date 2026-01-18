@@ -11,6 +11,9 @@ class Settings extends _$Settings {
   static const String _keyMeaningMode = 'meaning_mode_enabled';
   static const String _keyAutoCheckUpdates = 'auto_check_updates';
   static const String _keyThemeMode = 'theme_mode';
+  static const String _keyStickyDateNotification = 'sticky_date_notification';
+  static const String _keyIpoNotifications = 'ipo_notifications';
+  static const String _keyAppLocale = 'app_locale';
 
   @override
   Future<SettingsData> build() async {
@@ -21,6 +24,9 @@ class Settings extends _$Settings {
       meaningModeEnabled: prefs.getBool(_keyMeaningMode) ?? true,
       autoCheckUpdates: prefs.getBool(_keyAutoCheckUpdates) ?? true,
       themeMode: prefs.getString(_keyThemeMode) ?? 'system',
+      stickyDateNotification: prefs.getBool(_keyStickyDateNotification) ?? false,
+      ipoNotifications: prefs.getBool(_keyIpoNotifications) ?? true,
+      appLocale: prefs.getString(_keyAppLocale) ?? 'ne', // Default to Nepali
     );
   }
 
@@ -58,6 +64,27 @@ class Settings extends _$Settings {
     await prefs.setString(_keyThemeMode, mode);
     state = AsyncValue.data(current.copyWith(themeMode: mode));
   }
+
+  Future<void> setStickyDateNotification(bool enabled) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyStickyDateNotification, enabled);
+    state = AsyncValue.data(current.copyWith(stickyDateNotification: enabled));
+  }
+
+  Future<void> setIpoNotifications(bool enabled) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyIpoNotifications, enabled);
+    state = AsyncValue.data(current.copyWith(ipoNotifications: enabled));
+  }
+
+  Future<void> setAppLocale(String localeCode) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyAppLocale, localeCode);
+    state = AsyncValue.data(current.copyWith(appLocale: localeCode));
+  }
 }
 
 /// Immutable settings data class
@@ -67,6 +94,9 @@ class SettingsData {
   final bool meaningModeEnabled;
   final bool autoCheckUpdates;
   final String themeMode; // 'light', 'dark', 'system'
+  final bool stickyDateNotification;
+  final bool ipoNotifications;
+  final String appLocale; // 'ne', 'en', 'new'
 
   const SettingsData({
     required this.languagePreference,
@@ -74,6 +104,9 @@ class SettingsData {
     required this.meaningModeEnabled,
     required this.autoCheckUpdates,
     required this.themeMode,
+    required this.stickyDateNotification,
+    required this.ipoNotifications,
+    required this.appLocale,
   });
 
   SettingsData copyWith({
@@ -82,6 +115,9 @@ class SettingsData {
     bool? meaningModeEnabled,
     bool? autoCheckUpdates,
     String? themeMode,
+    bool? stickyDateNotification,
+    bool? ipoNotifications,
+    String? appLocale,
   }) {
     return SettingsData(
       languagePreference: languagePreference ?? this.languagePreference,
@@ -89,6 +125,9 @@ class SettingsData {
       meaningModeEnabled: meaningModeEnabled ?? this.meaningModeEnabled,
       autoCheckUpdates: autoCheckUpdates ?? this.autoCheckUpdates,
       themeMode: themeMode ?? this.themeMode,
+      stickyDateNotification: stickyDateNotification ?? this.stickyDateNotification,
+      ipoNotifications: ipoNotifications ?? this.ipoNotifications,
+      appLocale: appLocale ?? this.appLocale,
     );
   }
 }

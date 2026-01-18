@@ -6,16 +6,20 @@ part of 'know_your_rights.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BilingualTextImpl _$$BilingualTextImplFromJson(Map<String, dynamic> json) =>
-    _$BilingualTextImpl(
+_$LocalizedTextImpl _$$LocalizedTextImplFromJson(Map<String, dynamic> json) =>
+    _$LocalizedTextImpl(
       en: json['en'] as String,
       np: json['np'] as String,
+      newari: json['new'] as String?,
+      mai: json['mai'] as String?,
     );
 
-Map<String, dynamic> _$$BilingualTextImplToJson(_$BilingualTextImpl instance) =>
+Map<String, dynamic> _$$LocalizedTextImplToJson(_$LocalizedTextImpl instance) =>
     <String, dynamic>{
       'en': instance.en,
       'np': instance.np,
+      'new': instance.newari,
+      'mai': instance.mai,
     };
 
 _$ArticleReferenceImpl _$$ArticleReferenceImplFromJson(
@@ -25,7 +29,7 @@ _$ArticleReferenceImpl _$$ArticleReferenceImplFromJson(
       articleIndex: (json['articleIndex'] as num).toInt(),
       articleNumber: json['articleNumber'] as String,
       articleTitle:
-          BilingualText.fromJson(json['articleTitle'] as Map<String, dynamic>),
+          LocalizedText.fromJson(json['articleTitle'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ArticleReferenceImplToJson(
@@ -40,12 +44,12 @@ Map<String, dynamic> _$$ArticleReferenceImplToJson(
 _$RightItemImpl _$$RightItemImplFromJson(Map<String, dynamic> json) =>
     _$RightItemImpl(
       situation:
-          BilingualText.fromJson(json['situation'] as Map<String, dynamic>),
+          LocalizedText.fromJson(json['situation'] as Map<String, dynamic>),
       yourRight:
-          BilingualText.fromJson(json['yourRight'] as Map<String, dynamic>),
+          LocalizedText.fromJson(json['yourRight'] as Map<String, dynamic>),
       articleRef:
           ArticleReference.fromJson(json['articleRef'] as Map<String, dynamic>),
-      tip: BilingualText.fromJson(json['tip'] as Map<String, dynamic>),
+      tip: LocalizedText.fromJson(json['tip'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$RightItemImplToJson(_$RightItemImpl instance) =>
@@ -60,9 +64,9 @@ _$RightsCategoryImpl _$$RightsCategoryImplFromJson(Map<String, dynamic> json) =>
     _$RightsCategoryImpl(
       id: json['id'] as String,
       icon: json['icon'] as String,
-      title: BilingualText.fromJson(json['title'] as Map<String, dynamic>),
+      title: LocalizedText.fromJson(json['title'] as Map<String, dynamic>),
       subtitle:
-          BilingualText.fromJson(json['subtitle'] as Map<String, dynamic>),
+          LocalizedText.fromJson(json['subtitle'] as Map<String, dynamic>),
       rights: (json['rights'] as List<dynamic>)
           .map((e) => RightItem.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -82,7 +86,7 @@ _$KnowYourRightsDataImpl _$$KnowYourRightsDataImplFromJson(
         Map<String, dynamic> json) =>
     _$KnowYourRightsDataImpl(
       disclaimer:
-          BilingualText.fromJson(json['disclaimer'] as Map<String, dynamic>),
+          LocalizedText.fromJson(json['disclaimer'] as Map<String, dynamic>),
       categories: (json['categories'] as List<dynamic>)
           .map((e) => RightsCategory.fromJson(e as Map<String, dynamic>))
           .toList(),

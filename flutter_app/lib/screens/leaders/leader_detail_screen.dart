@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/leader.dart';
 import '../../providers/leaders_provider.dart';
 
@@ -30,6 +31,7 @@ class LeaderDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final leadersAsync = ref.watch(leadersProvider);
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       body: leadersAsync.when(
@@ -105,7 +107,7 @@ class LeaderDetailScreen extends ConsumerWidget {
                       // Party and district
                       _SectionCard(
                         icon: Icons.groups,
-                        title: 'Party',
+                        title: l10n.party,
                         child: Text(
                           leader.party,
                           style: Theme.of(context).textTheme.bodyLarge,
@@ -115,7 +117,7 @@ class LeaderDetailScreen extends ConsumerWidget {
                       if (leader.district != null)
                         _SectionCard(
                           icon: Icons.location_on,
-                          title: 'District',
+                          title: l10n.district,
                           child: Text(
                             leader.district!,
                             style: Theme.of(context).textTheme.bodyLarge,
@@ -125,14 +127,14 @@ class LeaderDetailScreen extends ConsumerWidget {
 
                       // Biography
                       Text(
-                        'Biography',
+                        l10n.biography,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 12),
                       Text(
                         leader.biography.isNotEmpty
                             ? leader.biography
-                            : 'No biography available.',
+                            : l10n.noBiography,
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                               height: 1.5,
                             ),
@@ -144,7 +146,7 @@ class LeaderDetailScreen extends ConsumerWidget {
                         child: FilledButton.tonalIcon(
                           onPressed: () => context.pop(),
                           icon: const Icon(Icons.list),
-                          label: const Text('View All Leaders'),
+                          label: Text(l10n.viewAllLeaders),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -162,11 +164,11 @@ class LeaderDetailScreen extends ConsumerWidget {
             children: [
               const Icon(Icons.error_outline, size: 48, color: Colors.red),
               const SizedBox(height: 16),
-              Text('Error: $error'),
+              Text('${l10n.error}: $error'),
               const SizedBox(height: 16),
               FilledButton(
                 onPressed: () => context.pop(),
-                child: const Text('Go Back'),
+                child: Text(l10n.close),
               ),
             ],
           ),

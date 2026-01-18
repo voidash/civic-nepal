@@ -14,6 +14,8 @@ import 'screens/tools/gov_services_screen.dart';
 import 'screens/tools/nepali_calendar_screen.dart';
 import 'screens/tools/forex_screen.dart';
 import 'screens/tools/bullion_screen.dart';
+import 'screens/tools/ipo_shares_screen.dart';
+import 'screens/government/how_nepal_works_screen.dart';
 
 part 'app.g.dart';
 
@@ -21,6 +23,17 @@ part 'app.g.dart';
 GoRouter router(RouterRef ref) {
   return GoRouter(
     initialLocation: '/',
+    // Handle deep links from widgets (nepalcivic://tools/nepali-calendar)
+    redirect: (context, state) {
+      // Deep link: nepalcivic://tools/nepali-calendar parses as host=tools, path=/nepali-calendar
+      // We need to reconstruct the full path
+      final uri = state.uri;
+      if (uri.scheme == 'nepalcivic' && uri.host.isNotEmpty) {
+        // Reconstruct: /{host}{path}
+        return '/${uri.host}${uri.path}';
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/',
@@ -46,6 +59,10 @@ GoRouter router(RouterRef ref) {
       GoRoute(
         path: '/map',
         builder: (context, state) => const DistrictMapScreen(),
+      ),
+      GoRoute(
+        path: '/government',
+        builder: (context, state) => const HowNepalWorksScreen(),
       ),
       GoRoute(
         path: '/settings',
@@ -80,6 +97,10 @@ GoRouter router(RouterRef ref) {
       GoRoute(
         path: '/tools/bullion',
         builder: (context, state) => const BullionScreen(),
+      ),
+      GoRoute(
+        path: '/tools/ipo',
+        builder: (context, state) => const IpoSharesScreen(),
       ),
     ],
   );

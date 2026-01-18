@@ -40,13 +40,13 @@ void main() {
       expect(totalArticles, greaterThanOrEqualTo(300));
     });
 
-    test('selectedArticleProvider should default to preamble', () {
+    test('selectedArticleProvider should default to null (Know Your Rights)', () {
       final container = ProviderContainer();
       addTearDown(container.dispose);
 
       final selectedArticle = container.read(selectedArticleProvider);
 
-      expect(selectedArticle, equals(const SelectedArticleRef.preamble()));
+      expect(selectedArticle, isNull);
     });
 
     test('selectedArticleProvider can be updated', () {

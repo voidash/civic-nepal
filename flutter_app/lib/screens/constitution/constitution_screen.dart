@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/constitution_provider.dart';
 import '../../models/constitution.dart';
 import '../../models/know_your_rights.dart';
 import '../../widgets/linked_text.dart';
+import '../../widgets/home_title.dart';
 
 /// Constitution screen with TOC and content
 class ConstitutionScreen extends ConsumerWidget {
@@ -16,6 +18,7 @@ class ConstitutionScreen extends ConsumerWidget {
     final selectedArticle = ref.watch(selectedArticleProvider);
     final screenWidth = MediaQuery.of(context).size.width;
     final isWideScreen = screenWidth >= 800;
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -25,14 +28,14 @@ class ConstitutionScreen extends ConsumerWidget {
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-        title: const Text('Know Your Rights'),
+        title: HomeTitle(child: Text(l10n.knowYourRights)),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: ArticleSearchDelegate(ref),
+                delegate: ArticleSearchDelegate(ref, l10n),
               );
             },
           ),
@@ -85,12 +88,13 @@ class ConstitutionScreen extends ConsumerWidget {
         if (index == 0) {
           // Know Your Rights
           final isSelected = selectedArticle == null;
+          final l10n = AppLocalizations.of(context);
           return ListTile(
             leading: Icon(
               Icons.gavel,
               color: isSelected ? Theme.of(context).colorScheme.primary : null,
             ),
-            title: const Text('Know Your Rights'),
+            title: Text(l10n.knowYourRights),
             subtitle: const Text('आफ्नो हक जान्नुहोस्'),
             selected: isSelected,
             tileColor: isSelected ? Theme.of(context).highlightColor : null,
@@ -103,8 +107,9 @@ class ConstitutionScreen extends ConsumerWidget {
         if (index == 1) {
           // Preamble
           final isSelected = _isPreambleSelected(selectedArticle);
+          final l10n = AppLocalizations.of(context);
           return ListTile(
-            title: const Text('Preamble'),
+            title: Text(l10n.preamble),
             subtitle: const Text('प्रस्तावना'),
             selected: isSelected,
             tileColor: isSelected ? Theme.of(context).highlightColor : null,
@@ -162,6 +167,10 @@ class ConstitutionScreen extends ConsumerWidget {
         final article = constitution.parts[partIndex].articles[articleIndex];
         return _buildArticle(context, ref, article);
       },
+      part: (partIndex) {
+        final part = constitution.parts[partIndex];
+        return _buildPart(context, ref, part, partIndex);
+      },
     );
   }
 
@@ -176,6 +185,8 @@ class ConstitutionScreen extends ConsumerWidget {
   }
 
   Widget _buildKnowYourRights(BuildContext context, WidgetRef ref, KnowYourRightsData rights) {
+    final l10n = AppLocalizations.of(context);
+    final localeCode = l10n.locale.code;
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -183,16 +194,9 @@ class ConstitutionScreen extends ConsumerWidget {
         children: [
           // Header
           Text(
-            'Know Your Rights',
+            l10n.knowYourRights,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            'आफ्नो हक जान्नुहोस्',
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              color: Colors.grey[600],
             ),
           ),
           const SizedBox(height: 16),
@@ -220,7 +224,7 @@ class ConstitutionScreen extends ConsumerWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
-                        rights.disclaimer.en,
+                        rights.disclaimer.forLocale(localeCode),
                         style: TextStyle(
                           fontSize: 12,
                           color: isDark ? Colors.amber.shade200 : Colors.amber.shade900,
@@ -236,34 +240,34 @@ class ConstitutionScreen extends ConsumerWidget {
 
           // Categories
           ...rights.categories.map((category) =>
-            _buildCategoryCard(context, ref, category),
+            _buildCategoryCard(context, ref, category, localeCode),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildCategoryCard(BuildContext context, WidgetRef ref, RightsCategory category) {
+  Widget _buildCategoryCard(BuildContext context, WidgetRef ref, RightsCategory category, String localeCode) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
       child: ExpansionTile(
         leading: Icon(_getIconData(category.icon), color: Theme.of(context).colorScheme.primary),
         title: Text(
-          category.title.en,
+          category.title.forLocale(localeCode),
           style: const TextStyle(fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
-          category.title.np,
+          category.subtitle.forLocale(localeCode),
           style: TextStyle(fontSize: 13, color: Colors.grey[600]),
         ),
         children: category.rights.map((right) =>
-          _buildRightItem(context, ref, right),
+          _buildRightItem(context, ref, right, localeCode),
         ).toList(),
       ),
     );
   }
 
-  Widget _buildRightItem(BuildContext context, WidgetRef ref, RightItem right) {
+  Widget _buildRightItem(BuildContext context, WidgetRef ref, RightItem right, String localeCode) {
     return InkWell(
       onTap: () {
         // Navigate to the referenced article
@@ -292,7 +296,7 @@ class ConstitutionScreen extends ConsumerWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      right.situation.en,
+                      right.situation.forLocale(localeCode),
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: isDark ? Colors.blue.shade200 : Colors.blue.shade800,
@@ -302,25 +306,12 @@ class ConstitutionScreen extends ConsumerWidget {
                 ],
               );
             }),
-            const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.only(left: 24),
-              child: Text(
-                right.situation.np,
-                style: TextStyle(fontSize: 13, color: Theme.of(context).textTheme.bodySmall?.color),
-              ),
-            ),
             const SizedBox(height: 12),
 
             // Your Right
             Text(
-              right.yourRight.en,
+              right.yourRight.forLocale(localeCode),
               style: const TextStyle(height: 1.5),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              right.yourRight.np,
-              style: TextStyle(fontSize: 13, color: Colors.grey[700], height: 1.5),
             ),
             const SizedBox(height: 12),
 
@@ -340,20 +331,10 @@ class ConstitutionScreen extends ConsumerWidget {
                       color: isDark ? Colors.green.shade300 : Colors.green.shade700),
                     const SizedBox(width: 8),
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            right.tip.en,
-                            style: TextStyle(fontSize: 13,
-                              color: isDark ? Colors.green.shade200 : Colors.green.shade800),
-                          ),
-                          Text(
-                            right.tip.np,
-                            style: TextStyle(fontSize: 12,
-                              color: isDark ? Colors.green.shade300 : Colors.green.shade600),
-                          ),
-                        ],
+                      child: Text(
+                        right.tip.forLocale(localeCode),
+                        style: TextStyle(fontSize: 13,
+                          color: isDark ? Colors.green.shade200 : Colors.green.shade800),
                       ),
                     ),
                   ],
@@ -383,23 +364,28 @@ class ConstitutionScreen extends ConsumerWidget {
                     ],
                   ),
                 ),
-                GestureDetector(
-                  onTap: () => context.push('/tools/gov-services?category=complaints'),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.gavel, size: 14, color: Colors.orange.shade700),
-                      const SizedBox(width: 4),
-                      Text(
-                        'File Complaint',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.orange.shade700,
-                          decoration: TextDecoration.underline,
-                        ),
+                Builder(
+                  builder: (context) {
+                    final l10n = AppLocalizations.of(context);
+                    return GestureDetector(
+                      onTap: () => context.push('/tools/gov-services?category=complaints'),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.gavel, size: 14, color: Colors.orange.shade700),
+                          const SizedBox(width: 4),
+                          Text(
+                            l10n.fileComplaint,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.orange.shade700,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -450,6 +436,7 @@ class ConstitutionScreen extends ConsumerWidget {
 
   Widget _buildPreamble(BuildContext context, WidgetRef ref, Preamble preamble) {
     final languageMode = ref.watch(languageModeProvider);
+    final l10n = AppLocalizations.of(context);
 
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
@@ -460,7 +447,7 @@ class ConstitutionScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Preamble',
+                l10n.preamble,
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               const SizedBox(height: 4),
@@ -511,6 +498,79 @@ class ConstitutionScreen extends ConsumerWidget {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildPart(BuildContext context, WidgetRef ref, Part part, int partIndex) {
+    final l10n = AppLocalizations.of(context);
+
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Part header
+          Text(
+            'Part ${part.number}',
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            part.title.en,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          if (part.title.np.isNotEmpty) ...[
+            const SizedBox(height: 4),
+            Text(
+              part.title.np,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+          const SizedBox(height: 24),
+
+          // Articles in this part
+          Text(
+            l10n.articles,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 12),
+
+          // List all articles
+          ...part.articles.asMap().entries.map((entry) {
+            final articleIndex = entry.key;
+            final article = entry.value;
+            return Card(
+              margin: const EdgeInsets.only(bottom: 8),
+              child: ListTile(
+                title: Text(
+                  '${article.number}${article.title.en != null ? ' - ${article.title.en}' : ''}',
+                  style: const TextStyle(fontWeight: FontWeight.w500),
+                ),
+                subtitle: article.title.np != null
+                    ? Text(article.title.np!)
+                    : null,
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () {
+                  ref.read(selectedArticleProvider.notifier).selectArticle(
+                    SelectedArticleRef.article(
+                      partIndex: partIndex,
+                      articleIndex: articleIndex,
+                    ),
+                  );
+                },
+              ),
+            );
+          }),
+        ],
+      ),
     );
   }
 
@@ -688,8 +748,9 @@ class ConstitutionScreen extends ConsumerWidget {
 /// Search delegate for articles
 class ArticleSearchDelegate extends SearchDelegate<String> {
   final WidgetRef ref;
+  final AppLocalizations l10n;
 
-  ArticleSearchDelegate(this.ref);
+  ArticleSearchDelegate(this.ref, this.l10n);
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -729,7 +790,7 @@ class ArticleSearchDelegate extends SearchDelegate<String> {
     return constitutionAsync.when(
       data: (constitution) {
         if (query.isEmpty) {
-          return const Center(child: Text('Search for articles...'));
+          return Center(child: Text(l10n.searchArticles));
         }
 
         final results = <SearchResult>[];
@@ -754,7 +815,7 @@ class ArticleSearchDelegate extends SearchDelegate<String> {
         }
 
         if (results.isEmpty) {
-          return Center(child: Text('No results for "$query"'));
+          return Center(child: Text(l10n.noResults(query)));
         }
 
         return ListView.builder(
@@ -802,6 +863,7 @@ bool _isPreambleSelected(SelectedArticleRef? selectedArticle) {
   return selectedArticle?.maybeWhen(
     preamble: () => true,
     article: (_, __) => false,
+    part: (_) => false,
     orElse: () => false,
   ) ?? false;
 }
@@ -811,6 +873,17 @@ bool _isArticleSelected(SelectedArticleRef? selectedArticle, int partIndex, int 
   return selectedArticle?.maybeWhen(
     preamble: () => false,
     article: (p, a) => p == partIndex && a == articleIndex,
+    part: (_) => false,
+    orElse: () => false,
+  ) ?? false;
+}
+
+/// Helper to check if part is selected
+bool _isPartSelected(SelectedArticleRef? selectedArticle, int partIndex) {
+  return selectedArticle?.maybeWhen(
+    preamble: () => false,
+    article: (_, __) => false,
+    part: (p) => p == partIndex,
     orElse: () => false,
   ) ?? false;
 }

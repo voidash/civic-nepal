@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../l10n/app_localizations.dart';
+import '../../widgets/home_title.dart';
 
 /// Screen displaying categorized list of Nepal government services
 class GovServicesScreen extends StatefulWidget {
@@ -158,9 +160,10 @@ class _GovServicesScreenState extends State<GovServicesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Government Services'),
+        title: HomeTitle(child: Text(l10n.govServices)),
       ),
       body: Column(
         children: [
@@ -170,7 +173,7 @@ class _GovServicesScreenState extends State<GovServicesScreen> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'Search services...',
+                hintText: l10n.searchServices,
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: _searchQuery.isNotEmpty
                     ? IconButton(
@@ -205,6 +208,7 @@ class _GovServicesScreenState extends State<GovServicesScreen> {
   }
 
   Widget _buildEmptyState() {
+    final l10n = AppLocalizations.of(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -216,14 +220,14 @@ class _GovServicesScreenState extends State<GovServicesScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            'No services found',
+            l10n.noServices,
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[600],
             ),
           ),
           Text(
-            'Try a different search term',
+            l10n.tryDifferent,
             style: TextStyle(
               color: Colors.grey[500],
             ),

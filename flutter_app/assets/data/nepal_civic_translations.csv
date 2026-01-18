@@ -1,0 +1,411 @@
+Key,English,Nepali (Reference),Newari (नेपाल भाषा),Maithili (मैथिली),Category
+app_name,Nepal Civic,नेपाल नागरिक,नेपाल नागरिक,,UI Strings
+nav_calendar,Calendar,पात्रो,पात्रो,,UI Strings
+nav_home,Home,गृह,छेँ,,UI Strings
+nav_ipo,IPO,आईपीओ,आईपीओ,,UI Strings
+nav_rights,Rights,अधिकार,अधिकार,,UI Strings
+explore,Explore,अन्वेषण,अन्वेषण,,UI Strings
+utilities,Utilities,उपकरणहरू,उपकरणथें,,UI Strings
+govt,Govt,सरकार,सरकार,,UI Strings
+map,Map,नक्सा,नक्सा,,UI Strings
+rights,Rights,अधिकार,अधिकार,,UI Strings
+citizenship_merger,Citizenship Merger,नागरिकता मर्जर,नागरिकता मर्जर,,UI Strings
+image_compressor,Image < 300KB,फोटो कम्प्रेस,फोटो कम्प्रेस,,UI Strings
+calendar,Calendar,पात्रो,पात्रो,,UI Strings
+date_convert,Date Convert,मिति परिवर्तक,मिति परिवर्तक,,UI Strings
+forex,Forex,विदेशी मुद्रा,विदेशी मुद्रा,,UI Strings
+gold_silver,Gold/Silver,सुन/चाँदी,लुँ/चाँदी,,UI Strings
+settings,Settings,सेटिङ,सेटिङ,,UI Strings
+language_display,Language & Display,भाषा र प्रदर्शन,भाषा व प्रदर्शन,,UI Strings
+data_updates,Data & Updates,डाटा र अपडेट,डाटा व अपडेट,,UI Strings
+notifications,Notifications,सूचनाहरू,सूचनाथें,,UI Strings
+about,About,बारेमा,बारेया,,UI Strings
+language,Language,भाषा,भाषा,,UI Strings
+theme,Theme,थिम,थिम,,UI Strings
+auto_check_updates,Auto-check for updates,स्वचालित अपडेट जाँच,स्वचालित अपडेट जाँच,,UI Strings
+auto_check_updates_desc,Check for new data on app launch,एप खोल्दा नयाँ डाटा जाँच गर्नुहोस्,एप खोलय् नयाँ डाटा जाँच याय्,,UI Strings
+check_updates_now,Check for updates now,अहिले अपडेट जाँच गर्नुहोस्,अले अपडेट जाँच याय्,,UI Strings
+check_updates_now_desc,Download latest leader data,नवीनतम नेता डाटा डाउनलोड गर्नुहोस्,नयाँ नेता डाटा डाउनलोड याय्,,UI Strings
+clear_cache,Clear cache,क्यास खाली गर्नुहोस्,क्यास खाली याय्,,UI Strings
+clear_cache_desc,Free up storage space,भण्डारण ठाउँ खाली गर्नुहोस्,भण्डारण ठाउँ खाली याय्,,UI Strings
+sticky_date_notification,Sticky Date Notification,स्थायी मिति सूचना,स्थायी मिति सूचना,,UI Strings
+sticky_date_notification_desc,Show today's Nepali date in notification bar,आजको नेपाली मिति सूचना पट्टीमा देखाउनुहोस्,थौं नेपाली मिति सूचना पट्टीया क्यनेगु,,UI Strings
+ipo_alerts,IPO Alerts,आईपीओ सूचना,आईपीओ सूचना,,UI Strings
+ipo_alerts_desc,Get notified when IPOs are opening or closing,आईपीओ खुल्दा वा बन्द हुँदा सूचना पाउनुहोस्,आईपीओ खुलय् वा बन्द जुलय् सूचना काय्,,UI Strings
+checking_updates,Checking for updates...,अपडेट जाँच गर्दै...,अपडेट जाँच यानाच्वँ...,,UI Strings
+cache_cleared,Cache cleared,क्यास खाली भयो,क्यास खाली जुल,,UI Strings
+app_version,Nepal Civic App v1.0.0,नेपाल नागरिक एप v1.0.0,नेपाल नागरिक एप v1.0.0,,UI Strings
+theme_system,System,सिस्टम,सिस्टम,,UI Strings
+theme_light,Light,उज्यालो,ज्वः,,UI Strings
+theme_dark,Dark,अँध्यारो,मिखा,,UI Strings
+theme_system_desc,Follow device settings,उपकरण सेटिङ अनुसरण गर्नुहोस्,उपकरण सेटिङ अनुसरण याय्,,UI Strings
+theme_light_desc,Always light theme,सधैं उज्यालो थिम,सदां ज्वःगु थिम,,UI Strings
+theme_dark_desc,Always dark theme,सधैं अँध्यारो थिम,सदां मिखागु थिम,,UI Strings
+choose_theme,Choose Theme,थिम छान्नुहोस्,थिम ल्ययादिसँ,,UI Strings
+choose_language,Choose Language,भाषा छान्नुहोस्,भाषा ल्ययादिसँ,,UI Strings
+both_languages,Both Languages,दुवै भाषा,निसें भाषा,,UI Strings
+nepali_language,नेपाली (Nepali),नेपाली,नेपाली,,UI Strings
+english_language,English,अंग्रेजी,अंग्रेजी,,UI Strings
+newari_language,नेपाल भाषा (Newari),नेपाल भाषा,नेपाल भाषा,,UI Strings
+maithili_language,मैथिली (Maithili),मैथिली,मैथिली,,UI Strings
+know_your_rights,Know Your Rights,आफ्नो हक जान्नुहोस्,छिगु हक सय्कादिसँ,,UI Strings
+preamble,Preamble,प्रस्तावना,प्रस्तावना,,UI Strings
+part_number,Part {number},भाग {number},भाग {number},,UI Strings
+article_number,Article {number},धारा {number},धारा {number},,UI Strings
+search_articles,Search for articles...,धाराहरू खोज्नुहोस्...,धाराथें मालादिसँ...,,UI Strings
+no_results,"No results for ""{query}""",{query} को लागि कुनै परिणाम छैन,{query} या लागि खँ मदु,,UI Strings
+file_complaint,File Complaint,उजुरी दिनुहोस्,उजुरी बियादिसँ,,UI Strings
+both,Both,दुवै,निसें,,UI Strings
+nepali,नेपाली,नेपाली,नेपाली,,UI Strings
+english,English,अंग्रेजी,अंग्रेजी,,UI Strings
+paragraph,Paragraph,अनुच्छेद,अनुच्छेद,,UI Strings
+sentence,Sentence,वाक्य,वाक्य,,UI Strings
+leaders,Leaders,नेताहरू,नेताथें,,UI Strings
+sort,Sort,क्रमबद्ध,क्रमबद्ध,,UI Strings
+filter,Filter,फिल्टर,फिल्टर,,UI Strings
+sort_by,Sort by,क्रमबद्ध गर्नुहोस्,क्रमबद्ध यायेमा,,UI Strings
+name,Name,नाम,नां,,UI Strings
+district,District,जिल्ला,जिल्ला,,UI Strings
+party,Party,पार्टी,पार्टी,,UI Strings
+search_leaders,Search leaders...,नेताहरू खोज्नुहोस्...,नेताथें मालादिसँ...,,UI Strings
+no_leaders_match,No leaders match your filters,तपाईंको फिल्टरसँग कुनै नेता मिलेन,छिगु फिल्टरं खँग्व नेता मिलल मखु,,UI Strings
+no_leaders_found,No leaders found,कुनै नेता भेटिएन,खँग्व नेता मदु,,UI Strings
+filters,Filters,फिल्टरहरू,फिल्टरथें,,UI Strings
+clear_all,Clear All,सबै हटाउनुहोस्,जक्व थायेकादिसँ,,UI Strings
+leaders_count,{count} leaders,{count} नेताहरू,{count} नेताथें,,UI Strings
+filter_by_district,Filter by District,जिल्ला अनुसार फिल्टर,जिल्ला कथं फिल्टर,,UI Strings
+select_district,Select District,जिल्ला छान्नुहोस्,जिल्ला ल्ययादिसँ,,UI Strings
+clear,Clear,हटाउनुहोस्,थायेकादिसँ,,UI Strings
+province,Province {number},प्रदेश {number},प्रदेश {number},,UI Strings
+districts_count,{count} districts,{count} जिल्लाहरू,{count} जिल्लाथें,,UI Strings
+biography,Biography,जीवनी,जीवनी,,UI Strings
+no_biography,No biography available.,जीवनी उपलब्ध छैन।,जीवनी मदु।,,UI Strings
+view_all_leaders,View All Leaders,सबै नेताहरू हेर्नुहोस्,जक्व नेताथें स्वयादिसँ,,UI Strings
+nepal_districts,Nepal Districts,नेपाल जिल्लाहरू,नेपाल जिल्लाथें,,UI Strings
+filter_by_province,Filter by Province,प्रदेश अनुसार फिल्टर,प्रदेश कथं फिल्टर,,UI Strings
+reset_zoom,Reset Zoom,जुम रिसेट,जुम रिसेट,,UI Strings
+no_leaders_district,No leaders found for {district},{district} मा कुनै नेता भेटिएन,{district} या खँग्व नेता मदु,,UI Strings
+nepali_calendar,Nepali Calendar,नेपाली पात्रो,नेपाली पात्रो,,UI Strings
+today,Today,आज,थौं,,UI Strings
+previous_month,Previous month,अघिल्लो महिना,न्हापाया लः,,UI Strings
+next_month,Next month,अर्को महिना,अप्वया लः,,UI Strings
+holiday,Holiday,बिदा,बिदा,,UI Strings
+event,Event,कार्यक्रम,कार्यक्रम,,UI Strings
+auspicious,Auspicious,शुभ,शुभ,,UI Strings
+no_events,No events,कुनै कार्यक्रम छैन,खँग्व कार्यक्रम मदु,,UI Strings
+ipo_shares,IPO & Shares,आईपीओ र सेयर,आईपीओ व सेयर,,UI Strings
+ipo_list,IPO List,आईपीओ सूची,आईपीओ सूची,,UI Strings
+todays_price,Today's Price,आजको मूल्य,थौंया मोल,,UI Strings
+source_cdsc,Source: CDSC Nepal,स्रोत: सीडीएससी नेपाल,स्रोत: सीडीएससी नेपाल,,UI Strings
+updated_ago,Updated {time} ago,{time} अघि अपडेट भयो,{time} न्ह्यःने अपडेट जुल,,UI Strings
+open_cdsc,Open CDSC Website,सीडीएससी वेबसाइट खोल्नुहोस्,सीडीएससी वेबसाइट हायेकादिसँ,,UI Strings
+no_active_ipos,No active IPOs,कुनै सक्रिय आईपीओ छैन,खँग्व सक्रिय आईपीओ मदु,,UI Strings
+check_later,Check back later for new listings,नयाँ सूचीको लागि पछि जाँच गर्नुहोस्,नयाँ सूचीया लागि लिपा जाँच यायेमा,,UI Strings
+refresh,Refresh,ताजा गर्नुहोस्,ताजा याय्,,UI Strings
+retry,Retry,पुन: प्रयास,दोबारा यायेमा,,UI Strings
+open_for_application,Open for Application,आवेदनको लागि खुला,आवेदनया लागि खुला,,UI Strings
+closes_today,Closes Today!,आज बन्द हुन्छ!,थौं बन्द जुइ!,,UI Strings
+closes_tomorrow,Closes Tomorrow,भोलि बन्द हुन्छ,गबले बन्द जुइ,,UI Strings
+opens_tomorrow,Opens Tomorrow,भोलि खुल्छ,गबले खुलइ,,UI Strings
+opens_in_days,Opens in {days} days,{days} दिनमा खुल्छ,{days} न्हिइ खुलइ,,UI Strings
+closed,Closed,बन्द,बन्द,,UI Strings
+issued_units,Issued Units,जारी इकाइहरू,जारी इकाइथें,,UI Strings
+applications,Applications,आवेदनहरू,आवेदनथें,,UI Strings
+applied_units,Applied Units,आवेदित इकाइहरू,आवेदित इकाइथें,,UI Strings
+total_amount,Total Amount,कुल रकम,जक्व रकम,,UI Strings
+opens,Opens,खुल्छ,खुलइ,,UI Strings
+closes,Closes,बन्द हुन्छ,बन्द जुइ,,UI Strings
+last_updated,Last updated: {time},अन्तिम अपडेट: {time},लिपाया अपडेट: {time},,UI Strings
+issue_manager,Issue Manager: {name},इश्यू म्यानेजर: {name},इश्यू म्यानेजर: {name},,UI Strings
+search_symbol,Search symbol or company...,सिम्बल वा कम्पनी खोज्नुहोस्...,सिम्बल वा कम्पनी मालादिसँ...,,UI Strings
+top_volume,Top Volume,उच्च भोल्युम,उच्च भोल्युम,,UI Strings
+top_gainers,Top Gainers,उच्च लाभ,उच्च लाभ,,UI Strings
+top_losers,Top Losers,उच्च घाटा,उच्च घाटा,,UI Strings
+source_merolagani,Source: Merolagani,स्रोत: मेरोलगानी,स्रोत: मेरोलगानी,,UI Strings
+market_unavailable,Market data unavailable,बजार डाटा उपलब्ध छैन,बजार डाटा मदु,,UI Strings
+market_closed,Market may be closed or data is loading,बजार बन्द हुन सक्छ वा डाटा लोड हुँदैछ,बजार बन्द जुइफु वा डाटा लोड जुयाच्वँ,,UI Strings
+vol,Vol,भोल्युम,भोल्युम,,UI Strings
+date_converter,Date Converter,मिति परिवर्तक,मिति परिवर्तक,,UI Strings
+bs_to_ad,BS → AD,बि.सं. → ई.सं.,बि.सं. → ई.सं.,,UI Strings
+ad_to_bs,AD → BS,ई.सं. → बि.सं.,ई.सं. → बि.सं.,,UI Strings
+bs_to_gregorian,Bikram Sambat → Gregorian,बिक्रम सम्बत → ग्रेगोरियन,बिक्रम सम्बत → ग्रेगोरियन,,UI Strings
+gregorian_to_bs,Gregorian → Bikram Sambat,ग्रेगोरियन → बिक्रम सम्बत,ग्रेगोरियन → बिक्रम सम्बत,,UI Strings
+year,Year,वर्ष,दँ,,UI Strings
+month,Month,महिना,लः,,UI Strings
+day,Day,दिन,न्हि,,UI Strings
+gregorian_date,Gregorian Date (AD),ग्रेगोरियन मिति (ई.सं.),ग्रेगोरियन मिति (ई.सं.),,UI Strings
+bikram_sambat,Bikram Sambat (BS),बिक्रम सम्बत (बि.सं.),बिक्रम सम्बत (बि.सं.),,UI Strings
+invalid_bs_date,Invalid BS date,अवैध बि.सं. मिति,अवैध बि.सं. मिति,,UI Strings
+select_date,Select a date,मिति छान्नुहोस्,मिति ल्ययादिसँ,,UI Strings
+citizenship_photo_merger,Citizenship Photo Merger,नागरिकता फोटो मर्जर,नागरिकता फोटो मर्जर,,UI Strings
+reset,Reset,रिसेट,रिसेट,,UI Strings
+merger_instructions,Add front and back photos of your citizenship card to merge them into a single image.,नागरिकताको अगाडि र पछाडिको फोटो थपेर एउटै तस्बिरमा मर्ज गर्नुहोस्।,नागरिकताया न्ह्यः व लिपाया फोटो तयार च्वनेगु।,,UI Strings
+front_side,Front Side,अगाडिको भाग,न्ह्यःया भाग,,UI Strings
+back_side,Back Side,पछाडिको भाग,लिपाया भाग,,UI Strings
+merge_photos,Merge Photos,फोटो मर्ज गर्नुहोस्,फोटो मर्ज याय्,,UI Strings
+processing,Processing...,प्रशोधन हुँदैछ...,प्रशोधन जुयाच्वँ...,,UI Strings
+file_size,Size: {size},साइज: {size},साइज: {size},,UI Strings
+save,Save,सुरक्षित गर्नुहोस्,सुरक्षित याय्,,UI Strings
+share,Share,साझा गर्नुहोस्,ब्वनेगु,,UI Strings
+gallery,Gallery,ग्यालेरी,ग्यालेरी,,UI Strings
+camera,Camera,क्यामेरा,क्यामेरा,,UI Strings
+tap_to_select,Tap to select,छनोट गर्न ट्याप गर्नुहोस्,ल्ययेत ट्याप यायेमा,,UI Strings
+add_title,Add {title},{title} थप्नुहोस्,{title} तयेमा,,UI Strings
+saved_to_photos,Saved to Photos,फोटोमा सुरक्षित भयो,फोटोय् सुरक्षित जुल,,UI Strings
+failed_to_save,Failed to save,सुरक्षित गर्न असफल,सुरक्षित याये मजिउ,,UI Strings
+image_compressor_title,Image Compressor,तस्बिर कम्प्रेसर,तस्बिर कम्प्रेसर,,UI Strings
+compress_images,Compress Images,तस्बिर कम्प्रेस गर्नुहोस्,तस्बिर कम्प्रेस याय्,,UI Strings
+compress_desc,Reduce image file size while maintaining quality,गुणस्तर कायम राख्दै तस्बिर फाइल साइज घटाउनुहोस्,गुणस्तर कायम यानाच्वँ तस्बिर फाइल साइज थाकेमा,,UI Strings
+select_image,Select Image,तस्बिर छान्नुहोस्,तस्बिर ल्ययादिसँ,,UI Strings
+original,Original,मूल,मूल,,UI Strings
+compressed,Compressed,कम्प्रेस भएको,कम्प्रेस जूगु,,UI Strings
+target_size,Target Size,लक्षित साइज,लक्षित साइज,,UI Strings
+compress,Compress,कम्प्रेस गर्नुहोस्,कम्प्रेस याय्,,UI Strings
+compressing,Compressing...,कम्प्रेस हुँदैछ...,कम्प्रेस जुयाच्वँ...,,UI Strings
+compress_again,Compress Again,फेरि कम्प्रेस गर्नुहोस्,दोबारा कम्प्रेस याय्,,UI Strings
+compressed_under,Compressed to under {size},{size} भन्दा कममा कम्प्रेस भयो,{size} भन्दा ल्याय् कम्प्रेस जुल,,UI Strings
+could_not_reach,Could not reach target size,लक्षित साइज पुग्न सकेन,लक्षित साइज वने मजिउ,,UI Strings
+saved_smaller,Saved {size} ({percent}% smaller),{size} सुरक्षित ({percent}% सानो),{size} सुरक्षित ({percent}% ल्याय्),,UI Strings
+forex_rates,Forex Rates,विदेशी मुद्रा दर,विदेशी मुद्रा दर,,UI Strings
+nrb_rates,Nepal Rastra Bank Rates,नेपाल राष्ट्र बैंक दर,नेपाल राष्ट्र बैंक दर,,UI Strings
+currency,Currency,मुद्रा,मुद्रा,,UI Strings
+buy,Buy,किन्नु,ज्वय्,,UI Strings
+sell,Sell,बेच्नु,हनेगु,,UI Strings
+per_units,Per {units} units,{units} इकाइमा,{units} इकाइय,,UI Strings
+failed_load_rates,Failed to load rates,दरहरू लोड गर्न असफल,दरथें लोड याये मजिउ,,UI Strings
+network_error,Network error: {error},नेटवर्क त्रुटि: {error},नेटवर्क त्रुटि: {error},,UI Strings
+no_data,No data available,डाटा उपलब्ध छैन,डाटा मदु,,UI Strings
+gold_silver_title,Gold & Silver,सुन र चाँदी,लुँ व चाँदी,,UI Strings
+source,Source: {source},स्रोत: {source},स्रोत: {source},,UI Strings
+today_date,Today ({date}),आज ({date}),थौं ({date}),,UI Strings
+gold_hallmark,Gold (Hallmark),सुन (हलमार्क),लुँ (हलमार्क),,UI Strings
+gold_tejabi,Gold (Tejabi),सुन (तेजाबी),लुँ (तेजाबी),,UI Strings
+silver,Silver,चाँदी,चाँदी,,UI Strings
+per_tola,per tola,प्रति तोला,प्रति तोला,,UI Strings
+this_week,This Week,यो हप्ता,थौंया हप्ता,,UI Strings
+date,Date,मिति,मिति,,UI Strings
+hallmark,Hallmark,हलमार्क,हलमार्क,,UI Strings
+tejabi,Tejabi,तेजाबी,तेजाबी,,UI Strings
+failed_load_data,Failed to load data,डाटा लोड गर्न असफल,डाटा लोड याये मजिउ,,UI Strings
+gov_services,Government Services,सरकारी सेवाहरू,सरकारी सेवाथें,,UI Strings
+search_services,Search services...,सेवाहरू खोज्नुहोस्...,सेवाथें मालादिसँ...,,UI Strings
+no_services,No services found,कुनै सेवा भेटिएन,खँग्व सेवा मदु,,UI Strings
+try_different,Try a different search term,फरक खोज शब्द प्रयोग गर्नुहोस्,अलग माला शब्द प्रयोग यायेमा,,UI Strings
+could_not_open,Could not open: {url},{url} खोल्न सकिएन,{url} हाकाये मजिउ,,UI Strings
+how_nepal_works,How Nepal Works,नेपाल कसरी चल्छ,नेपाल गुकथं वनी,,UI Strings
+structure,Structure,संरचना,संरचना,,UI Strings
+law_making,Law Making,कानून निर्माण,कानून निर्माण,,UI Strings
+cabinet,Cabinet,मन्त्रिपरिषद्,मन्त्रिपरिषद्,,UI Strings
+federal_parliament,Federal Parliament (Bicameral),संघीय संसद (द्विसदनात्मक),संघीय संसद (द्विसदनात्मक),,UI Strings
+seats,{count} seats,{count} सिटहरू,{count} सिटथें,,UI Strings
+special_bills,Special Types of Bills,विशेष प्रकारका विधेयकहरू,विशेष प्रकारया विधेयकथें,,UI Strings
+last_updated_date,Last updated: {date},अन्तिम अपडेट: {date},लिपाया अपडेट: {date},,UI Strings
+source_opmcm,Source: opmcm.gov.np,स्रोत: opmcm.gov.np,स्रोत: opmcm.gov.np,,UI Strings
+cancel,Cancel,रद्द गर्नुहोस्,रद्द याय्,,UI Strings
+ok,OK,ठीक छ,ज्यू,,UI Strings
+done,Done,भयो,जुल,,UI Strings
+close,Close,बन्द गर्नुहोस्,बन्द याय्,,UI Strings
+yes,Yes,हो,खः,,UI Strings
+no,No,होइन,मखु,,UI Strings
+loading,Loading...,लोड हुँदैछ...,लोड जुयाच्वँ...,,UI Strings
+error,Error,त्रुटि,त्रुटि,,UI Strings
+success,Success,सफल,सफल,,UI Strings
+warning,Warning,चेतावनी,चेतावनी,,UI Strings
+something_went_wrong,Something went wrong,केही गडबड भयो,छुं गडबड जुल,,UI Strings
+no_internet,No internet connection,इन्टरनेट जडान छैन,इन्टरनेट जडान मदु,,UI Strings
+try_again,Please try again,कृपया फेरि प्रयास गर्नुहोस्,कृपया दोबारा यायेमा,,UI Strings
+kyr_disclaimer,"This is educational information only, not legal advice. Consult a lawyer for your specific situation.","यो शैक्षिक जानकारी मात्र हो, कानूनी सल्लाह होइन। आफ्नो विशेष परिस्थितिको लागि वकिलसँग सल्लाह लिनुहोस्।",,,Know Your Rights Content
+kyr_cat_police_title,Police & Arrest,प्रहरी र गिरफ्तारी,,,Know Your Rights Content
+kyr_cat_police_subtitle,Know your rights when dealing with law enforcement,प्रहरीसँग व्यवहार गर्दा आफ्नो हक जान्नुहोस्,,,Know Your Rights Content
+kyr_cat_police_r1_situation,Police stopped you on the street,प्रहरीले सडकमा रोक्यो,,,Know Your Rights Content
+kyr_cat_police_r1_yourright,You have the right to know the reason for being stopped. You cannot be arrested without being informed of the ground of arrest.,तपाईंलाई रोकिएको कारण जान्ने हक छ। गिरफ्तारीको आधार नजनाई गिरफ्तार गर्न मिल्दैन।,,,Know Your Rights Content
+kyr_cat_police_r1_tip,Stay calm. Ask politely: 'May I know why I am being stopped?',शान्त रहनुहोस्। विनम्रतापूर्वक सोध्नुहोस्: 'मलाई किन रोकिएको हो जान्न पाउँ?',,,Know Your Rights Content
+kyr_cat_police_r2_situation,You are being arrested,तपाईंलाई गिरफ्तार गरिँदैछ,,,Know Your Rights Content
+kyr_cat_police_r2_yourright,You must be produced before a judicial authority within 24 hours of arrest. You have the right to consult a legal practitioner of your choice.,गिरफ्तारी भएको २४ घण्टाभित्र न्यायिक अधिकारी समक्ष उपस्थित गराउनुपर्छ। आफूले छानेको कानून व्यवसायीसँग सल्लाह लिने हक छ।,,,Know Your Rights Content
+kyr_cat_police_r2_tip,Ask for a lawyer immediately. Do not sign anything without legal counsel.,तुरुन्त वकिल माग्नुहोस्। कानूनी सल्लाह बिना कुनै कागजातमा हस्ताक्षर नगर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_police_r3_situation,Police are using force or torture,प्रहरीले बल प्रयोग वा यातना दिँदैछ,,,Know Your Rights Content
+kyr_cat_police_r3_yourright,"No person in detention shall be subjected to physical or mental torture or to cruel, inhuman or degrading treatment.","थुनामा रहेको कुनै पनि व्यक्तिलाई शारीरिक वा मानसिक यातना वा क्रूर, अमानवीय वा अपमानजनक व्यवहार गर्न हुँदैन।",,,Know Your Rights Content
+kyr_cat_police_r3_tip,"Remember details: time, place, officers involved. Report to National Human Rights Commission.","विवरण सम्झनुहोस्: समय, स्थान, संलग्न अधिकारी। राष्ट्रिय मानव अधिकार आयोगमा उजुरी दिनुहोस्।",,,Know Your Rights Content
+kyr_cat_police_r4_situation,Detained without charges for too long,आरोप बिना लामो समय थुनामा,,,Know Your Rights Content
+kyr_cat_police_r4_yourright,No person shall be held in preventive detention for more than the period prescribed by law. Detention must be reviewed by a court.,कुनै पनि व्यक्तिलाई कानूनले तोकेको अवधिभन्दा बढी निवारक नजरबन्दमा राख्न हुँदैन। थुना अदालतबाट समीक्षा हुनुपर्छ।,,,Know Your Rights Content
+kyr_cat_police_r4_tip,File habeas corpus petition in court if detained illegally.,अवैध थुनामा परेमा अदालतमा बन्दी प्रत्यक्षीकरण निवेदन दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_police_r5_situation,Police searching your home,प्रहरीले घर खानतलासी गर्दैछ,,,Know Your Rights Content
+kyr_cat_police_r5_yourright,"The privacy of person, residence, property, documents, data, correspondence is inviolable except in accordance with law.","व्यक्ति, आवास, सम्पत्ति, कागजात, तथ्यांक, पत्राचारको गोपनीयता कानून बमोजिम बाहेक अनुल्लंघनीय छ।",,,Know Your Rights Content
+kyr_cat_police_r5_tip,Ask for search warrant. Note down badge numbers and time of search.,खानतलासी अनुमतिपत्र माग्नुहोस्। ब्याज नम्बर र खानतलासीको समय नोट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_police_r6_situation,You are a crime victim,तपाईं अपराधको शिकार हुनुहुन्छ,,,Know Your Rights Content
+kyr_cat_police_r6_yourright,Crime victims have the right to justice including social rehabilitation and compensation.,अपराध पीडितलाई सामाजिक पुनर्स्थापना र क्षतिपूर्ति सहित न्यायको हक छ।,,,Know Your Rights Content
+kyr_cat_police_r6_tip,File FIR immediately. Victim assistance available at District Court.,तुरुन्त प्राथमिकी दर्ता गर्नुहोस्। जिल्ला अदालतमा पीडित सहायता उपलब्ध छ।,,,Know Your Rights Content
+kyr_cat_workplace_title,Workplace Rights,कार्यस्थलको हक,,,Know Your Rights Content
+kyr_cat_workplace_subtitle,Protection against exploitation at work,कामको ठाउँमा शोषण विरुद्ध सुरक्षा,,,Know Your Rights Content
+kyr_cat_workplace_r1_situation,Employer not paying fair wages,रोजगारदाताले उचित तलब दिँदैन,,,Know Your Rights Content
+kyr_cat_workplace_r1_yourright,"Every citizen has the right to employment. You are entitled to appropriate remuneration, facilities and social security.","प्रत्येक नागरिकलाई रोजगारीको हक छ। उचित पारिश्रमिक, सुविधा र सामाजिक सुरक्षा पाउने हक छ।",,,Know Your Rights Content
+kyr_cat_workplace_r1_tip,Document everything. File complaint at Labour Office.,सबै कुराको अभिलेख राख्नुहोस्। श्रम कार्यालयमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_workplace_r2_situation,Forced to work overtime without pay,भुक्तानी बिना ओभरटाइम काम गर्न बाध्य,,,Know Your Rights Content
+kyr_cat_workplace_r2_yourright,No person shall be subjected to forced labour. Forced labour in any form is prohibited.,कुनै पनि व्यक्तिलाई बाध्यकारी श्रममा लगाइने छैन। कुनै पनि प्रकारको बाध्यकारी श्रम निषेध छ।,,,Know Your Rights Content
+kyr_cat_workplace_r2_tip,Keep records of hours worked. Labour laws require overtime compensation.,काम गरेको घण्टाको रेकर्ड राख्नुहोस्। श्रम कानूनले ओभरटाइम क्षतिपूर्ति अनिवार्य गर्छ।,,,Know Your Rights Content
+kyr_cat_workplace_r3_situation,Unsafe working conditions,असुरक्षित कार्य वातावरण,,,Know Your Rights Content
+kyr_cat_workplace_r3_yourright,Every employee has the right to appropriate working environment and conditions.,प्रत्येक कर्मचारीलाई उचित कार्य वातावरण र सर्तहरूको हक छ।,,,Know Your Rights Content
+kyr_cat_workplace_r3_tip,Report to Labour Office. Employers must provide safe conditions.,श्रम कार्यालयमा रिपोर्ट गर्नुहोस्। रोजगारदाताले सुरक्षित वातावरण प्रदान गर्नुपर्छ।,,,Know Your Rights Content
+kyr_cat_workplace_r4_situation,Fired without proper process,उचित प्रक्रिया बिना बर्खास्त,,,Know Your Rights Content
+kyr_cat_workplace_r4_yourright,Employees have the right to form and join trade unions. Collective bargaining rights are protected.,कर्मचारीहरूलाई ट्रेड युनियन गठन गर्ने र सामेल हुने हक छ। सामूहिक सौदाबाजीको अधिकार सुरक्षित छ।,,,Know Your Rights Content
+kyr_cat_workplace_r4_tip,Contact your union. Labour court handles wrongful termination cases.,आफ्नो युनियनलाई सम्पर्क गर्नुहोस्। श्रम अदालतले गलत बर्खास्तीका मुद्दा हेर्छ।,,,Know Your Rights Content
+kyr_cat_workplace_r5_situation,Workplace sexual harassment,कार्यस्थलमा यौन उत्पीडन,,,Know Your Rights Content
+kyr_cat_workplace_r5_yourright,"No woman shall be subjected to physical, mental, sexual, psychological violence. Workplace harassment is prohibited.","कुनै पनि महिलालाई शारीरिक, मानसिक, यौन, मनोवैज्ञानिक हिंसामा पार्न हुँदैन। कार्यस्थल उत्पीडन निषेध छ।",,,Know Your Rights Content
+kyr_cat_workplace_r5_tip,Report to internal committee. File complaint at Women's Cell if no action.,आन्तरिक समितिमा रिपोर्ट गर्नुहोस्। कारबाही नभए महिला सेलमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_workplace_r6_situation,Denied maternity leave,प्रसूति बिदा अस्वीकार,,,Know Your Rights Content
+kyr_cat_workplace_r6_yourright,Women have special rights relating to safe motherhood and reproductive health.,महिलाको सुरक्षित मातृत्व र प्रजनन स्वास्थ्य सम्बन्धी विशेष हक छ।,,,Know Your Rights Content
+kyr_cat_workplace_r6_tip,Labour law mandates 98 days paid maternity leave. File complaint at Labour Office.,श्रम कानूनले ९८ दिन तलबी प्रसूति बिदा अनिवार्य गर्छ। श्रम कार्यालयमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_women_title,Women's Rights,महिला अधिकार,,,Know Your Rights Content
+kyr_cat_women_subtitle,Constitutional protections for women,महिलाको लागि संवैधानिक सुरक्षा,,,Know Your Rights Content
+kyr_cat_women_r1_situation,Facing discrimination at work or home,काममा वा घरमा भेदभाव सामना,,,Know Your Rights Content
+kyr_cat_women_r1_yourright,Women have the right to equal lineage and to participate in all state structures based on proportional inclusion.,महिलाको समान वंशको हक छ र समानुपातिक समावेशीको आधारमा सबै राज्य संरचनामा सहभागी हुने हक छ।,,,Know Your Rights Content
+kyr_cat_women_r1_tip,File complaint at National Women Commission or local Women Cell.,राष्ट्रिय महिला आयोग वा स्थानीय महिला सेलमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_women_r2_situation,Denied property rights,सम्पत्तिको हकबाट वञ्चित,,,Know Your Rights Content
+kyr_cat_women_r2_yourright,Women have equal rights to ancestral property. No discrimination based on gender in property rights.,महिलाको पैतृक सम्पत्तिमा समान हक छ। सम्पत्तिको हकमा लिङ्गको आधारमा भेदभाव हुनेछैन।,,,Know Your Rights Content
+kyr_cat_women_r2_tip,Consult a lawyer for property cases. Land Revenue Office handles disputes.,सम्पत्तिका मुद्दाहरूको लागि वकिलसँग सल्लाह लिनुहोस्। मालपोत कार्यालयले विवाद समाधान गर्छ।,,,Know Your Rights Content
+kyr_cat_women_r3_situation,Reproductive health issues,प्रजनन स्वास्थ्य समस्या,,,Know Your Rights Content
+kyr_cat_women_r3_yourright,Women have special rights relating to safe motherhood and reproductive health.,महिलाको सुरक्षित मातृत्व र प्रजनन स्वास्थ्य सम्बन्धी विशेष हक छ।,,,Know Your Rights Content
+kyr_cat_women_r3_tip,Government hospitals must provide free safe delivery services.,सरकारी अस्पतालले निःशुल्क सुरक्षित प्रसव सेवा दिनुपर्छ।,,,Know Your Rights Content
+kyr_cat_women_r4_situation,Domestic violence,घरेलु हिंसा,,,Know Your Rights Content
+kyr_cat_women_r4_yourright,"No woman shall be subjected to physical, mental, sexual, psychological or other violence. This applies in family and public life.","कुनै पनि महिलालाई शारीरिक, मानसिक, यौन, मनोवैज्ञानिक वा अन्य हिंसामा पार्न हुँदैन। यो परिवार र सार्वजनिक जीवनमा लागू हुन्छ।",,,Know Your Rights Content
+kyr_cat_women_r4_tip,Call 1145 (helpline). File complaint at Women's Cell or local police.,११४५ (हेल्पलाइन) मा फोन गर्नुहोस्। महिला सेल वा स्थानीय प्रहरीमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_women_r5_situation,Child marriage pressure,बाल विवाहको दबाब,,,Know Your Rights Content
+kyr_cat_women_r5_yourright,Child marriage is prohibited. The minimum age for marriage is 20 years for both men and women.,बाल विवाह निषेध छ। विवाहको न्यूनतम उमेर पुरुष र महिला दुवैको लागि २० वर्ष हो।,,,Know Your Rights Content
+kyr_cat_women_r5_tip,Report to local ward office or call child helpline 1098.,स्थानीय वडा कार्यालयमा रिपोर्ट गर्नुहोस् वा बाल हेल्पलाइन १०९८ मा फोन गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_children_title,Children's Rights,बालबालिकाको हक,,,Know Your Rights Content
+kyr_cat_children_subtitle,Protection and rights of children,बालबालिकाको सुरक्षा र अधिकार,,,Know Your Rights Content
+kyr_cat_children_r1_situation,Child being forced to work,बच्चालाई काम गर्न बाध्य पारिँदैछ,,,Know Your Rights Content
+kyr_cat_children_r1_yourright,"No child shall be employed in factories, mines or similar hazardous work. Child labour is prohibited.","कुनै पनि बालबालिकालाई कारखाना, खानी वा त्यस्तै खतरनाक काममा लगाउने छैन। बाल श्रम निषेध छ।",,,Know Your Rights Content
+kyr_cat_children_r1_tip,Report to Child Welfare Board or call 1098. Child labour is punishable.,बाल कल्याण समितिमा रिपोर्ट गर्नुहोस् वा १०९८ मा फोन गर्नुहोस्। बाल श्रम दण्डनीय छ।,,,Know Your Rights Content
+kyr_cat_children_r2_situation,Child abuse or neglect,बालबालिका दुर्व्यवहार वा बेवास्ता,,,Know Your Rights Content
+kyr_cat_children_r2_yourright,"Every child has the right to be protected from physical, mental or any other form of exploitation.","प्रत्येक बालबालिकालाई शारीरिक, मानसिक वा अन्य कुनै प्रकारको शोषणबाट सुरक्षित हुने हक छ।",,,Know Your Rights Content
+kyr_cat_children_r2_tip,Call 1098 (Child Helpline). Report to District Child Welfare Board.,१०९८ (बाल हेल्पलाइन) मा फोन गर्नुहोस्। जिल्ला बाल कल्याण समितिमा रिपोर्ट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_children_r3_situation,Child denied education,बच्चालाई शिक्षाबाट वञ्चित,,,Know Your Rights Content
+kyr_cat_children_r3_yourright,"Every child has the right to elementary child development, care and basic education. Free and compulsory basic education.","प्रत्येक बालबालिकालाई प्रारम्भिक बाल विकास, हेरचाह र आधारभूत शिक्षाको हक छ। निःशुल्क र अनिवार्य आधारभूत शिक्षा।",,,Know Your Rights Content
+kyr_cat_children_r3_tip,Every child must be enrolled in school. Report to Education Office.,प्रत्येक बच्चालाई विद्यालयमा भर्ना गर्नुपर्छ। शिक्षा कार्यालयमा रिपोर्ट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_children_r4_situation,Child trafficking or exploitation,बाल ओसारपसार वा शोषण,,,Know Your Rights Content
+kyr_cat_children_r4_yourright,"No child shall be subjected to buying, selling or trafficking in any form. Helpless children are entitled to state care.",कुनै पनि बालबालिकालाई कुनै पनि रूपमा किनबेच वा ओसारपसार गर्न हुँदैन। असहाय बालबालिकाले राज्यको हेरचाह पाउने हक छ।,,,Know Your Rights Content
+kyr_cat_children_r4_tip,Call 1098 immediately. Report to police. Human trafficking is serious crime.,तुरुन्त १०९८ मा फोन गर्नुहोस्। प्रहरीमा रिपोर्ट गर्नुहोस्। मानव ओसारपसार गम्भीर अपराध हो।,,,Know Your Rights Content
+kyr_cat_dalit_title,Dalit Rights,दलित अधिकार,,,Know Your Rights Content
+kyr_cat_dalit_subtitle,Rights against untouchability and caste discrimination,छुवाछूत र जातीय भेदभाव विरुद्धको हक,,,Know Your Rights Content
+kyr_cat_dalit_r1_situation,Denied entry to public places,सार्वजनिक स्थानमा प्रवेश रोकियो,,,Know Your Rights Content
+kyr_cat_dalit_r1_yourright,No person shall be subjected to any form of untouchability or discrimination based on caste in any public or private place.,कुनै पनि व्यक्तिलाई कुनै पनि सार्वजनिक वा निजी स्थानमा जातको आधारमा कुनै पनि प्रकारको छुवाछूत वा भेदभाव गर्न हुँदैन।,,,Know Your Rights Content
+kyr_cat_dalit_r1_tip,This is a criminal offense. File FIR at police station.,यो फौजदारी अपराध हो। प्रहरी चौकीमा प्राथमिकी दर्ता गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_dalit_r2_situation,Caste-based denial of goods or services,जातको आधारमा सामान वा सेवा अस्वीकार,,,Know Your Rights Content
+kyr_cat_dalit_r2_yourright,"No one shall be denied goods, services or facilities available to the general public on grounds of caste.","जातको आधारमा सर्वसाधारणलाई उपलब्ध सामान, सेवा वा सुविधाबाट कसैलाई वञ्चित गर्न हुँदैन।",,,Know Your Rights Content
+kyr_cat_dalit_r2_tip,Violation is punishable. Report to National Dalit Commission.,उल्लंघन दण्डनीय छ। राष्ट्रिय दलित आयोगमा रिपोर्ट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_dalit_r3_situation,Caste-based abuse or humiliation,जातको आधारमा गाली वा अपमान,,,Know Your Rights Content
+kyr_cat_dalit_r3_yourright,No person belonging to any caste shall be humiliated or discriminated against in any workplace or public place.,कुनै पनि जातको व्यक्तिलाई कुनै पनि कार्यस्थल वा सार्वजनिक स्थानमा अपमान वा भेदभाव गर्न हुँदैन।,,,Know Your Rights Content
+kyr_cat_dalit_r3_tip,Caste-based discrimination is crime with 3-5 years imprisonment.,जातीय भेदभाव ३-५ वर्ष कैद हुने अपराध हो।,,,Know Your Rights Content
+kyr_cat_dalit_r4_situation,Denied job due to caste,जातको कारण रोजगारीबाट वञ्चित,,,Know Your Rights Content
+kyr_cat_dalit_r4_yourright,Dalit community has special right to employment in state structures based on proportional inclusive principle.,दलित समुदायलाई समानुपातिक समावेशी सिद्धान्तको आधारमा राज्य संरचनामा रोजगारीको विशेष हक छ।,,,Know Your Rights Content
+kyr_cat_dalit_r4_tip,Government jobs have reservation for Dalits. Contact Public Service Commission.,सरकारी जागिरमा दलितको लागि आरक्षण छ। लोक सेवा आयोगमा सम्पर्क गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_senior_title,Senior Citizens,ज्येष्ठ नागरिक,,,Know Your Rights Content
+kyr_cat_senior_subtitle,Rights of elderly persons,वृद्ध व्यक्तिहरूको हक,,,Know Your Rights Content
+kyr_cat_senior_r1_situation,Neglected by family,परिवारले बेवास्ता गर्यो,,,Know Your Rights Content
+kyr_cat_senior_r1_yourright,Senior citizens have the right to special protection and social security from the State.,ज्येष्ठ नागरिकलाई राज्यबाट विशेष सुरक्षा र सामाजिक सुरक्षाको हक छ।,,,Know Your Rights Content
+kyr_cat_senior_r1_tip,Old age allowance available at ward office. Senior citizen homes available.,वडा कार्यालयमा वृद्ध भत्ता उपलब्ध छ। वृद्धाश्रम उपलब्ध छ।,,,Know Your Rights Content
+kyr_cat_senior_r2_situation,Denied pension or benefits,पेन्सन वा सुविधाबाट वञ्चित,,,Know Your Rights Content
+kyr_cat_senior_r2_yourright,Senior citizens are entitled to social security benefits including old age allowance.,ज्येष्ठ नागरिकहरू वृद्ध भत्ता लगायत सामाजिक सुरक्षा सुविधाहरूको हकदार हुन्।,,,Know Your Rights Content
+kyr_cat_senior_r2_tip,"Apply at local ward office. Required: citizenship, age proof.","स्थानीय वडा कार्यालयमा आवेदन दिनुहोस्। आवश्यक: नागरिकता, उमेर प्रमाण।",,,Know Your Rights Content
+kyr_cat_senior_r3_situation,Property taken by children,सन्तानहरूले सम्पत्ति लिए,,,Know Your Rights Content
+kyr_cat_senior_r3_yourright,Senior citizens have the right to property and protection from abuse by family members.,ज्येष्ठ नागरिकलाई सम्पत्तिको हक र परिवारका सदस्यहरूको दुर्व्यवहारबाट सुरक्षाको हक छ।,,,Know Your Rights Content
+kyr_cat_senior_r3_tip,Senior Citizen Act protects property rights. Consult lawyer.,ज्येष्ठ नागरिक ऐनले सम्पत्तिको हक सुरक्षित गर्छ। वकिलसँग सल्लाह लिनुहोस्।,,,Know Your Rights Content
+kyr_cat_property_title,Property Rights,सम्पत्तिको हक,,,Know Your Rights Content
+kyr_cat_property_subtitle,Your rights regarding land and property,जग्गा र सम्पत्ति सम्बन्धी हक,,,Know Your Rights Content
+kyr_cat_property_r1_situation,Landlord trying to evict illegally,घरधनीले अवैध रूपमा निकाल्ने प्रयास,,,Know Your Rights Content
+kyr_cat_property_r1_yourright,"Every citizen has the right to acquire, own, sell and dispose of property. No person shall be deprived of property except in accordance with law.","प्रत्येक नागरिकलाई सम्पत्ति आर्जन गर्ने, भोग गर्ने, बेच्ने र हक छोड्ने हक छ। कानून बमोजिम बाहेक कसैको सम्पत्ति खोसिने छैन।",,,Know Your Rights Content
+kyr_cat_property_r1_tip,Check your rental agreement. Eviction requires proper legal notice.,आफ्नो भाडा सम्झौता जाँच्नुहोस्। निकासीको लागि उचित कानूनी सूचना चाहिन्छ।,,,Know Your Rights Content
+kyr_cat_property_r2_situation,Government acquiring your land,सरकारले तपाईंको जग्गा लिँदैछ,,,Know Your Rights Content
+kyr_cat_property_r2_yourright,The State shall not acquire or create any encumbrance on the property except for public interest. Just compensation must be paid.,राज्यले सार्वजनिक हितको लागि बाहेक सम्पत्ति अधिग्रहण वा बोझ सिर्जना गर्ने छैन। उचित क्षतिपूर्ति भुक्तानी गर्नुपर्छ।,,,Know Your Rights Content
+kyr_cat_property_r2_tip,Get legal counsel. You're entitled to fair market value compensation.,कानूनी सल्लाह लिनुहोस्। तपाईंले बजार मूल्य अनुसारको क्षतिपूर्ति पाउनुपर्छ।,,,Know Your Rights Content
+kyr_cat_property_r3_situation,Land encroachment by neighbors,छिमेकीहरूले जग्गा अतिक्रमण,,,Know Your Rights Content
+kyr_cat_property_r3_yourright,Every citizen has the right to own and protect their property. Encroachment is illegal.,प्रत्येक नागरिकलाई आफ्नो सम्पत्तिको स्वामित्व र सुरक्षा गर्ने हक छ। अतिक्रमण गैरकानूनी हो।,,,Know Your Rights Content
+kyr_cat_property_r3_tip,Get land surveyed by Survey Office. File complaint at land revenue office.,नापी कार्यालयबाट जग्गा नाप्नुहोस्। मालपोत कार्यालयमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_speech_title,Freedom of Speech,अभिव्यक्ति स्वतन्त्रता,,,Know Your Rights Content
+kyr_cat_speech_subtitle,"Your right to speak, assemble, and protest","बोल्ने, भेला हुने र विरोध गर्ने हक",,,Know Your Rights Content
+kyr_cat_speech_r1_situation,Stopped from peaceful protest,शान्तिपूर्ण विरोधबाट रोकियो,,,Know Your Rights Content
+kyr_cat_speech_r1_yourright,Every citizen has the freedom to assemble peaceably and without arms. You can form unions and associations.,"प्रत्येक नागरिकलाई शान्तिपूर्ण रूपमा र निहत्था भएर भेला हुने स्वतन्त्रता छ। संघ, संस्था गठन गर्न सक्नुहुन्छ।",,,Know Your Rights Content
+kyr_cat_speech_r1_tip,Peaceful assembly is protected. Violence nullifies this protection.,शान्तिपूर्ण भेला सुरक्षित छ। हिंसाले यो सुरक्षा हटाउँछ।,,,Know Your Rights Content
+kyr_cat_speech_r2_situation,Social media post removed or threatened,सामाजिक सञ्जालको पोस्ट हटाइयो वा धम्की,,,Know Your Rights Content
+kyr_cat_speech_r2_yourright,Every citizen has freedom of opinion and expression. This includes freedom of press and publication.,प्रत्येक नागरिकलाई विचार र अभिव्यक्तिको स्वतन्त्रता छ। यसमा प्रेस र प्रकाशनको स्वतन्त्रता समावेश छ।,,,Know Your Rights Content
+kyr_cat_speech_r2_tip,"Limits exist for defamation, incitement to violence. Know the boundaries.","अपमान, हिंसाको उक्साहटको लागि सीमा छ। सीमाहरू जान्नुहोस्।",,,Know Your Rights Content
+kyr_cat_speech_r3_situation,Media or press being censored,मिडिया वा प्रेस सेन्सर भइरहेको छ,,,Know Your Rights Content
+kyr_cat_speech_r3_yourright,"There shall be no prior censorship of publication, broadcasting or display of news. Press freedom is guaranteed.","समाचारको प्रकाशन, प्रसारण वा प्रदर्शनमा पूर्व सेन्सरसिप हुने छैन। प्रेस स्वतन्त्रता सुनिश्चित छ।",,,Know Your Rights Content
+kyr_cat_speech_r3_tip,Press Council handles complaints against censorship.,प्रेस काउन्सिलले सेन्सरसिप विरुद्धका गुनासोहरू हेर्छ।,,,Know Your Rights Content
+kyr_cat_speech_r4_situation,Practicing your religion restricted,धर्म पालनमा प्रतिबन्ध,,,Know Your Rights Content
+kyr_cat_speech_r4_yourright,"Every person has the freedom to profess, practice and protect their religion according to their faith.","प्रत्येक व्यक्तिलाई आफ्नो विश्वास अनुसार धर्म मान्ने, पालन गर्ने र संरक्षण गर्ने स्वतन्त्रता छ।",,,Know Your Rights Content
+kyr_cat_speech_r4_tip,Forced conversion is prohibited. Religious freedom is protected.,जबरजस्ती धर्म परिवर्तन निषेध छ। धार्मिक स्वतन्त्रता सुरक्षित छ।,,,Know Your Rights Content
+kyr_cat_information_title,Right to Information,सूचनाको हक,,,Know Your Rights Content
+kyr_cat_information_subtitle,Access government information,सरकारी सूचनामा पहुँच,,,Know Your Rights Content
+kyr_cat_information_r1_situation,Government office not providing information,सरकारी कार्यालयले सूचना दिँदैन,,,Know Your Rights Content
+kyr_cat_information_r1_yourright,Every citizen has the right to demand and receive information on any matter of public interest.,प्रत्येक नागरिकलाई सार्वजनिक चासोको कुनै पनि विषयमा सूचना माग गर्ने र प्राप्त गर्ने हक छ।,,,Know Your Rights Content
+kyr_cat_information_r1_tip,File RTI application. Response required within 15 days.,सूचनाको हक आवेदन दिनुहोस्। १५ दिनभित्र जवाफ अनिवार्य छ।,,,Know Your Rights Content
+kyr_cat_information_r2_situation,Denied access to your own records,आफ्नै अभिलेखमा पहुँच रोकियो,,,Know Your Rights Content
+kyr_cat_information_r2_yourright,Every citizen has the right to information about themselves held by any public body.,प्रत्येक नागरिकलाई कुनै पनि सार्वजनिक निकायले राखेको आफ्नो बारेमा जानकारी पाउने हक छ।,,,Know Your Rights Content
+kyr_cat_information_r2_tip,Apply to the Information Officer of that office. Appeal to National Information Commission if denied.,त्यो कार्यालयको सूचना अधिकारीलाई आवेदन दिनुहोस्। अस्वीकार भए राष्ट्रिय सूचना आयोगमा पुनरावेदन दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_health_title,Healthcare Rights,स्वास्थ्य हक,,,Know Your Rights Content
+kyr_cat_health_subtitle,Your right to basic health services,आधारभूत स्वास्थ्य सेवामा तपाईंको हक,,,Know Your Rights Content
+kyr_cat_health_r1_situation,Hospital denying emergency treatment,अस्पताले आपतकालीन उपचार दिँदैन,,,Know Your Rights Content
+kyr_cat_health_r1_yourright,Every citizen has the right to free basic health services. No one shall be deprived of emergency health services.,प्रत्येक नागरिकलाई निःशुल्क आधारभूत स्वास्थ्य सेवाको हक छ। कसैलाई आपतकालीन स्वास्थ्य सेवाबाट वञ्चित गरिने छैन।,,,Know Your Rights Content
+kyr_cat_health_r1_tip,Emergency care cannot be denied. Report to Health Ministry if refused.,आपतकालीन उपचार अस्वीकार गर्न मिल्दैन। अस्वीकार भए स्वास्थ्य मन्त्रालयमा रिपोर्ट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_health_r2_situation,Cannot afford hospital bills,अस्पताल बिल तिर्न सक्दिन,,,Know Your Rights Content
+kyr_cat_health_r2_yourright,Indigent citizens have the right to free health care services from the state.,गरिब नागरिकहरूलाई राज्यबाट निःशुल्क स्वास्थ्य सेवाको हक छ।,,,Know Your Rights Content
+kyr_cat_health_r2_tip,Apply for poor patient fund. Health insurance schemes available at ward.,गरिब बिरामी कोषमा आवेदन दिनुहोस्। वडामा स्वास्थ्य बीमा योजना उपलब्ध छ।,,,Know Your Rights Content
+kyr_cat_health_r3_situation,Lack of clean drinking water,सफा खानेपानीको अभाव,,,Know Your Rights Content
+kyr_cat_health_r3_yourright,Every citizen has the right to access clean drinking water and sanitation.,प्रत्येक नागरिकलाई सफा खानेपानी र सरसफाइमा पहुँचको हक छ।,,,Know Your Rights Content
+kyr_cat_health_r3_tip,Report to ward office. Water supply is local government responsibility.,वडा कार्यालयमा रिपोर्ट गर्नुहोस्। खानेपानी आपूर्ति स्थानीय सरकारको जिम्मेवारी हो।,,,Know Your Rights Content
+kyr_cat_education_title,Education Rights,शिक्षाको हक,,,Know Your Rights Content
+kyr_cat_education_subtitle,Right to education for all,सबैको लागि शिक्षाको हक,,,Know Your Rights Content
+kyr_cat_education_r1_situation,Child denied school admission,बच्चालाई स्कूल भर्नाबाट रोकियो,,,Know Your Rights Content
+kyr_cat_education_r1_yourright,Every citizen has the right to free education up to basic level and free education up to secondary level.,प्रत्येक नागरिकलाई आधारभूत तहसम्म निःशुल्क शिक्षा र माध्यमिक तहसम्म निःशुल्क शिक्षाको हक छ।,,,Know Your Rights Content
+kyr_cat_education_r1_tip,Government schools must admit all children. Complain to Education Office.,सरकारी स्कूलले सबै बालबालिकालाई भर्ना गर्नुपर्छ। शिक्षा कार्यालयमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_education_r2_situation,School charging illegal fees,स्कूलले गैरकानूनी शुल्क लिँदैछ,,,Know Your Rights Content
+kyr_cat_education_r2_yourright,Basic education is free and compulsory. Additional illegal fees cannot be charged.,आधारभूत शिक्षा निःशुल्क र अनिवार्य छ। थप गैरकानूनी शुल्क लिन मिल्दैन।,,,Know Your Rights Content
+kyr_cat_education_r2_tip,Report to District Education Office. Illegal fee collection is punishable.,जिल्ला शिक्षा कार्यालयमा रिपोर्ट गर्नुहोस्। गैरकानूनी शुल्क संकलन दण्डनीय छ।,,,Know Your Rights Content
+kyr_cat_education_r3_situation,Mother tongue education denied,मातृभाषा शिक्षाबाट वञ्चित,,,Know Your Rights Content
+kyr_cat_education_r3_yourright,Every Nepali community has the right to get education in their mother tongue up to secondary level.,प्रत्येक नेपाली समुदायलाई माध्यमिक तहसम्म आफ्नो मातृभाषामा शिक्षा पाउने हक छ।,,,Know Your Rights Content
+kyr_cat_education_r3_tip,Request mother tongue classes at local government level.,स्थानीय सरकार स्तरमा मातृभाषा कक्षाको अनुरोध गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_environment_title,Environmental Rights,वातावरण हक,,,Know Your Rights Content
+kyr_cat_environment_subtitle,Right to clean and healthy environment,स्वच्छ र स्वस्थ वातावरणको हक,,,Know Your Rights Content
+kyr_cat_environment_r1_situation,Factory polluting your area,कारखानाले तपाईंको क्षेत्र प्रदूषित गर्दैछ,,,Know Your Rights Content
+kyr_cat_environment_r1_yourright,Every citizen has the right to live in a clean and healthy environment.,प्रत्येक नागरिकलाई स्वच्छ र स्वस्थ वातावरणमा बस्ने हक छ।,,,Know Your Rights Content
+kyr_cat_environment_r1_tip,Report to Department of Environment. Polluters are liable for compensation.,वातावरण विभागमा रिपोर्ट गर्नुहोस्। प्रदूषणकर्ताहरू क्षतिपूर्तिको लागि उत्तरदायी छन्।,,,Know Your Rights Content
+kyr_cat_environment_r2_situation,Damaged by environmental harm,वातावरणीय हानिबाट क्षतिग्रस्त,,,Know Your Rights Content
+kyr_cat_environment_r2_yourright,Victims of environmental pollution or degradation have the right to compensation from polluters.,वातावरणीय प्रदूषण वा क्षयबाट पीडितहरूलाई प्रदूषणकर्ताबाट क्षतिपूर्ति पाउने हक छ।,,,Know Your Rights Content
+kyr_cat_environment_r2_tip,Document the damage. File case at District Court for compensation.,क्षतिको अभिलेख राख्नुहोस्। क्षतिपूर्तिको लागि जिल्ला अदालतमा मुद्दा दायर गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_food_title,Right to Food,खाद्य हक,,,Know Your Rights Content
+kyr_cat_food_subtitle,Protection from hunger and food insecurity,भोक र खाद्य असुरक्षाबाट सुरक्षा,,,Know Your Rights Content
+kyr_cat_food_r1_situation,Cannot afford food for family,परिवारको लागि खाना किन्न सक्दिन,,,Know Your Rights Content
+kyr_cat_food_r1_yourright,Every citizen has the right to food sovereignty. No citizen shall be kept in a condition of starvation.,प्रत्येक नागरिकलाई खाद्य सार्वभौमसत्ताको हक छ। कुनै पनि नागरिकलाई भोकमरीको अवस्थामा राख्ने छैन।,,,Know Your Rights Content
+kyr_cat_food_r1_tip,Contact ward office for food assistance programs.,खाद्य सहायता कार्यक्रमहरूको लागि वडा कार्यालयमा सम्पर्क गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_food_r2_situation,Sold adulterated food,मिसावट गरिएको खाना बिक्री,,,Know Your Rights Content
+kyr_cat_food_r2_yourright,Every citizen has the right to safe and quality food. Adulterated food is prohibited.,प्रत्येक नागरिकलाई सुरक्षित र गुणस्तरीय खानाको हक छ। मिसावट गरिएको खाना निषेध छ।,,,Know Your Rights Content
+kyr_cat_food_r2_tip,Report to Department of Food Technology. Keep samples as evidence.,खाद्य प्रविधि विभागमा रिपोर्ट गर्नुहोस्। प्रमाणको रूपमा नमूना राख्नुहोस्।,,,Know Your Rights Content
+kyr_cat_consumer_title,Consumer Rights,उपभोक्ता हक,,,Know Your Rights Content
+kyr_cat_consumer_subtitle,Protection as a consumer,उपभोक्ताको रूपमा सुरक्षा,,,Know Your Rights Content
+kyr_cat_consumer_r1_situation,Sold defective product or cheated,खराब सामान बिक्री वा ठगी,,,Know Your Rights Content
+kyr_cat_consumer_r1_yourright,Every consumer has the right to quality goods and services. You have the right to compensation for loss caused by substandard goods.,प्रत्येक उपभोक्तालाई गुणस्तरीय वस्तु र सेवाको हक छ। निम्न स्तरको सामानबाट हानि भएमा क्षतिपूर्ति पाउने हक छ।,,,Know Your Rights Content
+kyr_cat_consumer_r1_tip,File complaint at Consumer Forum or Department of Commerce.,उपभोक्ता मञ्च वा वाणिज्य विभागमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_consumer_r2_situation,Overcharged or price gouging,अत्यधिक मूल्य वा मूल्य वृद्धि,,,Know Your Rights Content
+kyr_cat_consumer_r2_yourright,"Consumers have the right to information about quality, quantity and price of goods and services.","उपभोक्ताहरूलाई वस्तु र सेवाको गुणस्तर, परिमाण र मूल्यको जानकारी पाउने हक छ।",,,Know Your Rights Content
+kyr_cat_consumer_r2_tip,Check MRP on products. Report to Department of Commerce for price violations.,उत्पादनहरूमा MRP जाँच्नुहोस्। मूल्य उल्लंघनको लागि वाणिज्य विभागमा रिपोर्ट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_consumer_r3_situation,Service provider not delivering,सेवा प्रदायकले सेवा दिँदैन,,,Know Your Rights Content
+kyr_cat_consumer_r3_yourright,Consumers have the right to get compensation if services paid for are not delivered.,भुक्तानी गरिएका सेवाहरू प्राप्त नभएमा उपभोक्ताहरूलाई क्षतिपूर्ति पाउने हक छ।,,,Know Your Rights Content
+kyr_cat_consumer_r3_tip,Keep receipts and contracts. File complaint at Consumer Court.,रसिद र करार राख्नुहोस्। उपभोक्ता अदालतमा उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_privacy_title,Privacy Rights,गोपनीयता हक,,,Know Your Rights Content
+kyr_cat_privacy_subtitle,Protection of personal information,व्यक्तिगत जानकारीको सुरक्षा,,,Know Your Rights Content
+kyr_cat_privacy_r1_situation,Personal data shared without consent,सहमति बिना व्यक्तिगत डाटा साझा गरियो,,,Know Your Rights Content
+kyr_cat_privacy_r1_yourright,"The privacy of personal matters, documents, data and correspondence is inviolable except in accordance with law.","व्यक्तिगत कुरा, कागजात, तथ्यांक र पत्राचारको गोपनीयता कानून बमोजिम बाहेक अनुल्लंघनीय छ।",,,Know Your Rights Content
+kyr_cat_privacy_r1_tip,Privacy Act 2018 protects personal data. File complaint if violated.,गोपनीयता ऐन २०७५ ले व्यक्तिगत डाटा सुरक्षित गर्छ। उल्लंघन भए उजुरी दिनुहोस्।,,,Know Your Rights Content
+kyr_cat_privacy_r2_situation,Communications being monitored,सञ्चार निगरानीमा छ,,,Know Your Rights Content
+kyr_cat_privacy_r2_yourright,No person's correspondence or private communications shall be opened or intercepted except in accordance with law.,कुनै पनि व्यक्तिको पत्राचार वा निजी सञ्चार कानून बमोजिम बाहेक खोल्ने वा अवरोध गर्ने छैन।,,,Know Your Rights Content
+kyr_cat_privacy_r2_tip,Surveillance requires court order. Report illegal monitoring to NHRC.,निगरानीको लागि अदालतको आदेश चाहिन्छ। गैरकानूनी निगरानी NHRC मा रिपोर्ट गर्नुहोस्।,,,Know Your Rights Content
+kyr_cat_housing_title,Right to Housing,आवासको हक,,,Know Your Rights Content
+kyr_cat_housing_subtitle,Right to shelter and housing,आश्रय र आवासको हक,,,Know Your Rights Content
+kyr_cat_housing_r1_situation,Homeless or lacking shelter,गृहहीन वा आश्रयको अभाव,,,Know Your Rights Content
+kyr_cat_housing_r1_yourright,Every citizen has the right to appropriate housing. No citizen shall be evicted arbitrarily.,प्रत्येक नागरिकलाई उपयुक्त आवासको हक छ। कुनै पनि नागरिकलाई मनमानी ढंगले बेदखल गरिने छैन।,,,Know Your Rights Content
+kyr_cat_housing_r1_tip,Contact ward office for housing assistance. Shelter homes available.,आवास सहायताको लागि वडा कार्यालयमा सम्पर्क गर्नुहोस्। आश्रय गृहहरू उपलब्ध छन्।,,,Know Your Rights Content
+kyr_cat_housing_r2_situation,Squatter settlement being demolished,सुकुम्बासी बस्ती भत्काइँदैछ,,,Know Your Rights Content
+kyr_cat_housing_r2_yourright,Landless squatters are entitled to housing based on law. Forced eviction without rehabilitation is prohibited.,भूमिहीन सुकुम्बासीहरू कानून बमोजिम आवासको हकदार छन्। पुनर्स्थापना बिना जबरजस्ती बेदखली निषेध छ।,,,Know Your Rights Content
+kyr_cat_housing_r2_tip,Proper notice and rehabilitation must be provided before relocation.,स्थानान्तरण अघि उचित सूचना र पुनर्स्थापना प्रदान गर्नुपर्छ।,,,Know Your Rights Content

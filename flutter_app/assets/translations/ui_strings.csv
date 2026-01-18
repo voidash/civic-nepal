@@ -1,0 +1,283 @@
+key,english,nepali,newari,context
+# App General
+app_name,Nepal Civic,नेपाल नागरिक,नेपाल नागरिक,App title
+app_name_short,Nepal Civic,नेपाल नागरिक,नेपाल नागरिक,Short app name
+
+# Navigation - Bottom Tabs
+nav_calendar,Calendar,पात्रो,पात्रो,Bottom nav tab
+nav_home,Home,गृह,छेँ,Bottom nav tab
+nav_ipo,IPO,आईपीओ,आईपीओ,Bottom nav tab
+nav_rights,Rights,अधिकार,अधिकार,Bottom nav tab
+
+# Navigation - Quick Access
+explore,Explore,अन्वेषण,अन्वेषण,Section header
+utilities,Utilities,उपकरणहरू,उपकरणथें,Section header
+govt,Govt,सरकार,सरकार,Quick access card
+map,Map,नक्सा,नक्सा,Quick access card
+rights,Rights,अधिकार,अधिकार,Quick access card
+
+# Utility Cards
+citizenship_merger,Citizenship Merger,नागरिकता मर्जर,नागरिकता मर्जर,Utility card title
+image_compressor,Image < 300KB,फोटो कम्प्रेस,फोटो कम्प्रेस,Utility card title
+calendar,Calendar,पात्रो,पात्रो,Utility card title
+date_convert,Date Convert,मिति परिवर्तक,मिति परिवर्तक,Utility card title
+forex,Forex,विदेशी मुद्रा,विदेशी मुद्रा,Utility card title
+gold_silver,Gold/Silver,सुन/चाँदी,लुँ/चाँदी,Utility card title
+
+# Settings Screen
+settings,Settings,सेटिङ,सेटिङ,Screen title
+language_display,Language & Display,भाषा र प्रदर्शन,भाषा व प्रदर्शन,Section header
+data_updates,Data & Updates,डाटा र अपडेट,डाटा व अपडेट,Section header
+notifications,Notifications,सूचनाहरू,सूचनाथें,Section header
+about,About,बारेमा,बारेया,Section header
+language,Language,भाषा,भाषा,Setting label
+theme,Theme,थिम,थिम,Setting label
+auto_check_updates,Auto-check for updates,स्वचालित अपडेट जाँच,स्वचालित अपडेट जाँच,Setting title
+auto_check_updates_desc,Check for new data on app launch,एप खोल्दा नयाँ डाटा जाँच गर्नुहोस्,एप खोलय् नयाँ डाटा जाँच याय्,Setting subtitle
+check_updates_now,Check for updates now,अहिले अपडेट जाँच गर्नुहोस्,अले अपडेट जाँच याय्,Setting title
+check_updates_now_desc,Download latest leader data,नवीनतम नेता डाटा डाउनलोड गर्नुहोस्,नयाँ नेता डाटा डाउनलोड याय्,Setting subtitle
+clear_cache,Clear cache,क्यास खाली गर्नुहोस्,क्यास खाली याय्,Setting title
+clear_cache_desc,Free up storage space,भण्डारण ठाउँ खाली गर्नुहोस्,भण्डारण ठाउँ खाली याय्,Setting subtitle
+sticky_date_notification,Sticky Date Notification,स्थायी मिति सूचना,स्थायी मिति सूचना,Setting title
+sticky_date_notification_desc,Show today's Nepali date in notification bar,आजको नेपाली मिति सूचना पट्टीमा देखाउनुहोस्,थौं नेपाली मिति सूचना पट्टीया क्यनेगु,Setting subtitle
+ipo_alerts,IPO Alerts,आईपीओ सूचना,आईपीओ सूचना,Setting title
+ipo_alerts_desc,Get notified when IPOs are opening or closing,आईपीओ खुल्दा वा बन्द हुँदा सूचना पाउनुहोस्,आईपीओ खुलय् वा बन्द जुलय् सूचना काय्,Setting subtitle
+checking_updates,Checking for updates...,अपडेट जाँच गर्दै...,अपडेट जाँच यानाच्वँ...,Snackbar message
+cache_cleared,Cache cleared,क्यास खाली भयो,क्यास खाली जुल,Snackbar message
+app_version,Nepal Civic App v1.0.0,नेपाल नागरिक एप v1.0.0,नेपाल नागरिक एप v1.0.0,Version info
+
+# Theme Options
+theme_system,System,सिस्टम,सिस्टम,Theme option
+theme_light,Light,उज्यालो,ज्वः,Theme option
+theme_dark,Dark,अँध्यारो,मिखा,Theme option
+theme_system_desc,Follow device settings,उपकरण सेटिङ अनुसरण गर्नुहोस्,उपकरण सेटिङ अनुसरण याय्,Theme option subtitle
+theme_light_desc,Always light theme,सधैं उज्यालो थिम,सदां ज्वःगु थिम,Theme option subtitle
+theme_dark_desc,Always dark theme,सधैं अँध्यारो थिम,सदां मिखागु थिम,Theme option subtitle
+choose_theme,Choose Theme,थिम छान्नुहोस्,थिम ल्ययादिसँ,Dialog title
+
+# Language Options
+both_languages,Both Languages,दुवै भाषा,निसें भाषा,Language option
+nepali_language,नेपाली (Nepali),नेपाली,नेपाली,Language option
+english_language,English,अंग्रेजी,अंग्रेजी,Language option
+newari_language,नेपाल भाषा (Newari),नेपाल भाषा,नेपाल भाषा,Language option
+
+# Constitution Screen
+know_your_rights,Know Your Rights,आफ्नो हक जान्नुहोस्,छिगु हक सय्कादिसँ,Navigation item
+preamble,Preamble,प्रस्तावना,प्रस्तावना,Section title
+part_number,Part {number},भाग {number},भाग {number},Part label with number
+article_number,Article {number},धारा {number},धारा {number},Article label
+search_articles,Search for articles...,धाराहरू खोज्नुहोस्...,धाराथें मालादिसँ...,Search hint
+no_results,No results for "{query}","{query}" को लागि कुनै परिणाम छैन,"{query}" या लागि खँ मदु,Empty state
+file_complaint,File Complaint,उजुरी दिनुहोस्,उजुरी बियादिसँ,Button text
+
+# View Mode
+both,Both,दुवै,निसें,Toggle option
+nepali,नेपाली,नेपाली,नेपाली,Toggle option
+english,English,अंग्रेजी,अंग्रेजी,Toggle option
+paragraph,Paragraph,अनुच्छेद,अनुच्छेद,Toggle option
+sentence,Sentence,वाक्य,वाक्य,Toggle option
+
+# Leaders Screen
+leaders,Leaders,नेताहरू,नेताथें,Screen title
+sort,Sort,क्रमबद्ध,क्रमबद्ध,Button tooltip
+filter,Filter,फिल्टर,फिल्टर,Button tooltip
+sort_by,Sort by,क्रमबद्ध गर्नुहोस्,क्रमबद्ध यायेमा,Dialog title
+name,Name,नाम,नां,Sort option
+district,District,जिल्ला,जिल्ला,Sort/filter option
+party,Party,पार्टी,पार्टी,Filter section
+search_leaders,Search leaders...,नेताहरू खोज्नुहोस्...,नेताथें मालादिसँ...,Search hint
+no_leaders_match,No leaders match your filters,तपाईंको फिल्टरसँग कुनै नेता मिलेन,छिगु फिल्टरं खँग्व नेता मिलल मखु,Empty state
+no_leaders_found,No leaders found,कुनै नेता भेटिएन,खँग्व नेता मदु,Empty state
+filters,Filters,फिल्टरहरू,फिल्टरथें,Dialog title
+clear_all,Clear All,सबै हटाउनुहोस्,जक्व थायेकादिसँ,Button text
+leaders_count,{count} leaders,{count} नेताहरू,{count} नेताथें,Count label
+filter_by_district,Filter by District,जिल्ला अनुसार फिल्टर,जिल्ला कथं फिल्टर,Button text
+select_district,Select District,जिल्ला छान्नुहोस्,जिल्ला ल्ययादिसँ,Dialog title
+clear,Clear,हटाउनुहोस्,थायेकादिसँ,Button text
+province,Province {number},प्रदेश {number},प्रदेश {number},Province label
+districts_count,{count} districts,{count} जिल्लाहरू,{count} जिल्लाथें,Count label
+
+# Leader Detail Screen
+biography,Biography,जीवनी,जीवनी,Section header
+no_biography,No biography available.,जीवनी उपलब्ध छैन।,जीवनी मदु।,Empty state
+view_all_leaders,View All Leaders,सबै नेताहरू हेर्नुहोस्,जक्व नेताथें स्वयादिसँ,Button text
+
+# District Map Screen
+nepal_districts,Nepal Districts,नेपाल जिल्लाहरू,नेपाल जिल्लाथें,Screen title
+filter_by_province,Filter by Province,प्रदेश अनुसार फिल्टर,प्रदेश कथं फिल्टर,Dialog title
+reset_zoom,Reset Zoom,जुम रिसेट,जुम रिसेट,Button tooltip
+no_leaders_district,No leaders found for {district},"{district}" मा कुनै नेता भेटिएन,{district} या खँग्व नेता मदु,Empty state
+
+# Calendar Screen
+nepali_calendar,Nepali Calendar,नेपाली पात्रो,नेपाली पात्रो,Screen title
+today,Today,आज,थौं,Button label
+previous_month,Previous month,अघिल्लो महिना,न्हापाया लः,Tooltip
+next_month,Next month,अर्को महिना,अप्वया लः,Tooltip
+holiday,Holiday,बिदा,बिदा,Legend item
+event,Event,कार्यक्रम,कार्यक्रम,Legend item
+auspicious,Auspicious,शुभ,शुभ,Legend item
+no_events,No events,कुनै कार्यक्रम छैन,खँग्व कार्यक्रम मदु,Empty state
+
+# IPO Screen
+ipo_shares,IPO & Shares,आईपीओ र सेयर,आईपीओ व सेयर,Screen title
+ipo_list,IPO List,आईपीओ सूची,आईपीओ सूची,Tab label
+todays_price,Today's Price,आजको मूल्य,थौंया मोल,Tab label
+source_cdsc,Source: CDSC Nepal,स्रोत: सीडीएससी नेपाल,स्रोत: सीडीएससी नेपाल,Attribution
+updated_ago,Updated {time} ago,{time} अघि अपडेट भयो,{time} न्ह्यःने अपडेट जुल,Time label
+open_cdsc,Open CDSC Website,सीडीएससी वेबसाइट खोल्नुहोस्,सीडीएससी वेबसाइट हायेकादिसँ,Button text
+no_active_ipos,No active IPOs,कुनै सक्रिय आईपीओ छैन,खँग्व सक्रिय आईपीओ मदु,Empty state
+check_later,Check back later for new listings,नयाँ सूचीको लागि पछि जाँच गर्नुहोस्,नयाँ सूचीया लागि लिपा जाँच यायेमा,Empty state subtitle
+refresh,Refresh,ताजा गर्नुहोस्,ताजा याय्,Button text
+retry,Retry,पुन: प्रयास,दोबारा यायेमा,Button text
+open_for_application,Open for Application,आवेदनको लागि खुला,आवेदनया लागि खुला,IPO status
+closes_today,Closes Today!,आज बन्द हुन्छ!,थौं बन्द जुइ!,IPO status
+closes_tomorrow,Closes Tomorrow,भोलि बन्द हुन्छ,गबले बन्द जुइ,IPO status
+opens_tomorrow,Opens Tomorrow,भोलि खुल्छ,गबले खुलइ,IPO status
+opens_in_days,Opens in {days} days,{days} दिनमा खुल्छ,{days} न्हिइ खुलइ,IPO status
+closed,Closed,बन्द,बन्द,IPO status
+issued_units,Issued Units,जारी इकाइहरू,जारी इकाइथें,Stat label
+applications,Applications,आवेदनहरू,आवेदनथें,Stat label
+applied_units,Applied Units,आवेदित इकाइहरू,आवेदित इकाइथें,Stat label
+total_amount,Total Amount,कुल रकम,जक्व रकम,Stat label
+opens,Opens,खुल्छ,खुलइ,Date label
+closes,Closes,बन्द हुन्छ,बन्द जुइ,Date label
+last_updated,Last updated: {time},अन्तिम अपडेट: {time},लिपाया अपडेट: {time},Timestamp
+issue_manager,Issue Manager: {name},इश्यू म्यानेजर: {name},इश्यू म्यानेजर: {name},Info label
+search_symbol,Search symbol or company...,सिम्बल वा कम्पनी खोज्नुहोस्...,सिम्बल वा कम्पनी मालादिसँ...,Search hint
+top_volume,Top Volume,उच्च भोल्युम,उच्च भोल्युम,Filter chip
+top_gainers,Top Gainers,उच्च लाभ,उच्च लाभ,Filter chip
+top_losers,Top Losers,उच्च घाटा,उच्च घाटा,Filter chip
+source_merolagani,Source: Merolagani,स्रोत: मेरोलगानी,स्रोत: मेरोलगानी,Attribution
+market_unavailable,Market data unavailable,बजार डाटा उपलब्ध छैन,बजार डाटा मदु,Empty state
+market_closed,Market may be closed or data is loading,बजार बन्द हुन सक्छ वा डाटा लोड हुँदैछ,बजार बन्द जुइफु वा डाटा लोड जुयाच्वँ,Empty state subtitle
+vol,Vol,भोल्युम,भोल्युम,Column header
+
+# Date Converter Screen
+date_converter,Date Converter,मिति परिवर्तक,मिति परिवर्तक,Screen title
+bs_to_ad,BS → AD,बि.सं. → ई.सं.,बि.सं. → ई.सं.,Tab label
+ad_to_bs,AD → BS,ई.सं. → बि.सं.,ई.सं. → बि.सं.,Tab label
+bs_to_gregorian,Bikram Sambat → Gregorian,बिक्रम सम्बत → ग्रेगोरियन,बिक्रम सम्बत → ग्रेगोरियन,Header
+gregorian_to_bs,Gregorian → Bikram Sambat,ग्रेगोरियन → बिक्रम सम्बत,ग्रेगोरियन → बिक्रम सम्बत,Header
+year,Year (वर्ष),वर्ष,दँ,Dropdown label
+month,Month (महिना),महिना,लः,Dropdown label
+day,Day (दिन),दिन,न्हि,Dropdown label
+gregorian_date,Gregorian Date (AD),ग्रेगोरियन मिति (ई.सं.),ग्रेगोरियन मिति (ई.सं.),Result card
+bikram_sambat,Bikram Sambat (BS),बिक्रम सम्बत (बि.सं.),बिक्रम सम्बत (बि.सं.),Result card
+invalid_bs_date,Invalid BS date,अवैध बि.सं. मिति,अवैध बि.सं. मिति,Error message
+select_date,Select a date,मिति छान्नुहोस्,मिति ल्ययादिसँ,Empty state
+
+# Citizenship Merger Screen
+citizenship_photo_merger,Citizenship Photo Merger,नागरिकता फोटो मर्जर,नागरिकता फोटो मर्जर,Screen title
+reset,Reset,रिसेट,रिसेट,Button tooltip
+merger_instructions,Add front and back photos of your citizenship card to merge them into a single image.,नागरिकताको अगाडि र पछाडिको फोटो थपेर एउटै तस्बिरमा मर्ज गर्नुहोस्।,नागरिकताया न्ह्यः व लिपाया फोटो तयार च्वनेगु।,Instructions
+front_side,Front Side,अगाडिको भाग,न्ह्यःया भाग,Card title
+back_side,Back Side,पछाडिको भाग,लिपाया भाग,Card title
+merge_photos,Merge Photos,फोटो मर्ज गर्नुहोस्,फोटो मर्ज याय्,Button text
+processing,Processing...,प्रशोधन हुँदैछ...,प्रशोधन जुयाच्वँ...,Loading state
+file_size,Size: {size},साइज: {size},साइज: {size},File info
+save,Save,सुरक्षित गर्नुहोस्,सुरक्षित याय्,Button text
+share,Share,साझा गर्नुहोस्,ब्वनेगु,Button text
+gallery,Gallery,ग्यालेरी,ग्यालेरी,Image source
+camera,Camera,क्यामेरा,क्यामेरा,Image source
+tap_to_select,Tap to select,छनोट गर्न ट्याप गर्नुहोस्,ल्ययेत ट्याप यायेमा,Hint
+add_title,Add {title},{title} थप्नुहोस्,{title} तयेमा,Placeholder
+saved_to_photos,Saved to Photos,फोटोमा सुरक्षित भयो,फोटोय् सुरक्षित जुल,Success message
+failed_to_save,Failed to save,सुरक्षित गर्न असफल,सुरक्षित याये मजिउ,Error message
+
+# Image Compressor Screen
+image_compressor_title,Image Compressor,तस्बिर कम्प्रेसर,तस्बिर कम्प्रेसर,Screen title
+compress_images,Compress Images,तस्बिर कम्प्रेस गर्नुहोस्,तस्बिर कम्प्रेस याय्,Empty state title
+compress_desc,Reduce image file size while maintaining quality,गुणस्तर कायम राख्दै तस्बिर फाइल साइज घटाउनुहोस्,गुणस्तर कायम यानाच्वँ तस्बिर फाइल साइज थाकेमा,Empty state subtitle
+select_image,Select Image,तस्बिर छान्नुहोस्,तस्बिर ल्ययादिसँ,Button text
+original,Original,मूल,मूल,Size label
+compressed,Compressed,कम्प्रेस भएको,कम्प्रेस जूगु,Size label
+target_size,Target Size,लक्षित साइज,लक्षित साइज,Card title
+compress,Compress,कम्प्रेस गर्नुहोस्,कम्प्रेस याय्,Button text
+compressing,Compressing...,कम्प्रेस हुँदैछ...,कम्प्रेस जुयाच्वँ...,Loading state
+compress_again,Compress Again,फेरि कम्प्रेस गर्नुहोस्,दोबारा कम्प्रेस याय्,Button text
+compressed_under,Compressed to under {size},"{size}" भन्दा कममा कम्प्रेस भयो,{size} भन्दा ल्याय् कम्प्रेस जुल,Success message
+could_not_reach,Could not reach target size,लक्षित साइज पुग्न सकेन,लक्षित साइज वने मजिउ,Status message
+saved_smaller,Saved {size} ({percent}% smaller),{size} सुरक्षित ({percent}% सानो),{size} सुरक्षित ({percent}% ल्याय्),Savings message
+
+# Forex Screen
+forex_rates,Forex Rates,विदेशी मुद्रा दर,विदेशी मुद्रा दर,Screen title
+nrb_rates,Nepal Rastra Bank Rates,नेपाल राष्ट्र बैंक दर,नेपाल राष्ट्र बैंक दर,Section header
+currency,Currency,मुद्रा,मुद्रा,Column header
+buy,Buy,किन्नु,ज्वय्,Column header
+sell,Sell,बेच्नु,हनेगु,Column header
+per_units,Per {units} units,{units} इकाइमा,{units} इकाइय,Unit note
+failed_load_rates,Failed to load rates,दरहरू लोड गर्न असफल,दरथें लोड याये मजिउ,Error message
+network_error,Network error: {error},नेटवर्क त्रुटि: {error},नेटवर्क त्रुटि: {error},Error message
+no_data,No data available,डाटा उपलब्ध छैन,डाटा मदु,Empty state
+
+# Bullion Screen
+gold_silver_title,Gold & Silver,सुन र चाँदी,लुँ व चाँदी,Screen title
+source,Source: {source},स्रोत: {source},स्रोत: {source},Attribution
+today_date,Today ({date}),आज ({date}),थौं ({date}),Section header
+gold_hallmark,Gold (Hallmark),सुन (हलमार्क),लुँ (हलमार्क),Price card
+gold_tejabi,Gold (Tejabi),सुन (तेजाबी),लुँ (तेजाबी),Price card
+silver,Silver,चाँदी,चाँदी,Price card
+per_tola,per tola,प्रति तोला,प्रति तोला,Unit label
+this_week,This Week,यो हप्ता,थौंया हप्ता,Section header
+date,Date,मिति,मिति,Column header
+hallmark,Hallmark,हलमार्क,हलमार्क,Column header
+tejabi,Tejabi,तेजाबी,तेजाबी,Column header
+failed_load_data,Failed to load data,डाटा लोड गर्न असफल,डाटा लोड याये मजिउ,Error message
+
+# Government Services Screen
+gov_services,Government Services,सरकारी सेवाहरू,सरकारी सेवाथें,Screen title
+search_services,Search services...,सेवाहरू खोज्नुहोस्...,सेवाथें मालादिसँ...,Search hint
+no_services,No services found,कुनै सेवा भेटिएन,खँग्व सेवा मदु,Empty state
+try_different,Try a different search term,फरक खोज शब्द प्रयोग गर्नुहोस्,अलग माला शब्द प्रयोग यायेमा,Empty state subtitle
+could_not_open,Could not open: {url},{url} खोल्न सकिएन,{url} हाकाये मजिउ,Error snackbar
+
+# How Nepal Works Screen
+how_nepal_works,How Nepal Works,नेपाल कसरी चल्छ,नेपाल गुकथं वनी,Screen title
+structure,Structure,संरचना,संरचना,Tab label
+law_making,Law Making,कानून निर्माण,कानून निर्माण,Tab label
+cabinet,Cabinet,मन्त्रिपरिषद्,मन्त्रिपरिषद्,Tab label
+federal_parliament,Federal Parliament (Bicameral),संघीय संसद (द्विसदनात्मक),संघीय संसद (द्विसदनात्मक),Section title
+seats,{count} seats,{count} सिटहरू,{count} सिटथें,Seat count
+special_bills,Special Types of Bills,विशेष प्रकारका विधेयकहरू,विशेष प्रकारया विधेयकथें,Section header
+last_updated_date,Last updated: {date},अन्तिम अपडेट: {date},लिपाया अपडेट: {date},Info text
+source_opmcm,Source: opmcm.gov.np,स्रोत: opmcm.gov.np,स्रोत: opmcm.gov.np,Attribution
+
+# Common Actions
+cancel,Cancel,रद्द गर्नुहोस्,रद्द याय्,Button text
+ok,OK,ठीक छ,ज्यू,Button text
+done,Done,भयो,जुल,Button text
+close,Close,बन्द गर्नुहोस्,बन्द याय्,Button text
+yes,Yes,हो,खः,Button text
+no,No,होइन,मखु,Button text
+loading,Loading...,लोड हुँदैछ...,लोड जुयाच्वँ...,Loading state
+error,Error,त्रुटि,त्रुटि,Error label
+success,Success,सफल,सफल,Success label
+warning,Warning,चेतावनी,चेतावनी,Warning label
+
+# Error Messages
+something_went_wrong,Something went wrong,केही गडबड भयो,छुं गडबड जुल,Generic error
+no_internet,No internet connection,इन्टरनेट जडान छैन,इन्टरनेट जडान मदु,Error message
+try_again,Please try again,कृपया फेरि प्रयास गर्नुहोस्,कृपया दोबारा यायेमा,Error message
+
+# Weekdays
+sunday,Sunday,आइतबार,आइतबार,Weekday
+monday,Monday,सोमबार,सोमबार,Weekday
+tuesday,Tuesday,मंगलबार,मंगलबार,Weekday
+wednesday,Wednesday,बुधबार,बुधबार,Weekday
+thursday,Thursday,बिहिबार,बिहिबार,Weekday
+friday,Friday,शुक्रबार,शुक्रबार,Weekday
+saturday,Saturday,शनिबार,शनिबार,Weekday
+
+# Months (Nepali)
+baisakh,Baisakh,बैशाख,बैशाख,Nepali month
+jestha,Jestha,जेठ,जेठ,Nepali month
+ashadh,Ashadh,असार,असार,Nepali month
+shrawan,Shrawan,श्रावण,श्रावण,Nepali month
+bhadra,Bhadra,भाद्र,भाद्र,Nepali month
+ashwin,Ashwin,आश्विन,आश्विन,Nepali month
+kartik,Kartik,कार्तिक,कार्तिक,Nepali month
+mangsir,Mangsir,मंसिर,मंसिर,Nepali month
+poush,Poush,पौष,पौष,Nepali month
+magh,Magh,माघ,माघ,Nepali month
+falgun,Falgun,फाल्गुण,फाल्गुण,Nepali month
+chaitra,Chaitra,चैत्र,चैत्र,Nepali month

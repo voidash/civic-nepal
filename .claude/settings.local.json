@@ -26,7 +26,23 @@
       "Bash(yes:*)",
       "Bash(flutter doctor:*)",
       "Bash(/opt/homebrew/bin/sdkmanager:*)",
-      "Bash(dart run build_runner build:*)"
+      "Bash(dart run build_runner build:*)",
+      "Bash(adb:*)",
+      "Bash(pkill:*)",
+      "Bash(ln:*)",
+      "Bash(flutter test:*)",
+      "Bash(flutter analyze:*)",
+      "Bash(nc:*)",
+      "Bash(pgrep:*)",
+      "Bash(flutter attach:*)",
+      "WebFetch(domain:opmcm.gov.np)",
+      "Bash(flutter build:*)",
+      "Bash(flutter install:*)",
+      "mcp__fetch__imageFetch",
+      "WebFetch(domain:cdsc.com.np)",
+      "WebFetch(domain:merolagani.com)",
+      "WebFetch(domain:nitter.net)",
+      "Bash(./gradlew assembleDebug:*)"
     ]
   }
 }

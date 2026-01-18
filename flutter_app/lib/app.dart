@@ -31,7 +31,6 @@ final _shellNavigatorRightsKey = GlobalKey<NavigatorState>(debugLabel: 'rights')
 GoRouter router(RouterRef ref) {
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/home',
     // Handle deep links from widgets (nepalcivic://tools/nepali-calendar)
     redirect: (context, state) {
       // Deep link: nepalcivic://tools/nepali-calendar parses as host=tools, path=/nepali-calendar
@@ -42,7 +41,7 @@ GoRouter router(RouterRef ref) {
         return '/${uri.host}${uri.path}';
       }
       // Redirect root to /home
-      if (state.uri.path == '/') {
+      if (state.uri.path == '/' || state.uri.path.isEmpty) {
         return '/home';
       }
       return null;

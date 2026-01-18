@@ -1,96 +1,20 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/nepali_date_service.dart';
-import '../../widgets/home_title.dart';
-import '../tools/nepali_calendar_screen.dart';
-import '../tools/ipo_shares_screen.dart';
-import '../constitution/constitution_screen.dart';
-
-part 'home_screen.g.dart';
-
-/// Home screen with 4-tab bottom navigation: Calendar | Home | IPO | Rights
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final tabHistory = ref.watch(_tabHistoryProvider);
-    final currentIndex = tabHistory.last;
-
-    return HomeTabSwitcher(
-      onSwitchToHome: () => ref.read(_tabHistoryProvider.notifier).goHome(),
-      child: PopScope(
-        // Only allow pop (exit) when tab history has only one item
-        canPop: tabHistory.length <= 1,
-        onPopInvokedWithResult: (didPop, result) {
-          if (!didPop) {
-            // Go back to previous tab
-            ref.read(_tabHistoryProvider.notifier).popTab();
-          }
-        },
-        child: Scaffold(
-          body: IndexedStack(
-            index: currentIndex,
-            children: const [
-              NepaliCalendarScreen(),
-              _HomeTab(),
-              IpoSharesScreen(),
-              ConstitutionScreen(),
-            ],
-          ),
-          bottomNavigationBar: Builder(
-          builder: (context) {
-            final l10n = AppLocalizations.of(context);
-            return NavigationBar(
-              selectedIndex: currentIndex,
-              onDestinationSelected: (index) {
-                ref.read(_tabHistoryProvider.notifier).pushTab(index);
-              },
-              destinations: [
-                NavigationDestination(
-                  icon: const Icon(Icons.calendar_month_outlined),
-                  selectedIcon: const Icon(Icons.calendar_month),
-                  label: l10n.navCalendar,
-                ),
-                NavigationDestination(
-                  icon: const Icon(Icons.home_outlined),
-                  selectedIcon: const Icon(Icons.home),
-                  label: l10n.navHome,
-                ),
-                NavigationDestination(
-                  icon: const Icon(Icons.show_chart_outlined),
-                  selectedIcon: const Icon(Icons.show_chart),
-                  label: l10n.navIpo,
-                ),
-                NavigationDestination(
-                  icon: const Icon(Icons.gavel_outlined),
-                  selectedIcon: const Icon(Icons.gavel),
-                  label: l10n.navRights,
-                ),
-              ],
-            );
-          },
-        ),
-        ),
-      ),
-    );
-  }
-}
 
 /// Home tab content with feature cards and utilities
-class _HomeTab extends StatefulWidget {
-  const _HomeTab();
+/// Used within the StatefulShellRoute bottom navigation
+class HomeTab extends StatefulWidget {
+  const HomeTab({super.key});
 
   @override
-  State<_HomeTab> createState() => _HomeTabState();
+  State<HomeTab> createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<_HomeTab> {
+class _HomeTabState extends State<HomeTab> {
   late NepaliDateTime _todayBs;
   late DateTime _todayAd;
   Timer? _midnightTimer;
@@ -160,7 +84,7 @@ class _HomeTabState extends State<_HomeTab> {
               _TodayDateWidget(
                 todayBs: _todayBs,
                 todayAd: _todayAd,
-                onTap: () => context.push('/tools/nepali-calendar'),
+                onTap: () => context.go('/calendar'),
               ),
               const SizedBox(height: 20),
 
@@ -207,7 +131,7 @@ class _HomeTabState extends State<_HomeTab> {
                       title: l10n.calendar,
                       titleNp: 'पात्रो',
                       color: const Color(0xFFC62828),
-                      onTap: () => context.push('/tools/nepali-calendar'),
+                      onTap: () => context.go('/calendar'),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -428,7 +352,7 @@ class _QuickAccessGrid extends StatelessWidget {
             title: l10n.rights,
             titleNp: 'अधिकार',
             color: const Color(0xFF6A1B9A),
-            onTap: () => context.push('/constitution'),
+            onTap: () => context.go('/rights'),
           ),
         ),
       ],
@@ -535,33 +459,5 @@ class _UtilityGridCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-@riverpod
-class _TabHistory extends _$TabHistory {
-  @override
-  List<int> build() => [1]; // Start with Home tab
-
-  int get currentIndex => state.last;
-
-  void pushTab(int index) {
-    if (state.last != index) {
-      state = [...state, index];
-    }
-  }
-
-  /// Go back to previous tab. Returns true if there was a previous tab.
-  bool popTab() {
-    if (state.length > 1) {
-      state = state.sublist(0, state.length - 1);
-      return true;
-    }
-    return false;
-  }
-
-  /// Go directly to home tab, clearing history
-  void goHome() {
-    state = [1];
   }
 }

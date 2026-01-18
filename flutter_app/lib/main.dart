@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'app.dart';
 import 'providers/settings_provider.dart';
 import 'services/notification_service.dart';
@@ -55,6 +56,9 @@ class _FallbackCupertinoLocalizationsDelegate extends LocalizationsDelegate<Cupe
 }
 
 void main() async {
+  // Enable clean URLs on web (e.g., /calendar instead of /#/calendar)
+  usePathUrlStrategy();
+
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize platform-specific services (not available on web)

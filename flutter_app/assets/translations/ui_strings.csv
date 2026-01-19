@@ -62,6 +62,7 @@ english_language,English,अंग्रेजी,अंग्रेजी,Langu
 newari_language,नेपाल भाषा (Newari),नेपाल भाषा,नेपाल भाषा,Language option
 
 # Constitution Screen
+constitution,Constitution,संविधान,संविधान,Screen title
 know_your_rights,Know Your Rights,आफ्नो हक जान्नुहोस्,छिगु हक सय्कादिसँ,Navigation item
 preamble,Preamble,प्रस्तावना,प्रस्तावना,Section title
 part_number,Part {number},भाग {number},भाग {number},Part label with number
@@ -233,6 +234,7 @@ could_not_open,Could not open: {url},{url} खोल्न सकिएन,{url}
 
 # How Nepal Works Screen
 how_nepal_works,How Nepal Works,नेपाल कसरी चल्छ,नेपाल गुकथं वनी,Screen title
+government,Government,सरकार,सरकार,Screen title
 structure,Structure,संरचना,संरचना,Tab label
 law_making,Law Making,कानून निर्माण,कानून निर्माण,Tab label
 cabinet,Cabinet,मन्त्रिपरिषद्,मन्त्रिपरिषद्,Tab label
@@ -241,6 +243,18 @@ seats,{count} seats,{count} सिटहरू,{count} सिटथें,Seat c
 special_bills,Special Types of Bills,विशेष प्रकारका विधेयकहरू,विशेष प्रकारया विधेयकथें,Section header
 last_updated_date,Last updated: {date},अन्तिम अपडेट: {date},लिपाया अपडेट: {date},Info text
 source_opmcm,Source: opmcm.gov.np,स्रोत: opmcm.gov.np,स्रोत: opmcm.gov.np,Attribution
+quick_links,Quick Links,द्रुत लिङ्कहरू,द्रुत लिङ्कथें,Section header
+government_info,Government Info,सरकारी जानकारी,सरकारी जानकारी,Section header
+get_documents,Get Documents,कागजात प्राप्त गर्नुहोस्,कागजात काय्,Section header
+get_gov_documents,Get Gov Documents,सरकारी कागजात,सरकारी कागजात,Card title
+get_gov_documents_desc,Citizenship Passport Driving License PAN & more,नागरिकता पासपोर्ट लाइसेन्स प्यान आदि,नागरिकता पासपोर्ट लाइसेन्स प्यान आदि,Card description
+constitution_desc,Read the Constitution of Nepal,नेपालको संविधान पढ्नुहोस्,नेपालया संविधान ब्वनेगु,Card description
+leaders_desc,Members of Parliament,संसद सदस्यहरू,संसद सदस्यथें,Card description
+structure_desc,Federal Provincial Local,संघीय प्रदेश स्थानीय,संघीय प्रदेश स्थानीय,Card description
+law_making_desc,How bills become laws,विधेयक कानून कसरी बन्छ,विधेयक कानून गुकथं जुइ,Card description
+cabinet_desc,Current ministers,हालका मन्त्रीहरू,थौंया मन्त्रीथें,Card description
+gov_services_desc,Official websites,आधिकारिक वेबसाइटहरू,आधिकारिक वेबसाइटथें,Card description
+gov_procedures,Document Guide,कागजात गाइड,कागजात गाइड,Tab label
 
 # Common Actions
 cancel,Cancel,रद्द गर्नुहोस्,रद्द याय्,Button text

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/district.dart';
@@ -575,14 +576,7 @@ class _DistrictLeadersList extends ConsumerWidget {
             return Card(
               margin: const EdgeInsets.only(bottom: 8),
               child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: leader.imageUrl.isNotEmpty
-                      ? _getImageProvider(leader.imageUrl)
-                      : null,
-                  child: leader.imageUrl.isEmpty
-                      ? Text(leader.name[0])
-                      : null,
-                ),
+                leading: _buildLeaderAvatar(context, leader),
                 title: Text(leader.name),
                 subtitle: Text(leader.party),
                 trailing: const Icon(Icons.chevron_right),
@@ -606,11 +600,44 @@ class _DistrictLeadersList extends ConsumerWidget {
     );
   }
 
-  ImageProvider _getImageProvider(String imageUrl) {
-    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
-      return NetworkImage(imageUrl);
+  Widget _buildLeaderAvatar(BuildContext context, Leader leader) {
+    final fallback = CircleAvatar(
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+      child: Text(
+        leader.name.isNotEmpty ? leader.name[0] : '?',
+        style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant),
+      ),
+    );
+
+    if (leader.imageUrl.isEmpty) {
+      return fallback;
     }
-    return AssetImage(imageUrl);
+
+    final isNetworkImage = leader.imageUrl.startsWith('http://') ||
+        leader.imageUrl.startsWith('https://');
+
+    if (isNetworkImage) {
+      return CachedNetworkImage(
+        imageUrl: leader.imageUrl,
+        imageBuilder: (context, imageProvider) => CircleAvatar(
+          backgroundImage: imageProvider,
+        ),
+        placeholder: (context, url) => CircleAvatar(
+          backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+          child: const SizedBox(
+            width: 16,
+            height: 16,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+        ),
+        errorWidget: (context, url, error) => fallback,
+      );
+    } else {
+      return CircleAvatar(
+        backgroundImage: AssetImage(leader.imageUrl),
+        onBackgroundImageError: (_, __) {},
+      );
+    }
   }
 }
 

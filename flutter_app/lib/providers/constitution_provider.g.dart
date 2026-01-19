@@ -134,14 +134,15 @@ final searchQueryProvider =
 );
 
 typedef _$SearchQuery = AutoDisposeNotifier<String>;
-String _$selectedArticleHash() => r'c9f4a06fbe6a06af2501bc76c27ce99831847a42';
+String _$selectedArticleHash() => r'b779cb47c5460469c7c08627e331cd8ee7f093d1';
 
 /// Currently selected article (defaults to null = Know Your Rights)
+/// Keep-alive to preserve state across navigation
 ///
 /// Copied from [SelectedArticle].
 @ProviderFor(SelectedArticle)
 final selectedArticleProvider =
-    AutoDisposeNotifierProvider<SelectedArticle, SelectedArticleRef?>.internal(
+    NotifierProvider<SelectedArticle, SelectedArticleRef?>.internal(
   SelectedArticle.new,
   name: r'selectedArticleProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -151,6 +152,6 @@ final selectedArticleProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SelectedArticle = AutoDisposeNotifier<SelectedArticleRef?>;
+typedef _$SelectedArticle = Notifier<SelectedArticleRef?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

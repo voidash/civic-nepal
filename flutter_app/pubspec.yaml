@@ -94,6 +94,7 @@ flutter:
     - assets/data/nepali_calendar_auspicious.json
     - assets/data/ministers.json
     - assets/data/data_version.json
+    - assets/data/gov_procedures.json
     - assets/images/nepal_districts.svg
     - assets/images/leaders/
     - assets/translations/

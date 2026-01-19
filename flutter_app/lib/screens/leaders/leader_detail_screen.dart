@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/leader.dart';
 import '../../providers/leaders_provider.dart';
@@ -144,7 +145,7 @@ class LeaderDetailScreen extends ConsumerWidget {
                       // View other leaders button
                       Center(
                         child: FilledButton.tonalIcon(
-                          onPressed: () => context.pop(),
+                          onPressed: () => context.go('/leaders'),
                           icon: const Icon(Icons.list),
                           label: Text(l10n.viewAllLeaders),
                         ),
@@ -181,10 +182,14 @@ class LeaderDetailScreen extends ConsumerWidget {
     final isNetworkImage = leader.imageUrl.startsWith('http://') || leader.imageUrl.startsWith('https://');
 
     if (isNetworkImage) {
-      return Image.network(
-        leader.imageUrl,
+      return CachedNetworkImage(
+        imageUrl: leader.imageUrl,
         fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) => _buildFallbackImage(context, leader),
+        placeholder: (context, url) => Container(
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          child: const Center(child: CircularProgressIndicator()),
+        ),
+        errorWidget: (context, url, error) => _buildFallbackImage(context, leader),
       );
     } else {
       return Image.asset(

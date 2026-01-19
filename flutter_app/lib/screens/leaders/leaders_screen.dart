@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/leaders_provider.dart';
 import '../../models/leader.dart';
@@ -559,18 +560,7 @@ class LeaderCard extends StatelessWidget {
               // Leader image
               Hero(
                 tag: 'leader-${leader.id}',
-                child: CircleAvatar(
-                  radius: 32,
-                  backgroundImage: leader.imageUrl.isNotEmpty
-                      ? _getImageProvider(leader.imageUrl)
-                      : null,
-                  child: leader.imageUrl.isEmpty
-                      ? Text(
-                          leader.name.isNotEmpty ? leader.name[0] : '?',
-                          style: const TextStyle(fontSize: 24),
-                        )
-                      : null,
-                ),
+                child: _buildLeaderAvatar(context, leader),
               ),
               const SizedBox(width: 16),
               // Leader info
@@ -653,11 +643,51 @@ class LeaderCard extends StatelessWidget {
     );
   }
 
-  ImageProvider _getImageProvider(String imageUrl) {
-    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
-      return NetworkImage(imageUrl);
+  Widget _buildLeaderAvatar(BuildContext context, Leader leader) {
+    final fallback = CircleAvatar(
+      radius: 32,
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+      child: Text(
+        leader.name.isNotEmpty ? leader.name[0] : '?',
+        style: TextStyle(
+          fontSize: 24,
+          color: Theme.of(context).colorScheme.onSurfaceVariant,
+        ),
+      ),
+    );
+
+    if (leader.imageUrl.isEmpty) {
+      return fallback;
+    }
+
+    final isNetworkImage = leader.imageUrl.startsWith('http://') ||
+        leader.imageUrl.startsWith('https://');
+
+    if (isNetworkImage) {
+      return CachedNetworkImage(
+        imageUrl: leader.imageUrl,
+        imageBuilder: (context, imageProvider) => CircleAvatar(
+          radius: 32,
+          backgroundImage: imageProvider,
+        ),
+        placeholder: (context, url) => CircleAvatar(
+          radius: 32,
+          backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
+          child: const SizedBox(
+            width: 24,
+            height: 24,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+        ),
+        errorWidget: (context, url, error) => fallback,
+      );
     } else {
-      return AssetImage(imageUrl);
+      return CircleAvatar(
+        radius: 32,
+        backgroundImage: AssetImage(leader.imageUrl),
+        onBackgroundImageError: (_, __) {},
+        child: null,
+      );
     }
   }
 }

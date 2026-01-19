@@ -83,7 +83,8 @@ class SearchQuery extends _$SearchQuery {
 }
 
 /// Currently selected article (defaults to null = Know Your Rights)
-@riverpod
+/// Keep-alive to preserve state across navigation
+@Riverpod(keepAlive: true)
 class SelectedArticle extends _$SelectedArticle {
   @override
   SelectedArticleRef? build() => null;

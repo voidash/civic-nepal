@@ -1,7 +1,11 @@
-name: Update Dynamic Data
+name: Update App Data
 
 on:
-  # Run manually from GitHub Actions tab
+  # Run weekly on Monday at 2:00 AM UTC (Sunday 8:15 PM Nepal Time)
+  schedule:
+    - cron: '0 2 * * 1'
+
+  # Allow manual trigger
   workflow_dispatch:
     inputs:
       update_type:
@@ -11,12 +15,13 @@ on:
         type: choice
         options:
           - all
+          - leaders
           - ministers
           - calendar
+          - version-only
 
-  # Run weekly on Sunday at midnight UTC
-  schedule:
-    - cron: '0 0 * * 0'
+permissions:
+  contents: write
 
 jobs:
   update-data:
@@ -25,43 +30,54 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
           pip install requests beautifulsoup4
 
-      - name: Update Ministers
-        if: ${{ github.event.inputs.update_type == 'all' || github.event.inputs.update_type == 'ministers' || github.event_name == 'schedule' }}
+      - name: Run data update
+        working-directory: flutter_app
         run: |
-          cd flutter_app
-          python scripts/update_ministers.py || echo "Ministers update failed - may need manual intervention"
-
-      - name: Update version file
-        run: |
-          cd flutter_app/assets/data
-          # Update the last_updated timestamp
-          python3 -c "
-          import json
-          from datetime import datetime
-          with open('data_version.json', 'r') as f:
-              data = json.load(f)
-          data['last_updated'] = datetime.now().strftime('%Y-%m-%d')
-          with open('data_version.json', 'w') as f:
-              json.dump(data, f, indent=2)
-          "
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ github.event.inputs.update_type }}" in
+              leaders)
+                python scripts/update_all_data.py --leaders
+                ;;
+              ministers)
+                python scripts/update_all_data.py --ministers
+                ;;
+              calendar)
+                python scripts/update_all_data.py --calendar
+                ;;
+              version-only)
+                python scripts/update_all_data.py --version-only
+                ;;
+              *)
+                python scripts/update_all_data.py --all
+                ;;
+            esac
+          else
+            python scripts/update_all_data.py --all
+          fi
 
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet; then
+          git add -A
+          if git diff --staged --quiet; then
             echo "has_changes=false" >> $GITHUB_OUTPUT
           else
             echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "### Changed files:" >> $GITHUB_STEP_SUMMARY
+            git diff --staged --name-only >> $GITHUB_STEP_SUMMARY
           fi
 
       - name: Commit and push changes
@@ -69,14 +85,21 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add -A
-          git commit -m "chore: update dynamic data [automated]"
+
+          DATE=$(date -u +"%Y-%m-%d")
+          git commit -m "chore: update app data ($DATE)" -m "Automated weekly data update"
           git push
 
       - name: Create summary
         run: |
           echo "## Data Update Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Update type:** ${{ github.event.inputs.update_type || 'scheduled' }}" >> $GITHUB_STEP_SUMMARY
-          echo "- **Changes:** ${{ steps.check_changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Date:** $(date -u +'%Y-%m-%d %H:%M UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Changes detected:** ${{ steps.check_changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+
+          if [ -f flutter_app/assets/data/data_version.json ]; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Data Version Info" >> $GITHUB_STEP_SUMMARY
+            cat flutter_app/assets/data/data_version.json >> $GITHUB_STEP_SUMMARY
+          fi

@@ -1,26 +1,42 @@
 {
-  "schema_version": 1,
-  "last_updated": "2025-01-18",
+  "version": 1,
+  "lastUpdated": "2025-01-19T00:00:00Z",
+  "updatedSources": [],
   "files": {
+    "leaders.json": {
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
+    },
+    "parties.json": {
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
+    },
     "ministers.json": {
-      "version": 1,
-      "updated": "2025-01-18"
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
     },
     "nepali_calendar_events.json": {
-      "version": 1,
-      "updated": "2025-01-18"
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
     },
     "nepali_calendar_auspicious.json": {
-      "version": 1,
-      "updated": "2025-01-18"
-    },
-    "leaders.json": {
-      "version": 1,
-      "updated": "2025-01-18"
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
     },
     "gov_services.json": {
-      "version": 1,
-      "updated": "2025-01-18"
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
+    },
+    "gov_procedures.json": {
+      "hash": "initial",
+      "size": 0,
+      "modified": "2025-01-18T00:00:00Z"
     }
   }
 }

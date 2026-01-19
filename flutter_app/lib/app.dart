@@ -11,7 +11,6 @@ import 'screens/settings/settings_screen.dart';
 import 'screens/tools/citizenship_merger_screen.dart';
 import 'screens/tools/image_compressor_screen.dart';
 import 'screens/tools/date_converter_screen.dart';
-import 'screens/tools/gov_services_screen.dart';
 import 'screens/tools/nepali_calendar_screen.dart';
 import 'screens/tools/forex_screen.dart';
 import 'screens/tools/bullion_screen.dart';
@@ -98,6 +97,7 @@ GoRouter router(RouterRef ref) {
         routes: [
           GoRoute(
             path: ':id',
+            parentNavigatorKey: _rootNavigatorKey,
             builder: (context, state) {
               final leaderId = state.pathParameters['id'] ?? '';
               return LeaderDetailScreen(leaderId: leaderId);
@@ -156,11 +156,20 @@ GoRouter router(RouterRef ref) {
         builder: (context, state) => const DateConverterScreen(),
       ),
       GoRoute(
-        path: '/tools/gov-services',
+        path: '/gov',
         parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => GovServicesScreen(
-          initialCategory: state.uri.queryParameters['category'],
-        ),
+        builder: (context, state) => const HowNepalWorksScreen(),
+      ),
+      // Legacy routes redirect to unified government screen
+      GoRoute(
+        path: '/gov-services',
+        parentNavigatorKey: _rootNavigatorKey,
+        redirect: (context, state) => '/government',
+      ),
+      GoRoute(
+        path: '/how-to-get',
+        parentNavigatorKey: _rootNavigatorKey,
+        redirect: (context, state) => '/government',
       ),
       GoRoute(
         path: '/tools/nepali-calendar',
@@ -197,7 +206,7 @@ GoRouter router(RouterRef ref) {
 }
 
 /// Scaffold with bottom navigation bar
-class ScaffoldWithNavBar extends StatelessWidget {
+class ScaffoldWithNavBar extends StatefulWidget {
   const ScaffoldWithNavBar({
     required this.currentPath,
     required this.child,
@@ -207,12 +216,27 @@ class ScaffoldWithNavBar extends StatelessWidget {
   final String currentPath;
   final Widget child;
 
+  @override
+  State<ScaffoldWithNavBar> createState() => _ScaffoldWithNavBarState();
+}
+
+class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
   int _getSelectedIndex() {
-    if (currentPath.startsWith('/calendar')) return 0;
-    if (currentPath.startsWith('/home')) return 1;
-    if (currentPath.startsWith('/ipo')) return 2;
-    if (currentPath.startsWith('/rights')) return 3;
+    if (widget.currentPath.startsWith('/calendar')) return 0;
+    if (widget.currentPath.startsWith('/home')) return 1;
+    if (widget.currentPath.startsWith('/ipo')) return 2;
+    if (widget.currentPath.startsWith('/rights')) return 3;
     return 1; // default to home
+  }
+
+  bool get _isHome => widget.currentPath.startsWith('/home');
+
+  Future<bool> _onWillPop() async {
+    if (!_isHome) {
+      context.go('/home');
+      return false; // Don't pop, we navigated instead
+    }
+    return true; // Allow pop (exit app)
   }
 
   @override
@@ -220,36 +244,49 @@ class ScaffoldWithNavBar extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final selectedIndex = _getSelectedIndex();
 
-    return Scaffold(
-      body: child,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: selectedIndex,
-        onDestinationSelected: (index) {
-          final paths = ['/calendar', '/home', '/ipo', '/rights'];
-          context.go(paths[index]);
-        },
-        destinations: [
-          NavigationDestination(
-            icon: const Icon(Icons.calendar_month_outlined),
-            selectedIcon: const Icon(Icons.calendar_month),
-            label: l10n.navCalendar,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.home_outlined),
-            selectedIcon: const Icon(Icons.home),
-            label: l10n.navHome,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.show_chart_outlined),
-            selectedIcon: const Icon(Icons.show_chart),
-            label: l10n.navIpo,
-          ),
-          NavigationDestination(
-            icon: const Icon(Icons.gavel_outlined),
-            selectedIcon: const Icon(Icons.gavel),
-            label: l10n.navRights,
-          ),
-        ],
+    return PopScope(
+      canPop: _isHome,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop && !_isHome) {
+          // Use post-frame callback to avoid issues with navigation during build
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (mounted) {
+              context.go('/home');
+            }
+          });
+        }
+      },
+      child: Scaffold(
+        body: widget.child,
+        bottomNavigationBar: NavigationBar(
+          selectedIndex: selectedIndex,
+          onDestinationSelected: (index) {
+            final paths = ['/calendar', '/home', '/ipo', '/rights'];
+            context.go(paths[index]);
+          },
+          destinations: [
+            NavigationDestination(
+              icon: const Icon(Icons.calendar_month_outlined),
+              selectedIcon: const Icon(Icons.calendar_month),
+              label: l10n.navCalendar,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.home_outlined),
+              selectedIcon: const Icon(Icons.home),
+              label: l10n.navHome,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.show_chart_outlined),
+              selectedIcon: const Icon(Icons.show_chart),
+              label: l10n.navIpo,
+            ),
+            NavigationDestination(
+              icon: const Icon(Icons.gavel_outlined),
+              selectedIcon: const Icon(Icons.gavel),
+              label: l10n.navRights,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/nepali_date_service.dart';
+import '../../widgets/custom_bottom_nav.dart';
 
 /// Home tab content with feature cards and utilities
 /// Used within the StatefulShellRoute bottom navigation
@@ -61,7 +62,7 @@ class _HomeTabState extends State<HomeTab> {
           children: [
             Text(l10n.appName),
             const Text(
-              'नेपाल नागरिक',
+              'नागरिक क्यालेन्डर',
               style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal),
             ),
           ],
@@ -74,6 +75,7 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ],
       ),
+      bottomNavigationBar: const CustomBottomNav(currentIndex: 1), // Home
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
@@ -84,7 +86,7 @@ class _HomeTabState extends State<HomeTab> {
               _TodayDateWidget(
                 todayBs: _todayBs,
                 todayAd: _todayAd,
-                onTap: () => context.go('/calendar'),
+                onTap: () => context.push('/calendar'),
               ),
               const SizedBox(height: 20),
 
@@ -130,8 +132,8 @@ class _HomeTabState extends State<HomeTab> {
                       icon: Icons.calendar_month,
                       title: l10n.calendar,
                       titleNp: 'पात्रो',
-                      color: const Color(0xFFC62828),
-                      onTap: () => context.go('/calendar'),
+                      color: const Color(0xFF1976D2),
+                      onTap: () => context.push('/calendar'),
                     ),
                   ),
                   const SizedBox(width: 12),

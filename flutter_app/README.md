@@ -1,6 +1,6 @@
-# Nepal Civic
+# NagarikCalendar
 
-A Flutter app providing civic information for Nepal - constitution, government structure, leaders, district map, and utility tools.
+A Flutter app providing Nepali calendar, civic information for Nepal - constitution, government structure, leaders, district map, and utility tools.
 
 ## Features
 

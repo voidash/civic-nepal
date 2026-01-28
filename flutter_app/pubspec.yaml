@@ -1,7 +1,7 @@
-name: nepal_civic
-description: Nepal Civic Information App - Constitution, Leaders, and District Map
+name: nagarik_calendar
+description: NagarikCalendar - Nepali Calendar, Constitution, Leaders, and Civic Tools
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.1+2
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -95,6 +95,11 @@ flutter:
     - assets/data/ministers.json
     - assets/data/data_version.json
     - assets/data/gov_procedures.json
+    - assets/data/election/local_bodies.json
+    - assets/data/election/constituencies.json
+    - assets/data/election/local_election_results.json
+    - assets/data/election/districts/
+    - assets/data/election/nepal_constituencies.svg
     - assets/images/nepal_districts.svg
     - assets/images/leaders/
     - assets/translations/

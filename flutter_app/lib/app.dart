@@ -8,7 +8,11 @@ import 'screens/home/home_screen.dart';
 import 'screens/constitution/constitution_screen.dart';
 import 'screens/leaders/leaders_screen.dart';
 import 'screens/leaders/leader_detail_screen.dart';
+import 'screens/map/map_selector_screen.dart';
 import 'screens/map/district_map_screen.dart';
+import 'screens/map/federal_map_screen.dart';
+import 'screens/map/local_body_screen.dart';
+import 'screens/map/constituency_screen.dart';
 import 'screens/settings/settings_screen.dart';
 import 'screens/tools/citizenship_merger_screen.dart';
 import 'screens/tools/image_compressor_screen.dart';
@@ -22,7 +26,6 @@ import 'screens/government/how_nepal_works_screen.dart';
 part 'app.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter router(RouterRef ref) {
@@ -45,43 +48,28 @@ GoRouter router(RouterRef ref) {
       return null;
     },
     routes: [
-      // Shell route for bottom navigation
-      ShellRoute(
-        navigatorKey: _shellNavigatorKey,
-        builder: (context, state, child) {
-          return ScaffoldWithNavBar(
-            currentPath: state.uri.path,
-            child: child,
-          );
-        },
-        routes: [
-          GoRoute(
-            path: '/home',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: HomeTab(),
-            ),
-          ),
-          GoRoute(
-            path: '/calendar',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: NepaliCalendarScreen(),
-            ),
-          ),
-          GoRoute(
-            path: '/ipo',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: IpoSharesScreen(),
-            ),
-          ),
-          GoRoute(
-            path: '/rights',
-            pageBuilder: (context, state) => const NoTransitionPage(
-              child: ConstitutionScreen(),
-            ),
-          ),
-        ],
+      // Home is the main entry point
+      GoRoute(
+        path: '/home',
+        builder: (context, state) => const HomeTab(),
       ),
-      // Routes outside of bottom nav (full screen)
+      // Calendar, IPO, Rights are regular pushed routes (like Government)
+      GoRoute(
+        path: '/calendar',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const NepaliCalendarScreen(),
+      ),
+      GoRoute(
+        path: '/ipo',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const IpoSharesScreen(),
+      ),
+      GoRoute(
+        path: '/rights',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) => const ConstitutionScreen(),
+      ),
+      // Other full screen routes
       GoRoute(
         path: '/constitution',
         parentNavigatorKey: _rootNavigatorKey,
@@ -110,7 +98,41 @@ GoRouter router(RouterRef ref) {
       GoRoute(
         path: '/map',
         parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const DistrictMapScreen(),
+        builder: (context, state) => const MapSelectorScreen(),
+        routes: [
+          // District map (local level - mayors, etc.)
+          GoRoute(
+            path: 'districts',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => const DistrictMapScreen(),
+            routes: [
+              // Local bodies for a specific district
+              GoRoute(
+                path: ':district',
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (context, state) {
+                  final district = state.pathParameters['district'] ?? '';
+                  return LocalBodyScreen(districtName: Uri.decodeComponent(district));
+                },
+              ),
+            ],
+          ),
+          // Federal constituency map
+          GoRoute(
+            path: 'federal',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => const FederalMapScreen(),
+          ),
+          // Legacy: Constituencies for a specific district (from old flow)
+          GoRoute(
+            path: 'constituencies/:district',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) {
+              final district = state.pathParameters['district'] ?? '';
+              return ConstituencyScreen(districtName: Uri.decodeComponent(district));
+            },
+          ),
+        ],
       ),
       GoRoute(
         path: '/how-nepal-works',
@@ -213,115 +235,3 @@ GoRouter router(RouterRef ref) {
   );
 }
 
-/// Scaffold with bottom navigation bar
-class ScaffoldWithNavBar extends StatefulWidget {
-  const ScaffoldWithNavBar({
-    required this.currentPath,
-    required this.child,
-    super.key,
-  });
-
-  final String currentPath;
-  final Widget child;
-
-  @override
-  State<ScaffoldWithNavBar> createState() => _ScaffoldWithNavBarState();
-}
-
-class _ScaffoldWithNavBarState extends State<ScaffoldWithNavBar> {
-  // Track tab history for back navigation
-  final List<int> _tabHistory = [1]; // Start with home (index 1)
-  late int _currentIndex;
-
-  @override
-  void initState() {
-    super.initState();
-    _currentIndex = _getIndexFromPath(widget.currentPath);
-    if (_currentIndex != 1 && !_tabHistory.contains(_currentIndex)) {
-      _tabHistory.add(_currentIndex);
-    }
-  }
-
-  @override
-  void didUpdateWidget(ScaffoldWithNavBar oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    final newIndex = _getIndexFromPath(widget.currentPath);
-    if (newIndex != _currentIndex) {
-      _currentIndex = newIndex;
-      // Add to history if not already the last item
-      if (_tabHistory.isEmpty || _tabHistory.last != newIndex) {
-        _tabHistory.add(newIndex);
-      }
-    }
-  }
-
-  int _getIndexFromPath(String path) {
-    if (path.startsWith('/calendar')) return 0;
-    if (path.startsWith('/home')) return 1;
-    if (path.startsWith('/ipo')) return 2;
-    if (path.startsWith('/rights')) return 3;
-    return 1; // default to home
-  }
-
-  bool get _isHome => _currentIndex == 1;
-
-  void _onBackPressed() {
-    if (_tabHistory.length > 1) {
-      // Pop current tab from history
-      _tabHistory.removeLast();
-      // Navigate to previous tab
-      final previousIndex = _tabHistory.last;
-      final paths = ['/calendar', '/home', '/ipo', '/rights'];
-      GoRouter.of(context).go(paths[previousIndex]);
-    } else {
-      // On home with no history, exit app
-      SystemNavigator.pop();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-
-    return PopScope(
-      canPop: _isHome && _tabHistory.length <= 1,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop) {
-          _onBackPressed();
-        }
-      },
-      child: Scaffold(
-        body: widget.child,
-        bottomNavigationBar: NavigationBar(
-          selectedIndex: _currentIndex,
-          onDestinationSelected: (index) {
-            final paths = ['/calendar', '/home', '/ipo', '/rights'];
-            GoRouter.of(context).go(paths[index]);
-          },
-          destinations: [
-            NavigationDestination(
-              icon: const Icon(Icons.calendar_month_outlined),
-              selectedIcon: const Icon(Icons.calendar_month),
-              label: l10n.navCalendar,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.home_outlined),
-              selectedIcon: const Icon(Icons.home),
-              label: l10n.navHome,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.show_chart_outlined),
-              selectedIcon: const Icon(Icons.show_chart),
-              label: l10n.navIpo,
-            ),
-            NavigationDestination(
-              icon: const Icon(Icons.gavel_outlined),
-              selectedIcon: const Icon(Icons.gavel),
-              label: l10n.navRights,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

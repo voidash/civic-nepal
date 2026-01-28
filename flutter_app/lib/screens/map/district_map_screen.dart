@@ -119,21 +119,11 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final selectedDistrict = ref.watch(selectedDistrictProvider);
     final districtsAsync = ref.watch(districtsProvider);
     final selectedProvince = ref.watch(selectedProvinceProvider);
     final l10n = AppLocalizations.of(context);
 
-    return PopScope(
-      // Intercept back gesture when panel is open
-      canPop: selectedDistrict == null,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop && selectedDistrict != null) {
-          // Close the panel instead of popping the screen
-          ref.read(selectedDistrictProvider.notifier).clear();
-        }
-      },
-      child: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: HomeTitle(child: Text(l10n.nepalDistricts)),
         actions: [
@@ -158,40 +148,10 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
         ],
       ),
       body: districtsAsync.when(
-        data: (districtData) => Row(
-          children: [
-            // Map area
-            Expanded(
-              child: Stack(
-                children: [
-                  _buildInteractiveMap(districtData, selectedProvince),
-                  // Selected district info overlay
-                  if (selectedDistrict != null)
-                    Positioned(
-                      top: 16,
-                      right: 16,
-                      child: _DistrictInfoChip(
-                        districtName: selectedDistrict,
-                        districtInfo: districtData.districts.entries
-                            .firstWhere(
-                              (e) => e.value.name == selectedDistrict,
-                              orElse: () => const MapEntry('', DistrictInfo(name: '', province: 0)),
-                            )
-                            .value,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-            // Side panel for selected district leaders
-            if (selectedDistrict != null)
-              _buildLeadersPanel(selectedDistrict),
-          ],
-        ),
+        data: (districtData) => _buildInteractiveMap(districtData, selectedProvince),
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, stack) => Center(child: Text('${l10n.error}: $error')),
       ),
-    ),
     );
   }
 
@@ -213,11 +173,9 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
         child: _NepalMapWidget(
           districts: visibleDistricts,
           onDistrictTap: (districtName) {
-            if (districtName.isEmpty) {
-              // Tapped outside any district - close panel
-              ref.read(selectedDistrictProvider.notifier).clear();
-            } else {
-              ref.read(selectedDistrictProvider.notifier).setDistrict(districtName);
+            if (districtName.isNotEmpty) {
+              // Navigate to local body screen for this district
+              context.push('/map/districts/${Uri.encodeComponent(districtName)}');
             }
           },
         ),
@@ -302,16 +260,31 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
           Expanded(
             child: _DistrictLeadersList(districtName: districtName),
           ),
-          // View All Leaders button
+          // Action buttons
           Padding(
             padding: const EdgeInsets.all(16),
-            child: OutlinedButton.icon(
-              onPressed: () => context.push('/leaders'),
-              icon: const Icon(Icons.people),
-              label: Text(AppLocalizations.of(context).viewAllLeaders),
-              style: OutlinedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 44),
-              ),
+            child: Column(
+              children: [
+                // View Constituencies button
+                FilledButton.icon(
+                  onPressed: () => context.push('/map/constituencies/${Uri.encodeComponent(districtName)}'),
+                  icon: const Icon(Icons.how_to_vote),
+                  label: Text(AppLocalizations.of(context).viewConstituencies),
+                  style: FilledButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 44),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                // View All Leaders button
+                OutlinedButton.icon(
+                  onPressed: () => context.push('/leaders'),
+                  icon: const Icon(Icons.people),
+                  label: Text(AppLocalizations.of(context).viewAllLeaders),
+                  style: OutlinedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 44),
+                  ),
+                ),
+              ],
             ),
           ),
         ],

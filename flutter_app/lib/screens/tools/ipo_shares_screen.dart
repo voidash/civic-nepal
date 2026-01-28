@@ -5,6 +5,7 @@ import '../../l10n/app_localizations.dart';
 import '../../models/ipo.dart';
 import '../../services/ipo_service.dart';
 import '../../services/background_service.dart';
+import '../../widgets/custom_bottom_nav.dart';
 import '../../widgets/home_title.dart';
 
 /// IPO and Shares screen with two tabs
@@ -59,6 +60,7 @@ class _IpoSharesScreenState extends State<IpoSharesScreen>
           ],
         ),
       ),
+      bottomNavigationBar: const CustomBottomNav(currentIndex: 2), // IPO
       body: TabBarView(
         controller: _tabController,
         children: const [

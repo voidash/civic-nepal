@@ -1,0 +1,5255 @@
+{
+  "version": "1.0",
+  "source": "election.ekantipur.com",
+  "scraped_at": "2026-01-27 19:26:11 UTC",
+  "totalDistricts": 77,
+  "totalLocalBodies": 746,
+  "districts": {
+    "jhapa": {
+      "id": "jhapa",
+      "name": "Jhapa",
+      "nameNp": "झापा",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "arjundhara",
+          "name": "Arjundhara",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "barhadashi",
+          "name": "Barhadashi",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "bhadrapur",
+          "name": "Bhadrapur",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "birtamod",
+          "name": "Birtamod",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "buddhashanti",
+          "name": "Buddhashanti",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "damak",
+          "name": "Damak",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "gauradhaha",
+          "name": "Gauradhaha",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "gauriganj",
+          "name": "Gauriganj",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "haldibari",
+          "name": "Haldibari",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "jhapa",
+          "name": "Jhapa",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "kachankawal",
+          "name": "Kachankawal",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "kamal",
+          "name": "Kamal",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "kankai",
+          "name": "Kankai",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "mechinagar",
+          "name": "Mechinagar",
+          "district": "Jhapa",
+          "province": 1
+        },
+        {
+          "id": "shivasataxi",
+          "name": "Shivasataxi",
+          "district": "Jhapa",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "okhaldhunga": {
+      "id": "okhaldhunga",
+      "name": "Okhaldhunga",
+      "nameNp": "ओखलढुंगा",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "champadevi",
+          "name": "Champadevi",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "chisankhugadhi",
+          "name": "Chisankhugadhi",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "khijidemba",
+          "name": "Khijidemba",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "likhu",
+          "name": "Likhu",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "manebhanjyang",
+          "name": "Manebhanjyang",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "molung",
+          "name": "Molung",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "siddhicharan",
+          "name": "Siddhicharan",
+          "district": "Okhaldhunga",
+          "province": 1
+        },
+        {
+          "id": "sunkoshi",
+          "name": "Sunkoshi",
+          "district": "Okhaldhunga",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "ilam": {
+      "id": "ilam",
+      "name": "Ilam",
+      "nameNp": "इलाम",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "chulachuli",
+          "name": "Chulachuli",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "deumai",
+          "name": "Deumai",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "fakphokthum",
+          "name": "Fakphokthum",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "illam",
+          "name": "Illam",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "mai",
+          "name": "Mai",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "maijogmai",
+          "name": "Maijogmai",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "mangsebung",
+          "name": "Mangsebung",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "rong",
+          "name": "Rong",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "sandakpur",
+          "name": "Sandakpur",
+          "district": "Ilam",
+          "province": 1
+        },
+        {
+          "id": "suryodaya",
+          "name": "Suryodaya",
+          "district": "Ilam",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dhankuta": {
+      "id": "dhankuta",
+      "name": "Dhankuta",
+      "nameNp": "धनकुटा",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "chaubise",
+          "name": "Chaubise",
+          "district": "Dhankuta",
+          "province": 1
+        },
+        {
+          "id": "chhathar--jorpati",
+          "name": "Chhathar  Jorpati",
+          "district": "Dhankuta",
+          "province": 1
+        },
+        {
+          "id": "dhankuta",
+          "name": "Dhankuta",
+          "district": "Dhankuta",
+          "province": 1
+        },
+        {
+          "id": "shahidbhumi",
+          "name": "Shahidbhumi",
+          "district": "Dhankuta",
+          "province": 1
+        },
+        {
+          "id": "mahalaxmi",
+          "name": "Mahalaxmi",
+          "district": "Dhankuta",
+          "province": 1
+        },
+        {
+          "id": "pakhribas",
+          "name": "Pakhribas",
+          "district": "Dhankuta",
+          "province": 1
+        },
+        {
+          "id": "sangurigadhi",
+          "name": "Sangurigadhi",
+          "district": "Dhankuta",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "khotang": {
+      "id": "khotang",
+      "name": "Khotang",
+      "nameNp": "खोटाङ",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "ainselukhark",
+          "name": "Ainselukhark",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "barahapokhari",
+          "name": "Barahapokhari",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "diprung-chuichumma",
+          "name": "Diprung Chuichumma",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "halesi-tuwachung",
+          "name": "Halesi Tuwachung",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "jhantedhunga",
+          "name": "Jhantedhunga",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "kepilasagadhi",
+          "name": "Kepilasagadhi",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "khotehang",
+          "name": "Khotehang",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "rawa-besi",
+          "name": "Rawa Besi",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "diktel-rupakot-majhuwagadhi",
+          "name": "Diktel Rupakot Majhuwagadhi",
+          "district": "Khotang",
+          "province": 1
+        },
+        {
+          "id": "sakela",
+          "name": "Sakela",
+          "district": "Khotang",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "bhojpur": {
+      "id": "bhojpur",
+      "name": "Bhojpur",
+      "nameNp": "भोजपुर",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "aamchowk",
+          "name": "Aamchowk",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "arun",
+          "name": "Arun",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "bhojpur",
+          "name": "Bhojpur",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "hatuwagadhi",
+          "name": "Hatuwagadhi",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "pauwadungma",
+          "name": "Pauwadungma",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "ramprasad-rai",
+          "name": "Ramprasad Rai",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "salpasilichho",
+          "name": "Salpasilichho",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "shadananda",
+          "name": "Shadananda",
+          "district": "Bhojpur",
+          "province": 1
+        },
+        {
+          "id": "temkemaiyum",
+          "name": "Temkemaiyum",
+          "district": "Bhojpur",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "terhathum": {
+      "id": "terhathum",
+      "name": "Terhathum",
+      "nameNp": "तेह्रथुम",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "aathrai",
+          "name": "Aathrai",
+          "district": "Terhathum",
+          "province": 1
+        },
+        {
+          "id": "chhathar",
+          "name": "Chhathar",
+          "district": "Terhathum",
+          "province": 1
+        },
+        {
+          "id": "laligurans",
+          "name": "Laligurans",
+          "district": "Terhathum",
+          "province": 1
+        },
+        {
+          "id": "menchayam",
+          "name": "Menchayam",
+          "district": "Terhathum",
+          "province": 1
+        },
+        {
+          "id": "myanglung",
+          "name": "Myanglung",
+          "district": "Terhathum",
+          "province": 1
+        },
+        {
+          "id": "phedap",
+          "name": "Phedap",
+          "district": "Terhathum",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "taplejung": {
+      "id": "taplejung",
+      "name": "Taplejung",
+      "nameNp": "ताप्लेजुङ",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "aathrai-tribeni",
+          "name": "Aathrai Tribeni",
+          "district": "Taplejung",
+          "province": 1
+        },
+        {
+          "id": "maiwakhola",
+          "name": "Maiwakhola",
+          "district": "Taplejung",
+          "province": 1
+        },
+        {
+          "id": "mikwakhola",
+          "name": "Mikwakhola",
+          "district": "Taplejung",
+          "province": 1
+        },
+        {
+          "id": "phaktanglung",
+          "name": "Phaktanglung",
+          "district": "Taplejung",
+          "province": 1
+        },
+        {
+          "id": "sidingba",
+          "name": "Sidingba",
+          "district": "Taplejung",
+          "province": 1
+        },
+        {
+          "id": "sirijangha",
+          "name": "Sirijangha",
+          "district": "Taplejung",
+          "province": 1
+        },
+        {
+          "id": "pathibhara-yangwarak",
+          "name": "Pathibhara Yangwarak",
+          "district": "Taplejung",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "sankhuwasabha": {
+      "id": "sankhuwasabha",
+      "name": "Sankhuwasabha",
+      "nameNp": "संखुवासभा",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "bhotkhola",
+          "name": "Bhotkhola",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "chainpur",
+          "name": "Chainpur",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "chichila",
+          "name": "Chichila",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "dharmadevi",
+          "name": "Dharmadevi",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "khandbari",
+          "name": "Khandbari",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "madi",
+          "name": "Madi",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "makalu",
+          "name": "Makalu",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "panchakhapan",
+          "name": "Panchakhapan",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "sabhapokhari",
+          "name": "Sabhapokhari",
+          "district": "Sankhuwasabha",
+          "province": 1
+        },
+        {
+          "id": "silichong",
+          "name": "Silichong",
+          "district": "Sankhuwasabha",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "panchthar": {
+      "id": "panchthar",
+      "name": "Panchthar",
+      "nameNp": "पाँचथर",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "falelung",
+          "name": "Falelung",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "falgunanda",
+          "name": "Falgunanda",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "hilihang",
+          "name": "Hilihang",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "kummayak",
+          "name": "Kummayak",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "miklajung",
+          "name": "Miklajung",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "phidim",
+          "name": "Phidim",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "tumbewa",
+          "name": "Tumbewa",
+          "district": "Panchthar",
+          "province": 1
+        },
+        {
+          "id": "yangwarak",
+          "name": "Yangwarak",
+          "district": "Panchthar",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "solukhumbu": {
+      "id": "solukhumbu",
+      "name": "Solukhumbu",
+      "nameNp": "सोलुखुम्बु",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "thulung-dudhkoishi",
+          "name": "Thulung Dudhkoishi",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "mapya-dudhkoshi",
+          "name": "Mapya Dudhkoshi",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "khumbupasanglahmu",
+          "name": "Khumbupasanglahmu",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "likhupike",
+          "name": "Likhupike",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "mahakulung",
+          "name": "Mahakulung",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "nechasalyan",
+          "name": "Nechasalyan",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "solududhakunda",
+          "name": "Solududhakunda",
+          "district": "Solukhumbu",
+          "province": 1
+        },
+        {
+          "id": "sotang",
+          "name": "Sotang",
+          "district": "Solukhumbu",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "sunsari": {
+      "id": "sunsari",
+      "name": "Sunsari",
+      "nameNp": "सुनसरी",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "barahchhetra",
+          "name": "Barahchhetra",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "barju",
+          "name": "Barju",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "bhokraha-narshimha",
+          "name": "Bhokraha Narshimha",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "dewanganj",
+          "name": "Dewanganj",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "dharan",
+          "name": "Dharan",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "duhabi",
+          "name": "Duhabi",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "gadhi",
+          "name": "Gadhi",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "harinagar",
+          "name": "Harinagar",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "inaruwa",
+          "name": "Inaruwa",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "itahari",
+          "name": "Itahari",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "koshi",
+          "name": "Koshi",
+          "district": "Sunsari",
+          "province": 1
+        },
+        {
+          "id": "ramdhuni",
+          "name": "Ramdhuni",
+          "district": "Sunsari",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "udayapur": {
+      "id": "udayapur",
+      "name": "Udayapur",
+      "nameNp": "उदयपुर",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "belaka",
+          "name": "Belaka",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "chaudandigadhi",
+          "name": "Chaudandigadhi",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "katari",
+          "name": "Katari",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "rautamai",
+          "name": "Rautamai",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "limchungbung",
+          "name": "Limchungbung",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "tapli",
+          "name": "Tapli",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "triyuga",
+          "name": "Triyuga",
+          "district": "Udayapur",
+          "province": 1
+        },
+        {
+          "id": "udayapurgadhi",
+          "name": "Udayapurgadhi",
+          "district": "Udayapur",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "morang": {
+      "id": "morang",
+      "name": "Morang",
+      "nameNp": "मोरङ",
+      "province": 1,
+      "localBodies": [
+        {
+          "id": "belbari",
+          "name": "Belbari",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "biratnagar",
+          "name": "Biratnagar",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "budhiganga",
+          "name": "Budhiganga",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "dhanpalthan",
+          "name": "Dhanpalthan",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "gramthan",
+          "name": "Gramthan",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "jahada",
+          "name": "Jahada",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "kanepokhari",
+          "name": "Kanepokhari",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "katahari",
+          "name": "Katahari",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "kerabari",
+          "name": "Kerabari",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "letang",
+          "name": "Letang",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "miklajung",
+          "name": "Miklajung",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "patahrishanishchare",
+          "name": "Patahrishanishchare",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "rangeli",
+          "name": "Rangeli",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "ratuwamai",
+          "name": "Ratuwamai",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "sundarharaicha",
+          "name": "Sundarharaicha",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "sunwarshi",
+          "name": "Sunwarshi",
+          "district": "Morang",
+          "province": 1
+        },
+        {
+          "id": "uralabari",
+          "name": "Uralabari",
+          "district": "Morang",
+          "province": 1
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "saptari": {
+      "id": "saptari",
+      "name": "Saptari",
+      "nameNp": "सप्तरी",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "agnisair-krishna-savaran",
+          "name": "Agnisair Krishna Savaran",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "balan-bihul",
+          "name": "Balan Bihul",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "rajgadh",
+          "name": "Rajgadh",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "bishnupur",
+          "name": "Bishnupur",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "bode-barsine",
+          "name": "Bode Barsine",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "chhinnamasta",
+          "name": "Chhinnamasta",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "dakneshwori",
+          "name": "Dakneshwori",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "hanumannagar-kalankalini",
+          "name": "Hanumannagar Kalankalini",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "kanchanrup",
+          "name": "Kanchanrup",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "khadak",
+          "name": "Khadak",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "mahadeva",
+          "name": "Mahadeva",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "rajbiraj",
+          "name": "Rajbiraj",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "rupani",
+          "name": "Rupani",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "saptakoshi",
+          "name": "Saptakoshi",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "shambhunath",
+          "name": "Shambhunath",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "surunga",
+          "name": "Surunga",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "tilathi-koiladi",
+          "name": "Tilathi Koiladi",
+          "district": "Saptari",
+          "province": 2
+        },
+        {
+          "id": "tirahut",
+          "name": "Tirahut",
+          "district": "Saptari",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "rautahat": {
+      "id": "rautahat",
+      "name": "Rautahat",
+      "nameNp": "रौतहट",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "baudhimai",
+          "name": "Baudhimai",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "brindaban",
+          "name": "Brindaban",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "chandrapur",
+          "name": "Chandrapur",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "dewahhi-gonahi",
+          "name": "Dewahhi Gonahi",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "durga-bhagwati",
+          "name": "Durga Bhagwati",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "gadimai",
+          "name": "Gadimai",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "garuda",
+          "name": "Garuda",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "gaur",
+          "name": "Gaur",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "gujara",
+          "name": "Gujara",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "ishanath",
+          "name": "Ishanath",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "katahariya",
+          "name": "Katahariya",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "madhav-narayan",
+          "name": "Madhav Narayan",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "maulapur",
+          "name": "Maulapur",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "paroha",
+          "name": "Paroha",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "phatuwa-bijayapur",
+          "name": "Phatuwa Bijayapur",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "rajdevi",
+          "name": "Rajdevi",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "rajpur",
+          "name": "Rajpur",
+          "district": "Rautahat",
+          "province": 2
+        },
+        {
+          "id": "yemunamai",
+          "name": "Yemunamai",
+          "district": "Rautahat",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "siraha": {
+      "id": "siraha",
+      "name": "Siraha",
+      "nameNp": "सिराहा",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "arnama",
+          "name": "Arnama",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "aurahi",
+          "name": "Aurahi",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "bariyarpatti",
+          "name": "Bariyarpatti",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "bhagawanpur",
+          "name": "Bhagawanpur",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "bishnupur",
+          "name": "Bishnupur",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "dhangadhimai",
+          "name": "Dhangadhimai",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "golbazar",
+          "name": "Golbazar",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "kalyanpur",
+          "name": "Kalyanpur",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "karjanha",
+          "name": "Karjanha",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "lahan",
+          "name": "Lahan",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "laxmipur-patari",
+          "name": "Laxmipur Patari",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "mirchaiya",
+          "name": "Mirchaiya",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "naraha",
+          "name": "Naraha",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "nawarajpur",
+          "name": "Nawarajpur",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "sakhuwanankarkatti",
+          "name": "Sakhuwanankarkatti",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "siraha",
+          "name": "Siraha",
+          "district": "Siraha",
+          "province": 2
+        },
+        {
+          "id": "sukhipur",
+          "name": "Sukhipur",
+          "district": "Siraha",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "mahottari": {
+      "id": "mahottari",
+      "name": "Mahottari",
+      "nameNp": "महोत्तरी",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "aurahi",
+          "name": "Aurahi",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "balwa",
+          "name": "Balwa",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "bardibas",
+          "name": "Bardibas",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "bhangaha",
+          "name": "Bhangaha",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "ekdanra",
+          "name": "Ekdanra",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "gaushala",
+          "name": "Gaushala",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "jaleswor",
+          "name": "Jaleswor",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "loharpatti",
+          "name": "Loharpatti",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "mahottari",
+          "name": "Mahottari",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "manra-siswa",
+          "name": "Manra Siswa",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "matihani",
+          "name": "Matihani",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "pipra",
+          "name": "Pipra",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "ramgopalpur",
+          "name": "Ramgopalpur",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "samsi",
+          "name": "Samsi",
+          "district": "Mahottari",
+          "province": 2
+        },
+        {
+          "id": "sonama",
+          "name": "Sonama",
+          "district": "Mahottari",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dhanusha": {
+      "id": "dhanusha",
+      "name": "Dhanusha",
+      "nameNp": "धनुषा",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "aaurahi",
+          "name": "Aaurahi",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "bateshwor",
+          "name": "Bateshwor",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "bideha",
+          "name": "Bideha",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "chhireshwornath",
+          "name": "Chhireshwornath",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "dhanauji",
+          "name": "Dhanauji",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "dhanusadham",
+          "name": "Dhanusadham",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "ganeshman-chaarnath",
+          "name": "Ganeshman Chaarnath",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "hansapur",
+          "name": "Hansapur",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "janaknandani",
+          "name": "Janaknandani",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "janakpurdham",
+          "name": "Janakpurdham",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "kamala",
+          "name": "Kamala",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "lakshminiya",
+          "name": "Lakshminiya",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "mithila",
+          "name": "Mithila",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "mithila-bihari",
+          "name": "Mithila Bihari",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "mukhiyapatti-musaharmiya",
+          "name": "Mukhiyapatti Musaharmiya",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "nagarain",
+          "name": "Nagarain",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "sabaila",
+          "name": "Sabaila",
+          "district": "Dhanusha",
+          "province": 2
+        },
+        {
+          "id": "sahidnagar",
+          "name": "Sahidnagar",
+          "district": "Dhanusha",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "sarlahi": {
+      "id": "sarlahi",
+      "name": "Sarlahi",
+      "nameNp": "सर्लाही",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "bagmati",
+          "name": "Bagmati",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "balara",
+          "name": "Balara",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "barahathawa",
+          "name": "Barahathawa",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "basbariya",
+          "name": "Basbariya",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "bishnu",
+          "name": "Bishnu",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "bramhapuri",
+          "name": "Bramhapuri",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "chakraghatta",
+          "name": "Chakraghatta",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "chandranagar",
+          "name": "Chandranagar",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "dhankaul",
+          "name": "Dhankaul",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "godaita",
+          "name": "Godaita",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "haripur",
+          "name": "Haripur",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "haripurwa",
+          "name": "Haripurwa",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "hariwan",
+          "name": "Hariwan",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "ishworpur",
+          "name": "Ishworpur",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "kabilasi",
+          "name": "Kabilasi",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "kaudena",
+          "name": "Kaudena",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "lalbandi",
+          "name": "Lalbandi",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "malangawa",
+          "name": "Malangawa",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "parsa",
+          "name": "Parsa",
+          "district": "Sarlahi",
+          "province": 2
+        },
+        {
+          "id": "ramnagar",
+          "name": "Ramnagar",
+          "district": "Sarlahi",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "parsa": {
+      "id": "parsa",
+      "name": "Parsa",
+      "nameNp": "पर्सा",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "bahudaramai",
+          "name": "Bahudaramai",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "bindabasini",
+          "name": "Bindabasini",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "birgunj",
+          "name": "Birgunj",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "chhipaharmai",
+          "name": "Chhipaharmai",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "dhobini",
+          "name": "Dhobini",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "jagarnathpur",
+          "name": "Jagarnathpur",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "jirabhawani",
+          "name": "Jirabhawani",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "kalikamai",
+          "name": "Kalikamai",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "pakahamainpur",
+          "name": "Pakahamainpur",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "parsagadhi",
+          "name": "Parsagadhi",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "paterwasugauli",
+          "name": "Paterwasugauli",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "pokhariya",
+          "name": "Pokhariya",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "sakhuwaprasauni",
+          "name": "Sakhuwaprasauni",
+          "district": "Parsa",
+          "province": 2
+        },
+        {
+          "id": "thori",
+          "name": "Thori",
+          "district": "Parsa",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "bara": {
+      "id": "bara",
+      "name": "Bara",
+      "nameNp": "बारा",
+      "province": 2,
+      "localBodies": [
+        {
+          "id": "adarshkotwal",
+          "name": "Adarshkotwal",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "baragadhi",
+          "name": "Baragadhi",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "bishrampur",
+          "name": "Bishrampur",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "devtal",
+          "name": "Devtal",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "jitpur-simara",
+          "name": "Jitpur Simara",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "kalaiya",
+          "name": "Kalaiya",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "karaiyamai",
+          "name": "Karaiyamai",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "kolhabi",
+          "name": "Kolhabi",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "mahagadhimai",
+          "name": "Mahagadhimai",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "nijgadh",
+          "name": "Nijgadh",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "pacharauta",
+          "name": "Pacharauta",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "parwanipur",
+          "name": "Parwanipur",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "pheta",
+          "name": "Pheta",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "prasauni",
+          "name": "Prasauni",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "simraungadh",
+          "name": "Simraungadh",
+          "district": "Bara",
+          "province": 2
+        },
+        {
+          "id": "suwarna",
+          "name": "Suwarna",
+          "district": "Bara",
+          "province": 2
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kavrepalanchok": {
+      "id": "kavrepalanchok",
+      "name": "Kavrepalanchok",
+      "nameNp": "काभ्रेपलाञ्चोक",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "banepa",
+          "name": "Banepa",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "bethanchowk",
+          "name": "Bethanchowk",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "bhumlu",
+          "name": "Bhumlu",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "chaurideurali",
+          "name": "Chaurideurali",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "dhulikhel",
+          "name": "Dhulikhel",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "khanikhola",
+          "name": "Khanikhola",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "mahabharat",
+          "name": "Mahabharat",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "mandandeupur",
+          "name": "Mandandeupur",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "namobuddha",
+          "name": "Namobuddha",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "panauti",
+          "name": "Panauti",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "panchkhal",
+          "name": "Panchkhal",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "roshi",
+          "name": "Roshi",
+          "district": "Kavrepalanchok",
+          "province": 3
+        },
+        {
+          "id": "temal",
+          "name": "Temal",
+          "district": "Kavrepalanchok",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "sindhupalchok": {
+      "id": "sindhupalchok",
+      "name": "Sindhupalchok",
+      "nameNp": "सिन्धुपाल्चोक",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "balefi",
+          "name": "Balefi",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "barhabise",
+          "name": "Barhabise",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "bhotekoshi",
+          "name": "Bhotekoshi",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "chautara--sangachowkgadhi",
+          "name": "Chautara  Sangachowkgadhi",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "helambu",
+          "name": "Helambu",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "indrawati",
+          "name": "Indrawati",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "jugal",
+          "name": "Jugal",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "lisangkhu-pakhar",
+          "name": "Lisangkhu Pakhar",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "melamchi",
+          "name": "Melamchi",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "panchpokhari-thangpal",
+          "name": "Panchpokhari Thangpal",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "sunkoshi",
+          "name": "Sunkoshi",
+          "district": "Sindhupalchok",
+          "province": 3
+        },
+        {
+          "id": "tripurasundhari",
+          "name": "Tripurasundhari",
+          "district": "Sindhupalchok",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dhading": {
+      "id": "dhading",
+      "name": "Dhading",
+      "nameNp": "धादिङ",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "benighata-rorang",
+          "name": "Benighata Rorang",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "dhunibesi",
+          "name": "Dhunibesi",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "gajuri",
+          "name": "Gajuri",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "galchi",
+          "name": "Galchi",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "gangajamuna",
+          "name": "Gangajamuna",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "jwalamukhi",
+          "name": "Jwalamukhi",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "khaniyabash",
+          "name": "Khaniyabash",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "netrawati",
+          "name": "Netrawati",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "nilakantha",
+          "name": "Nilakantha",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "rubi-valley",
+          "name": "Rubi Valley",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "siddhalek",
+          "name": "Siddhalek",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "thakre",
+          "name": "Thakre",
+          "district": "Dhading",
+          "province": 3
+        },
+        {
+          "id": "tripurasundhari",
+          "name": "Tripurasundhari",
+          "district": "Dhading",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "nuwakot": {
+      "id": "nuwakot",
+      "name": "Nuwakot",
+      "nameNp": "नुवाकोट",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "belkotgadhi",
+          "name": "Belkotgadhi",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "bidur",
+          "name": "Bidur",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "dupcheshwar",
+          "name": "Dupcheshwar",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "kakani",
+          "name": "Kakani",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "kispang",
+          "name": "Kispang",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "likhu",
+          "name": "Likhu",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "myagang",
+          "name": "Myagang",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "panchakanya",
+          "name": "Panchakanya",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "shivapuri",
+          "name": "Shivapuri",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "suryagadhi",
+          "name": "Suryagadhi",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "tadi",
+          "name": "Tadi",
+          "district": "Nuwakot",
+          "province": 3
+        },
+        {
+          "id": "tarkeshwar",
+          "name": "Tarkeshwar",
+          "district": "Nuwakot",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "rasuwa": {
+      "id": "rasuwa",
+      "name": "Rasuwa",
+      "nameNp": "रसुवा",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "gosaikunda",
+          "name": "Gosaikunda",
+          "district": "Rasuwa",
+          "province": 3
+        },
+        {
+          "id": "kalika",
+          "name": "Kalika",
+          "district": "Rasuwa",
+          "province": 3
+        },
+        {
+          "id": "naukunda",
+          "name": "Naukunda",
+          "district": "Rasuwa",
+          "province": 3
+        },
+        {
+          "id": "uttargaya",
+          "name": "Uttargaya",
+          "district": "Rasuwa",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "chitwan": {
+      "id": "chitwan",
+      "name": "Chitwan",
+      "nameNp": "चितवन",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "bharatpur",
+          "name": "Bharatpur",
+          "district": "Chitwan",
+          "province": 3
+        },
+        {
+          "id": "ichchhyakamana",
+          "name": "Ichchhyakamana",
+          "district": "Chitwan",
+          "province": 3
+        },
+        {
+          "id": "kalika",
+          "name": "Kalika",
+          "district": "Chitwan",
+          "province": 3
+        },
+        {
+          "id": "khairahani",
+          "name": "Khairahani",
+          "district": "Chitwan",
+          "province": 3
+        },
+        {
+          "id": "madi",
+          "name": "Madi",
+          "district": "Chitwan",
+          "province": 3
+        },
+        {
+          "id": "rapti",
+          "name": "Rapti",
+          "district": "Chitwan",
+          "province": 3
+        },
+        {
+          "id": "ratnanagar",
+          "name": "Ratnanagar",
+          "district": "Chitwan",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "makwanpur": {
+      "id": "makwanpur",
+      "name": "Makwanpur",
+      "nameNp": "मकवानपुर",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "bagmati",
+          "name": "Bagmati",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "bakaiya",
+          "name": "Bakaiya",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "bhimphedhi",
+          "name": "Bhimphedhi",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "hetauda",
+          "name": "Hetauda",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "indrasarowar",
+          "name": "Indrasarowar",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "kailash",
+          "name": "Kailash",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "makawanpurgadhi",
+          "name": "Makawanpurgadhi",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "manahari",
+          "name": "Manahari",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "raksirang",
+          "name": "Raksirang",
+          "district": "Makwanpur",
+          "province": 3
+        },
+        {
+          "id": "thaha",
+          "name": "Thaha",
+          "district": "Makwanpur",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "sindhuli": {
+      "id": "sindhuli",
+      "name": "Sindhuli",
+      "nameNp": "सिन्धुली",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "dudhouli",
+          "name": "Dudhouli",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "ghanglekh",
+          "name": "Ghanglekh",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "golanjor",
+          "name": "Golanjor",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "hariharpurgadhi",
+          "name": "Hariharpurgadhi",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "kamalamai",
+          "name": "Kamalamai",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "marin-thakur",
+          "name": "Marin Thakur",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "phikkal",
+          "name": "Phikkal",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "sunkoshi",
+          "name": "Sunkoshi",
+          "district": "Sindhuli",
+          "province": 3
+        },
+        {
+          "id": "tinpatan",
+          "name": "Tinpatan",
+          "district": "Sindhuli",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "ramechhap": {
+      "id": "ramechhap",
+      "name": "Ramechhap",
+      "nameNp": "रामेछाप",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "doramba",
+          "name": "Doramba",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "gokulganga",
+          "name": "Gokulganga",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "khadadevi",
+          "name": "Khadadevi",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "likhu",
+          "name": "Likhu",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "manthali",
+          "name": "Manthali",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "ramechhap",
+          "name": "Ramechhap",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "sunapati",
+          "name": "Sunapati",
+          "district": "Ramechhap",
+          "province": 3
+        },
+        {
+          "id": "umakunda",
+          "name": "Umakunda",
+          "district": "Ramechhap",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dolakha": {
+      "id": "dolakha",
+      "name": "Dolakha",
+      "nameNp": "दोलखा",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "baiteshwor",
+          "name": "Baiteshwor",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "bhimeshwor",
+          "name": "Bhimeshwor",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "bigu",
+          "name": "Bigu",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "gaurishankar",
+          "name": "Gaurishankar",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "jiri",
+          "name": "Jiri",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "kalinchok",
+          "name": "Kalinchok",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "melung",
+          "name": "Melung",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "shailung",
+          "name": "Shailung",
+          "district": "Dolakha",
+          "province": 3
+        },
+        {
+          "id": "tamakoshi",
+          "name": "Tamakoshi",
+          "district": "Dolakha",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "lalitpur": {
+      "id": "lalitpur",
+      "name": "Lalitpur",
+      "nameNp": "ललितपुर",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "bagmati",
+          "name": "Bagmati",
+          "district": "Lalitpur",
+          "province": 3
+        },
+        {
+          "id": "godawari",
+          "name": "Godawari",
+          "district": "Lalitpur",
+          "province": 3
+        },
+        {
+          "id": "konjyosom",
+          "name": "Konjyosom",
+          "district": "Lalitpur",
+          "province": 3
+        },
+        {
+          "id": "lalitpur",
+          "name": "Lalitpur",
+          "district": "Lalitpur",
+          "province": 3
+        },
+        {
+          "id": "mahalaxmi",
+          "name": "Mahalaxmi",
+          "district": "Lalitpur",
+          "province": 3
+        },
+        {
+          "id": "mahankal",
+          "name": "Mahankal",
+          "district": "Lalitpur",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kathmandu": {
+      "id": "kathmandu",
+      "name": "Kathmandu",
+      "nameNp": "काठमाडौं",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "budhanilakantha",
+          "name": "Budhanilakantha",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "chandragiri",
+          "name": "Chandragiri",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "dakshinkali",
+          "name": "Dakshinkali",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "gokarneshwor",
+          "name": "Gokarneshwor",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "kageshwori-manohara",
+          "name": "Kageshwori Manohara",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "kathmandu",
+          "name": "Kathmandu",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "kirtipur",
+          "name": "Kirtipur",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "nagarjun",
+          "name": "Nagarjun",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "shankharapur",
+          "name": "Shankharapur",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "tarakeshwor",
+          "name": "Tarakeshwor",
+          "district": "Kathmandu",
+          "province": 3
+        },
+        {
+          "id": "tokha",
+          "name": "Tokha",
+          "district": "Kathmandu",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "bhaktapur": {
+      "id": "bhaktapur",
+      "name": "Bhaktapur",
+      "nameNp": "भक्तपुर",
+      "province": 3,
+      "localBodies": [
+        {
+          "id": "bhaktapur",
+          "name": "Bhaktapur",
+          "district": "Bhaktapur",
+          "province": 3
+        },
+        {
+          "id": "changunarayan",
+          "name": "Changunarayan",
+          "district": "Bhaktapur",
+          "province": 3
+        },
+        {
+          "id": "madhyapur-thimi",
+          "name": "Madhyapur Thimi",
+          "district": "Bhaktapur",
+          "province": 3
+        },
+        {
+          "id": "suryabinayak",
+          "name": "Suryabinayak",
+          "district": "Bhaktapur",
+          "province": 3
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "mustang": {
+      "id": "mustang",
+      "name": "Mustang",
+      "nameNp": "मुस्ताङ",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "varagung-muktichhetra",
+          "name": "Varagung Muktichhetra",
+          "district": "Mustang",
+          "province": 4
+        },
+        {
+          "id": "dalome",
+          "name": "Dalome",
+          "district": "Mustang",
+          "province": 4
+        },
+        {
+          "id": "gharapjhong",
+          "name": "Gharapjhong",
+          "district": "Mustang",
+          "province": 4
+        },
+        {
+          "id": "lomanthang",
+          "name": "Lomanthang",
+          "district": "Mustang",
+          "province": 4
+        },
+        {
+          "id": "thasang",
+          "name": "Thasang",
+          "district": "Mustang",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "manang": {
+      "id": "manang",
+      "name": "Manang",
+      "nameNp": "मनाङ",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "chame",
+          "name": "Chame",
+          "district": "Manang",
+          "province": 4
+        },
+        {
+          "id": "narpa-bhumi",
+          "name": "Narpa Bhumi",
+          "district": "Manang",
+          "province": 4
+        },
+        {
+          "id": "nason",
+          "name": "Nason",
+          "district": "Manang",
+          "province": 4
+        },
+        {
+          "id": "manang-ngisyang",
+          "name": "Manang Ngisyang",
+          "district": "Manang",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "myagdi": {
+      "id": "myagdi",
+      "name": "Myagdi",
+      "nameNp": "म्याग्दी",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "annapurna",
+          "name": "Annapurna",
+          "district": "Myagdi",
+          "province": 4
+        },
+        {
+          "id": "beni",
+          "name": "Beni",
+          "district": "Myagdi",
+          "province": 4
+        },
+        {
+          "id": "dhaulagiri",
+          "name": "Dhaulagiri",
+          "district": "Myagdi",
+          "province": 4
+        },
+        {
+          "id": "malika",
+          "name": "Malika",
+          "district": "Myagdi",
+          "province": 4
+        },
+        {
+          "id": "mangala",
+          "name": "Mangala",
+          "district": "Myagdi",
+          "province": 4
+        },
+        {
+          "id": "raghuganga",
+          "name": "Raghuganga",
+          "district": "Myagdi",
+          "province": 4
+        },
+        {
+          "id": "dhorpatan-hunting-reserve",
+          "name": "Dhorpatan Hunting Reserve",
+          "district": "Myagdi",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kaski": {
+      "id": "kaski",
+      "name": "Kaski",
+      "nameNp": "कास्की",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "anapurna",
+          "name": "Anapurna",
+          "district": "Kaski",
+          "province": 4
+        },
+        {
+          "id": "machhapuchchhre",
+          "name": "Machhapuchchhre",
+          "district": "Kaski",
+          "province": 4
+        },
+        {
+          "id": "madi",
+          "name": "Madi",
+          "district": "Kaski",
+          "province": 4
+        },
+        {
+          "id": "pokhara-lekhnath",
+          "name": "Pokhara Lekhnath",
+          "district": "Kaski",
+          "province": 4
+        },
+        {
+          "id": "rupa",
+          "name": "Rupa",
+          "district": "Kaski",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "lamjung": {
+      "id": "lamjung",
+      "name": "Lamjung",
+      "nameNp": "लमजुङ",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "besishahar",
+          "name": "Besishahar",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "dordi",
+          "name": "Dordi",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "dudhpokhari",
+          "name": "Dudhpokhari",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "kwholasothar",
+          "name": "Kwholasothar",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "madhyanepal",
+          "name": "Madhyanepal",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "marsyangdi",
+          "name": "Marsyangdi",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "rainas",
+          "name": "Rainas",
+          "district": "Lamjung",
+          "province": 4
+        },
+        {
+          "id": "sundarbazar",
+          "name": "Sundarbazar",
+          "district": "Lamjung",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "baglung": {
+      "id": "baglung",
+      "name": "Baglung",
+      "nameNp": "बागलुङ",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "badigad",
+          "name": "Badigad",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "baglung",
+          "name": "Baglung",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "bareng",
+          "name": "Bareng",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "dhorpatan",
+          "name": "Dhorpatan",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "galkota",
+          "name": "Galkota",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "jaimuni",
+          "name": "Jaimuni",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "kanthekhola",
+          "name": "Kanthekhola",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "nisikhola",
+          "name": "Nisikhola",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "tamankhola",
+          "name": "Tamankhola",
+          "district": "Baglung",
+          "province": 4
+        },
+        {
+          "id": "tarakhola",
+          "name": "Tarakhola",
+          "district": "Baglung",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "parbat": {
+      "id": "parbat",
+      "name": "Parbat",
+      "nameNp": "पर्वत",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "bihadi",
+          "name": "Bihadi",
+          "district": "Parbat",
+          "province": 4
+        },
+        {
+          "id": "jaljala",
+          "name": "Jaljala",
+          "district": "Parbat",
+          "province": 4
+        },
+        {
+          "id": "kushma",
+          "name": "Kushma",
+          "district": "Parbat",
+          "province": 4
+        },
+        {
+          "id": "mahashila",
+          "name": "Mahashila",
+          "district": "Parbat",
+          "province": 4
+        },
+        {
+          "id": "modi",
+          "name": "Modi",
+          "district": "Parbat",
+          "province": 4
+        },
+        {
+          "id": "painyu",
+          "name": "Painyu",
+          "district": "Parbat",
+          "province": 4
+        },
+        {
+          "id": "phalebas",
+          "name": "Phalebas",
+          "district": "Parbat",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "syangja": {
+      "id": "syangja",
+      "name": "Syangja",
+      "nameNp": "स्याङ्जा",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "aandhikhola",
+          "name": "Aandhikhola",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "arjunchaupari",
+          "name": "Arjunchaupari",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "bhirkot",
+          "name": "Bhirkot",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "biruwa",
+          "name": "Biruwa",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "chapakot",
+          "name": "Chapakot",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "galyang",
+          "name": "Galyang",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "harinas",
+          "name": "Harinas",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "kaligandaki",
+          "name": "Kaligandaki",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "phedikhola",
+          "name": "Phedikhola",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "putalibazar",
+          "name": "Putalibazar",
+          "district": "Syangja",
+          "province": 4
+        },
+        {
+          "id": "waling",
+          "name": "Waling",
+          "district": "Syangja",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "tanahu": {
+      "id": "tanahu",
+      "name": "Tanahu",
+      "nameNp": "तनहुँ",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "anbukhaireni",
+          "name": "Anbukhaireni",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "bandipur",
+          "name": "Bandipur",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "bhanu",
+          "name": "Bhanu",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "bhimad",
+          "name": "Bhimad",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "vyas",
+          "name": "Vyas",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "devghat",
+          "name": "Devghat",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "ghiring",
+          "name": "Ghiring",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "myagde",
+          "name": "Myagde",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "rhishing",
+          "name": "Rhishing",
+          "district": "Tanahu",
+          "province": 4
+        },
+        {
+          "id": "shuklagandaki",
+          "name": "Shuklagandaki",
+          "district": "Tanahu",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "gorkha": {
+      "id": "gorkha",
+      "name": "Gorkha",
+      "nameNp": "गोरखा",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "aarughat",
+          "name": "Aarughat",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "ajirkot",
+          "name": "Ajirkot",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "bhimsenthapa",
+          "name": "Bhimsenthapa",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "chumnubri",
+          "name": "Chumnubri",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "dharche",
+          "name": "Dharche",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "gandaki",
+          "name": "Gandaki",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "gorkha",
+          "name": "Gorkha",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "palungtar",
+          "name": "Palungtar",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "shahid-lakhan",
+          "name": "Shahid Lakhan",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "siranchok",
+          "name": "Siranchok",
+          "district": "Gorkha",
+          "province": 4
+        },
+        {
+          "id": "barpak-sulikot",
+          "name": "Barpak Sulikot",
+          "district": "Gorkha",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "nawalparasi (bardaghat susta east)": {
+      "id": "nawalparasi (bardaghat susta east)",
+      "name": "Nawalparasi (Bardaghat Susta East)",
+      "nameNp": "नवलपरासी (बर्दघाट सुस्ता पूर्व)",
+      "province": 4,
+      "localBodies": [
+        {
+          "id": "binayee-tribeni",
+          "name": "Binayee Tribeni",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "binayee-tribeni",
+          "name": "Binayee Tribeni",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "bulingtar",
+          "name": "Bulingtar",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "baudikali",
+          "name": "Baudikali",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "devchuli",
+          "name": "Devchuli",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "gaindakot",
+          "name": "Gaindakot",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "hupsekot",
+          "name": "Hupsekot",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "kawasoti",
+          "name": "Kawasoti",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        },
+        {
+          "id": "madhyabindu",
+          "name": "Madhyabindu",
+          "district": "Nawalparasi (Bardaghat Susta East)",
+          "province": 4
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "nawalparasi (bardaghat susta west)": {
+      "id": "nawalparasi (bardaghat susta west)",
+      "name": "Nawalparasi (Bardaghat Susta West)",
+      "nameNp": "नवलपरासी (बर्दघाट सुस्ता पश्चिम)",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "bardaghat",
+          "name": "Bardaghat",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        },
+        {
+          "id": "palhinandana",
+          "name": "Palhinandana",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        },
+        {
+          "id": "pratappur",
+          "name": "Pratappur",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        },
+        {
+          "id": "ramgram",
+          "name": "Ramgram",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        },
+        {
+          "id": "sarawal",
+          "name": "Sarawal",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        },
+        {
+          "id": "sunwal",
+          "name": "Sunwal",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        },
+        {
+          "id": "triveni-susta",
+          "name": "Triveni Susta",
+          "district": "Nawalparasi (Bardaghat Susta West)",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "eastern-rukum": {
+      "id": "eastern-rukum",
+      "name": "Eastern Rukum",
+      "nameNp": "पूर्वी रुकुम",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "bhume",
+          "name": "Bhume",
+          "district": "Eastern Rukum",
+          "province": 5
+        },
+        {
+          "id": "putha-uttar-ganga",
+          "name": "Putha Uttar Ganga",
+          "district": "Eastern Rukum",
+          "province": 5
+        },
+        {
+          "id": "sisne",
+          "name": "Sisne",
+          "district": "Eastern Rukum",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "bardiya": {
+      "id": "bardiya",
+      "name": "Bardiya",
+      "nameNp": "बर्दिया",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "badaiyatal",
+          "name": "Badaiyatal",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "bansagadhi",
+          "name": "Bansagadhi",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "bansagadhi",
+          "name": "Bansagadhi",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "barbardiya",
+          "name": "Barbardiya",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "geruwa",
+          "name": "Geruwa",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "gulariya",
+          "name": "Gulariya",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "madhuwan",
+          "name": "Madhuwan",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "rajapur",
+          "name": "Rajapur",
+          "district": "Bardiya",
+          "province": 5
+        },
+        {
+          "id": "thakurbaba",
+          "name": "Thakurbaba",
+          "district": "Bardiya",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "banke": {
+      "id": "banke",
+      "name": "Banke",
+      "nameNp": "बाँके",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "baijanath",
+          "name": "Baijanath",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "duduwa",
+          "name": "Duduwa",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "janki",
+          "name": "Janki",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "khajura",
+          "name": "Khajura",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "kohalpur",
+          "name": "Kohalpur",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "narainapur",
+          "name": "Narainapur",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "nepalgunj",
+          "name": "Nepalgunj",
+          "district": "Banke",
+          "province": 5
+        },
+        {
+          "id": "rapti-sonari",
+          "name": "Rapti Sonari",
+          "district": "Banke",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "rolpa": {
+      "id": "rolpa",
+      "name": "Rolpa",
+      "nameNp": "रोल्पा",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "lungri",
+          "name": "Lungri",
+          "district": "Rolpa",
+          "province": 5
+        },
+        {
+          "id": "madi",
+          "name": "Madi",
+          "district": "Rolpa",
+          "province": 5
+        },
+        {
+          "id": "rolpa",
+          "name": "Rolpa",
+          "district": "Rolpa",
+          "province": 5
+        },
+        {
+          "id": "runtigadi",
+          "name": "Runtigadi",
+          "district": "Rolpa",
+          "province": 5
+        },
+        {
+          "id": "sunchhahari",
+          "name": "Sunchhahari",
+          "district": "Rolpa",
+          "province": 5
+        },
+        {
+          "id": "thawang",
+          "name": "Thawang",
+          "district": "Rolpa",
+          "province": 5
+        },
+        {
+          "id": "triveni",
+          "name": "Triveni",
+          "district": "Rolpa",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dang": {
+      "id": "dang",
+      "name": "Dang",
+      "nameNp": "दाङ",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "babai",
+          "name": "Babai",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "banglachuli",
+          "name": "Banglachuli",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "dangisharan",
+          "name": "Dangisharan",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "gadhawa",
+          "name": "Gadhawa",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "ghorahi",
+          "name": "Ghorahi",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "lamahi",
+          "name": "Lamahi",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "rajpur",
+          "name": "Rajpur",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "rapti",
+          "name": "Rapti",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "shantinagar",
+          "name": "Shantinagar",
+          "district": "Dang",
+          "province": 5
+        },
+        {
+          "id": "tulsipur",
+          "name": "Tulsipur",
+          "district": "Dang",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kapilvastu": {
+      "id": "kapilvastu",
+      "name": "Kapilvastu",
+      "nameNp": "कपिलवस्तु",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "banganga",
+          "name": "Banganga",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "bijayanagar",
+          "name": "Bijayanagar",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "buddhabhumi",
+          "name": "Buddhabhumi",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "kapilbastu",
+          "name": "Kapilbastu",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "krishnanagar",
+          "name": "Krishnanagar",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "maharajgunj",
+          "name": "Maharajgunj",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "mayadevi",
+          "name": "Mayadevi",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "shivaraj",
+          "name": "Shivaraj",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "sudhodhan",
+          "name": "Sudhodhan",
+          "district": "Kapilvastu",
+          "province": 5
+        },
+        {
+          "id": "yashodhara",
+          "name": "Yashodhara",
+          "district": "Kapilvastu",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "rupandehi": {
+      "id": "rupandehi",
+      "name": "Rupandehi",
+      "nameNp": "रुपन्देही",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "butwal",
+          "name": "Butwal",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "devdaha",
+          "name": "Devdaha",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "gaidahawa",
+          "name": "Gaidahawa",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "kanchan",
+          "name": "Kanchan",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "kotahimai",
+          "name": "Kotahimai",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "marchawari",
+          "name": "Marchawari",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "mayadevi",
+          "name": "Mayadevi",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "omsatiya",
+          "name": "Omsatiya",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "rohini",
+          "name": "Rohini",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "sainamaina",
+          "name": "Sainamaina",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "sammarimai",
+          "name": "Sammarimai",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "siddharthanagara",
+          "name": "Siddharthanagara",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "siyari",
+          "name": "Siyari",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "sudhdhodhan",
+          "name": "Sudhdhodhan",
+          "district": "Rupandehi",
+          "province": 5
+        },
+        {
+          "id": "tillotama",
+          "name": "Tillotama",
+          "district": "Rupandehi",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "palpa": {
+      "id": "palpa",
+      "name": "Palpa",
+      "nameNp": "पाल्पा",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "bagnaskali",
+          "name": "Bagnaskali",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "mathagadhi",
+          "name": "Mathagadhi",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "nisdi",
+          "name": "Nisdi",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "purbakhola",
+          "name": "Purbakhola",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "rainadevi-chhahara",
+          "name": "Rainadevi Chhahara",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "rambha",
+          "name": "Rambha",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "rampur",
+          "name": "Rampur",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "ribdikot",
+          "name": "Ribdikot",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "tansen",
+          "name": "Tansen",
+          "district": "Palpa",
+          "province": 5
+        },
+        {
+          "id": "tinau",
+          "name": "Tinau",
+          "district": "Palpa",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "arghakhanchi": {
+      "id": "arghakhanchi",
+      "name": "Arghakhanchi",
+      "nameNp": "अर्घाखाँची",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "bhumekasthan",
+          "name": "Bhumekasthan",
+          "district": "Arghakhanchi",
+          "province": 5
+        },
+        {
+          "id": "chhatradev",
+          "name": "Chhatradev",
+          "district": "Arghakhanchi",
+          "province": 5
+        },
+        {
+          "id": "malarani",
+          "name": "Malarani",
+          "district": "Arghakhanchi",
+          "province": 5
+        },
+        {
+          "id": "panini",
+          "name": "Panini",
+          "district": "Arghakhanchi",
+          "province": 5
+        },
+        {
+          "id": "sandhikharka",
+          "name": "Sandhikharka",
+          "district": "Arghakhanchi",
+          "province": 5
+        },
+        {
+          "id": "sitganga",
+          "name": "Sitganga",
+          "district": "Arghakhanchi",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "pyuthan": {
+      "id": "pyuthan",
+      "name": "Pyuthan",
+      "nameNp": "प्युठान",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "ayirabati",
+          "name": "Ayirabati",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "gaumukhi",
+          "name": "Gaumukhi",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "jhimruk",
+          "name": "Jhimruk",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "mallarani",
+          "name": "Mallarani",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "mandavi",
+          "name": "Mandavi",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "naubahini",
+          "name": "Naubahini",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "pyuthan",
+          "name": "Pyuthan",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "sarumarani",
+          "name": "Sarumarani",
+          "district": "Pyuthan",
+          "province": 5
+        },
+        {
+          "id": "sworgadwary",
+          "name": "Sworgadwary",
+          "district": "Pyuthan",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "gulmi": {
+      "id": "gulmi",
+      "name": "Gulmi",
+      "nameNp": "गुल्मी",
+      "province": 5,
+      "localBodies": [
+        {
+          "id": "chandrakot",
+          "name": "Chandrakot",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "chatrakot",
+          "name": "Chatrakot",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "dhurkot",
+          "name": "Dhurkot",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "gulmidarbar",
+          "name": "Gulmidarbar",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "isma",
+          "name": "Isma",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "kaligandaki",
+          "name": "Kaligandaki",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "madane",
+          "name": "Madane",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "malika",
+          "name": "Malika",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "musikot",
+          "name": "Musikot",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "resunga",
+          "name": "Resunga",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "rurukshetra",
+          "name": "Rurukshetra",
+          "district": "Gulmi",
+          "province": 5
+        },
+        {
+          "id": "satyawati",
+          "name": "Satyawati",
+          "district": "Gulmi",
+          "province": 5
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dolpa": {
+      "id": "dolpa",
+      "name": "Dolpa",
+      "nameNp": "डोल्पा",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "chharka-tangsong",
+          "name": "Chharka Tangsong",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "dolpo-buddha",
+          "name": "Dolpo Buddha",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "jagadulla",
+          "name": "Jagadulla",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "kaike",
+          "name": "Kaike",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "mudkechula",
+          "name": "Mudkechula",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "shey-phoksundo",
+          "name": "Shey Phoksundo",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "thulibheri",
+          "name": "Thulibheri",
+          "district": "Dolpa",
+          "province": 6
+        },
+        {
+          "id": "tripurasundari",
+          "name": "Tripurasundari",
+          "district": "Dolpa",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "jumla": {
+      "id": "jumla",
+      "name": "Jumla",
+      "nameNp": "जुम्ला",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "chandannath",
+          "name": "Chandannath",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "guthichaur",
+          "name": "Guthichaur",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "hima",
+          "name": "Hima",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "kanakasundari",
+          "name": "Kanakasundari",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "patrasi",
+          "name": "Patrasi",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "sinja",
+          "name": "Sinja",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "tatopani",
+          "name": "Tatopani",
+          "district": "Jumla",
+          "province": 6
+        },
+        {
+          "id": "tila",
+          "name": "Tila",
+          "district": "Jumla",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "mugu": {
+      "id": "mugu",
+      "name": "Mugu",
+      "nameNp": "मुगु",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "chhayanath-rara",
+          "name": "Chhayanath Rara",
+          "district": "Mugu",
+          "province": 6
+        },
+        {
+          "id": "khatyad",
+          "name": "Khatyad",
+          "district": "Mugu",
+          "province": 6
+        },
+        {
+          "id": "mugum-karmarong",
+          "name": "Mugum Karmarong",
+          "district": "Mugu",
+          "province": 6
+        },
+        {
+          "id": "soru",
+          "name": "Soru",
+          "district": "Mugu",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "humla": {
+      "id": "humla",
+      "name": "Humla",
+      "nameNp": "हुम्ला",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "adanchuli",
+          "name": "Adanchuli",
+          "district": "Humla",
+          "province": 6
+        },
+        {
+          "id": "chankheli",
+          "name": "Chankheli",
+          "district": "Humla",
+          "province": 6
+        },
+        {
+          "id": "kharpunath",
+          "name": "Kharpunath",
+          "district": "Humla",
+          "province": 6
+        },
+        {
+          "id": "namkha",
+          "name": "Namkha",
+          "district": "Humla",
+          "province": 6
+        },
+        {
+          "id": "sarkegad",
+          "name": "Sarkegad",
+          "district": "Humla",
+          "province": 6
+        },
+        {
+          "id": "simkot",
+          "name": "Simkot",
+          "district": "Humla",
+          "province": 6
+        },
+        {
+          "id": "tanjakot",
+          "name": "Tanjakot",
+          "district": "Humla",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "western-rukum": {
+      "id": "western-rukum",
+      "name": "Western Rukum",
+      "nameNp": "पश्चिमी रुकुम",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "aathbiskot",
+          "name": "Aathbiskot",
+          "district": "Western Rukum",
+          "province": 6
+        },
+        {
+          "id": "banfikot",
+          "name": "Banfikot",
+          "district": "Western Rukum",
+          "province": 6
+        },
+        {
+          "id": "chaurjahari",
+          "name": "Chaurjahari",
+          "district": "Western Rukum",
+          "province": 6
+        },
+        {
+          "id": "musikot",
+          "name": "Musikot",
+          "district": "Western Rukum",
+          "province": 6
+        },
+        {
+          "id": "sanibheri",
+          "name": "Sanibheri",
+          "district": "Western Rukum",
+          "province": 6
+        },
+        {
+          "id": "triveni",
+          "name": "Triveni",
+          "district": "Western Rukum",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "jajarkot": {
+      "id": "jajarkot",
+      "name": "Jajarkot",
+      "nameNp": "जाजरकोट",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "barekot",
+          "name": "Barekot",
+          "district": "Jajarkot",
+          "province": 6
+        },
+        {
+          "id": "bheri",
+          "name": "Bheri",
+          "district": "Jajarkot",
+          "province": 6
+        },
+        {
+          "id": "chhedagad",
+          "name": "Chhedagad",
+          "district": "Jajarkot",
+          "province": 6
+        },
+        {
+          "id": "junichande",
+          "name": "Junichande",
+          "district": "Jajarkot",
+          "province": 6
+        },
+        {
+          "id": "kuse",
+          "name": "Kuse",
+          "district": "Jajarkot",
+          "province": 6
+        },
+        {
+          "id": "shiwalaya",
+          "name": "Shiwalaya",
+          "district": "Jajarkot",
+          "province": 6
+        },
+        {
+          "id": "nalgad",
+          "name": "Nalgad",
+          "district": "Jajarkot",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kalikot": {
+      "id": "kalikot",
+      "name": "Kalikot",
+      "nameNp": "कालिकोट",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "kalika",
+          "name": "Kalika",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "khandachakra",
+          "name": "Khandachakra",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "mahawai",
+          "name": "Mahawai",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "naraharinath",
+          "name": "Naraharinath",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "pachaljharana",
+          "name": "Pachaljharana",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "palata",
+          "name": "Palata",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "raskot",
+          "name": "Raskot",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "sanni-triveni",
+          "name": "Sanni Triveni",
+          "district": "Kalikot",
+          "province": 6
+        },
+        {
+          "id": "tilagufa",
+          "name": "Tilagufa",
+          "district": "Kalikot",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dailekh": {
+      "id": "dailekh",
+      "name": "Dailekh",
+      "nameNp": "दैलेख",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "aathabis",
+          "name": "Aathabis",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "bhagawatimai",
+          "name": "Bhagawatimai",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "bhairabi",
+          "name": "Bhairabi",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "chamunda-brindrasaini",
+          "name": "Chamunda Brindrasaini",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "dullu",
+          "name": "Dullu",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "dungeshwor",
+          "name": "Dungeshwor",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "gurans",
+          "name": "Gurans",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "mahabu",
+          "name": "Mahabu",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "narayan",
+          "name": "Narayan",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "naumule",
+          "name": "Naumule",
+          "district": "Dailekh",
+          "province": 6
+        },
+        {
+          "id": "thantikandh",
+          "name": "Thantikandh",
+          "district": "Dailekh",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "salyan": {
+      "id": "salyan",
+      "name": "Salyan",
+      "nameNp": "सल्यान",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "bagchaur",
+          "name": "Bagchaur",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "bangad-kupinde",
+          "name": "Bangad Kupinde",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "chhatreshwori",
+          "name": "Chhatreshwori",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "damra",
+          "name": "Damra",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "dhorchaur",
+          "name": "Dhorchaur",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "kalimati",
+          "name": "Kalimati",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "kapurkot",
+          "name": "Kapurkot",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "kumakh-malika",
+          "name": "Kumakh Malika",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "sharada",
+          "name": "Sharada",
+          "district": "Salyan",
+          "province": 6
+        },
+        {
+          "id": "triveni",
+          "name": "Triveni",
+          "district": "Salyan",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "surkhet": {
+      "id": "surkhet",
+      "name": "Surkhet",
+      "nameNp": "सुर्खेत",
+      "province": 6,
+      "localBodies": [
+        {
+          "id": "barahtal",
+          "name": "Barahtal",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "bheriganga",
+          "name": "Bheriganga",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "birendranagar",
+          "name": "Birendranagar",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "chaukune",
+          "name": "Chaukune",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "chingad",
+          "name": "Chingad",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "gurbhakot",
+          "name": "Gurbhakot",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "lekbeshi",
+          "name": "Lekbeshi",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "panchpuri",
+          "name": "Panchpuri",
+          "district": "Surkhet",
+          "province": 6
+        },
+        {
+          "id": "simta",
+          "name": "Simta",
+          "district": "Surkhet",
+          "province": 6
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kailali": {
+      "id": "kailali",
+      "name": "Kailali",
+      "nameNp": "कैलाली",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "bardagoriya",
+          "name": "Bardagoriya",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "bhajani",
+          "name": "Bhajani",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "chure",
+          "name": "Chure",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "dhangadhi",
+          "name": "Dhangadhi",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "gauriganga",
+          "name": "Gauriganga",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "ghodaghodi",
+          "name": "Ghodaghodi",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "godawari",
+          "name": "Godawari",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "janaki",
+          "name": "Janaki",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "joshipur",
+          "name": "Joshipur",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "kailari",
+          "name": "Kailari",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "lamkichuha",
+          "name": "Lamkichuha",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "mohanyal",
+          "name": "Mohanyal",
+          "district": "Kailali",
+          "province": 7
+        },
+        {
+          "id": "tikapur",
+          "name": "Tikapur",
+          "district": "Kailali",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "kanchanpur": {
+      "id": "kanchanpur",
+      "name": "Kanchanpur",
+      "nameNp": "कञ्चनपुर",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "bedkot",
+          "name": "Bedkot",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "belauri",
+          "name": "Belauri",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "beldandi",
+          "name": "Beldandi",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "bhimdatta",
+          "name": "Bhimdatta",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "krishnapur",
+          "name": "Krishnapur",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "laljhadi",
+          "name": "Laljhadi",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "punarbas",
+          "name": "Punarbas",
+          "district": "Kanchanpur",
+          "province": 7
+        },
+        {
+          "id": "shuklaphanta",
+          "name": "Shuklaphanta",
+          "district": "Kanchanpur",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "doti": {
+      "id": "doti",
+      "name": "Doti",
+      "nameNp": "डोटी",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "adharsha",
+          "name": "Adharsha",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "badikedar",
+          "name": "Badikedar",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "bogatan-phudsil",
+          "name": "Bogatan Phudsil",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "dipayal-silgadi",
+          "name": "Dipayal Silgadi",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "jorayal",
+          "name": "Jorayal",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "k-i-singh",
+          "name": "K I Singh",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "purbichauki",
+          "name": "Purbichauki",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "sayal",
+          "name": "Sayal",
+          "district": "Doti",
+          "province": 7
+        },
+        {
+          "id": "shikhar",
+          "name": "Shikhar",
+          "district": "Doti",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "achham": {
+      "id": "achham",
+      "name": "Achham",
+      "nameNp": "अछाम",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "bannigadhi-jayagadh",
+          "name": "Bannigadhi Jayagadh",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "chaurpati",
+          "name": "Chaurpati",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "dhakari",
+          "name": "Dhakari",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "kamalbazar",
+          "name": "Kamalbazar",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "mangalsen",
+          "name": "Mangalsen",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "mellekh",
+          "name": "Mellekh",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "panchadewal-binayak",
+          "name": "Panchadewal Binayak",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "ramaroshan",
+          "name": "Ramaroshan",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "sanphebagar",
+          "name": "Sanphebagar",
+          "district": "Achham",
+          "province": 7
+        },
+        {
+          "id": "turmakhad",
+          "name": "Turmakhad",
+          "district": "Achham",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "dadeldhura": {
+      "id": "dadeldhura",
+      "name": "Dadeldhura",
+      "nameNp": "डडेल्धुरा",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "ajaymeru",
+          "name": "Ajaymeru",
+          "district": "Dadeldhura",
+          "province": 7
+        },
+        {
+          "id": "aalital",
+          "name": "Aalital",
+          "district": "Dadeldhura",
+          "province": 7
+        },
+        {
+          "id": "amargadhi",
+          "name": "Amargadhi",
+          "district": "Dadeldhura",
+          "province": 7
+        },
+        {
+          "id": "bhageshwar",
+          "name": "Bhageshwar",
+          "district": "Dadeldhura",
+          "province": 7
+        },
+        {
+          "id": "ganayapdhura",
+          "name": "Ganayapdhura",
+          "district": "Dadeldhura",
+          "province": 7
+        },
+        {
+          "id": "nawadurga",
+          "name": "Nawadurga",
+          "district": "Dadeldhura",
+          "province": 7
+        },
+        {
+          "id": "parashuram",
+          "name": "Parashuram",
+          "district": "Dadeldhura",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "bajura": {
+      "id": "bajura",
+      "name": "Bajura",
+      "nameNp": "बझुरा",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "badimalika",
+          "name": "Badimalika",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "budhiganga",
+          "name": "Budhiganga",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "budhinanda",
+          "name": "Budhinanda",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "chededaha",
+          "name": "Chededaha",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "gaumul",
+          "name": "Gaumul",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "himali",
+          "name": "Himali",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "swamikartik",
+          "name": "Swamikartik",
+          "district": "Bajura",
+          "province": 7
+        },
+        {
+          "id": "tribeni",
+          "name": "Tribeni",
+          "district": "Bajura",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "baitadi": {
+      "id": "baitadi",
+      "name": "Baitadi",
+      "nameNp": "बैतडी",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "dasharathchanda",
+          "name": "Dasharathchanda",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "dilasaini",
+          "name": "Dilasaini",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "dogadakedar",
+          "name": "Dogadakedar",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "melauli",
+          "name": "Melauli",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "pancheshwar",
+          "name": "Pancheshwar",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "patan",
+          "name": "Patan",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "purchaudi",
+          "name": "Purchaudi",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "shivanath",
+          "name": "Shivanath",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "sigash",
+          "name": "Sigash",
+          "district": "Baitadi",
+          "province": 7
+        },
+        {
+          "id": "surnaya",
+          "name": "Surnaya",
+          "district": "Baitadi",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "darchula": {
+      "id": "darchula",
+      "name": "Darchula",
+      "nameNp": "दार्चुला",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "apihimal",
+          "name": "Apihimal",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "byas",
+          "name": "Byas",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "dunhu",
+          "name": "Dunhu",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "lekam",
+          "name": "Lekam",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "mahakali",
+          "name": "Mahakali",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "malikaarjun",
+          "name": "Malikaarjun",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "marma",
+          "name": "Marma",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "naugad",
+          "name": "Naugad",
+          "district": "Darchula",
+          "province": 7
+        },
+        {
+          "id": "shailyashikhar",
+          "name": "Shailyashikhar",
+          "district": "Darchula",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    },
+    "bajhang": {
+      "id": "bajhang",
+      "name": "Bajhang",
+      "nameNp": "बझाङ",
+      "province": 7,
+      "localBodies": [
+        {
+          "id": "bithadchir",
+          "name": "Bithadchir",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "bungal",
+          "name": "Bungal",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "chabispathivera",
+          "name": "Chabispathivera",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "durgathali",
+          "name": "Durgathali",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "jayaprithivi",
+          "name": "Jayaprithivi",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "kedarseu",
+          "name": "Kedarseu",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "khaptadchhanna",
+          "name": "Khaptadchhanna",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "masta",
+          "name": "Masta",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "surma",
+          "name": "Surma",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "talkot",
+          "name": "Talkot",
+          "district": "Bajhang",
+          "province": 7
+        },
+        {
+          "id": "thalara",
+          "name": "Thalara",
+          "district": "Bajhang",
+          "province": 7
+        }
+      ],
+      "svgViewBox": "",
+      "hasSvg": true
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import '../models/constitution.dart';
+import '../models/constituency.dart';
 import '../models/leader.dart';
 import '../models/district.dart';
 import '../models/know_your_rights.dart';
@@ -81,5 +82,17 @@ class DataService {
   /// Load government services data (supports remote updates)
   static Future<Map<String, dynamic>> loadGovServices() async {
     return RemoteDataService.loadJson('gov_services.json');
+  }
+
+  /// Load federal constituencies data from assets
+  static Future<ConstituencyData> loadConstituencies() async {
+    final jsonString = await rootBundle.loadString('assets/data/election/constituencies.json');
+    final json = jsonDecode(jsonString) as Map<String, dynamic>;
+    return ConstituencyData.fromJson(json);
+  }
+
+  /// Load constituency SVG map string from assets
+  static Future<String> loadConstituencyMapSvg() async {
+    return await rootBundle.loadString('assets/data/election/nepal_constituencies.svg');
   }
 }

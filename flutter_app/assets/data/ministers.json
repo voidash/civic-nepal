@@ -309,5 +309,223 @@
         "noteNp": "दुवै सदनमा दुई-तिहाइ बहुमत आवश्यक"
       }
     ]
+  },
+  "elections": {
+    "title": "Election System",
+    "titleNp": "निर्वाचन प्रणाली",
+    "description": "Nepal uses a mixed electoral system combining direct voting and proportional representation to balance local accountability with inclusive representation.",
+    "descriptionNp": "नेपालले स्थानीय जवाफदेहिता र समावेशी प्रतिनिधित्व बीच सन्तुलन कायम गर्न प्रत्यक्ष मतदान र समानुपातिक प्रतिनिधित्व मिलाएको मिश्रित निर्वाचन प्रणाली प्रयोग गर्छ।",
+    "constitutionRef": {"partIndex": 22, "partTitle": "Election Commission", "partTitleNp": "निर्वाचन आयोग"},
+    "electoralSystem": {
+      "title": "Mixed Electoral System",
+      "titleNp": "मिश्रित निर्वाचन प्रणाली",
+      "explanation": "Nepal combines two voting methods to achieve both geographic representation and social inclusion. You cast TWO votes in federal elections.",
+      "explanationNp": "नेपालले भौगोलिक प्रतिनिधित्व र सामाजिक समावेशीकरण दुवै हासिल गर्न दुई मतदान विधि मिलाएको छ। संघीय निर्वाचनमा तपाईं दुई वोट दिनुहुन्छ।",
+      "systems": [
+        {
+          "name": "First-Past-The-Post (FPTP)",
+          "nameNp": "प्रत्यक्ष निर्वाचन प्रणाली",
+          "nepaliTerm": "पहिलो हुने निर्वाचित हुने",
+          "seats": 165,
+          "howItWorks": "Vote for a CANDIDATE. Whoever gets the most votes wins—even without majority.",
+          "howItWorksNp": "उम्मेदवारलाई मत दिनुहोस्। सबैभन्दा बढी मत पाउनेले जित्छ—बहुमत नभए पनि।",
+          "purpose": "Ensures geographic representation—your MP is accountable to YOUR area.",
+          "purposeNp": "भौगोलिक प्रतिनिधित्व सुनिश्चित गर्छ—तपाईंको सांसद तपाईंको क्षेत्रप्रति जवाफदेही हुन्छ।",
+          "criticism": "A candidate can win with just 30% of votes if opponents split the rest.",
+          "criticismNp": "यदि प्रतिद्वन्द्वीहरूले बाँकी मत विभाजन गरे भने उम्मेदवारले ३०% मतले जित्न सक्छ।"
+        },
+        {
+          "name": "Proportional Representation (PR)",
+          "nameNp": "समानुपातिक प्रतिनिधित्व प्रणाली",
+          "nepaliTerm": "समानुपातिक निर्वाचन",
+          "seats": 110,
+          "howItWorks": "Vote for a PARTY. Seats are distributed based on vote share from closed party lists.",
+          "howItWorksNp": "दललाई मत दिनुहोस्। बन्द पार्टी सूचीबाट मत हिस्साको आधारमा सिटहरू वितरण गरिन्छ।",
+          "purpose": "Ensures inclusion of women, Dalits, Janajatis, Madhesis, and marginalized groups.",
+          "purposeNp": "महिला, दलित, आदिवासी जनजाति, मधेसी र सीमान्तकृत समूहको समावेश सुनिश्चित गर्छ।",
+          "criticism": "Voters don't choose specific candidates—party leadership decides the list order.",
+          "criticismNp": "मतदाताले विशेष उम्मेदवार छान्दैनन्—दल नेतृत्वले सूची क्रम निर्णय गर्छ।",
+          "inclusionRequirement": "At least 1/3 of total elected members from each party must be women.",
+          "inclusionRequirementNp": "प्रत्येक दलबाट निर्वाचित कुल सदस्यको कम्तीमा एक तिहाइ महिला हुनुपर्छ।"
+        }
+      ],
+      "whyBothSystems": {
+        "question": "Why keep both systems?",
+        "questionNp": "दुवै प्रणाली किन राख्ने?",
+        "answer": "FPTP alone would exclude marginalized groups who can't win in their districts. PR alone would weaken geographic accountability—MPs wouldn't answer to specific areas. The mix attempts to balance both needs.",
+        "answerNp": "FPTP मात्रले आफ्नो जिल्लामा जित्न नसक्ने सीमान्तकृत समूहहरूलाई बहिष्कृत गर्नेछ। PR मात्रले भौगोलिक जवाफदेहिता कमजोर पार्नेछ—सांसदहरू विशेष क्षेत्रलाई जवाफ दिने छैनन्। मिश्रणले दुवै आवश्यकता सन्तुलन गर्ने प्रयास गर्छ।"
+      }
+    },
+    "electionLevels": {
+      "title": "Three Levels of Elections",
+      "titleNp": "निर्वाचनका तीन तह",
+      "levels": [
+        {
+          "level": "Federal Elections",
+          "levelNp": "संघीय निर्वाचन",
+          "nepaliTerm": "संसदीय निर्वाचन",
+          "elects": ["House of Representatives (प्रतिनिधि सभा)"],
+          "seats": "275 (165 FPTP + 110 PR)",
+          "seatsNp": "२७५ (१६५ प्रत्यक्ष + ११० समानुपातिक)",
+          "term": "5 years",
+          "termNp": "५ वर्ष",
+          "note": "National Assembly (राष्ट्रिय सभा) is NOT directly elected by public—it's chosen by provincial assemblies and local representatives.",
+          "noteNp": "राष्ट्रिय सभा जनताद्वारा प्रत्यक्ष निर्वाचित हुँदैन—यो प्रदेश सभा र स्थानीय प्रतिनिधिहरूद्वारा छानिन्छ।",
+          "constitutionRef": {"partIndex": 7, "partTitle": "Federal Legislature", "partTitleNp": "संघीय व्यवस्थापिका"}
+        },
+        {
+          "level": "Provincial Elections",
+          "levelNp": "प्रदेश निर्वाचन",
+          "elects": ["Provincial Assembly (प्रदेश सभा)"],
+          "provinces": 7,
+          "system": "Same mixed system (60% FPTP + 40% PR)",
+          "systemNp": "उही मिश्रित प्रणाली (६०% प्रत्यक्ष + ४०% समानुपातिक)",
+          "term": "5 years",
+          "termNp": "५ वर्ष",
+          "constitutionRef": {"partIndex": 13, "partTitle": "State Legislature", "partTitleNp": "प्रदेश व्यवस्थापिका"}
+        },
+        {
+          "level": "Local Elections",
+          "levelNp": "स्थानीय निर्वाचन",
+          "elects": ["Mayor/Chairperson (प्रमुख/अध्यक्ष)", "Deputy Mayor/Vice-Chair (उपप्रमुख/उपाध्यक्ष)", "Ward Chairperson (वडा अध्यक्ष)", "Ward Members (वडा सदस्य)"],
+          "units": 753,
+          "unitsBreakdown": "6 Metropolitan + 11 Sub-metropolitan + 276 Municipalities + 460 Rural Municipalities",
+          "unitsBreakdownNp": "६ महानगरपालिका + ११ उपमहानगरपालिका + २७६ नगरपालिका + ४६० गाउँपालिका",
+          "term": "5 years",
+          "termNp": "५ वर्ष",
+          "note": "Most direct impact on daily life—controls local services, land records, vital registration.",
+          "noteNp": "दैनिक जीवनमा सबैभन्दा प्रत्यक्ष प्रभाव—स्थानीय सेवा, जग्गा अभिलेख, अभिलेखन नियन्त्रण गर्छ।",
+          "constitutionRef": {"partIndex": 16, "partTitle": "Local Executive", "partTitleNp": "स्थानीय कार्यपालिका"}
+        }
+      ]
+    },
+    "electionCommission": {
+      "title": "Election Commission",
+      "titleNp": "निर्वाचन आयोग",
+      "role": "Independent constitutional body that conducts, supervises, directs, and controls elections.",
+      "roleNp": "निर्वाचन सञ्चालन, पर्यवेक्षण, निर्देशन र नियन्त्रण गर्ने स्वतन्त्र संवैधानिक निकाय।",
+      "composition": "Chief Election Commissioner + 4 Election Commissioners",
+      "compositionNp": "प्रमुख निर्वाचन आयुक्त + ४ निर्वाचन आयुक्त",
+      "appointment": "Appointed by President on recommendation of Constitutional Council",
+      "appointmentNp": "संवैधानिक परिषदको सिफारिसमा राष्ट्रपतिद्वारा नियुक्त",
+      "term": "6 years or until age 65",
+      "termNp": "६ वर्ष वा ६५ वर्ष उमेरसम्म",
+      "independence": "Supposed to be independent, though its neutrality is often questioned in practice.",
+      "independenceNp": "स्वतन्त्र हुनुपर्ने, तर व्यवहारमा यसको तटस्थता प्रायः प्रश्न गरिन्छ।",
+      "constitutionRef": {"partIndex": 22, "partTitle": "Election Commission", "partTitleNp": "निर्वाचन आयोग"}
+    },
+    "voterEligibility": {
+      "title": "Who Can Vote",
+      "titleNp": "को मतदान गर्न सक्छ",
+      "requirements": [
+        {
+          "requirement": "Nepali citizen",
+          "requirementNp": "नेपाली नागरिक"
+        },
+        {
+          "requirement": "18 years of age or older",
+          "requirementNp": "१८ वर्ष वा सोभन्दा माथि उमेर"
+        },
+        {
+          "requirement": "Registered on voter roll (मतदाता नामावली)",
+          "requirementNp": "मतदाता नामावलीमा दर्ता भएको"
+        }
+      ],
+      "votingMethod": "Paper ballots—Nepal does not use electronic voting due to trust and infrastructure concerns.",
+      "votingMethodNp": "कागजी मतपत्र—विश्वास र पूर्वाधार सम्बन्धी चिन्ताका कारण नेपालले इलेक्ट्रोनिक मतदान प्रयोग गर्दैन।",
+      "constitutionRef": {"partIndex": 7, "partTitle": "Federal Legislature", "partTitleNp": "संघीय व्यवस्थापिका"}
+    },
+    "governmentFormation": {
+      "title": "Government Formation",
+      "titleNp": "सरकार गठन",
+      "subtitle": "Winning elections ≠ forming government",
+      "subtitleNp": "निर्वाचन जित्नु ≠ सरकार गठन",
+      "explanation": "Nepal follows a parliamentary system. The Prime Minister is chosen by the House, not directly elected by the public.",
+      "explanationNp": "नेपालले संसदीय प्रणाली पालना गर्छ। प्रधानमन्त्री सदनद्वारा छानिन्छ, जनताद्वारा प्रत्यक्ष निर्वाचित हुँदैन।",
+      "process": [
+        {
+          "step": 1,
+          "title": "Election Results",
+          "titleNp": "निर्वाचन परिणाम",
+          "description": "House of Representatives election results are declared",
+          "descriptionNp": "प्रतिनिधि सभाको निर्वाचन परिणाम घोषणा हुन्छ"
+        },
+        {
+          "step": 2,
+          "title": "Majority Check",
+          "titleNp": "बहुमत जाँच",
+          "description": "If one party has 138+ seats (absolute majority), its leader becomes PM",
+          "descriptionNp": "यदि एक दलसँग १३८+ सिट (पूर्ण बहुमत) छ भने, त्यसको नेता प्रधानमन्त्री हुन्छ"
+        },
+        {
+          "step": 3,
+          "title": "Coalition Building",
+          "titleNp": "गठबन्धन निर्माण",
+          "description": "If no majority, parties negotiate to form coalition with combined 138+ seats",
+          "descriptionNp": "बहुमत नभएमा, दलहरूले संयुक्त १३८+ सिट सहित गठबन्धन बनाउन वार्ता गर्छन्"
+        },
+        {
+          "step": 4,
+          "title": "PM Appointment",
+          "titleNp": "प्रधानमन्त्री नियुक्ति",
+          "description": "President appoints the leader who commands majority support",
+          "descriptionNp": "राष्ट्रपतिले बहुमत समर्थन प्राप्त नेतालाई नियुक्त गर्छ"
+        },
+        {
+          "step": 5,
+          "title": "Vote of Confidence",
+          "titleNp": "विश्वासको मत",
+          "description": "PM must win confidence vote within 30 days of appointment",
+          "descriptionNp": "प्रधानमन्त्रीले नियुक्तिको ३० दिनभित्र विश्वासको मत जित्नुपर्छ"
+        }
+      ],
+      "instability": {
+        "title": "Why Governments Fall Frequently",
+        "titleNp": "सरकारहरू किन बारम्बार खस्छन्",
+        "reasons": [
+          {
+            "reason": "Coalition Fragility",
+            "reasonNp": "गठबन्धन भंगुरता",
+            "explanation": "Multi-party coalitions are held together by bargains, not ideology. When bargains fail, coalitions collapse.",
+            "explanationNp": "बहुदलीय गठबन्धनहरू विचारधाराले होइन, सौदाबाजीले जोडिएका हुन्छन्। सौदा असफल हुँदा, गठबन्धन भत्किन्छ।"
+          },
+          {
+            "reason": "Party Splits",
+            "reasonNp": "दल विभाजन",
+            "explanation": "Parties frequently split due to internal power struggles, taking MPs with them.",
+            "explanationNp": "आन्तरिक शक्ति संघर्षका कारण दलहरू बारम्बार विभाजित हुन्छन्, सांसदहरू लिएर जान्छन्।"
+          },
+          {
+            "reason": "Floor Crossing",
+            "reasonNp": "दल परिवर्तन",
+            "explanation": "MPs switching parties for ministerial positions or other benefits.",
+            "explanationNp": "मन्त्री पद वा अन्य फाइदाका लागि सांसदहरू दल परिवर्तन गर्छन्।"
+          },
+          {
+            "reason": "No Constructive No-Confidence",
+            "reasonNp": "रचनात्मक अविश्वास नभएको",
+            "explanation": "Government can be brought down without agreeing on a replacement first.",
+            "explanationNp": "पहिले प्रतिस्थापनमा सहमत नभई सरकार गिराउन सकिन्छ।"
+          }
+        ],
+        "criticalQuestion": "If elections are frequent but governments unstable, what exactly are citizens 'choosing'?",
+        "criticalQuestionNp": "यदि निर्वाचन बारम्बार हुन्छ तर सरकारहरू अस्थिर छन् भने, नागरिकहरूले वास्तवमा के 'छान्दैछन्'?"
+      },
+      "constitutionRef": {"partIndex": 6, "partTitle": "Federal Executive", "partTitleNp": "संघीय कार्यपालिका"}
+    },
+    "keyTerms": [
+      {"term": "निर्वाचन प्रक्रिया", "meaning": "Election process"},
+      {"term": "संघीय निर्वाचन", "meaning": "Federal election"},
+      {"term": "संसदीय निर्वाचन", "meaning": "Parliamentary election"},
+      {"term": "मतदाता", "meaning": "Voter"},
+      {"term": "मतदाता नामावली", "meaning": "Voter roll"},
+      {"term": "उम्मेदवार", "meaning": "Candidate"},
+      {"term": "मतपत्र", "meaning": "Ballot paper"},
+      {"term": "मतगणना", "meaning": "Vote counting"},
+      {"term": "बहुमत", "meaning": "Majority"},
+      {"term": "गठबन्धन", "meaning": "Coalition"},
+      {"term": "विश्वासको मत", "meaning": "Vote of confidence"},
+      {"term": "अविश्वासको प्रस्ताव", "meaning": "No-confidence motion"}
+    ]
   }
 }

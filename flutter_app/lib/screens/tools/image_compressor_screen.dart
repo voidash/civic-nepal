@@ -120,7 +120,7 @@ class _ImageCompressorScreenState extends State<ImageCompressorScreen> {
 
     final success = await ImageService.saveImage(
       _compressedImage!,
-      album: 'Nepal Civic',
+      album: 'NagarikCalendar',
       filename: 'compressed.jpg',
     );
 

@@ -17,7 +17,7 @@ class HowNepalWorksScreen extends ConsumerStatefulWidget {
   ConsumerState<HowNepalWorksScreen> createState() => _HowNepalWorksScreenState();
 }
 
-enum _GovSection { structure, lawMaking, cabinet, services, documents }
+enum _GovSection { structure, lawMaking, elections, cabinet, services, documents }
 
 class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
   Map<String, dynamic>? _data;
@@ -175,9 +175,19 @@ class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
                         ],
                       ),
                       const SizedBox(height: 12),
-                      // Second row: Cabinet, Services
+                      // Second row: Elections, Cabinet
                       Row(
                         children: [
+                          Expanded(
+                            child: _GovCard(
+                              icon: Icons.how_to_vote,
+                              title: 'Elections',
+                              description: 'How voting works',
+                              color: const Color(0xFFD32F2F),
+                              onTap: () => _selectSection(_GovSection.elections),
+                            ),
+                          ),
+                          const SizedBox(width: 12),
                           Expanded(
                             child: _GovCard(
                               icon: Icons.groups,
@@ -187,17 +197,17 @@ class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
                               onTap: () => _selectSection(_GovSection.cabinet),
                             ),
                           ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: _GovCard(
-                              icon: Icons.language,
-                              title: l10n.govServices,
-                              description: l10n.govServicesDesc,
-                              color: const Color(0xFF1565C0),
-                              onTap: () => _selectSection(_GovSection.services),
-                            ),
-                          ),
                         ],
+                      ),
+                      const SizedBox(height: 12),
+                      // Third row: Services
+                      _GovCard(
+                        icon: Icons.language,
+                        title: l10n.govServices,
+                        description: l10n.govServicesDesc,
+                        color: const Color(0xFF1565C0),
+                        onTap: () => _selectSection(_GovSection.services),
+                        fullWidth: true,
                       ),
 
                       const SizedBox(height: 24),
@@ -227,6 +237,8 @@ class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
         return l10n.structure;
       case _GovSection.lawMaking:
         return l10n.lawMaking;
+      case _GovSection.elections:
+        return 'Elections';
       case _GovSection.cabinet:
         return l10n.cabinet;
       case _GovSection.services:
@@ -246,6 +258,11 @@ class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
       case _GovSection.lawMaking:
         return _LegislativeProcessTab(
           data: _data!['legislativeProcess'] as Map<String, dynamic>,
+        );
+      case _GovSection.elections:
+        return _ElectionsTab(
+          data: _data!['elections'] as Map<String, dynamic>,
+          onNavigateToConstitution: _navigateToConstitution,
         );
       case _GovSection.cabinet:
         return _CabinetTab(
@@ -1156,6 +1173,822 @@ class _SpecialBillCard extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ============================================================================
+// Elections Tab
+// ============================================================================
+
+class _ElectionsTab extends StatelessWidget {
+  final Map<String, dynamic> data;
+  final void Function(int partIndex) onNavigateToConstitution;
+
+  const _ElectionsTab({
+    required this.data,
+    required this.onNavigateToConstitution,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return ListView(
+      padding: const EdgeInsets.all(16),
+      children: [
+        // Header
+        Text(
+          data['title'] as String,
+          style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        Text(
+          data['titleNp'] as String,
+          style: TextStyle(fontSize: 16, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          data['description'] as String,
+          style: theme.textTheme.bodyMedium,
+        ),
+        const SizedBox(height: 24),
+
+        // Electoral System Section
+        _buildElectoralSystemSection(context, data['electoralSystem'] as Map<String, dynamic>),
+        const SizedBox(height: 24),
+
+        // Election Levels Section
+        _buildElectionLevelsSection(context, data['electionLevels'] as Map<String, dynamic>),
+        const SizedBox(height: 24),
+
+        // Election Commission Section
+        _buildElectionCommissionSection(context, data['electionCommission'] as Map<String, dynamic>),
+        const SizedBox(height: 24),
+
+        // Voter Eligibility Section
+        _buildVoterEligibilitySection(context, data['voterEligibility'] as Map<String, dynamic>),
+        const SizedBox(height: 24),
+
+        // Government Formation Section
+        _buildGovernmentFormationSection(context, data['governmentFormation'] as Map<String, dynamic>),
+        const SizedBox(height: 24),
+
+        // Key Terms Section
+        _buildKeyTermsSection(context, data['keyTerms'] as List<dynamic>),
+        const SizedBox(height: 24),
+      ],
+    );
+  }
+
+  Widget _buildElectoralSystemSection(BuildContext context, Map<String, dynamic> electoralSystem) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final systems = electoralSystem['systems'] as List<dynamic>;
+    final whyBoth = electoralSystem['whyBothSystems'] as Map<String, dynamic>;
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.red.withValues(alpha: isDark ? 0.3 : 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.how_to_vote, color: Colors.red, size: 24),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        electoralSystem['title'] as String,
+                        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        electoralSystem['titleNp'] as String,
+                        style: TextStyle(fontSize: 13, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primaryContainer.withValues(alpha: 0.5),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.info_outline, size: 20),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      electoralSystem['explanation'] as String,
+                      style: const TextStyle(fontSize: 13),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            // FPTP and PR cards
+            for (final system in systems) ...[
+              _ElectoralSystemCard(system: system as Map<String, dynamic>),
+              const SizedBox(height: 12),
+            ],
+            // Why both systems
+            const Divider(),
+            const SizedBox(height: 8),
+            Text(
+              whyBoth['question'] as String,
+              style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            Text(
+              whyBoth['questionNp'] as String,
+              style: TextStyle(fontSize: 12, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              whyBoth['answer'] as String,
+              style: const TextStyle(fontSize: 13),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildElectionLevelsSection(BuildContext context, Map<String, dynamic> electionLevels) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final levels = electionLevels['levels'] as List<dynamic>;
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.blue.withValues(alpha: isDark ? 0.3 : 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.layers, color: Colors.blue, size: 24),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        electionLevels['title'] as String,
+                        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        electionLevels['titleNp'] as String,
+                        style: TextStyle(fontSize: 13, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            for (final level in levels)
+              _ElectionLevelCard(
+                level: level as Map<String, dynamic>,
+                onTap: onNavigateToConstitution,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildElectionCommissionSection(BuildContext context, Map<String, dynamic> ec) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final constitutionRef = ec['constitutionRef'] as Map<String, dynamic>?;
+
+    return Card(
+      child: InkWell(
+        onTap: constitutionRef != null
+            ? () => onNavigateToConstitution(constitutionRef['partIndex'] as int)
+            : null,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.purple.withValues(alpha: isDark ? 0.3 : 0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(Icons.account_balance, color: Colors.purple, size: 24),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          ec['title'] as String,
+                          style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          ec['titleNp'] as String,
+                          style: TextStyle(fontSize: 13, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (constitutionRef != null)
+                    Icon(Icons.article_outlined, size: 20, color: Colors.purple[700]),
+                ],
+              ),
+              const SizedBox(height: 12),
+              _InfoRow(label: 'Role', value: ec['role'] as String),
+              _InfoRow(label: 'Composition', value: ec['composition'] as String),
+              _InfoRow(label: 'Appointment', value: ec['appointment'] as String),
+              _InfoRow(label: 'Term', value: ec['term'] as String),
+              const SizedBox(height: 8),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.warning_amber, size: 16, color: Colors.amber),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        ec['independence'] as String,
+                        style: const TextStyle(fontSize: 12, fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVoterEligibilitySection(BuildContext context, Map<String, dynamic> voter) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final requirements = voter['requirements'] as List<dynamic>;
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.green.withValues(alpha: isDark ? 0.3 : 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.person_pin, color: Colors.green, size: 24),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        voter['title'] as String,
+                        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        voter['titleNp'] as String,
+                        style: TextStyle(fontSize: 13, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            for (final req in requirements)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Row(
+                  children: [
+                    const Icon(Icons.check_circle, color: Colors.green, size: 20),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        req['requirement'] as String,
+                        style: const TextStyle(fontSize: 14),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainerHighest,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.ballot_outlined, size: 20),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      voter['votingMethod'] as String,
+                      style: const TextStyle(fontSize: 13),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildGovernmentFormationSection(BuildContext context, Map<String, dynamic> govFormation) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final process = govFormation['process'] as List<dynamic>;
+    final instability = govFormation['instability'] as Map<String, dynamic>;
+    final reasons = instability['reasons'] as List<dynamic>;
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withValues(alpha: isDark ? 0.3 : 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.domain, color: Colors.orange, size: 24),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        govFormation['title'] as String,
+                        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        govFormation['titleNp'] as String,
+                        style: TextStyle(fontSize: 13, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.red.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.warning, color: Colors.red, size: 20),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      govFormation['subtitle'] as String,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            Text(
+              govFormation['explanation'] as String,
+              style: const TextStyle(fontSize: 13),
+            ),
+            const SizedBox(height: 16),
+            // Process steps
+            for (var i = 0; i < process.length; i++) ...[
+              _ProcessStep(
+                step: process[i]['step'] as int,
+                title: process[i]['title'] as String,
+                titleNp: process[i]['titleNp'] as String,
+                description: process[i]['description'] as String,
+                isLast: i == process.length - 1,
+              ),
+            ],
+            const Divider(height: 32),
+            // Instability section
+            Text(
+              instability['title'] as String,
+              style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Colors.red),
+            ),
+            Text(
+              instability['titleNp'] as String,
+              style: TextStyle(fontSize: 12, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+            ),
+            const SizedBox(height: 12),
+            for (final reason in reasons)
+              Container(
+                margin: const EdgeInsets.only(bottom: 8),
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${reason['reason']} (${reason['reasonNp']})',
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      reason['explanation'] as String,
+                      style: TextStyle(fontSize: 12, color: isDark ? Colors.grey[300] : Colors.grey[700]),
+                    ),
+                  ],
+                ),
+              ),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.deepPurple.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.deepPurple.withValues(alpha: 0.3)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Icon(Icons.help_outline, color: Colors.deepPurple, size: 20),
+                  const SizedBox(height: 8),
+                  Text(
+                    instability['criticalQuestion'] as String,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.deepPurple[700],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildKeyTermsSection(BuildContext context, List<dynamic> keyTerms) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.withValues(alpha: isDark ? 0.3 : 0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.translate, color: Colors.teal, size: 24),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  'Key Terms / मुख्य शब्दहरू',
+                  style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: keyTerms.map((term) {
+                final t = term as Map<String, dynamic>;
+                return Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainerHighest,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        t['term'] as String,
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                      ),
+                      Text(
+                        t['meaning'] as String,
+                        style: TextStyle(fontSize: 11, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ElectoralSystemCard extends StatelessWidget {
+  final Map<String, dynamic> system;
+
+  const _ElectoralSystemCard({required this.system});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final isFPTP = (system['name'] as String).contains('FPTP');
+    final color = isFPTP ? Colors.blue : Colors.green;
+
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: isDark ? 0.2 : 0.1),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: color.withValues(alpha: 0.3)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  '${system['seats']} seats',
+                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12),
+                ),
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      system['name'] as String,
+                      style: TextStyle(fontWeight: FontWeight.bold, color: color),
+                    ),
+                    Text(
+                      system['nameNp'] as String,
+                      style: TextStyle(fontSize: 11, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          _SystemDetailRow(icon: Icons.touch_app, label: 'How', text: system['howItWorks'] as String),
+          _SystemDetailRow(icon: Icons.flag, label: 'Purpose', text: system['purpose'] as String),
+          _SystemDetailRow(icon: Icons.warning_amber, label: 'Criticism', text: system['criticism'] as String),
+          if (system['inclusionRequirement'] != null)
+            _SystemDetailRow(
+              icon: Icons.people_alt,
+              label: 'Inclusion',
+              text: system['inclusionRequirement'] as String,
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SystemDetailRow extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String text;
+
+  const _SystemDetailRow({required this.icon, required this.label, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, size: 16, color: Colors.grey),
+          const SizedBox(width: 8),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                style: DefaultTextStyle.of(context).style.copyWith(fontSize: 12),
+                children: [
+                  TextSpan(text: '$label: ', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: text),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ElectionLevelCard extends StatelessWidget {
+  final Map<String, dynamic> level;
+  final void Function(int partIndex) onTap;
+
+  const _ElectionLevelCard({required this.level, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final constitutionRef = level['constitutionRef'] as Map<String, dynamic>?;
+    final elects = level['elects'] as List<dynamic>;
+
+    return InkWell(
+      onTap: constitutionRef != null ? () => onTap(constitutionRef['partIndex'] as int) : null,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerHighest,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        level['level'] as String,
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      ),
+                      Text(
+                        level['levelNp'] as String,
+                        style: TextStyle(fontSize: 12, color: isDark ? Colors.grey[400] : Colors.grey[600]),
+                      ),
+                    ],
+                  ),
+                ),
+                if (level['seats'] != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      level['seats'] as String,
+                      style: TextStyle(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold, fontSize: 11),
+                    ),
+                  ),
+                if (level['units'] != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      '${level['units']} units',
+                      style: TextStyle(color: theme.colorScheme.onPrimary, fontWeight: FontWeight.bold, fontSize: 11),
+                    ),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text('Elects:', style: TextStyle(fontSize: 11, color: Colors.grey[600])),
+            for (final e in elects)
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: Text('• $e', style: const TextStyle(fontSize: 12)),
+              ),
+            if (level['note'] != null) ...[
+              const SizedBox(height: 8),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  children: [
+                    const Icon(Icons.info, size: 14, color: Colors.amber),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        level['note'] as String,
+                        style: const TextStyle(fontSize: 11),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            if (constitutionRef != null) ...[
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Icon(Icons.article_outlined, size: 14, color: theme.colorScheme.primary),
+                  const SizedBox(width: 4),
+                  Text(
+                    'See in Constitution',
+                    style: TextStyle(fontSize: 11, color: theme.colorScheme.primary),
+                  ),
+                ],
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _InfoRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _InfoRow({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              label,
+              style: TextStyle(fontSize: 12, color: Colors.grey[600], fontWeight: FontWeight.w500),
+            ),
+          ),
+          Expanded(
+            child: Text(value, style: const TextStyle(fontSize: 13)),
           ),
         ],
       ),

@@ -74,7 +74,7 @@ void main() async {
 
   runApp(
     const ProviderScope(
-      child: NepalCivicApp(),
+      child: NagarikCalendarApp(),
     ),
   );
 }
@@ -93,14 +93,14 @@ Future<void> _restoreStickyNotificationIfEnabled() async {
   }
 }
 
-class NepalCivicApp extends ConsumerStatefulWidget {
-  const NepalCivicApp({super.key});
+class NagarikCalendarApp extends ConsumerStatefulWidget {
+  const NagarikCalendarApp({super.key});
 
   @override
-  ConsumerState<NepalCivicApp> createState() => _NepalCivicAppState();
+  ConsumerState<NagarikCalendarApp> createState() => _NagarikCalendarAppState();
 }
 
-class _NepalCivicAppState extends ConsumerState<NepalCivicApp>
+class _NagarikCalendarAppState extends ConsumerState<NagarikCalendarApp>
     with WidgetsBindingObserver {
   @override
   void initState() {
@@ -148,7 +148,7 @@ class _NepalCivicAppState extends ConsumerState<NepalCivicApp>
     // Always use MaterialApp.router to preserve URL on web
     // This ensures direct URL navigation works (e.g., /calendar loads calendar)
     return MaterialApp.router(
-      title: 'Nepal Civic',
+      title: 'NagarikCalendar',
       debugShowCheckedModeBanner: false,
       theme: _buildLightTheme(),
       darkTheme: _buildDarkTheme(),
@@ -168,10 +168,10 @@ class _NepalCivicAppState extends ConsumerState<NepalCivicApp>
   }
 }
 
-// Nepal flag inspired colors
-const _primaryColor = Color(0xFFDC143C); // Crimson red from flag
-const _secondaryColor = Color(0xFF003893); // Deep blue from flag
-const _accentGold = Color(0xFFFFD700); // Gold accents
+// NagarikCalendar theme colors
+const _primaryColor = Color(0xFF1976D2); // Material Blue 700
+const _secondaryColor = Color(0xFF0D47A1); // Deep blue for accents
+const _accentGold = Color(0xFFFFB300); // Amber accent
 
 ThemeData _buildLightTheme() {
   return ThemeData(
@@ -265,14 +265,14 @@ ThemeData _buildDarkTheme() {
     colorScheme: ColorScheme.dark(
       primary: _primaryColor,
       onPrimary: Colors.white,
-      secondary: const Color(0xFF5B8DEF), // Lighter blue for dark mode
+      secondary: const Color(0xFF64B5F6), // Lighter blue for dark mode
       onSecondary: Colors.white,
       tertiary: _accentGold,
       surface: const Color(0xFF1E1E1E),
       onSurface: const Color(0xFFE0E0E0),
       surfaceContainerHighest: const Color(0xFF2A2A2A),
       primaryContainer: _primaryColor.withValues(alpha: 0.2),
-      onPrimaryContainer: const Color(0xFFFFB3B3),
+      onPrimaryContainer: const Color(0xFF90CAF9), // Light blue tint
     ),
     scaffoldBackgroundColor: const Color(0xFF121212),
     appBarTheme: const AppBarTheme(

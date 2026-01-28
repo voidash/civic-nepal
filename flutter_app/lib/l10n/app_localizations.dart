@@ -172,6 +172,21 @@ class AppLocalizations {
   String get resetZoom => get('reset_zoom');
   String noLeadersDistrict(String district) => getWithParams('no_leaders_district', {'district': district});
 
+  // ============= Map Selector =============
+  String get selectMapType => get('select_map_type');
+  String get selectMapTypeDesc => get('select_map_type_desc');
+  String get districtMap => get('district_map');
+  String get districtMapDesc => get('district_map_desc');
+  String get constituencyMap => get('constituency_map');
+  String get constituencyMapDesc => get('constituency_map_desc');
+
+  // ============= Constituencies =============
+  String get constituencies => get('constituencies');
+  String get candidates => get('candidates');
+  String get noConstituenciesFound => get('no_constituencies_found');
+  String get noCandidatesFound => get('no_candidates_found');
+  String get viewConstituencies => get('view_constituencies');
+
   // ============= Calendar =============
   String get nepaliCalendar => get('nepali_calendar');
   String get today => get('today');

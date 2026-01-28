@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/nepali_date_service.dart';
 import '../../services/data_service.dart';
+import '../../widgets/custom_bottom_nav.dart';
 import '../../widgets/home_title.dart';
 
 /// Calendar day info with events
@@ -215,6 +216,7 @@ class _NepaliCalendarScreenState extends State<NepaliCalendarScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: const CustomBottomNav(currentIndex: 0), // Calendar
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : LayoutBuilder(

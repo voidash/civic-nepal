@@ -118,7 +118,7 @@ class SettingsScreen extends ConsumerWidget {
       context: context,
       applicationName: l10n.appName,
       applicationVersion: '1.0.0',
-      applicationLegalese: '© 2026 Nepal Civic Project',
+      applicationLegalese: '© 2026 NagarikCalendar',
     );
   }
 }

@@ -108,7 +108,7 @@ class _CitizenshipMergerScreenState extends State<CitizenshipMergerScreen> {
 
     final success = await ImageService.saveImage(
       _mergedImage!,
-      album: 'Nepal Civic',
+      album: 'NagarikCalendar',
       filename: 'citizenship_merged.jpg',
     );
 

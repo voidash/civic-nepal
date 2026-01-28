@@ -699,9 +699,25 @@ class _NepalMapWidgetState extends State<_NepalMapWidget> {
   }
 
   String _formatDistrictName(String id) {
-    // Convert snake_case/lowercase to Title Case
-    // e.g., "jhapa" -> "Jhapa", "okhaldhunga" -> "Okhaldhunga"
-    return id.split('_').map((word) {
+    // Special mappings for nepal_districts.svg IDs to match local_election_results.json district names
+    const idToName = {
+      'nawalparasi (bardaghat susta west)': 'Nawalparasi West',
+      'nawalparasi (bardaghat susta east)': 'Nawalparasi East',
+      'eastern-rukum': 'Eastern Rukum',
+      'western-rukum': 'Western Rukum',
+      'kavrepalanchok': 'Kavrepalanchowk',
+      'sindhupalchok': 'Sindhupalchowk',
+      'ilam': 'Illam',
+      'tanahu': 'Tanahun',
+    };
+
+    // Check for special mapping first
+    if (idToName.containsKey(id)) {
+      return idToName[id]!;
+    }
+
+    // Convert hyphen-separated or underscore-separated to Title Case
+    return id.split(RegExp(r'[-_ ]')).map((word) {
       if (word.isEmpty) return word;
       return word[0].toUpperCase() + word.substring(1).toLowerCase();
     }).join(' ');

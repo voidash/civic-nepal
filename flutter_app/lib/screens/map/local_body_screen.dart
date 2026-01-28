@@ -161,6 +161,24 @@ class _LocalBodyScreenState extends ConsumerState<LocalBodyScreen> {
   }
 
   String _getSvgPath() {
+    // Special mappings for district names to SVG file slugs
+    // These must match the SVG file names in assets/data/election/districts/
+    const nameToSlug = {
+      'Nawalparasi West': 'nawalparasi-west',
+      'Nawalparasi East': 'nawalparasi-east',
+      'Eastern Rukum': 'eastern-rukum',
+      'Western Rukum': 'western-rukum',
+      'Kavrepalanchowk': 'kavrepalanchowk',
+      'Sindhupalchowk': 'sindhupalchowk',
+      'Illam': 'illam',
+      'Tanahun': 'tanahun',
+    };
+
+    // Check for special mapping first
+    if (nameToSlug.containsKey(widget.districtName)) {
+      return 'assets/data/election/districts/${nameToSlug[widget.districtName]}.svg';
+    }
+
     // Convert district name to slug for SVG file
     final slug = widget.districtName
         .toLowerCase()

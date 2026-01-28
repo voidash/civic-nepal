@@ -101,5 +101,6 @@ flutter:
     - assets/data/election/districts/
     - assets/data/election/nepal_constituencies.svg
     - assets/images/nepal_districts.svg
+    - assets/images/nepal_ekantipur.svg
     - assets/images/leaders/
     - assets/translations/

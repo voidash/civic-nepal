@@ -8,6 +8,66 @@ import '../../widgets/home_title.dart';
 
 const _privacyPolicyUrl = 'https://voidash.github.io/civic-nepal/privacy-policy.html';
 
+/// Official data sources for government information
+const _dataSources = [
+  _DataSource(
+    name: 'Constitution of Nepal',
+    nameNe: 'नेपालको संविधान',
+    url: 'https://lawcommission.gov.np/en/?cat=89',
+    description: 'Nepal Law Commission',
+  ),
+  _DataSource(
+    name: 'Election Data & Constituencies',
+    nameNe: 'निर्वाचन तथ्यांक',
+    url: 'https://election.gov.np',
+    description: 'Election Commission of Nepal',
+  ),
+  _DataSource(
+    name: 'Foreign Exchange Rates',
+    nameNe: 'विदेशी मुद्रा दर',
+    url: 'https://www.nrb.org.np/forex/',
+    description: 'Nepal Rastra Bank',
+  ),
+  _DataSource(
+    name: 'Gold & Silver Prices',
+    nameNe: 'सुन चाँदी मूल्य',
+    url: 'https://www.fenegosida.org/',
+    description: 'Federation of Nepal Gold & Silver Dealers Association',
+  ),
+  _DataSource(
+    name: 'Stock Prices & IPO',
+    nameNe: 'शेयर मूल्य तथा IPO',
+    url: 'https://nepalstock.com.np/',
+    description: 'Nepal Stock Exchange (NEPSE)',
+  ),
+  _DataSource(
+    name: 'Government Structure & Services',
+    nameNe: 'सरकारी संरचना',
+    url: 'https://nepal.gov.np',
+    description: 'Government of Nepal Portal',
+  ),
+  _DataSource(
+    name: 'Local Bodies & Officials',
+    nameNe: 'स्थानीय तह',
+    url: 'https://sthaniya.gov.np',
+    description: 'Local Level Portal',
+  ),
+];
+
+class _DataSource {
+  final String name;
+  final String nameNe;
+  final String url;
+  final String description;
+
+  const _DataSource({
+    required this.name,
+    required this.nameNe,
+    required this.url,
+    required this.description,
+  });
+}
+
 /// Settings screen
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -89,6 +149,11 @@ class SettingsScreen extends ConsumerWidget {
               const Divider(),
               _SectionHeader(l10n.about),
               _TileSetting(
+                title: 'Data Sources',
+                subtitle: 'Official sources for government information',
+                onTap: () => _showDataSourcesDialog(context),
+              ),
+              _TileSetting(
                 title: l10n.privacyPolicy,
                 subtitle: l10n.privacyPolicyDesc,
                 onTap: () => _openPrivacyPolicy(),
@@ -99,6 +164,18 @@ class SettingsScreen extends ConsumerWidget {
                 onTap: () {
                   _showAboutDialog(context, l10n);
                 },
+              ),
+              // Disclaimer
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  'Disclaimer: This app is not affiliated with or endorsed by the Government of Nepal. All government information is sourced from publicly available official sources.',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
           );
@@ -126,6 +203,84 @@ class SettingsScreen extends ConsumerWidget {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
+  }
+
+  void _showDataSourcesDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Data Sources'),
+        content: SizedBox(
+          width: double.maxFinite,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'All government information in this app is sourced from the following official sources:',
+                style: TextStyle(fontSize: 13),
+              ),
+              const SizedBox(height: 16),
+              Flexible(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _dataSources.length,
+                  itemBuilder: (context, index) {
+                    final source = _dataSources[index];
+                    return ListTile(
+                      dense: true,
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        source.name,
+                        style: const TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      subtitle: Text(
+                        source.description,
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                      trailing: const Icon(Icons.open_in_new, size: 18),
+                      onTap: () async {
+                        final uri = Uri.parse(source.url);
+                        if (await canLaunchUrl(uri)) {
+                          await launchUrl(uri, mode: LaunchMode.externalApplication);
+                        }
+                      },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.amber.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: Colors.amber.withValues(alpha: 0.3)),
+                ),
+                child: const Row(
+                  children: [
+                    Icon(Icons.info_outline, size: 18, color: Colors.amber),
+                    SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        'This app is not affiliated with the Government of Nepal.',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
+    );
   }
 
   void _showAboutDialog(BuildContext context, AppLocalizations l10n) {

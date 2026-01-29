@@ -11,6 +11,7 @@ import '../../models/district.dart';
 import '../../models/leader.dart';
 import '../../services/svg_path_parser.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 part 'district_map_screen.g.dart';
 
@@ -139,6 +140,7 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
+      bottomNavigationBar: const SourceAttribution.election(),
       appBar: AppBar(
         title: HomeTitle(child: Text(l10n.nepalDistricts)),
         actions: [

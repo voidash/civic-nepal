@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../l10n/app_localizations.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 class ForexScreen extends StatefulWidget {
   const ForexScreen({super.key});
@@ -64,6 +65,7 @@ class _ForexScreenState extends State<ForexScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Scaffold(
+      bottomNavigationBar: const SourceAttribution.forex(),
       appBar: AppBar(
         title: HomeTitle(child: Text(l10n.forexRates)),
         actions: [

@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/constitution_provider.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 /// Screen explaining how Nepal's government works
 class HowNepalWorksScreen extends ConsumerStatefulWidget {
@@ -90,6 +91,7 @@ class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
     // Show selected section content
     if (_selectedSection != null) {
       return Scaffold(
+      bottomNavigationBar: const SourceAttribution.government(),
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -107,6 +109,7 @@ class _HowNepalWorksScreenState extends ConsumerState<HowNepalWorksScreen> {
 
     // Show card grid
     return Scaffold(
+      bottomNavigationBar: const SourceAttribution.government(),
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

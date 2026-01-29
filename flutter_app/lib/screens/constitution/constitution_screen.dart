@@ -7,6 +7,7 @@ import '../../models/constitution.dart';
 import '../../models/know_your_rights.dart';
 import '../../widgets/linked_text.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 /// Constitution screen with TOC and content
 class ConstitutionScreen extends ConsumerWidget {
@@ -50,6 +51,7 @@ class ConstitutionScreen extends ConsumerWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const SourceAttribution.constitution(),
       body: constitutionAsync.when(
         data: (constitution) {
           if (isWideScreen) {

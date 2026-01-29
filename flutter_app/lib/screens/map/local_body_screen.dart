@@ -8,6 +8,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../l10n/app_localizations.dart';
 import '../../services/svg_path_parser.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 part 'local_body_screen.g.dart';
 

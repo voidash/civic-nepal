@@ -1,7 +1,7 @@
 name: nagarik_calendar
 description: NagarikCalendar - Nepali Calendar, Constitution, Leaders, and Civic Tools
 publish_to: 'none'
-version: 1.0.1+1
+version: 1.0.1+5
 
 environment:
   sdk: '>=3.0.0 <4.0.0'

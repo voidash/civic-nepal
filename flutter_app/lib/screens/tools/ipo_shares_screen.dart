@@ -7,6 +7,7 @@ import '../../services/ipo_service.dart';
 import '../../services/background_service.dart';
 import '../../widgets/custom_bottom_nav.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 /// IPO and Shares screen with two tabs
 class IpoSharesScreen extends StatefulWidget {

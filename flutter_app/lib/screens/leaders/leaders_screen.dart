@@ -7,6 +7,7 @@ import '../../providers/leaders_provider.dart';
 import '../../models/leader.dart';
 import '../../models/district.dart';
 import '../../widgets/home_title.dart';
+import '../../widgets/source_attribution.dart';
 
 /// Leaders screen with filters and list
 class LeadersScreen extends ConsumerStatefulWidget {

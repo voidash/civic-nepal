@@ -210,9 +210,9 @@ class _GeoLocalBodyScreenState extends ConsumerState<GeoLocalBodyScreen> {
   }
 
   void _handleTap(TapUpDetails details, List<GeoLocalUnit> localUnits) {
-    final localPosition = details.localPosition;
-    final matrix = _transformationController.value.clone()..invert();
-    final transformed = MatrixUtils.transformPoint(matrix, localPosition);
+    // localPosition is already in canvas coordinates (0 to width/height)
+    // because GestureDetector is inside the InteractiveViewer's child
+    final canvasPos = details.localPosition;
 
     // Calculate bounds from the local units
     double minLon = double.infinity, maxLon = double.negativeInfinity;
@@ -240,8 +240,8 @@ class _GeoLocalBodyScreenState extends ConsumerState<GeoLocalBodyScreen> {
     const width = 800.0;
     const height = 600.0;
 
-    final lon = minLon + (transformed.dx / width) * (maxLon - minLon);
-    final lat = maxLat - (transformed.dy / height) * (maxLat - minLat);
+    final lon = minLon + (canvasPos.dx / width) * (maxLon - minLon);
+    final lat = maxLat - (canvasPos.dy / height) * (maxLat - minLat);
 
     // Find which local unit was tapped
     for (final unit in localUnits) {

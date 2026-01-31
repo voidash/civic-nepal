@@ -197,13 +197,13 @@ class _GeoDistrictMapScreenState extends ConsumerState<GeoDistrictMapScreen> {
   }
 
   void _handleTap(TapUpDetails details, List<GeoDistrict> districts) {
-    final localPosition = details.localPosition;
-    final matrix = _transformationController.value.clone()..invert();
-    final transformed = MatrixUtils.transformPoint(matrix, localPosition);
+    // localPosition is already in canvas coordinates (0 to canvasWidth/Height)
+    // because GestureDetector is inside the InteractiveViewer's child
+    final canvasPos = details.localPosition;
 
     // Convert canvas position to lon/lat using actual data bounds
-    final lon = _minLon + (transformed.dx / _canvasWidth) * (_maxLon - _minLon);
-    final lat = _maxLat - (transformed.dy / _canvasHeight) * (_maxLat - _minLat);
+    final lon = _minLon + (canvasPos.dx / _canvasWidth) * (_maxLon - _minLon);
+    final lat = _maxLat - (canvasPos.dy / _canvasHeight) * (_maxLat - _minLat);
 
     // Find which district was tapped
     for (final district in districts) {

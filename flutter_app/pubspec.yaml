@@ -1,7 +1,7 @@
 name: nagarik_calendar
 description: NagarikCalendar - Nepali Calendar, Constitution, Leaders, and Civic Tools
 publish_to: 'none'
-version: 1.0.1+5
+version: 1.0.1+6
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -116,6 +116,7 @@ flutter:
     - assets/data/election/local_election_results.json
     - assets/data/election/districts/
     - assets/data/election/nepal_constituencies.svg
+    - assets/data/osm/
     - assets/images/nepal_districts.svg
     - assets/images/nepal_ekantipur.svg
     - assets/images/leaders/

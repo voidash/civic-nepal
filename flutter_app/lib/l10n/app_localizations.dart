@@ -195,6 +195,41 @@ class AppLocalizations {
   String get constituencyMap => get('constituency_map');
   String get constituencyMapDesc => get('constituency_map_desc');
 
+  // ============= Nepal Map (OSM) =============
+  String get nepalMap => get('nepal_map');
+  String get mapLayers => get('map_layers');
+  String get roads => get('roads');
+  String get schools => get('schools');
+  String get colleges => get('colleges');
+  String get governmentOffices => get('government_offices');
+  String get trunkRoads => get('trunk_roads');
+  String get primaryRoads => get('primary_roads');
+  String get secondaryRoads => get('secondary_roads');
+  String get all => get('all');
+  String get none => get('none');
+  String get religiousSites => get('religious_sites');
+  String get policeStations => get('police_stations');
+  String get trekkingSpots => get('trekking_spots');
+  String get peak => get('peak');
+  String get viewpoint => get('viewpoint');
+  String get campsite => get('campsite');
+  String get alpineHut => get('alpine_hut');
+  String get mountainPass => get('mountain_pass');
+  String get guidepost => get('guidepost');
+  String get elevation => get('elevation');
+  String get openInGoogleMaps => get('open_in_google_maps');
+  String get hindu => get('hindu');
+  String get buddhist => get('buddhist');
+  String get christian => get('christian');
+  String get muslim => get('muslim');
+  String get sikh => get('sikh');
+  String get unknown => get('unknown');
+  String get electionMap => get('election_map');
+  String get electionMapDesc => get('election_map_desc');
+  String get exploreNepal => get('explore_nepal');
+  String get exploreNepalDesc => get('explore_nepal_desc');
+  String get sourceOsm => get('source_osm');
+
   // ============= Constituencies =============
   String get constituencies => get('constituencies');
   String get candidates => get('candidates');

@@ -341,3 +341,36 @@ poush,Poush,पौष,पौष,Nepali month
 magh,Magh,माघ,माघ,Nepali month
 falgun,Falgun,फाल्गुण,फाल्गुण,Nepali month
 chaitra,Chaitra,चैत्र,चैत्र,Nepali month
+nepal_map,Nepal Map,नेपाल नक्सा,नेपाल नक्सा,Map screen title
+map_layers,Map Layers,नक्सा तहहरू,नक्सा तह थें,Layer control title
+roads,Roads,सडकहरू,सडक थें,Layer name
+schools,Schools,विद्यालयहरू,विद्यालय थें,Layer name
+colleges,Colleges,कलेजहरू,कलेज थें,Layer name
+government_offices,Government Offices,सरकारी कार्यालयहरू,सरकारी कार्यालय थें,Layer name
+trunk_roads,National Highways,राष्ट्रिय राजमार्ग,राष्ट्रिय राजमार्ग,Road type
+primary_roads,Primary Roads,प्राथमिक सडकहरू,प्राथमिक सडक थें,Road type
+secondary_roads,Secondary Roads,माध्यमिक सडकहरू,माध्यमिक सडक थें,Road type
+all,All,सबै,झ्वः,Button text
+none,None,केही पनि होइन,खंगं मखु,Button text
+religious_sites,Religious Sites,धार्मिक स्थलहरू,धार्मिक थाय् थें,Layer name
+police_stations,Police Stations,प्रहरी चौकीहरू,प्रहरी चौकी थें,Layer name
+trekking_spots,Trekking Spots,ट्रेकिङ स्थलहरू,ट्रेकिङ थाय् थें,Layer name
+peak,Peak,शिखर,शिखर,Trekking type
+viewpoint,Viewpoint,दृश्यस्थल,स्वयेथाय्,Trekking type
+campsite,Campsite,क्याम्प साइट,क्याम्प साइट,Trekking type
+alpine_hut,Alpine Hut,आल्पाइन हट,आल्पाइन हट,Trekking type
+mountain_pass,Mountain Pass,पहाडी पास,पहाडी पास,Trekking type
+guidepost,Guidepost,मार्गदर्शक पोस्ट,मार्गदर्शक पोस्ट,Trekking type
+elevation,Elevation,उचाई,उचाई,Info label
+open_in_google_maps,Open in Google Maps,गुगल म्यापमा खोल्नुहोस्,गुगल म्यापय् हंगू,Action button
+hindu,Hindu,हिन्दू,हिन्दू,Religion
+buddhist,Buddhist,बौद्ध,बौद्ध,Religion
+christian,Christian,ईसाई,ईसाई,Religion
+muslim,Muslim,मुस्लिम,मुस्लिम,Religion
+sikh,Sikh,सिख,सिख,Religion
+unknown,Unknown,अज्ञात,थाःमसः,Religion fallback
+election_map,Election Map,निर्वाचन नक्सा,निर्वाचन नक्सा,Map section
+election_map_desc,Federal and local election data,संघीय र स्थानीय निर्वाचन डाटा,संघीय व स्थानीय निर्वाचन डाटा,Description
+explore_nepal,Explore Nepal,नेपाल अन्वेषण,नेपाल अन्वेषण,Map section
+explore_nepal_desc,Schools roads and government offices,विद्यालय सडक र सरकारी कार्यालयहरू,विद्यालय सडक व सरकारी कार्यालय थें,Description
+source_osm,Data: OpenStreetMap contributors,डाटा: OpenStreetMap योगदानकर्ताहरू,डाटा: OpenStreetMap योगदानकर्ता थें,Attribution

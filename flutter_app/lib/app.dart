@@ -13,6 +13,7 @@ import 'screens/map/district_map_screen.dart';
 import 'screens/map/federal_map_screen.dart';
 import 'screens/map/local_body_screen.dart';
 import 'screens/map/constituency_screen.dart';
+import 'screens/map/nepal_map_screen.dart';
 import 'screens/settings/settings_screen.dart';
 import 'screens/tools/citizenship_merger_screen.dart';
 import 'screens/tools/image_compressor_screen.dart';
@@ -21,6 +22,7 @@ import 'screens/tools/nepali_calendar_screen.dart';
 import 'screens/tools/forex_screen.dart';
 import 'screens/tools/bullion_screen.dart';
 import 'screens/tools/ipo_shares_screen.dart';
+import 'screens/tools/gov_services_screen.dart';
 import 'screens/government/how_nepal_works_screen.dart';
 
 part 'app.g.dart';
@@ -122,6 +124,12 @@ GoRouter router(RouterRef ref) {
             path: 'federal',
             parentNavigatorKey: _rootNavigatorKey,
             builder: (context, state) => const FederalMapScreen(),
+          ),
+          // Nepal map (OSM-based with layers)
+          GoRoute(
+            path: 'nepal',
+            parentNavigatorKey: _rootNavigatorKey,
+            builder: (context, state) => const NepalMapScreen(),
           ),
           // Legacy: Constituencies for a specific district (from old flow)
           GoRoute(
@@ -230,6 +238,14 @@ GoRouter router(RouterRef ref) {
         path: '/tools/ipo',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) => const IpoSharesScreen(),
+      ),
+      GoRoute(
+        path: '/tools/gov-services',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          final category = state.uri.queryParameters['category'];
+          return GovServicesScreen(initialCategory: category);
+        },
       ),
     ],
   );

@@ -41,6 +41,10 @@ class SourceAttribution extends StatelessWidget {
       : sourceName = 'Local Level Portal',
         sourceUrl = 'https://sthaniya.gov.np';
 
+  const SourceAttribution.osm({super.key})
+      : sourceName = 'OpenStreetMap contributors',
+        sourceUrl = 'https://www.openstreetmap.org/copyright';
+
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;

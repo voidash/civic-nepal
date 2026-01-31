@@ -12,6 +12,8 @@ import '../../models/leader.dart';
 import '../../services/svg_path_parser.dart';
 import '../../widgets/home_title.dart';
 import '../../widgets/source_attribution.dart';
+import '../../widgets/map_layers_overlay.dart';
+import '../../providers/osm_provider.dart';
 
 part 'district_map_screen.g.dart';
 
@@ -133,6 +135,15 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
     );
   }
 
+  void _showLayerControls(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => const SingleChildScrollView(
+        child: MapLayerControls(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final districtsAsync = ref.watch(districtsProvider);
@@ -154,6 +165,11 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
             icon: const Icon(Icons.filter_list),
             tooltip: l10n.filterByProvince,
             onPressed: () => _showProvinceFilter(context),
+          ),
+          IconButton(
+            icon: const Icon(Icons.layers),
+            tooltip: 'Map Layers',
+            onPressed: () => _showLayerControls(context),
           ),
           IconButton(
             icon: const Icon(Icons.zoom_out_map),
@@ -187,15 +203,21 @@ class _DistrictMapScreenState extends ConsumerState<DistrictMapScreen> {
       child: SizedBox(
         width: 1225,
         height: 817,
-        child: _NepalMapWidget(
-          districts: visibleDistricts,
-          currentZoom: _currentZoom,
-          onDistrictTap: (districtName) {
-            if (districtName.isNotEmpty) {
-              // Navigate to local body screen for this district
-              context.push('/map/districts/${Uri.encodeComponent(districtName)}');
-            }
-          },
+        child: Stack(
+          children: [
+            _NepalMapWidget(
+              districts: visibleDistricts,
+              currentZoom: _currentZoom,
+              onDistrictTap: (districtName) {
+                if (districtName.isNotEmpty) {
+                  // Navigate to local body screen for this district
+                  context.push('/map/districts/${Uri.encodeComponent(districtName)}');
+                }
+              },
+            ),
+            // OSM data layers overlay
+            MapLayersOverlay(currentZoom: _currentZoom),
+          ],
         ),
       ),
     );

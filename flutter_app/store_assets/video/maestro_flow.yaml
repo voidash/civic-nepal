@@ -1,0 +1,58 @@
+appId: com.nepal.constitution.nepal_civic
+---
+# Launch app and show home screen
+- launchApp
+- waitForAnimationToEnd
+- takeScreenshot: 01_home
+
+# Show Calendar
+- tapOn: "Calendar"
+- waitForAnimationToEnd
+- takeScreenshot: 02_calendar
+
+# Go back and show Date Converter
+- pressKey: back
+- waitForAnimationToEnd
+- tapOn: "Date Converter"
+- waitForAnimationToEnd
+- takeScreenshot: 03_date_converter
+
+# Go back and show Forex
+- pressKey: back
+- waitForAnimationToEnd
+- tapOn: "Forex"
+- waitForAnimationToEnd
+- takeScreenshot: 04_forex
+
+# Go back and show Gold Prices
+- pressKey: back
+- waitForAnimationToEnd
+- tapOn: "Gold"
+- waitForAnimationToEnd
+- takeScreenshot: 05_gold
+
+# Go back and show Constitution/Rights
+- pressKey: back
+- waitForAnimationToEnd
+- tapOn: "Constitutional Rights"
+- waitForAnimationToEnd
+- takeScreenshot: 06_rights
+
+# Go back and show Map
+- pressKey: back
+- waitForAnimationToEnd
+- tapOn: "District Map"
+- waitForAnimationToEnd
+- takeScreenshot: 07_map
+
+# Go back and show Government
+- pressKey: back
+- waitForAnimationToEnd
+- tapOn: "Government"
+- waitForAnimationToEnd
+- takeScreenshot: 08_government
+
+# Go back to home
+- pressKey: back
+- waitForAnimationToEnd
+- takeScreenshot: 09_home_end

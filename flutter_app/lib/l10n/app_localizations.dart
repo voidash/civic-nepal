@@ -364,7 +364,6 @@ class AppLocalizations {
   String get copy => get('copy');
   String get copied => get('copied');
   String get paste => get('paste');
-  String get clear => get('clear');
   String get swap => get('swap');
 
   // ============= Forex =============

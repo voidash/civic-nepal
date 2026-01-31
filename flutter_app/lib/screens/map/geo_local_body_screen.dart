@@ -434,8 +434,8 @@ class _GeoLocalBodyMapPainter extends CustomPainter {
   void _drawLabels(Canvas canvas, Size size) {
     final textStyle = ui.TextStyle(
       color: Colors.black87,
-      fontSize: 7 / currentZoom.clamp(1.0, 2.0),
-      fontWeight: FontWeight.w500,
+      fontSize: 11 / currentZoom.clamp(1.0, 2.0),
+      fontWeight: FontWeight.w600,
     );
 
     for (final unit in localUnits) {

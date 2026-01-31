@@ -137,6 +137,16 @@ class _GeoDistrictMapScreenState extends ConsumerState<GeoDistrictMapScreen> {
     );
   }
 
+  // Canvas dimensions - 2:1 aspect ratio matching Nepal's shape
+  static const _canvasWidth = 1200.0;
+  static const _canvasHeight = 600.0;
+
+  // Actual data bounds (calculated from districts_geo.json)
+  static const _minLon = 80.0585;
+  static const _maxLon = 88.2011;
+  static const _minLat = 26.3478;
+  static const _maxLat = 30.4730;
+
   Widget _buildMapContent(GeoDistrictsData data, GeoDistrict? selectedDistrict) {
     // Filter districts by province if selected
     final visibleDistricts = _selectedProvince == null
@@ -151,12 +161,12 @@ class _GeoDistrictMapScreenState extends ConsumerState<GeoDistrictMapScreen> {
           maxScale: 15.0,
           constrained: false,
           child: SizedBox(
-            width: 1200,
-            height: 800,
+            width: _canvasWidth,
+            height: _canvasHeight,
             child: GestureDetector(
               onTapUp: (details) => _handleTap(details, data.districts),
               child: CustomPaint(
-                size: const Size(1200, 800),
+                size: const Size(_canvasWidth, _canvasHeight),
                 painter: _GeoDistrictMapPainter(
                   districts: visibleDistricts,
                   allDistricts: data.districts,
@@ -191,16 +201,9 @@ class _GeoDistrictMapScreenState extends ConsumerState<GeoDistrictMapScreen> {
     final matrix = _transformationController.value.clone()..invert();
     final transformed = MatrixUtils.transformPoint(matrix, localPosition);
 
-    // Convert canvas position to lon/lat
-    const minLon = 80.0;
-    const maxLon = 88.2;
-    const minLat = 26.3;
-    const maxLat = 30.5;
-    const width = 1200.0;
-    const height = 800.0;
-
-    final lon = minLon + (transformed.dx / width) * (maxLon - minLon);
-    final lat = maxLat - (transformed.dy / height) * (maxLat - minLat);
+    // Convert canvas position to lon/lat using actual data bounds
+    final lon = _minLon + (transformed.dx / _canvasWidth) * (_maxLon - _minLon);
+    final lat = _maxLat - (transformed.dy / _canvasHeight) * (_maxLat - _minLat);
 
     // Find which district was tapped
     for (final district in districts) {
@@ -249,10 +252,11 @@ class _GeoDistrictMapPainter extends CustomPainter {
   final GeoDistrict? selectedDistrict;
   final double currentZoom;
 
-  static const minLon = 80.0;
-  static const maxLon = 88.2;
-  static const minLat = 26.3;
-  static const maxLat = 30.5;
+  // Use actual data bounds matching the state class
+  static const minLon = 80.0585;
+  static const maxLon = 88.2011;
+  static const minLat = 26.3478;
+  static const maxLat = 30.4730;
 
   _GeoDistrictMapPainter({
     required this.districts,
@@ -334,8 +338,8 @@ class _GeoDistrictMapPainter extends CustomPainter {
   void _drawLabels(Canvas canvas, Size size) {
     final textStyle = ui.TextStyle(
       color: Colors.black87,
-      fontSize: 8 / currentZoom.clamp(1.0, 3.0),
-      fontWeight: FontWeight.w500,
+      fontSize: 12 / currentZoom.clamp(1.0, 3.0),
+      fontWeight: FontWeight.w600,
     );
 
     for (final district in districts) {

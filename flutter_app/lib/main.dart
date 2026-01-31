@@ -57,8 +57,11 @@ class _FallbackCupertinoLocalizationsDelegate extends LocalizationsDelegate<Cupe
 }
 
 void main() async {
-  // Enable clean URLs on web (e.g., /calendar instead of /#/calendar)
-  usePathUrlStrategy();
+  // Use hash URLs on web (e.g., /#/calendar) - works without server config
+  // Path URLs (e.g., /calendar) require server-side SPA routing configuration
+  // which isn't always available, so hash URLs are more reliable
+  // To use path URLs, uncomment the line below and configure your web server
+  // usePathUrlStrategy();
 
   WidgetsFlutterBinding.ensureInitialized();
 

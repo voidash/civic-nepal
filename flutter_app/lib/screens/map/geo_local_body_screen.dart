@@ -403,10 +403,8 @@ class _GeoLocalBodyMapPainter extends CustomPainter {
       _drawLocalUnit(canvas, size, unit, fillPaint, borderPaint);
     }
 
-    // Draw labels at higher zoom
-    if (currentZoom > 1.2) {
-      _drawLabels(canvas, size);
-    }
+    // Always draw labels for local bodies
+    _drawLabels(canvas, size);
   }
 
   void _drawLocalUnit(Canvas canvas, Size size, GeoLocalUnit unit, Paint fillPaint, Paint borderPaint) {
@@ -434,7 +432,7 @@ class _GeoLocalBodyMapPainter extends CustomPainter {
   void _drawLabels(Canvas canvas, Size size) {
     final textStyle = ui.TextStyle(
       color: Colors.black87,
-      fontSize: 11 / currentZoom.clamp(1.0, 2.0),
+      fontSize: 14 / currentZoom.clamp(1.0, 3.0),
       fontWeight: FontWeight.w600,
     );
 

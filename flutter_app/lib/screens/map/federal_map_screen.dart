@@ -370,7 +370,7 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
     final pathCenters = _pathParser.pathCenters;
     final zoom = widget.currentZoom;
 
-    const baseFontSize = 11.0;
+    const baseFontSize = 12.0;
 
     // Calculate scale to match SvgPicture's BoxFit.contain behavior
     final svgWidth = _pathParser.svgWidth;
@@ -391,10 +391,10 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
       final textSize = _textSizes[id];
       final clearance = _pathParser.getLabelClearance(id) ?? 0;
 
-      // Check if text fits at current zoom
+      // Check if text fits at current zoom - use smaller threshold to show more labels
       if (textSize != null) {
         final effectiveClearance = clearance * scale * zoom;
-        if (effectiveClearance < textSize.width / 2) {
+        if (effectiveClearance < textSize.width / 4) {
           continue;
         }
       }

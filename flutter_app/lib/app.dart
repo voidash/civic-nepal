@@ -11,7 +11,7 @@ import 'screens/leaders/leader_detail_screen.dart';
 import 'screens/map/map_selector_screen.dart';
 import 'screens/map/geo_district_map_screen.dart';
 import 'screens/map/geo_local_body_screen.dart';
-import 'screens/map/federal_map_screen.dart';
+import 'screens/map/geo_federal_map_screen.dart';
 import 'screens/map/constituency_screen.dart';
 import 'screens/map/nepal_map_screen.dart';
 import 'screens/settings/settings_screen.dart';
@@ -119,11 +119,11 @@ GoRouter router(RouterRef ref) {
               ),
             ],
           ),
-          // Federal constituency map
+          // Federal constituency map (lightweight JSON-based)
           GoRoute(
             path: 'federal',
             parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const FederalMapScreen(),
+            builder: (context, state) => const GeoFederalMapScreen(),
           ),
           // Nepal map (OSM-based with layers)
           GoRoute(

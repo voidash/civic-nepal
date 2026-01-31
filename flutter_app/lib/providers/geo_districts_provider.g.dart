@@ -189,6 +189,26 @@ class _GeoLocalUnitsProviderElement
   String get districtName => (origin as GeoLocalUnitsProvider).districtName;
 }
 
+String _$geoConstituenciesHash() => r'627e974913d775711223c29d3f71e0ec39fbb0d5';
+
+/// Provider for simplified constituency boundaries
+///
+/// Copied from [geoConstituencies].
+@ProviderFor(geoConstituencies)
+final geoConstituenciesProvider =
+    FutureProvider<GeoConstituenciesData>.internal(
+  geoConstituencies,
+  name: r'geoConstituenciesProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$geoConstituenciesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef GeoConstituenciesRef = FutureProviderRef<GeoConstituenciesData>;
 String _$selectedGeoDistrictHash() =>
     r'51b527ff251422dd85c50fe3d9ff5e0ab38759db';
 
@@ -227,5 +247,24 @@ final selectedGeoLocalUnitProvider =
 );
 
 typedef _$SelectedGeoLocalUnit = AutoDisposeNotifier<GeoLocalUnit?>;
+String _$selectedGeoConstituencyHash() =>
+    r'7d04ce23c66ceb2da1305972ff90877603c743c4';
+
+/// Selected constituency provider
+///
+/// Copied from [SelectedGeoConstituency].
+@ProviderFor(SelectedGeoConstituency)
+final selectedGeoConstituencyProvider = AutoDisposeNotifierProvider<
+    SelectedGeoConstituency, GeoConstituency?>.internal(
+  SelectedGeoConstituency.new,
+  name: r'selectedGeoConstituencyProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$selectedGeoConstituencyHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$SelectedGeoConstituency = AutoDisposeNotifier<GeoConstituency?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

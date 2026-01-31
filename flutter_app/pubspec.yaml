@@ -115,6 +115,7 @@ flutter:
     - assets/data/election/constituencies.json
     - assets/data/election/local_election_results.json
     - assets/data/election/districts_geo.json
+    - assets/data/election/constituencies_geo.json
     - assets/data/election/local_units/
     - assets/data/election/districts/
     - assets/data/election/nepal_constituencies.svg

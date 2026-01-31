@@ -190,3 +190,78 @@ class SelectedGeoLocalUnit extends _$SelectedGeoLocalUnit {
   void select(GeoLocalUnit? unit) => state = unit;
   void clear() => state = null;
 }
+
+/// Simplified constituency data model
+class GeoConstituency {
+  final String id;
+  final String name;
+  final String district;
+  final int number;
+  final List<double> centroid;
+  final List<List<double>> path;
+
+  const GeoConstituency({
+    required this.id,
+    required this.name,
+    required this.district,
+    required this.number,
+    required this.centroid,
+    required this.path,
+  });
+
+  factory GeoConstituency.fromJson(Map<String, dynamic> json) {
+    return GeoConstituency(
+      id: json['id'] ?? '',
+      name: json['name'] ?? '',
+      district: json['district'] ?? '',
+      number: json['number'] ?? 0,
+      centroid: (json['centroid'] as List?)?.cast<double>() ?? [0, 0],
+      path: (json['path'] as List?)
+              ?.map((p) => (p as List).cast<double>())
+              .toList() ??
+          [],
+    );
+  }
+}
+
+/// Constituencies collection
+class GeoConstituenciesData {
+  final List<double> viewBox;
+  final int count;
+  final List<GeoConstituency> constituencies;
+
+  const GeoConstituenciesData({
+    required this.viewBox,
+    required this.count,
+    required this.constituencies,
+  });
+
+  factory GeoConstituenciesData.fromJson(Map<String, dynamic> json) {
+    return GeoConstituenciesData(
+      viewBox: (json['viewBox'] as List?)?.cast<double>() ?? [0, 0, 500, 500],
+      count: json['count'] ?? 0,
+      constituencies: (json['constituencies'] as List?)
+              ?.map((c) => GeoConstituency.fromJson(c as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+  }
+}
+
+/// Provider for simplified constituency boundaries
+@Riverpod(keepAlive: true)
+Future<GeoConstituenciesData> geoConstituencies(GeoConstituenciesRef ref) async {
+  final jsonString = await rootBundle.loadString('assets/data/election/constituencies_geo.json');
+  final json = jsonDecode(jsonString) as Map<String, dynamic>;
+  return GeoConstituenciesData.fromJson(json);
+}
+
+/// Selected constituency provider
+@riverpod
+class SelectedGeoConstituency extends _$SelectedGeoConstituency {
+  @override
+  GeoConstituency? build() => null;
+
+  void select(GeoConstituency? constituency) => state = constituency;
+  void clear() => state = null;
+}

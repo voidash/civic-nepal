@@ -17,7 +17,7 @@ import 'screens/tools/image_compressor_screen.dart';
 import 'screens/tools/pdf_compressor_screen.dart';
 import 'screens/tools/unicode_converter_screen.dart';
 import 'screens/tools/date_converter_screen.dart';
-import 'screens/tools/nepali_calendar_screen.dart';
+import 'screens/calendar/calendar_screen.dart';
 import 'screens/tools/forex_screen.dart';
 import 'screens/tools/bullion_screen.dart';
 import 'screens/tools/ipo_shares_screen.dart';
@@ -27,10 +27,13 @@ import 'screens/emergency/emergency_screen.dart';
 import 'screens/emergency/earthquakes_screen.dart';
 import 'screens/emergency/contacts_screen.dart';
 import 'screens/emergency/resources_screen.dart';
+import 'screens/news/ronb_feed_screen.dart';
+import 'widgets/desktop_nav_shell.dart';
 
 part 'app.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
+final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 @riverpod
 GoRouter router(RouterRef ref) {
@@ -53,247 +56,218 @@ GoRouter router(RouterRef ref) {
       return null;
     },
     routes: [
-      // Home is the main entry point
-      // Responsive: desktop web gets calendar-first, mobile gets card-based home
-      GoRoute(
-        path: '/home',
-        builder: (context, state) => const ResponsiveHome(),
-      ),
-      // Calendar, IPO, Rights are regular pushed routes (like Government)
-      GoRoute(
-        path: '/calendar',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const NepaliCalendarScreen(),
-      ),
-      GoRoute(
-        path: '/ipo',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const IpoSharesScreen(),
-      ),
-      GoRoute(
-        path: '/rights',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ConstitutionScreen(),
-      ),
-      // Other full screen routes
-      GoRoute(
-        path: '/constitution',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ConstitutionScreen(),
-      ),
-      GoRoute(
-        path: '/constitutional-rights',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ConstitutionScreen(),
-      ),
-      GoRoute(
-        path: '/leaders',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const LeadersScreen(),
+      // ShellRoute wraps all main routes with persistent WebNavBar on desktop.
+      // On mobile (< 600px), the shell passes through the child directly.
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) => DesktopNavShell(child: child),
         routes: [
+          // Home — responsive: desktop gets calendar-first, mobile gets card-based
           GoRoute(
-            path: ':id',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) {
-              final leaderId = state.pathParameters['id'] ?? '';
-              return LeaderDetailScreen(leaderId: leaderId);
-            },
+            path: '/home',
+            builder: (context, state) => const ResponsiveHome(),
           ),
-        ],
-      ),
-      GoRoute(
-        path: '/map',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const MapSelectorScreen(),
-        routes: [
-          // District map (local level - mayors, etc.) - GeoJSON based
+          // Calendar, IPO, Rights
           GoRoute(
-            path: 'districts',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const GeoDistrictMapScreen(),
+            path: '/calendar',
+            builder: (context, state) => const CalendarScreen(),
+          ),
+          GoRoute(
+            path: '/ipo',
+            builder: (context, state) => const IpoSharesScreen(),
+          ),
+          GoRoute(
+            path: '/rights',
+            builder: (context, state) => const ConstitutionScreen(),
+          ),
+          // Constitution
+          GoRoute(
+            path: '/constitution',
+            builder: (context, state) => const ConstitutionScreen(),
+          ),
+          GoRoute(
+            path: '/constitutional-rights',
+            builder: (context, state) => const ConstitutionScreen(),
+          ),
+          // Leaders
+          GoRoute(
+            path: '/leaders',
+            builder: (context, state) => const LeadersScreen(),
             routes: [
-              // Local bodies for a specific district
               GoRoute(
-                path: ':district',
-                parentNavigatorKey: _rootNavigatorKey,
+                path: ':id',
                 builder: (context, state) {
-                  final district = state.pathParameters['district'] ?? '';
-                  return GeoLocalBodyScreen(districtName: Uri.decodeComponent(district));
+                  final leaderId = state.pathParameters['id'] ?? '';
+                  return LeaderDetailScreen(leaderId: leaderId);
                 },
               ),
             ],
           ),
-          // Federal constituency map (lightweight JSON-based)
+          // Maps
           GoRoute(
-            path: 'federal',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const GeoFederalMapScreen(),
+            path: '/map',
+            builder: (context, state) => const MapSelectorScreen(),
+            routes: [
+              GoRoute(
+                path: 'districts',
+                builder: (context, state) => const GeoDistrictMapScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':district',
+                    builder: (context, state) {
+                      final district = state.pathParameters['district'] ?? '';
+                      return GeoLocalBodyScreen(districtName: Uri.decodeComponent(district));
+                    },
+                  ),
+                ],
+              ),
+              GoRoute(
+                path: 'federal',
+                builder: (context, state) => const GeoFederalMapScreen(),
+              ),
+              GoRoute(
+                path: 'nepal',
+                builder: (context, state) => const NepalMapScreen(),
+              ),
+              GoRoute(
+                path: 'constituencies/:district',
+                builder: (context, state) {
+                  final district = state.pathParameters['district'] ?? '';
+                  return ConstituencyScreen(districtName: Uri.decodeComponent(district));
+                },
+              ),
+            ],
           ),
-          // Nepal map (OSM-based with layers)
+          // Government
           GoRoute(
-            path: 'nepal',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const NepalMapScreen(),
+            path: '/how-nepal-works',
+            builder: (context, state) => const HowNepalWorksScreen(),
           ),
-          // Legacy: Constituencies for a specific district (from old flow)
           GoRoute(
-            path: 'constituencies/:district',
-            parentNavigatorKey: _rootNavigatorKey,
+            path: '/government',
+            builder: (context, state) => const HowNepalWorksScreen(),
+          ),
+          GoRoute(
+            path: '/gov',
+            builder: (context, state) => const HowNepalWorksScreen(),
+          ),
+          // Emergency / Alerts
+          GoRoute(
+            path: '/alerts',
+            builder: (context, state) => const EmergencyScreen(),
+            routes: [
+              GoRoute(
+                path: 'earthquakes',
+                builder: (context, state) => const EarthquakesScreen(),
+              ),
+              GoRoute(
+                path: 'contacts',
+                builder: (context, state) => const EmergencyContactsScreen(),
+              ),
+              GoRoute(
+                path: 'resources',
+                builder: (context, state) => const EmergencyResourcesScreen(),
+              ),
+            ],
+          ),
+          // News
+          GoRoute(
+            path: '/news',
+            builder: (context, state) => const RonbFeedScreen(),
+          ),
+          // Settings
+          GoRoute(
+            path: '/settings',
+            builder: (context, state) => const SettingsScreen(),
+          ),
+          // Tools — short paths
+          GoRoute(
+            path: '/photo-merger',
+            builder: (context, state) => const PhotoMergerScreen(),
+          ),
+          GoRoute(
+            path: '/photo-compress',
+            builder: (context, state) => const ImageCompressorScreen(),
+          ),
+          GoRoute(
+            path: '/pdf-compress',
+            builder: (context, state) => const PdfCompressorScreen(),
+          ),
+          GoRoute(
+            path: '/unicode',
+            builder: (context, state) => const UnicodeConverterScreen(),
+          ),
+          GoRoute(
+            path: '/date-converter',
+            builder: (context, state) => const DateConverterScreen(),
+          ),
+          GoRoute(
+            path: '/forex',
+            builder: (context, state) => const ForexScreen(),
+          ),
+          GoRoute(
+            path: '/gold-price',
+            builder: (context, state) => const BullionScreen(),
+          ),
+          // Tools — /tools/ prefixed paths
+          GoRoute(
+            path: '/tools/photo-merger',
+            builder: (context, state) => const PhotoMergerScreen(),
+          ),
+          GoRoute(
+            path: '/tools/image-compressor',
+            builder: (context, state) => const ImageCompressorScreen(),
+          ),
+          GoRoute(
+            path: '/tools/pdf-compressor',
+            builder: (context, state) => const PdfCompressorScreen(),
+          ),
+          GoRoute(
+            path: '/tools/unicode-converter',
+            builder: (context, state) => const UnicodeConverterScreen(),
+          ),
+          GoRoute(
+            path: '/tools/date-converter',
+            builder: (context, state) => const DateConverterScreen(),
+          ),
+          GoRoute(
+            path: '/tools/nepali-calendar',
+            builder: (context, state) => const CalendarScreen(),
+          ),
+          GoRoute(
+            path: '/tools/forex',
+            builder: (context, state) => const ForexScreen(),
+          ),
+          GoRoute(
+            path: '/tools/bullion',
+            builder: (context, state) => const BullionScreen(),
+          ),
+          GoRoute(
+            path: '/tools/ipo',
+            builder: (context, state) => const IpoSharesScreen(),
+          ),
+          GoRoute(
+            path: '/tools/gov-services',
             builder: (context, state) {
-              final district = state.pathParameters['district'] ?? '';
-              return ConstituencyScreen(districtName: Uri.decodeComponent(district));
+              final category = state.uri.queryParameters['category'];
+              return GovServicesScreen(initialCategory: category);
             },
           ),
-        ],
-      ),
-      GoRoute(
-        path: '/how-nepal-works',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const HowNepalWorksScreen(),
-      ),
-      GoRoute(
-        path: '/alerts',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const EmergencyScreen(),
-        routes: [
+          // Legacy redirects
           GoRoute(
-            path: 'earthquakes',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const EarthquakesScreen(),
+            path: '/gov-services',
+            redirect: (context, state) => '/government',
           ),
           GoRoute(
-            path: 'contacts',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const EmergencyContactsScreen(),
+            path: '/how-to-get',
+            redirect: (context, state) => '/government',
           ),
           GoRoute(
-            path: 'resources',
-            parentNavigatorKey: _rootNavigatorKey,
-            builder: (context, state) => const EmergencyResourcesScreen(),
+            path: '/nepali-calendar',
+            redirect: (context, state) => '/calendar',
           ),
         ],
-      ),
-      GoRoute(
-        path: '/government',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const HowNepalWorksScreen(),
-      ),
-      GoRoute(
-        path: '/settings',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const SettingsScreen(),
-      ),
-      GoRoute(
-        path: '/photo-merger',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PhotoMergerScreen(),
-      ),
-      GoRoute(
-        path: '/tools/photo-merger',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PhotoMergerScreen(),
-      ),
-      GoRoute(
-        path: '/photo-compress',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ImageCompressorScreen(),
-      ),
-      GoRoute(
-        path: '/tools/image-compressor',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ImageCompressorScreen(),
-      ),
-      GoRoute(
-        path: '/pdf-compress',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PdfCompressorScreen(),
-      ),
-      GoRoute(
-        path: '/tools/pdf-compressor',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const PdfCompressorScreen(),
-      ),
-      GoRoute(
-        path: '/unicode',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const UnicodeConverterScreen(),
-      ),
-      GoRoute(
-        path: '/tools/unicode-converter',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const UnicodeConverterScreen(),
-      ),
-      GoRoute(
-        path: '/date-converter',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const DateConverterScreen(),
-      ),
-      GoRoute(
-        path: '/tools/date-converter',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const DateConverterScreen(),
-      ),
-      GoRoute(
-        path: '/gov',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const HowNepalWorksScreen(),
-      ),
-      // Legacy routes redirect to unified government screen
-      GoRoute(
-        path: '/gov-services',
-        parentNavigatorKey: _rootNavigatorKey,
-        redirect: (context, state) => '/government',
-      ),
-      GoRoute(
-        path: '/how-to-get',
-        parentNavigatorKey: _rootNavigatorKey,
-        redirect: (context, state) => '/government',
-      ),
-      GoRoute(
-        path: '/tools/nepali-calendar',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const NepaliCalendarScreen(),
-      ),
-      // Alias for deep links that might arrive without /tools/ prefix
-      GoRoute(
-        path: '/nepali-calendar',
-        parentNavigatorKey: _rootNavigatorKey,
-        redirect: (context, state) => '/calendar',
-      ),
-      GoRoute(
-        path: '/forex',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ForexScreen(),
-      ),
-      GoRoute(
-        path: '/tools/forex',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const ForexScreen(),
-      ),
-      GoRoute(
-        path: '/gold-price',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const BullionScreen(),
-      ),
-      GoRoute(
-        path: '/tools/bullion',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const BullionScreen(),
-      ),
-      GoRoute(
-        path: '/tools/ipo',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) => const IpoSharesScreen(),
-      ),
-      GoRoute(
-        path: '/tools/gov-services',
-        parentNavigatorKey: _rootNavigatorKey,
-        builder: (context, state) {
-          final category = state.uri.queryParameters['category'];
-          return GovServicesScreen(initialCategory: category);
-        },
       ),
     ],
   );
 }
-

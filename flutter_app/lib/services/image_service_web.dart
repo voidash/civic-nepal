@@ -4,6 +4,13 @@ import 'dart:html' as html;
 
 import 'package:flutter/foundation.dart';
 
+import 'image_service.dart' show PickedImage;
+
+bool get isDesktopPlatform => false;
+
+/// Web doesn't need native picker — image_picker handles it
+Future<PickedImage?> pickImageNative() async => null;
+
 /// Save/download image on web
 Future<bool> saveImageToGallery(
   Uint8List bytes, {
@@ -33,6 +40,5 @@ Future<void> shareImageFile(
   String? subject,
   String filename = 'image.jpg',
 }) async {
-  // On web, we just trigger a download
   await saveImageToGallery(bytes, filename: filename);
 }

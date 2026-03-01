@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,7 +11,6 @@ import '../../l10n/app_localizations.dart';
 import '../../providers/settings_provider.dart';
 import '../../services/data_service.dart';
 import '../../services/nepali_date_service.dart';
-import '../../widgets/web_nav_bar.dart';
 import '../tools/nepali_calendar_screen.dart';
 
 /// Primary brand color - blue
@@ -160,7 +160,6 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
     final l10n = AppLocalizations.of(context);
 
     return Scaffold(
-      appBar: const WebNavBar(currentRoute: '/home'),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _buildContent(context, l10n),
@@ -178,8 +177,8 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
 
     return Column(
       children: [
-        // App download banner
-        _buildAppBanner(context),
+        // App download banner (web only — doesn't make sense in desktop app)
+        if (kIsWeb) _buildAppBanner(context),
 
         // Main content
         Expanded(

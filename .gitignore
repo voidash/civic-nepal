@@ -1,1 +1,5 @@
 .env
+.claude/settings.local.json
+**/GoogleService-Info.plist
+macos_app/**/.build/
+macos_app/**/build/

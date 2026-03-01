@@ -117,6 +117,13 @@ class PinnableItems {
       getTitleNp: (l10n) => l10n.leadersNp,
     ),
     PinnableItem(
+      route: '/news',
+      icon: Icons.newspaper,
+      color: const Color(0xFF1877F2),
+      getTitle: (_) => 'RONB Feed',
+      getTitleNp: (_) => 'समाचार',
+    ),
+    PinnableItem(
       route: '/ipo',
       icon: Icons.trending_up,
       color: const Color(0xFF00897B),

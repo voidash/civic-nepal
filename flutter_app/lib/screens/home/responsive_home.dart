@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 
 import 'home_screen.dart';
@@ -14,19 +13,11 @@ class ResponsiveHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Not on web - always use mobile interface
-    if (!kIsWeb) {
-      return const HomeTab();
-    }
-
-    // On web - check screen size
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth < mobileBreakpoint) {
-          // Mobile-sized browser: use mobile interface with bottom nav
           return const HomeTab();
         }
-        // Desktop/tablet browser: use web calendar-first layout
         return const WebHomeScreen();
       },
     );

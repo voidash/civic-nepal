@@ -25,6 +25,8 @@ class SvgPathParser {
   bool get isLoaded => _isLoaded;
   double get svgWidth => _svgWidth;
   double get svgHeight => _svgHeight;
+  double get viewBoxMinX => _viewBoxMinX;
+  double get viewBoxMinY => _viewBoxMinY;
 
   /// Load and parse the SVG file
   Future<void> loadSvg(String assetPath) async {

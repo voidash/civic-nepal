@@ -1,0 +1,667 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		011DC97C1B092CF7C5769439 /* DayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE55A3191C6C0844DCB4FC52 /* DayCellView.swift */; };
+		060274307FB4C3B8F4FAFE60 /* NagarikPatroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0462AC4F77178569E44403B /* NagarikPatroApp.swift */; };
+		17F209D18BCDAD2F1D623480 /* TodayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E99E72ECAF63983C419F6E /* TodayCardView.swift */; };
+		230F04AE473A6D2A788BD215 /* MiniCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E71C64CF52E9F96D3E080 /* MiniCalendarView.swift */; };
+		4343BD23716E708C8FA47A2A /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D4B13C7D222EB96B384DF /* MediumWidgetView.swift */; };
+		4A8361F2C16DC4D2EF605C1E /* CalendarCore in Frameworks */ = {isa = PBXBuildFile; productRef = CAC09E7AB232844B110E4143 /* CalendarCore */; };
+		50EA8DD38DB6FA206BF7BB4C /* NagarikPatroWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52609520FC21F4A52AF758DE /* NagarikPatroWidgetBundle.swift */; };
+		5574A5F480C7108DA6000CD1 /* CalendarCore in Frameworks */ = {isa = PBXBuildFile; productRef = 67805963EB2F2B7AA5878E34 /* CalendarCore */; };
+		6B748CE32D04CEE9E961165C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B76252BA798EF583204306 /* SwiftUI.framework */; };
+		7186604E59BB84BC5DCB8AF1 /* WidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27370E25FE3AE395C0F218C3 /* WidgetTimelineProvider.swift */; };
+		729D624CD6A1E867FD5D06FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC980ADE7EAC9EBB2491D964 /* Assets.xcassets */; };
+		9526D274E3529D5311C05CC6 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977A0AB4970D494E6E4D662 /* EventListView.swift */; };
+		9FFB94544FA72C3084DAAC69 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E378258E6D689B077AD659B /* SmallWidgetView.swift */; };
+		A482EEB833980487F5D42B62 /* MonthNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B96D0E0FFA007DBDA5E792 /* MonthNavigationView.swift */; };
+		A53EDFDFBFDF9D4D8A6E76F1 /* NagarikPatroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26184BAD981D88B750003E5 /* NagarikPatroTests.swift */; };
+		AAD391EA6E5AAED60F956770 /* PopoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6142FE64ED61A0CA8A87F2 /* PopoverContentView.swift */; };
+		C6F7B128BE6C8739289C2AD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970C237817E1711A834FB53 /* AppDelegate.swift */; };
+		CD5A7D4C157EF03269F3BDA9 /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A94056591EB2373ADBD717 /* LargeWidgetView.swift */; };
+		F8FBA95045B6901924849CE8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7245DF66E3952C9FB8F698 /* WidgetKit.framework */; };
+		FD1FC04AC7268A55861F5FC9 /* NagarikPatroWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7476F0F473E8C8CD51849B77 /* NagarikPatroWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FD4B2B70ABEF54E4D9C266C6 /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0685DA39434135D81F64459 /* UpcomingEventsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4AEA09CEFDFE2C01208F6A47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A38AB399596C1661177FF1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BEF37155C47F36EBAB88FDD;
+			remoteInfo = NagarikPatroWidget;
+		};
+		FBAFD6FA1FAC58EBBB26387B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A38AB399596C1661177FF1B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7F20D0CDBCEEB870425744D;
+			remoteInfo = NagarikPatro;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9B126A32A5BDAAFACFEF46BE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FD1FC04AC7268A55861F5FC9 /* NagarikPatroWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		033CA85709D2D95E0B2CF3BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		05A94056591EB2373ADBD717 /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
+		27370E25FE3AE395C0F218C3 /* WidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTimelineProvider.swift; sourceTree = "<group>"; };
+		2B7245DF66E3952C9FB8F698 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		45E99E72ECAF63983C419F6E /* TodayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardView.swift; sourceTree = "<group>"; };
+		466E71C64CF52E9F96D3E080 /* MiniCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniCalendarView.swift; sourceTree = "<group>"; };
+		4970C237817E1711A834FB53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F03B7E4D792CDCAD3A201F6 /* NagarikPatroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NagarikPatroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52609520FC21F4A52AF758DE /* NagarikPatroWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NagarikPatroWidgetBundle.swift; sourceTree = "<group>"; };
+		56B96D0E0FFA007DBDA5E792 /* MonthNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthNavigationView.swift; sourceTree = "<group>"; };
+		625D4B13C7D222EB96B384DF /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
+		6977A0AB4970D494E6E4D662 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		6E378258E6D689B077AD659B /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
+		7476F0F473E8C8CD51849B77 /* NagarikPatroWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NagarikPatroWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D219A1F565B5EE42BCB8DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		934A9221C8D8C56B4C0FD965 /* CalendarCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CalendarCore; path = CalendarCore; sourceTree = SOURCE_ROOT; };
+		AB6142FE64ED61A0CA8A87F2 /* PopoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverContentView.swift; sourceTree = "<group>"; };
+		B3B76252BA798EF583204306 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		C0462AC4F77178569E44403B /* NagarikPatroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NagarikPatroApp.swift; sourceTree = "<group>"; };
+		C0685DA39434135D81F64459 /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
+		C1ED274C5D221D2A57B7E948 /* NagarikPatro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NagarikPatro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F26184BAD981D88B750003E5 /* NagarikPatroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NagarikPatroTests.swift; sourceTree = "<group>"; };
+		F51CE5201D5713297D555262 /* NagarikPatroWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NagarikPatroWidget.entitlements; sourceTree = "<group>"; };
+		FC8F66D70A6FCA102BD6E571 /* NagarikPatro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NagarikPatro.entitlements; sourceTree = "<group>"; };
+		FC980ADE7EAC9EBB2491D964 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FE55A3191C6C0844DCB4FC52 /* DayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0C5DF5C0D22D97A88971DEA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5574A5F480C7108DA6000CD1 /* CalendarCore in Frameworks */,
+				F8FBA95045B6901924849CE8 /* WidgetKit.framework in Frameworks */,
+				6B748CE32D04CEE9E961165C /* SwiftUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E697B23AA662C5E3FED506DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A8361F2C16DC4D2EF605C1E /* CalendarCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00C473CAB58D6CF5869AA31D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				934A9221C8D8C56B4C0FD965 /* CalendarCore */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		0678E2D1125C5F29F09A54E2 /* NagarikPatro */ = {
+			isa = PBXGroup;
+			children = (
+				033CA85709D2D95E0B2CF3BD /* Info.plist */,
+				FC8F66D70A6FCA102BD6E571 /* NagarikPatro.entitlements */,
+				80F9860D801D8DBEE68D9D07 /* App */,
+				46B6427AA70F85734EC5E5E4 /* Resources */,
+				E36772D9ADD7AB4B5FBD61AD /* Views */,
+			);
+			path = NagarikPatro;
+			sourceTree = "<group>";
+		};
+		27D4BA96E6B34C82D4CE42F2 /* NagarikPatroTests */ = {
+			isa = PBXGroup;
+			children = (
+				F26184BAD981D88B750003E5 /* NagarikPatroTests.swift */,
+			);
+			path = NagarikPatroTests;
+			sourceTree = "<group>";
+		};
+		46B6427AA70F85734EC5E5E4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC980ADE7EAC9EBB2491D964 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5844192709994BD17B22D7EE = {
+			isa = PBXGroup;
+			children = (
+				0678E2D1125C5F29F09A54E2 /* NagarikPatro */,
+				27D4BA96E6B34C82D4CE42F2 /* NagarikPatroTests */,
+				AC4F1E20F2A691D7EB545723 /* NagarikPatroWidget */,
+				00C473CAB58D6CF5869AA31D /* Packages */,
+				FF7C6391513DF99F3C837EF9 /* Frameworks */,
+				7810782D9BC3DCF1C412AB61 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7810782D9BC3DCF1C412AB61 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1ED274C5D221D2A57B7E948 /* NagarikPatro.app */,
+				4F03B7E4D792CDCAD3A201F6 /* NagarikPatroTests.xctest */,
+				7476F0F473E8C8CD51849B77 /* NagarikPatroWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80F9860D801D8DBEE68D9D07 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4970C237817E1711A834FB53 /* AppDelegate.swift */,
+				C0462AC4F77178569E44403B /* NagarikPatroApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AC4F1E20F2A691D7EB545723 /* NagarikPatroWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8D219A1F565B5EE42BCB8DBB /* Info.plist */,
+				05A94056591EB2373ADBD717 /* LargeWidgetView.swift */,
+				625D4B13C7D222EB96B384DF /* MediumWidgetView.swift */,
+				F51CE5201D5713297D555262 /* NagarikPatroWidget.entitlements */,
+				52609520FC21F4A52AF758DE /* NagarikPatroWidgetBundle.swift */,
+				6E378258E6D689B077AD659B /* SmallWidgetView.swift */,
+				27370E25FE3AE395C0F218C3 /* WidgetTimelineProvider.swift */,
+			);
+			path = NagarikPatroWidget;
+			sourceTree = "<group>";
+		};
+		E36772D9ADD7AB4B5FBD61AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE55A3191C6C0844DCB4FC52 /* DayCellView.swift */,
+				6977A0AB4970D494E6E4D662 /* EventListView.swift */,
+				466E71C64CF52E9F96D3E080 /* MiniCalendarView.swift */,
+				56B96D0E0FFA007DBDA5E792 /* MonthNavigationView.swift */,
+				AB6142FE64ED61A0CA8A87F2 /* PopoverContentView.swift */,
+				45E99E72ECAF63983C419F6E /* TodayCardView.swift */,
+				C0685DA39434135D81F64459 /* UpcomingEventsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FF7C6391513DF99F3C837EF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3B76252BA798EF583204306 /* SwiftUI.framework */,
+				2B7245DF66E3952C9FB8F698 /* WidgetKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		54ECBE93FB4948A072BFBAAA /* NagarikPatroTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 844502998F482D290E592F38 /* Build configuration list for PBXNativeTarget "NagarikPatroTests" */;
+			buildPhases = (
+				957AC6A39AF0D743D493B2B2 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55A6812C69069C60897957B5 /* PBXTargetDependency */,
+			);
+			name = NagarikPatroTests;
+			packageProductDependencies = (
+			);
+			productName = NagarikPatroTests;
+			productReference = 4F03B7E4D792CDCAD3A201F6 /* NagarikPatroTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5BEF37155C47F36EBAB88FDD /* NagarikPatroWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99337FD90094DE9637EFD426 /* Build configuration list for PBXNativeTarget "NagarikPatroWidget" */;
+			buildPhases = (
+				642456447466EE3E0213B1C5 /* Sources */,
+				0C5DF5C0D22D97A88971DEA9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NagarikPatroWidget;
+			packageProductDependencies = (
+				67805963EB2F2B7AA5878E34 /* CalendarCore */,
+			);
+			productName = NagarikPatroWidget;
+			productReference = 7476F0F473E8C8CD51849B77 /* NagarikPatroWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		E7F20D0CDBCEEB870425744D /* NagarikPatro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D837FE5D667E3CF1ED5C66 /* Build configuration list for PBXNativeTarget "NagarikPatro" */;
+			buildPhases = (
+				B355336BFAE2FC6DDF8DC7FC /* Sources */,
+				241B24B3BCF67C10AF78E11F /* Resources */,
+				E697B23AA662C5E3FED506DA /* Frameworks */,
+				9B126A32A5BDAAFACFEF46BE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				59494A3B57E768E2394B4B88 /* PBXTargetDependency */,
+			);
+			name = NagarikPatro;
+			packageProductDependencies = (
+				CAC09E7AB232844B110E4143 /* CalendarCore */,
+			);
+			productName = NagarikPatro;
+			productReference = C1ED274C5D221D2A57B7E948 /* NagarikPatro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A38AB399596C1661177FF1B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = 2E20EE6853217F0C767303CC /* Build configuration list for PBXProject "NagarikPatro" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5844192709994BD17B22D7EE;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9AA20BB8692CF22D1328DE5E /* XCLocalSwiftPackageReference "CalendarCore" */,
+			);
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E7F20D0CDBCEEB870425744D /* NagarikPatro */,
+				54ECBE93FB4948A072BFBAAA /* NagarikPatroTests */,
+				5BEF37155C47F36EBAB88FDD /* NagarikPatroWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		241B24B3BCF67C10AF78E11F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				729D624CD6A1E867FD5D06FC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		642456447466EE3E0213B1C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD5A7D4C157EF03269F3BDA9 /* LargeWidgetView.swift in Sources */,
+				4343BD23716E708C8FA47A2A /* MediumWidgetView.swift in Sources */,
+				50EA8DD38DB6FA206BF7BB4C /* NagarikPatroWidgetBundle.swift in Sources */,
+				9FFB94544FA72C3084DAAC69 /* SmallWidgetView.swift in Sources */,
+				7186604E59BB84BC5DCB8AF1 /* WidgetTimelineProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		957AC6A39AF0D743D493B2B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53EDFDFBFDF9D4D8A6E76F1 /* NagarikPatroTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B355336BFAE2FC6DDF8DC7FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C6F7B128BE6C8739289C2AD5 /* AppDelegate.swift in Sources */,
+				011DC97C1B092CF7C5769439 /* DayCellView.swift in Sources */,
+				9526D274E3529D5311C05CC6 /* EventListView.swift in Sources */,
+				230F04AE473A6D2A788BD215 /* MiniCalendarView.swift in Sources */,
+				A482EEB833980487F5D42B62 /* MonthNavigationView.swift in Sources */,
+				060274307FB4C3B8F4FAFE60 /* NagarikPatroApp.swift in Sources */,
+				AAD391EA6E5AAED60F956770 /* PopoverContentView.swift in Sources */,
+				17F209D18BCDAD2F1D623480 /* TodayCardView.swift in Sources */,
+				FD4B2B70ABEF54E4D9C266C6 /* UpcomingEventsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55A6812C69069C60897957B5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7F20D0CDBCEEB870425744D /* NagarikPatro */;
+			targetProxy = FBAFD6FA1FAC58EBBB26387B /* PBXContainerItemProxy */;
+		};
+		59494A3B57E768E2394B4B88 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BEF37155C47F36EBAB88FDD /* NagarikPatroWidget */;
+			targetProxy = 4AEA09CEFDFE2C01208F6A47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0E70CBFB72F7F0339F1E9EC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		21B67EA313A6C8303B3630D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NagarikPatro/NagarikPatro.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = NagarikPatro/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nagarikpatro.menubar;
+				PRODUCT_NAME = "Nagarik Patro";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		7B52CE7A033EE0CA4E104D1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9F47561A2848AF6CAAF60844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NagarikPatroWidget/NagarikPatroWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = NagarikPatroWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nagarikpatro.menubar.widget;
+				PRODUCT_NAME = NagarikPatroWidget;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		AE690136B5862524EE25E85C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NagarikPatroWidget/NagarikPatroWidget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = NagarikPatroWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nagarikpatro.menubar.widget;
+				PRODUCT_NAME = NagarikPatroWidget;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		B9497318E9F16EE65A0FBBF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nagarik Patro.app/Contents/MacOS/Nagarik Patro";
+			};
+			name = Debug;
+		};
+		BC04CFC8065677794B7BAF16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = NagarikPatro/NagarikPatro.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = NagarikPatro/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nagarikpatro.menubar;
+				PRODUCT_NAME = "Nagarik Patro";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		F554D9F28510B32958790AD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Nagarik Patro.app/Contents/MacOS/Nagarik Patro";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E20EE6853217F0C767303CC /* Build configuration list for PBXProject "NagarikPatro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7B52CE7A033EE0CA4E104D1E /* Debug */,
+				0E70CBFB72F7F0339F1E9EC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		844502998F482D290E592F38 /* Build configuration list for PBXNativeTarget "NagarikPatroTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9497318E9F16EE65A0FBBF5 /* Debug */,
+				F554D9F28510B32958790AD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		90D837FE5D667E3CF1ED5C66 /* Build configuration list for PBXNativeTarget "NagarikPatro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				21B67EA313A6C8303B3630D4 /* Debug */,
+				BC04CFC8065677794B7BAF16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		99337FD90094DE9637EFD426 /* Build configuration list for PBXNativeTarget "NagarikPatroWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F47561A2848AF6CAAF60844 /* Debug */,
+				AE690136B5862524EE25E85C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9AA20BB8692CF22D1328DE5E /* XCLocalSwiftPackageReference "CalendarCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CalendarCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		67805963EB2F2B7AA5878E34 /* CalendarCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CalendarCore;
+		};
+		CAC09E7AB232844B110E4143 /* CalendarCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CalendarCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5A38AB399596C1661177FF1B /* Project object */;
+}

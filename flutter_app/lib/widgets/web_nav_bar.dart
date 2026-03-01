@@ -90,8 +90,8 @@ class WebNavBar extends StatelessWidget implements PreferredSizeWidget {
               _NavItem(
                 icon: Icons.calendar_month,
                 label: l10n.calendar,
-                isActive: currentRoute == '/home' || currentRoute == '/calendar',
-                onTap: () => _navigateTo(context, '/home'),
+                isActive: currentRoute == '/calendar',
+                onTap: () => _navigateTo(context, '/calendar'),
               ),
               _NavItem(
                 icon: Icons.map,
@@ -110,6 +110,12 @@ class WebNavBar extends StatelessWidget implements PreferredSizeWidget {
                 label: l10n.leaders,
                 isActive: currentRoute.startsWith('/leaders'),
                 onTap: () => _navigateTo(context, '/leaders'),
+              ),
+              _NavItem(
+                icon: Icons.newspaper,
+                label: 'RONB',
+                isActive: currentRoute == '/news',
+                onTap: () => _navigateTo(context, '/news'),
               ),
               const Spacer(),
             ],
@@ -160,11 +166,12 @@ class _HamburgerMenu extends StatelessWidget {
       offset: const Offset(0, 40),
       onSelected: onNavigate,
       itemBuilder: (context) => [
-        _buildMenuItem(Icons.calendar_month, l10n.calendar, '/home', currentRoute == '/home'),
+        _buildMenuItem(Icons.calendar_month, l10n.calendar, '/calendar', currentRoute == '/calendar'),
         _buildMenuItem(Icons.map, l10n.map, '/map', currentRoute.startsWith('/map')),
         _buildMenuItem(Icons.gavel, l10n.constitution, '/constitutional-rights',
             currentRoute == '/constitution' || currentRoute == '/constitutional-rights'),
         _buildMenuItem(Icons.people, l10n.leaders, '/leaders', currentRoute.startsWith('/leaders')),
+        _buildMenuItem(Icons.newspaper, 'RONB Feed', '/news', currentRoute == '/news'),
         const PopupMenuDivider(),
         _buildMenuItem(Icons.currency_exchange, l10n.forex, '/forex', currentRoute == '/forex'),
         _buildMenuItem(Icons.diamond, l10n.goldSilver, '/gold-price', currentRoute == '/gold-price'),

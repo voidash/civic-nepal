@@ -93,9 +93,9 @@ class _GeoFederalMapScreenState extends ConsumerState<GeoFederalMapScreen> {
     );
   }
 
-  // Canvas matches viewBox aspect ratio (500x500 = 1:1, but we stretch to 2:1 for Nepal's shape)
-  static const _canvasWidth = 1000.0;
-  static const _canvasHeight = 500.0;
+  // Canvas size — aspect ratio should roughly match the data viewBox for uniform scaling
+  static const _canvasWidth = 1200.0;
+  static const _canvasHeight = 680.0;
 
   Widget _buildMapContent(
     GeoConstituenciesData data,
@@ -191,9 +191,14 @@ class _GeoFederalMapScreenState extends ConsumerState<GeoFederalMapScreen> {
     final canvasPos = details.localPosition;
     final viewBox = data.viewBox;
 
-    // Convert canvas position to viewBox coordinates
-    final vbX = viewBox[0] + (canvasPos.dx / _canvasWidth) * viewBox[2];
-    final vbY = viewBox[1] + (canvasPos.dy / _canvasHeight) * viewBox[3];
+    // Convert canvas position to viewBox coordinates (uniform scaling inverse)
+    final scaleX = _canvasWidth / viewBox[2];
+    final scaleY = _canvasHeight / viewBox[3];
+    final scale = scaleX < scaleY ? scaleX : scaleY;
+    final offsetX = (_canvasWidth - viewBox[2] * scale) / 2;
+    final offsetY = (_canvasHeight - viewBox[3] * scale) / 2;
+    final vbX = (canvasPos.dx - offsetX) / scale + viewBox[0];
+    final vbY = (canvasPos.dy - offsetY) / scale + viewBox[1];
 
     // Find which constituency was tapped using point-in-polygon
     for (final constituency in data.constituencies) {
@@ -350,8 +355,15 @@ class _ConstituencyMapPainter extends CustomPainter {
 
   Offset _viewBoxToCanvas(double x, double y, Size size) {
     final viewBox = data.viewBox;
-    final canvasX = (x - viewBox[0]) / viewBox[2] * size.width;
-    final canvasY = (y - viewBox[1]) / viewBox[3] * size.height;
+    // Use uniform scaling to avoid distortion
+    final scaleX = size.width / viewBox[2];
+    final scaleY = size.height / viewBox[3];
+    final scale = scaleX < scaleY ? scaleX : scaleY;
+    // Center the content within the canvas
+    final offsetX = (size.width - viewBox[2] * scale) / 2;
+    final offsetY = (size.height - viewBox[3] * scale) / 2;
+    final canvasX = (x - viewBox[0]) * scale + offsetX;
+    final canvasY = (y - viewBox[1]) * scale + offsetY;
     return Offset(canvasX, canvasY);
   }
 

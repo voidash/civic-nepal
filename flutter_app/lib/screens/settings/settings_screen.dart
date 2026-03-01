@@ -1,10 +1,19 @@
+import 'dart:io' show Process;
+
+import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
 import '../../providers/settings_provider.dart';
 import '../../services/notification_service.dart';
+import '../../services/launch_at_login_service.dart';
 import '../../widgets/home_title.dart';
+
+bool get _isMacOS => !kIsWeb && defaultTargetPlatform == TargetPlatform.macOS;
+bool get _isWindows => !kIsWeb && defaultTargetPlatform == TargetPlatform.windows;
+bool get _isDesktop => _isMacOS || _isWindows || (!kIsWeb && defaultTargetPlatform == TargetPlatform.linux);
+bool get _isMobileNative => !kIsWeb && (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS);
 
 const _privacyPolicyUrl = 'https://voidash.github.io/civic-nepal/privacy-policy.html';
 
@@ -98,6 +107,27 @@ class SettingsScreen extends ConsumerWidget {
                   ref.read(settingsProvider.notifier).setThemeMode(value);
                 },
               ),
+              // Desktop Integration (macOS / Windows only)
+              if (_isDesktop) ...[
+                const Divider(),
+                const _SectionHeader('Desktop Integration'),
+                if (_isMacOS) ...[
+                  const _LaunchAtLoginToggle(),
+                  _TileSetting(
+                    title: 'Menu Bar Calendar',
+                    subtitle: 'Show Nepali date in the macOS menu bar with calendar popover',
+                    icon: Icons.calendar_month,
+                    onTap: () => _launchMenuBarApp(context),
+                  ),
+                ],
+                if (_isWindows)
+                  const _TileSetting(
+                    title: 'System Tray Calendar',
+                    subtitle: 'Show Nepali date in the Windows system tray (coming soon)',
+                    icon: Icons.calendar_month,
+                    onTap: null,
+                  ),
+              ],
               const Divider(),
               _SectionHeader(l10n.dataUpdates),
               _SwitchSetting(
@@ -122,46 +152,50 @@ class SettingsScreen extends ConsumerWidget {
                   _clearCache(context, l10n);
                 },
               ),
-              const Divider(),
-              _SectionHeader(l10n.notifications),
-              _SwitchSetting(
-                title: l10n.stickyDateNotification,
-                subtitle: l10n.stickyDateNotificationDesc,
-                value: settings.stickyDateNotification,
-                onChanged: (value) async {
-                  await ref.read(settingsProvider.notifier).setStickyDateNotification(value);
-                  if (value) {
-                    await NotificationService.requestPermissions();
-                    await NotificationService.showStickyDateNotification();
-                  } else {
-                    await NotificationService.cancelStickyDateNotification();
-                  }
-                },
-              ),
-              _SwitchSetting(
-                title: l10n.ipoAlerts,
-                subtitle: l10n.ipoAlertsDesc,
-                value: settings.ipoNotifications,
-                onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setIpoNotifications(value);
-                },
-              ),
-              _SwitchSetting(
-                title: l10n.earthquakeAlerts,
-                subtitle: l10n.earthquakeAlertsDesc,
-                value: settings.earthquakeNotifications,
-                onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setEarthquakeNotifications(value);
-                },
-              ),
-              _SwitchSetting(
-                title: l10n.roadClosureAlerts,
-                subtitle: l10n.roadClosureAlertsDesc,
-                value: settings.roadClosureNotifications,
-                onChanged: (value) {
-                  ref.read(settingsProvider.notifier).setRoadClosureNotifications(value);
-                },
-              ),
+              // Notifications (mobile + desktop native, NOT web)
+              if (!kIsWeb) ...[
+                const Divider(),
+                _SectionHeader(l10n.notifications),
+                if (_isMobileNative)
+                  _SwitchSetting(
+                    title: l10n.stickyDateNotification,
+                    subtitle: l10n.stickyDateNotificationDesc,
+                    value: settings.stickyDateNotification,
+                    onChanged: (value) async {
+                      await ref.read(settingsProvider.notifier).setStickyDateNotification(value);
+                      if (value) {
+                        await NotificationService.requestPermissions();
+                        await NotificationService.showStickyDateNotification();
+                      } else {
+                        await NotificationService.cancelStickyDateNotification();
+                      }
+                    },
+                  ),
+                _SwitchSetting(
+                  title: l10n.ipoAlerts,
+                  subtitle: l10n.ipoAlertsDesc,
+                  value: settings.ipoNotifications,
+                  onChanged: (value) {
+                    ref.read(settingsProvider.notifier).setIpoNotifications(value);
+                  },
+                ),
+                _SwitchSetting(
+                  title: l10n.earthquakeAlerts,
+                  subtitle: l10n.earthquakeAlertsDesc,
+                  value: settings.earthquakeNotifications,
+                  onChanged: (value) {
+                    ref.read(settingsProvider.notifier).setEarthquakeNotifications(value);
+                  },
+                ),
+                _SwitchSetting(
+                  title: l10n.roadClosureAlerts,
+                  subtitle: l10n.roadClosureAlertsDesc,
+                  value: settings.roadClosureNotifications,
+                  onChanged: (value) {
+                    ref.read(settingsProvider.notifier).setRoadClosureNotifications(value);
+                  },
+                ),
+              ],
               const Divider(),
               _SectionHeader(l10n.about),
               _TileSetting(
@@ -200,6 +234,38 @@ class SettingsScreen extends ConsumerWidget {
         error: (error, stack) => Center(child: Text('${l10n.error}: $error')),
       ),
     );
+  }
+
+  Future<void> _launchMenuBarApp(BuildContext context) async {
+    if (kIsWeb) return;
+    try {
+      // Try launching by bundle ID (works if app has been built/registered with Launch Services)
+      final result = await Process.run('open', ['-b', 'com.nagarikpatro.menubar']);
+      if (result.exitCode != 0) {
+        // Fallback: check DerivedData or common locations
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text(
+                'Menu bar app not found. Build it from macos_app/NagarikPatro/ in Xcode first.',
+              ),
+            ),
+          );
+        }
+      } else {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Menu bar calendar launched — check your menu bar')),
+          );
+        }
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not launch menu bar app: $e')),
+        );
+      }
+    }
   }
 
   void _checkForUpdates(BuildContext context, AppLocalizations l10n) {
@@ -462,20 +528,24 @@ class _SwitchSetting extends StatelessWidget {
 class _TileSetting extends StatelessWidget {
   final String title;
   final String? subtitle;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
+  final IconData? icon;
   const _TileSetting({
     required this.title,
     this.subtitle,
     required this.onTap,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: icon != null ? Icon(icon) : null,
       title: Text(title),
       subtitle: subtitle != null ? Text(subtitle!) : null,
-      trailing: const Icon(Icons.chevron_right),
+      trailing: onTap != null ? const Icon(Icons.chevron_right) : null,
       onTap: onTap,
+      enabled: onTap != null,
     );
   }
 }
@@ -560,6 +630,52 @@ class _ThemeSetting extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _LaunchAtLoginToggle extends StatefulWidget {
+  const _LaunchAtLoginToggle();
+
+  @override
+  State<_LaunchAtLoginToggle> createState() => _LaunchAtLoginToggleState();
+}
+
+class _LaunchAtLoginToggleState extends State<_LaunchAtLoginToggle> {
+  bool _enabled = false;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  Future<void> _load() async {
+    final enabled = await LaunchAtLoginService.isEnabled();
+    if (mounted) setState(() { _enabled = enabled; _loading = false; });
+  }
+
+  Future<void> _toggle(bool value) async {
+    setState(() => _loading = true);
+    final success = await LaunchAtLoginService.setEnabled(value);
+    if (success && mounted) {
+      setState(() { _enabled = value; _loading = false; });
+    } else if (mounted) {
+      setState(() => _loading = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Failed to update launch at login setting')),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile(
+      title: const Text('Launch at Login'),
+      subtitle: const Text('Automatically open when you log in to your Mac'),
+      value: _enabled,
+      onChanged: _loading ? null : _toggle,
     );
   }
 }

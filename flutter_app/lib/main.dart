@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,8 +8,10 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app.dart';
 import 'providers/settings_provider.dart';
+import 'providers/calendar_view_provider.dart';
 import 'services/notification_service.dart';
 import 'services/background_service.dart';
+import 'services/google_auth_service.dart';
 import 'l10n/app_localizations.dart';
 
 /// Custom delegate that provides fallback for unsupported locales
@@ -65,9 +68,20 @@ void main() async {
     usePathUrlStrategy();
   }
 
-  // Initialize platform-specific services (not available on web)
-  if (!kIsWeb) {
+  // Initialize Google Sign-In for Calendar integration
+  GoogleAuthService.instance.initialize(
+    webClientId: kIsWeb
+        ? '539189268351-67ntdejompn259lgltjajvvgi8nvnvl8.apps.googleusercontent.com'
+        : null,
+  );
+
+  // Initialize notifications on mobile + desktop (macOS supports flutter_local_notifications)
+  if (!kIsWeb && (Platform.isAndroid || Platform.isIOS || Platform.isMacOS)) {
     await NotificationService.initialize();
+  }
+
+  // Background tasks — mobile only (workmanager has no desktop support)
+  if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
     await BackgroundService.initialize();
     await BackgroundService.registerIpoCheckTask();
 
@@ -120,13 +134,17 @@ class _NagarikCalendarAppState extends ConsumerState<NagarikCalendarApp>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // Re-show sticky notification when app comes to foreground
-    if (state == AppLifecycleState.resumed && !kIsWeb) {
+    if (state == AppLifecycleState.resumed && !kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
       _restoreStickyNotificationIfEnabled();
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    // Eagerly trigger Google auth restore + calendar sync on startup,
+    // so events are ready before the user navigates to the calendar screen.
+    ref.watch(googleCalendarSyncProvider);
+
     final settingsAsync = ref.watch(settingsProvider);
 
     // Determine theme and locale from settings, with defaults during loading
@@ -187,21 +205,27 @@ ThemeData _buildLightTheme() {
       onSecondary: Colors.white,
       tertiary: _accentGold,
       surface: Colors.white,
-      onSurface: const Color(0xFF1A1A1A),
-      surfaceContainerHighest: const Color(0xFFF5F5F5),
-      primaryContainer: _primaryColor.withValues(alpha: 0.12),
+      onSurface: const Color(0xFF202124),
+      surfaceContainerHighest: const Color(0xFFF1F3F4),
+      outlineVariant: const Color(0xFFDADCE0),
+      primaryContainer: _primaryColor.withValues(alpha: 0.08),
       onPrimaryContainer: _primaryColor,
     ),
-    scaffoldBackgroundColor: const Color(0xFFFAFAFA),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: _primaryColor,
-      foregroundColor: Colors.white,
+    scaffoldBackgroundColor: Colors.white,
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.white,
+      foregroundColor: const Color(0xFF3C4043),
       elevation: 0,
       centerTitle: false,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: const Color(0xFFE0E0E0),
     ),
     cardTheme: CardThemeData(
-      elevation: 1,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: const BorderSide(color: Color(0xFFDADCE0)),
+      ),
       color: Colors.white,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -216,7 +240,7 @@ ThemeData _buildLightTheme() {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: _primaryColor,
-        side: const BorderSide(color: _primaryColor),
+        side: const BorderSide(color: Color(0xFFDADCE0)),
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
@@ -225,15 +249,27 @@ ThemeData _buildLightTheme() {
       backgroundColor: _primaryColor,
       foregroundColor: Colors.white,
     ),
+    segmentedButtonTheme: SegmentedButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) return _primaryColor;
+          return const Color(0xFF5F6368);
+        }),
+        backgroundColor: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) return _primaryColor.withValues(alpha: 0.1);
+          return Colors.transparent;
+        }),
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
       selectedItemColor: _primaryColor,
-      unselectedItemColor: Colors.grey[600],
+      unselectedItemColor: const Color(0xFF5F6368),
       type: BottomNavigationBarType.fixed,
       elevation: 8,
     ),
-    dividerTheme: DividerThemeData(
-      color: Colors.grey[200],
+    dividerTheme: const DividerThemeData(
+      color: Color(0xFFE8EAED),
       thickness: 1,
     ),
     listTileTheme: const ListTileThemeData(
@@ -242,21 +278,26 @@ ThemeData _buildLightTheme() {
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide(color: Colors.grey[300]!),
+        borderSide: const BorderSide(color: Color(0xFFDADCE0)),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8),
         borderSide: const BorderSide(color: _primaryColor, width: 2),
       ),
       filled: true,
-      fillColor: Colors.grey[50],
+      fillColor: const Color(0xFFF8F9FA),
     ),
     chipTheme: ChipThemeData(
-      backgroundColor: Colors.grey[100],
-      selectedColor: _primaryColor.withValues(alpha: 0.2),
-      labelStyle: const TextStyle(fontSize: 13),
+      backgroundColor: const Color(0xFFF1F3F4),
+      selectedColor: _primaryColor.withValues(alpha: 0.15),
+      labelStyle: const TextStyle(fontSize: 13, color: Color(0xFF3C4043)),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    ),
+    iconButtonTheme: IconButtonThemeData(
+      style: ButtonStyle(
+        foregroundColor: WidgetStateProperty.all(const Color(0xFF5F6368)),
+      ),
     ),
   );
 }

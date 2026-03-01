@@ -19,6 +19,10 @@ class NotificationService {
   static const String _dateChannelName = 'Today\'s Date';
   static const String _dateChannelDesc = 'Sticky notification showing today\'s Nepali date';
 
+  static const String _eventChannelId = 'event_reminders';
+  static const String _eventChannelName = 'Event Reminders';
+  static const String _eventChannelDesc = 'Reminders for upcoming calendar events';
+
   static const int _stickyDateNotificationId = 999999;
 
   /// Initialize notification service
@@ -29,10 +33,16 @@ class NotificationService {
       requestBadgePermission: true,
       requestSoundPermission: true,
     );
+    const macOSSettings = DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
 
     const settings = InitializationSettings(
       android: androidSettings,
       iOS: iosSettings,
+      macOS: macOSSettings,
     );
 
     await _notifications.initialize(
@@ -67,6 +77,15 @@ class NotificationService {
         showBadge: false,
       );
       await android.createNotificationChannel(dateChannel);
+
+      // Event reminders channel
+      const eventChannel = AndroidNotificationChannel(
+        _eventChannelId,
+        _eventChannelName,
+        description: _eventChannelDesc,
+        importance: Importance.high,
+      );
+      await android.createNotificationChannel(eventChannel);
     }
   }
 
@@ -268,5 +287,75 @@ class NotificationService {
     } catch (e) {
       return false;
     }
+  }
+
+  /// Schedule a local notification for an upcoming calendar event.
+  /// Uses a delayed future — works while the app is running.
+  /// [minutesBefore] is how many minutes before [eventStart] to notify.
+  static Future<void> scheduleEventReminder({
+    required String eventId,
+    required String title,
+    required DateTime eventStart,
+    required int minutesBefore,
+    String? location,
+  }) async {
+    final notifyAt = eventStart.subtract(Duration(minutes: minutesBefore));
+    final now = DateTime.now();
+    if (notifyAt.isBefore(now)) return; // Already past
+
+    final delay = notifyAt.difference(now);
+    final notificationId = '${eventId}_$minutesBefore'.hashCode;
+
+    Future.delayed(delay, () async {
+      String body;
+      if (minutesBefore == 0) {
+        body = 'Starting now';
+      } else if (minutesBefore < 60) {
+        body = 'Starting in $minutesBefore minutes';
+      } else {
+        final hours = minutesBefore ~/ 60;
+        body = 'Starting in $hours hour${hours > 1 ? 's' : ''}';
+      }
+      if (location != null && location.isNotEmpty) {
+        body += ' \u2022 $location';
+      }
+
+      try {
+        await _notifications.show(
+          notificationId,
+          title,
+          body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              _eventChannelId,
+              _eventChannelName,
+              channelDescription: _eventChannelDesc,
+              importance: Importance.high,
+              priority: Priority.high,
+              icon: '@mipmap/ic_launcher',
+            ),
+            iOS: const DarwinNotificationDetails(
+              presentAlert: true,
+              presentBadge: true,
+              presentSound: true,
+            ),
+            macOS: const DarwinNotificationDetails(
+              presentAlert: true,
+              presentBadge: true,
+              presentSound: true,
+            ),
+          ),
+          payload: 'event:$eventId',
+        );
+      } catch (_) {
+        // Notification failed — not critical
+      }
+    });
+  }
+
+  /// Cancel a scheduled event reminder.
+  static Future<void> cancelEventReminder(String eventId, int minutesBefore) async {
+    final notificationId = '${eventId}_$minutesBefore'.hashCode;
+    await _notifications.cancel(notificationId);
   }
 }

@@ -1,7 +1,7 @@
 name: nagarik_calendar
 description: NagarikCalendar - Nepali Calendar, Constitution, Leaders, and Civic Tools
 publish_to: 'none'
-version: 1.0.1+6
+version: 1.0.1+7
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -63,6 +63,11 @@ dependencies:
   # Nepali date utilities (tested library)
   nepali_utils: ^3.0.1
 
+  # Google Calendar integration
+  googleapis: ^13.0.0
+  google_sign_in: ^6.2.0
+  extension_google_sign_in_as_googleapis_auth: ^2.0.0
+
   # Localization
   flutter_localizations:
     sdk: flutter
@@ -115,6 +120,7 @@ flutter:
     - assets/data/ministers.json
     - assets/data/data_version.json
     - assets/data/gov_procedures.json
+    - assets/data/ronb_feed.json
     - assets/data/election/local_bodies.json
     - assets/data/election/constituencies.json
     - assets/data/election/local_election_results.json

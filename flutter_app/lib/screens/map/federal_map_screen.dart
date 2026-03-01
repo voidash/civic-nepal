@@ -161,22 +161,17 @@ class _FederalMapScreenState extends ConsumerState<FederalMapScreen> {
       transformationController: _transformationController,
       minScale: 0.5,
       maxScale: 15.0,
-      constrained: false,
-      child: SizedBox(
-        width: 1200,
-        height: 700,
-        child: _ConstituencyMapWidget(
-          data: data,
-          svgParser: svgParser,
-          currentZoom: _currentZoom,
-          onConstituencyTap: (name) {
-            if (name.isEmpty) {
-              ref.read(selectedFederalConstituencyProvider.notifier).clear();
-            } else {
-              ref.read(selectedFederalConstituencyProvider.notifier).setConstituency(name);
-            }
-          },
-        ),
+      child: _ConstituencyMapWidget(
+        data: data,
+        svgParser: svgParser,
+        currentZoom: _currentZoom,
+        onConstituencyTap: (name) {
+          if (name.isEmpty) {
+            ref.read(selectedFederalConstituencyProvider.notifier).clear();
+          } else {
+            ref.read(selectedFederalConstituencyProvider.notifier).setConstituency(name);
+          }
+        },
       ),
     );
   }
@@ -292,9 +287,6 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
   Map<String, Size> _textSizes = {};
   bool _textSizesComputed = false;
 
-  // Fixed map size - must match parent SizedBox in _buildInteractiveMap
-  static const _mapSize = Size(1200, 700);
-
   SvgPathParser get _pathParser => widget.svgParser;
 
   @override
@@ -327,14 +319,9 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // Use LayoutBuilder to get actual constraints and ensure consistent sizing
     return LayoutBuilder(
       builder: (context, constraints) {
-        // Use actual available size, constrained to our max
-        final actualSize = Size(
-          constraints.maxWidth.clamp(0, _mapSize.width),
-          constraints.maxHeight.clamp(0, _mapSize.height),
-        );
+        final actualSize = Size(constraints.maxWidth, constraints.maxHeight);
 
         return SizedBox(
           width: actualSize.width,
@@ -379,7 +366,9 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
     final scaleY = mapSize.height / svgHeight;
     final scale = scaleX < scaleY ? scaleX : scaleY;
 
-    // No offset needed since we use Alignment.topLeft on SvgPicture
+    // Account for viewBox offset (SVG coordinate origin)
+    final viewBoxMinX = _pathParser.viewBoxMinX;
+    final viewBoxMinY = _pathParser.viewBoxMinY;
 
     for (final entry in pathCenters.entries) {
       final id = entry.key;
@@ -399,9 +388,9 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
         }
       }
 
-      // Transform SVG coordinates to screen coordinates (scale only, no offset)
-      final screenX = svgCenter.dx * scale;
-      final screenY = svgCenter.dy * scale;
+      // Transform SVG coordinates to screen coordinates, accounting for viewBox offset
+      final screenX = (svgCenter.dx - viewBoxMinX) * scale;
+      final screenY = (svgCenter.dy - viewBoxMinY) * scale;
 
       // Scale font size inversely with zoom to keep labels readable but not overwhelming
       final adjustedFontSize = baseFontSize / zoom;
@@ -437,7 +426,7 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
 
     final localPosition = renderBox.globalToLocal(details.globalPosition);
 
-    // Convert screen to SVG coordinates (matching topLeft alignment)
+    // Convert screen to SVG coordinates (matching topLeft alignment + viewBox offset)
     final svgWidth = _pathParser.svgWidth;
     final svgHeight = _pathParser.svgHeight;
     final scaleX = mapSize.width / svgWidth;
@@ -445,8 +434,8 @@ class _ConstituencyMapWidgetState extends State<_ConstituencyMapWidget> {
     final scale = scaleX < scaleY ? scaleX : scaleY;
 
     final svgPoint = Offset(
-      localPosition.dx / scale,
-      localPosition.dy / scale,
+      localPosition.dx / scale + _pathParser.viewBoxMinX,
+      localPosition.dy / scale + _pathParser.viewBoxMinY,
     );
     final pathId = _pathParser.hitTest(svgPoint);
 

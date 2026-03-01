@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>NagarikPatro</RootNamespace>
+    <AssemblyName>NagarikPatro</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>Nagarik Patro</Authors>
+    <Description>Nepali Calendar system tray application</Description>
+  </PropertyGroup>
+
+  <!-- Reference shared data files without copying into project source tree -->
+  <ItemGroup>
+    <Content Include="..\..\data\bs_calendar_data.json" Link="Data\bs_calendar_data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\data\nepali_calendar_events.json" Link="Data\nepali_calendar_events.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\data\nepali_calendar_auspicious.json" Link="Data\nepali_calendar_auspicious.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

@@ -256,36 +256,49 @@ public sealed class SystemTrayManager : IDisposable
         }
     }
 
-    private const string AppWebUrl = "https://voidash.github.io/civic-nepal/";
+    private const string FlutterExeName = "nagarik_calendar.exe";
 
-    private static void OpenFlutterApp()
+    private void OpenFlutterApp()
     {
-        try
+        var path = FindFlutterApp();
+        if (path != null)
         {
-            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var possiblePath = Path.Combine(localAppData, "NagarikPatro", "nepal_civic.exe");
+            try
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = path,
+                    UseShellExecute = true,
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to launch Nagarik Patro: {ex.Message}");
+                _notifyIcon.ShowBalloonTip(3000, "Nagarik Patro", "Failed to launch the app.", WinForms.ToolTipIcon.Error);
+            }
+        }
+        else
+        {
+            _notifyIcon.ShowBalloonTip(4000, "Nagarik Patro not found",
+                "Install Nagarik Patro to use this feature.", WinForms.ToolTipIcon.Info);
+        }
+    }
 
-            if (File.Exists(possiblePath))
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = possiblePath,
-                    UseShellExecute = true,
-                });
-            }
-            else
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = AppWebUrl,
-                    UseShellExecute = true,
-                });
-            }
-        }
-        catch (Exception ex)
+    private static string? FindFlutterApp()
+    {
+        var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+        var exeDir = AppContext.BaseDirectory;
+
+        var candidates = new[]
         {
-            System.Diagnostics.Debug.WriteLine($"Failed to open Nagarik Patro: {ex.Message}");
-        }
+            Path.Combine(localAppData, "NagarikPatro", FlutterExeName),
+            Path.Combine(localAppData, "nagarik_calendar", FlutterExeName),
+            Path.Combine(programFiles, "NagarikPatro", FlutterExeName),
+            Path.Combine(exeDir, FlutterExeName),
+        };
+
+        return Array.Find(candidates, File.Exists);
     }
 
     private static System.Drawing.Icon BuildTrayIcon()

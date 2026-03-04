@@ -61,21 +61,37 @@ public partial class CalendarPopup : Window
 
     private void OpenApp_Click(object sender, RoutedEventArgs e)
     {
+        const string exeName = "nagarik_calendar.exe";
+        var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+        var exeDir = AppContext.BaseDirectory;
+
+        string[] candidates =
+        [
+            Path.Combine(localAppData, "NagarikPatro", exeName),
+            Path.Combine(localAppData, "nagarik_calendar", exeName),
+            Path.Combine(programFiles, "NagarikPatro", exeName),
+            Path.Combine(exeDir, exeName),
+        ];
+
+        var path = Array.Find(candidates, File.Exists);
+        if (path == null)
+        {
+            System.Diagnostics.Debug.WriteLine("Nagarik Patro app not found in any candidate path.");
+            return;
+        }
+
         try
         {
-            var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var possiblePath = Path.Combine(localAppData, "NagarikPatro", "nepal_civic.exe");
-
-            var target = File.Exists(possiblePath) ? possiblePath : "https://voidash.github.io/civic-nepal/";
             System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
-                FileName = target,
+                FileName = path,
                 UseShellExecute = true,
             });
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Failed to open Nagarik Patro: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Failed to launch Nagarik Patro: {ex.Message}");
         }
     }
 

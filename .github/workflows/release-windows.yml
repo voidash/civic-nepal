@@ -107,7 +107,11 @@ jobs:
       - name: Build installer
         shell: pwsh
         run: |
-          & "C:\Program Files (x86)\NSIS\makensis.exe" /DAPP_VERSION=${{ steps.version.outputs.VERSION }} windows_app\installer.nsi
+          $publishDir = (Resolve-Path "publish\NagarikPatro").Path
+          & "C:\Program Files (x86)\NSIS\makensis.exe" `
+            /DAPP_VERSION=${{ steps.version.outputs.VERSION }} `
+            "/DPUBLISH_DIR=$publishDir" `
+            windows_app\installer.nsi
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

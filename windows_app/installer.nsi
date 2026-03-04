@@ -57,7 +57,8 @@ Section "Nagarik Patro" SEC_MAIN
   ExecWait 'taskkill /F /IM "${FLUTTER_EXE}"'  $0
 
   SetOutPath "$INSTDIR"
-  File /r "publish\NagarikPatro\*"
+  ; PUBLISH_DIR is passed as an absolute path by the build script
+  File /r "${PUBLISH_DIR}\*"
 
   ; Start Menu shortcut
   CreateDirectory "$SMPROGRAMS\${APP_NAME}"

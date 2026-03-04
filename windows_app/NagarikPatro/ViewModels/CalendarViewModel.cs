@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Threading;
 using NagarikPatro.Core;
 using NagarikPatro.Models;
 
@@ -12,13 +13,19 @@ public sealed class CalendarViewModel : INotifyPropertyChanged
 {
     private readonly BsCalendarData _cal = BsCalendarData.Instance;
     private readonly CalendarEventStore _eventStore = CalendarEventStore.Instance;
+    private readonly GoogleCalendarCache _googleCache = GoogleCalendarCache.Instance;
+    private readonly Dispatcher _dispatcher;
 
     private int _currentYear;
     private int _currentMonth;
     private int? _selectedDay;
+    private IReadOnlyList<GoogleCalendarEvent> _upcomingGoogleEvents = [];
+    private bool _hasGoogleCachedData;
 
     public CalendarViewModel()
     {
+        _dispatcher = Dispatcher.CurrentDispatcher;
+
         var today = BsDateConverter.Today();
         _currentYear = today.Year;
         _currentMonth = today.Month;
@@ -26,6 +33,14 @@ public sealed class CalendarViewModel : INotifyPropertyChanged
         Today = today;
         TodayAd = BsDateConverter.BsToAd(today);
         TodayWeekday = BsDateConverter.Weekday(today);
+
+        LoadGoogleEvents();
+
+        _googleCache.CacheChanged += () =>
+        {
+            // CacheChanged fires from a background thread (FileSystemWatcher / Timer)
+            _dispatcher.BeginInvoke(LoadGoogleEvents);
+        };
     }
 
     // Today info (static for session)
@@ -125,6 +140,54 @@ public sealed class CalendarViewModel : INotifyPropertyChanged
         }
     }
 
+    // Google Calendar
+    public IReadOnlyList<GoogleCalendarEvent> UpcomingGoogleEvents
+    {
+        get => _upcomingGoogleEvents;
+        private set { _upcomingGoogleEvents = value; OnPropertyChanged(); OnPropertyChanged(nameof(HasUpcomingGoogleEvents)); OnPropertyChanged(nameof(NoUpcomingGoogleEvents)); }
+    }
+
+    public bool HasGoogleCachedData
+    {
+        get => _hasGoogleCachedData;
+        private set { _hasGoogleCachedData = value; OnPropertyChanged(); OnPropertyChanged(nameof(ShowGoogleSignInPrompt)); }
+    }
+
+    public bool ShowGoogleSignInPrompt => !HasGoogleCachedData;
+    public bool HasUpcomingGoogleEvents => UpcomingGoogleEvents.Count > 0;
+    public bool NoUpcomingGoogleEvents => HasGoogleCachedData && UpcomingGoogleEvents.Count == 0;
+
+    public void LoadGoogleEvents()
+    {
+        HasGoogleCachedData = _googleCache.HasCachedData;
+
+        if (!HasGoogleCachedData)
+        {
+            UpcomingGoogleEvents = [];
+            return;
+        }
+
+        // All-day events for today + timed events in next 24h, deduplicated, top 5
+        var allDay = _googleCache.TodayEvents().Where(e => e.IsAllDay);
+        var timed = _googleCache.UpcomingEvents(24);
+
+        var seen = new HashSet<string>();
+        var merged = new List<GoogleCalendarEvent>();
+
+        foreach (var e in allDay)
+        {
+            if (seen.Add(e.Id))
+                merged.Add(e);
+        }
+        foreach (var e in timed)
+        {
+            if (seen.Add(e.Id))
+                merged.Add(e);
+        }
+
+        UpcomingGoogleEvents = merged.Take(5).ToList();
+    }
+
     // Navigation commands
     public void PreviousMonth()
     {
@@ -180,6 +243,8 @@ public sealed class CalendarViewModel : INotifyPropertyChanged
         OnPropertyChanged(nameof(TodayAdFormatted));
         OnPropertyChanged(nameof(TodayDayNp));
         OnPropertyChanged(nameof(CalendarDays));
+
+        LoadGoogleEvents();
     }
 
     private void OnMonthChanged()

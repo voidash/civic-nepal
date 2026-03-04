@@ -66,6 +66,50 @@
 
             <Separator DockPanel.Dock="Top"/>
 
+            <!-- Upcoming Google Calendar Events -->
+            <StackPanel DockPanel.Dock="Top" Margin="0,0,0,0">
+                <TextBlock Text="Upcoming" FontSize="11" FontWeight="SemiBold" Margin="12,8,12,4"
+                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+
+                <!-- Sign in prompt (no cached data) -->
+                <Button Content="Sign in via Nagarik Patro" Margin="12,0,12,8"
+                        Click="OpenApp_Click" Style="{StaticResource OpenAppButtonStyle}" Height="28" FontSize="11"
+                        Visibility="{Binding ShowGoogleSignInPrompt, Converter={StaticResource BoolToVisibility}}"/>
+
+                <!-- No upcoming events -->
+                <TextBlock Text="No upcoming events" FontSize="11" Margin="12,0,12,8"
+                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                           Visibility="{Binding NoUpcomingGoogleEvents, Converter={StaticResource BoolToVisibility}}"/>
+
+                <!-- Event list -->
+                <ItemsControl ItemsSource="{Binding UpcomingGoogleEvents}" Margin="8,0,8,8"
+                              Visibility="{Binding HasUpcomingGoogleEvents, Converter={StaticResource BoolToVisibility}}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,1" Padding="4,2" CornerRadius="4"
+                                    Background="{Binding ColorBrushLight}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column="0" Width="3" CornerRadius="1.5" Margin="0,2,6,2"
+                                            Background="{Binding ColorBrush}"/>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Title}" FontSize="11" FontWeight="Medium"
+                                                   TextTrimming="CharacterEllipsis"/>
+                                        <TextBlock Text="{Binding TimeDisplay}" FontSize="9"
+                                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+
+            <Separator DockPanel.Dock="Top"/>
+
             <!-- Open App Button -->
             <Button DockPanel.Dock="Bottom" Content="Open Nagarik Patro" Margin="8"
                     Click="OpenApp_Click" Style="{StaticResource OpenAppButtonStyle}"/>

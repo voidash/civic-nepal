@@ -230,6 +230,7 @@ public sealed class SystemTrayManager : IDisposable
     public void Dispose()
     {
         _midnightTimer?.Stop();
+        GoogleCalendarCache.Instance.Dispose();
         _notifyIcon.ContextMenuStrip?.Dispose();
         _notifyIcon.Visible = false;
         _notifyIcon.Dispose();

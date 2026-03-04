@@ -107,7 +107,7 @@ jobs:
       - name: Build installer
         shell: pwsh
         run: |
-          makensis /DAPP_VERSION=${{ steps.version.outputs.VERSION }} windows_app\installer.nsi
+          & "C:\Program Files (x86)\NSIS\makensis.exe" /DAPP_VERSION=${{ steps.version.outputs.VERSION }} windows_app\installer.nsi
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

@@ -3,71 +3,74 @@
 
     <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 
-    <!-- Navigation button (chevron ∧ ∨) -->
+    <!-- Navigation button (∧ ∨) — ControlTemplate uses TemplateBinding Background
+         so Style.Triggers can swap it via DynamicResource -->
     <Style x:Key="NavButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Foreground" Value="#9D9D9D"/>
+        <Setter Property="Foreground" Value="{DynamicResource NavButtonForeground}"/>
         <Setter Property="Width" Value="28"/>
         <Setter Property="Height" Value="28"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bg" Background="Transparent" CornerRadius="4">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="4">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bg" Property="Background" Value="#2D2D2D"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Bg" Property="Background" Value="#3D3D3D"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource NavButtonHoverBackground}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource NavButtonPressBackground}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <!-- Weekday header text -->
+    <!-- Weekday header -->
     <Style x:Key="WeekdayHeaderStyle" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="FontWeight" Value="Normal"/>
-        <Setter Property="Foreground" Value="#9D9D9D"/>
+        <Setter Property="Foreground" Value="{DynamicResource SecondaryTextBrush}"/>
     </Style>
 
-    <!-- Saturday weekday header (muted red for dark bg) -->
+    <!-- Saturday weekday header -->
     <Style x:Key="WeekdayHeaderSatStyle" TargetType="TextBlock"
            BasedOn="{StaticResource WeekdayHeaderStyle}">
-        <Setter Property="Foreground" Value="#F87171"/>
+        <Setter Property="Foreground" Value="{DynamicResource WeekdaySatForeground}"/>
     </Style>
 
-    <!-- Open App link-style button -->
+    <!-- Open App / Sign-in link button -->
     <Style x:Key="OpenAppButtonStyle" TargetType="Button">
         <Setter Property="Height" Value="32"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Foreground" Value="#0078D4"/>
+        <Setter Property="Foreground" Value="{DynamicResource OpenAppForeground}"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bg" Background="Transparent" CornerRadius="4" Padding="8,4">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="8,4">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bg" Property="Background" Value="#1A0078D4"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="Bg" Property="Background" Value="#260078D4"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource OpenAppHoverBackground}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource OpenAppPressBackground}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

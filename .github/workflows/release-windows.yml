@@ -90,10 +90,12 @@ jobs:
           $flutterOut = "flutter_app\build\windows\x64\runner\Release"
           $dest       = "publish\NagarikPatro"
           # Copy exe + all DLLs
-          Copy-Item "$flutterOut\*.exe" $dest
-          Copy-Item "$flutterOut\*.dll" $dest
-          # Copy data folder (assets, fonts, ICU, etc.)
-          Copy-Item "$flutterOut\data" $dest -Recurse
+          Copy-Item "$flutterOut\*.exe" $dest -Force
+          Copy-Item "$flutterOut\*.dll" $dest -Force
+          # Merge data folder (Flutter assets, fonts, ICU, etc.) — dest\data may already exist
+          $destData = "$dest\data"
+          if (!(Test-Path $destData)) { New-Item -ItemType Directory $destData | Out-Null }
+          Copy-Item "$flutterOut\data\*" $destData -Recurse -Force
 
       - name: Package as zip
         shell: pwsh

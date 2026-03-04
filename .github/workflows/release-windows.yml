@@ -53,7 +53,7 @@ jobs:
 
       - name: Build Flutter Windows app
         working-directory: flutter_app
-        run: flutter build windows --release
+        run: flutter build windows --release --verbose
 
       # -----------------------------------------------------------------------
       # WPF tray app (NagarikPatro.exe)

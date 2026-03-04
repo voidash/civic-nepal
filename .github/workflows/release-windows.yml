@@ -97,12 +97,17 @@ jobs:
           if (!(Test-Path $destData)) { New-Item -ItemType Directory $destData | Out-Null }
           Copy-Item "$flutterOut\data\*" $destData -Recurse -Force
 
-      - name: Package as zip
+      # -----------------------------------------------------------------------
+      # NSIS installer
+      # -----------------------------------------------------------------------
+
+      - name: Install NSIS
+        run: choco install nsis -y --no-progress
+
+      - name: Build installer
         shell: pwsh
         run: |
-          Compress-Archive `
-            -Path publish/NagarikPatro/* `
-            -DestinationPath NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip
+          makensis /DAPP_VERSION=${{ steps.version.outputs.VERSION }} windows_app\installer.nsi
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -112,19 +117,20 @@ jobs:
           body: |
             ## Nagarik Patro — Windows v${{ steps.version.outputs.VERSION }}
 
-            Includes the system tray widget **and** the full Nagarik Patro app bundled together.
+            Includes the system tray widget **and** the full Nagarik Patro app in one installer.
 
             ### Install
-            1. Download `NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip`
-            2. Extract to a permanent location (e.g. `C:\Programs\NagarikPatro\`)
-            3. Double-click `NagarikPatro.exe` — the tray icon appears immediately
+            1. Download `NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}-setup.exe`
+            2. Run the installer — no administrator rights needed
+            3. Nagarik Patro launches automatically after install
             4. Right-click the tray icon → **Launch at Login** to auto-start with Windows
-            5. Click the tray icon to open the calendar popup
-            6. Click **Open Nagarik Patro** in the popup to open the full app
+
+            ### Uninstall
+            Settings → Add or Remove Programs → Nagarik Patro → Uninstall
 
             ### Requirements
             - Windows 10 or 11 (x64)
             - No .NET or Flutter runtime needed — everything is bundled
           draft: false
           prerelease: false
-          files: NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip
+          files: NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}-setup.exe

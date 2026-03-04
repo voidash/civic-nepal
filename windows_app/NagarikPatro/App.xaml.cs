@@ -1,9 +1,6 @@
 using System.Windows;
 using NagarikPatro.Views;
 
-// Suppress WinForms Application so it doesn't conflict with System.Windows.Application.
-using Application = System.Windows.Application;
-
 namespace NagarikPatro;
 
 public partial class App : Application

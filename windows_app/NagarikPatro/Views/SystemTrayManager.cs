@@ -30,7 +30,7 @@ public sealed class SystemTrayManager : IDisposable
     {
         _notifyIcon = new WinForms.NotifyIcon
         {
-            Icon = System.Drawing.SystemIcons.Application,
+            Icon = BuildTrayIcon(),
             Visible = true,
             Text = GetTooltipText(),
         };
@@ -256,13 +256,14 @@ public sealed class SystemTrayManager : IDisposable
         }
     }
 
+    private const string AppWebUrl = "https://voidash.github.io/civic-nepal/";
+
     private static void OpenFlutterApp()
     {
         try
         {
-            var appName = "nepal_civic.exe";
             var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var possiblePath = Path.Combine(localAppData, "NagarikPatro", appName);
+            var possiblePath = Path.Combine(localAppData, "NagarikPatro", "nepal_civic.exe");
 
             if (File.Exists(possiblePath))
             {
@@ -272,11 +273,45 @@ public sealed class SystemTrayManager : IDisposable
                     UseShellExecute = true,
                 });
             }
+            else
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = AppWebUrl,
+                    UseShellExecute = true,
+                });
+            }
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Failed to open Flutter app: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Failed to open Nagarik Patro: {ex.Message}");
         }
+    }
+
+    private static System.Drawing.Icon BuildTrayIcon()
+    {
+        var bmp = new System.Drawing.Bitmap(32, 32);
+        using var g = System.Drawing.Graphics.FromImage(bmp);
+        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+        // Blue circle background
+        using var bgBrush = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(0, 120, 212));
+        g.FillEllipse(bgBrush, 1, 1, 30, 30);
+
+        // White "न" centered
+        using var font = new System.Drawing.Font("Nirmala UI", 14f, System.Drawing.FontStyle.Bold);
+        using var textBrush = new System.Drawing.SolidBrush(System.Drawing.Color.White);
+        var sf = new System.Drawing.StringFormat
+        {
+            Alignment = System.Drawing.StringAlignment.Center,
+            LineAlignment = System.Drawing.StringAlignment.Center,
+        };
+        g.DrawString("न", font, textBrush, new System.Drawing.RectangleF(0, 0, 32, 32), sf);
+
+        var icon = System.Drawing.Icon.FromHandle(bmp.GetHicon());
+        bmp.Dispose();
+        return icon;
     }
 
     public void Dispose()

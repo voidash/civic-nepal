@@ -66,18 +66,16 @@ public partial class CalendarPopup : Window
             var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var possiblePath = Path.Combine(localAppData, "NagarikPatro", "nepal_civic.exe");
 
-            if (File.Exists(possiblePath))
+            var target = File.Exists(possiblePath) ? possiblePath : "https://voidash.github.io/civic-nepal/";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = possiblePath,
-                    UseShellExecute = true,
-                });
-            }
+                FileName = target,
+                UseShellExecute = true,
+            });
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Failed to open Flutter app: {ex.Message}");
+            System.Diagnostics.Debug.WriteLine($"Failed to open Nagarik Patro: {ex.Message}");
         }
     }
 

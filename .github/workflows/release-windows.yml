@@ -1,0 +1,89 @@
+name: Release Windows App
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. 1.0.1)'
+        required: true
+        default: '1.0.0'
+  push:
+    tags:
+      - 'windows-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Determine version
+        id: version
+        shell: pwsh
+        run: |
+          if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            $ver = "${{ github.event.inputs.version }}"
+          } else {
+            $ver = "${{ github.ref_name }}" -replace '^windows-v', ''
+          }
+          echo "VERSION=$ver" >> $env:GITHUB_OUTPUT
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore windows_app/NagarikPatro/NagarikPatro.csproj
+
+      - name: Publish self-contained single-file
+        shell: pwsh
+        run: |
+          dotnet publish windows_app/NagarikPatro/NagarikPatro.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -p:IncludeNativeLibrariesForSelfExtract=true `
+            -p:Version=${{ steps.version.outputs.VERSION }} `
+            -o publish/NagarikPatro
+
+      - name: Package as zip
+        shell: pwsh
+        run: |
+          Compress-Archive `
+            -Path publish/NagarikPatro/* `
+            -DestinationPath NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: windows-v${{ steps.version.outputs.VERSION }}
+          name: Nagarik Patro for Windows v${{ steps.version.outputs.VERSION }}
+          body: |
+            ## Nagarik Patro — Windows System Tray App
+
+            ### Install
+            1. Download `NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip`
+            2. Extract anywhere (e.g. `C:\Programs\NagarikPatro\`)
+            3. Double-click `NagarikPatro.exe` — it appears in your system tray
+            4. Right-click the tray icon → **Launch at Login** to auto-start with Windows
+
+            ### Requirements
+            - Windows 10 or 11 (x64)
+            - No .NET installation needed — runtime is bundled
+
+            ### Features
+            - Bikram Sambat calendar in the system tray
+            - Live Nepal time clock
+            - Bikram Sambat + AD date display
+            - Nepali holidays and auspicious days
+            - Google Calendar sync (requires Nagarik Patro Flutter app)
+          draft: false
+          prerelease: false
+          files: NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip

@@ -14,6 +14,13 @@
     <Description>Nepali Calendar system tray application</Description>
   </PropertyGroup>
 
+  <!-- Suppress ambiguous implicit using: UseWindowsForms adds global System.Windows.Forms
+       which conflicts with System.Windows.Application in WPF's App.xaml.cs.
+       SystemTrayManager uses WinForms via explicit alias so this is safe. -->
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+  </ItemGroup>
+
   <!-- Reference shared data files without copying into project source tree -->
   <ItemGroup>
     <Content Include="..\..\data\bs_calendar_data.json" Link="Data\bs_calendar_data.json">

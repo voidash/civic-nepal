@@ -1,8 +1,8 @@
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
 using NagarikPatro.Core;
 using NagarikPatro.Models;
 using NagarikPatro.ViewModels;
@@ -12,22 +12,48 @@ namespace NagarikPatro.Views;
 public partial class CalendarPopup : Window
 {
     private CalendarViewModel ViewModel => (CalendarViewModel)DataContext;
+    private DispatcherTimer? _clockTimer;
 
     public CalendarPopup()
     {
         InitializeComponent();
         Deactivated += (_, _) => Hide();
+        Closed += (_, _) => _clockTimer?.Stop();
+
         ViewModel.PropertyChanged += (_, e) =>
         {
-            if (e.PropertyName == nameof(CalendarViewModel.CalendarDays))
+            if (e.PropertyName is nameof(CalendarViewModel.CalendarDays)
+                                or nameof(CalendarViewModel.SelectedDay))
                 RenderCalendar();
         };
+
+        UpdateClock();
+        UpdateDateBlocks();
         RenderCalendar();
+
+        _clockTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) };
+        _clockTimer.Tick += (_, _) => UpdateClock();
+        _clockTimer.Start();
     }
 
     public void RefreshToday()
     {
         ViewModel.RefreshToday();
+        UpdateDateBlocks();
+    }
+
+    private void UpdateClock()
+    {
+        var nepalNow = DateTimeOffset.UtcNow.ToOffset(BsDateConverter.NepalUtcOffset);
+        ClockTextBlock.Text = nepalNow.ToString("h:mm:ss tt");
+    }
+
+    private void UpdateDateBlocks()
+    {
+        var today = BsDateConverter.Today();
+        var todayAd = BsDateConverter.BsToAd(today);
+        AdDateBlock.Text = todayAd.ToString("dddd, MMMM d, yyyy");
+        BsDateBlock.Text = NepaliDateFormatter.FormatNp(today);
     }
 
     private void PreviousMonth_Click(object sender, RoutedEventArgs e) => ViewModel.PreviousMonth();
@@ -37,9 +63,8 @@ public partial class CalendarPopup : Window
     {
         try
         {
-            var appName = "nepal_civic.exe";
             var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var possiblePath = Path.Combine(localAppData, "NagarikPatro", appName);
+            var possiblePath = Path.Combine(localAppData, "NagarikPatro", "nepal_civic.exe");
 
             if (File.Exists(possiblePath))
             {
@@ -63,19 +88,12 @@ public partial class CalendarPopup : Window
         int offset = ViewModel.FirstDayOffset;
         var days = ViewModel.CalendarDays;
 
-        // Empty cells before first day
         for (int i = 0; i < offset; i++)
-        {
             CalendarGrid.Children.Add(CreateEmptyCell());
-        }
 
-        // Day cells
         foreach (var day in days)
-        {
             CalendarGrid.Children.Add(CreateDayCell(day));
-        }
 
-        // Fill remaining cells to complete the grid
         int totalCells = offset + days.Count;
         int remainder = totalCells % 7;
         if (remainder != 0)
@@ -85,42 +103,41 @@ public partial class CalendarPopup : Window
         }
     }
 
-    private static Border CreateEmptyCell()
-    {
-        return new Border
-        {
-            Height = 36,
-            BorderBrush = new SolidColorBrush(Color.FromArgb(30, 128, 128, 128)),
-            BorderThickness = new Thickness(0.5),
-        };
-    }
+    private static FrameworkElement CreateEmptyCell() => new Border { Height = 34 };
 
     private Border CreateDayCell(CalendarDay day)
     {
-        Color bgColor;
+        bool isSelected = ViewModel.SelectedDay == day.Day;
+
+        Brush bgBrush;
         Brush textBrush;
 
         if (day.IsToday)
         {
-            bgColor = Color.FromRgb(59, 130, 246); // Blue
+            bgBrush = new SolidColorBrush(Color.FromRgb(0, 120, 212));  // #0078D4
+            textBrush = Brushes.White;
+        }
+        else if (isSelected)
+        {
+            bgBrush = new SolidColorBrush(Color.FromArgb(60, 0, 120, 212));
             textBrush = Brushes.White;
         }
         else if (day.IsSaturday || day.IsHoliday)
         {
-            bgColor = Color.FromArgb(15, 239, 68, 68); // Light red
-            textBrush = new SolidColorBrush(Color.FromRgb(185, 28, 28));
+            bgBrush = Brushes.Transparent;
+            textBrush = new SolidColorBrush(Color.FromRgb(248, 113, 113));  // #F87171
         }
         else
         {
-            bgColor = Colors.Transparent;
-            textBrush = SystemColors.WindowTextBrush;
+            bgBrush = Brushes.Transparent;
+            textBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
         }
 
         var textBlock = new TextBlock
         {
             Text = NepaliDateFormatter.ToNepaliNumeral(day.Day),
-            FontSize = 14,
-            FontWeight = day.IsToday ? FontWeights.Bold : FontWeights.Medium,
+            FontSize = 13,
+            FontWeight = day.IsToday ? FontWeights.SemiBold : FontWeights.Normal,
             Foreground = textBrush,
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
@@ -130,7 +147,6 @@ public partial class CalendarPopup : Window
         var grid = new Grid();
         grid.Children.Add(textBlock);
 
-        // Event/auspicious dots
         if (!day.IsToday && (day.HasEvents || day.HasAuspicious))
         {
             var dotPanel = new StackPanel
@@ -138,16 +154,16 @@ public partial class CalendarPopup : Window
                 Orientation = Orientation.Horizontal,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Bottom,
-                Margin = new Thickness(0, 0, 0, 3),
+                Margin = new Thickness(0, 0, 0, 2),
             };
 
             if (day.HasEvents)
             {
                 dotPanel.Children.Add(new System.Windows.Shapes.Ellipse
                 {
-                    Width = 4, Height = 4,
+                    Width = 3, Height = 3,
                     Fill = day.IsHoliday
-                        ? new SolidColorBrush(Colors.Red)
+                        ? new SolidColorBrush(Color.FromRgb(248, 113, 113))
                         : new SolidColorBrush(Colors.Orange),
                     Margin = new Thickness(1, 0, 1, 0),
                 });
@@ -157,8 +173,8 @@ public partial class CalendarPopup : Window
             {
                 dotPanel.Children.Add(new System.Windows.Shapes.Ellipse
                 {
-                    Width = 4, Height = 4,
-                    Fill = new SolidColorBrush(Colors.Green),
+                    Width = 3, Height = 3,
+                    Fill = new SolidColorBrush(Color.FromRgb(74, 222, 128)),  // green
                     Margin = new Thickness(1, 0, 1, 0),
                 });
             }
@@ -168,15 +184,20 @@ public partial class CalendarPopup : Window
 
         var border = new Border
         {
-            Height = 36,
-            Background = new SolidColorBrush(bgColor),
-            BorderBrush = day.IsToday
-                ? new SolidColorBrush(Color.FromRgb(59, 130, 246))
-                : new SolidColorBrush(Color.FromArgb(30, 128, 128, 128)),
-            BorderThickness = new Thickness(day.IsToday ? 1.5 : 0.5),
+            Height = 34,
+            Background = bgBrush,
+            CornerRadius = new CornerRadius(4),
             Child = grid,
             Cursor = Cursors.Hand,
         };
+
+        if (!day.IsToday && !isSelected)
+        {
+            border.MouseEnter += (_, _) =>
+                border.Background = new SolidColorBrush(Color.FromArgb(30, 255, 255, 255));
+            border.MouseLeave += (_, _) =>
+                border.Background = bgBrush;
+        }
 
         int dayNum = day.Day;
         border.MouseLeftButtonDown += (_, _) => ViewModel.SelectDay(dayNum);

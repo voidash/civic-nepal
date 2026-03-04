@@ -3,25 +3,27 @@
 
     <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
 
-    <!-- Navigation button (chevron arrows) -->
+    <!-- Navigation button (chevron ∧ ∨) -->
     <Style x:Key="NavButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Width" Value="32"/>
-        <Setter Property="Height" Value="32"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#9D9D9D"/>
+        <Setter Property="Width" Value="28"/>
+        <Setter Property="Height" Value="28"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="{TemplateBinding Background}"
-                            CornerRadius="4" Padding="4">
-                        <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
+                    <Border x:Name="Bg" Background="Transparent" CornerRadius="4">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#10000000"/>
+                            <Setter TargetName="Bg" Property="Background" Value="#2D2D2D"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Bg" Property="Background" Value="#3D3D3D"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -33,32 +35,34 @@
     <Style x:Key="WeekdayHeaderStyle" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="#9D9D9D"/>
     </Style>
 
-    <!-- Saturday weekday header (red text) -->
+    <!-- Saturday weekday header (muted red for dark bg) -->
     <Style x:Key="WeekdayHeaderSatStyle" TargetType="TextBlock"
            BasedOn="{StaticResource WeekdayHeaderStyle}">
-        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="Foreground" Value="#F87171"/>
     </Style>
 
-    <!-- Open App button -->
+    <!-- Open App link-style button -->
     <Style x:Key="OpenAppButtonStyle" TargetType="Button">
-        <Setter Property="Height" Value="36"/>
-        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="#0078D4"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Background="Transparent"
-                            BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
-                            BorderThickness="1" CornerRadius="4" Padding="8,4">
-                        <ContentPresenter HorizontalAlignment="Center"
-                                          VerticalAlignment="Center"/>
+                    <Border x:Name="Bg" Background="Transparent" CornerRadius="4" Padding="8,4">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" Value="0.8"/>
+                            <Setter TargetName="Bg" Property="Background" Value="#1A0078D4"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Bg" Property="Background" Value="#260078D4"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

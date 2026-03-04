@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Threading;
+using Microsoft.Win32;
 using NagarikPatro.Core;
 using WinForms = System.Windows.Forms;
 
@@ -23,6 +24,7 @@ public sealed class SystemTrayManager : IDisposable
     private WinForms.ToolStripMenuItem? _nepaliLangItem;
     private WinForms.ToolStripMenuItem? _englishLangItem;
     private WinForms.ToolStripMenuItem? _showYearItem;
+    private WinForms.ToolStripMenuItem? _launchAtLoginItem;
 
     public SystemTrayManager()
     {
@@ -85,6 +87,13 @@ public sealed class SystemTrayManager : IDisposable
         };
         _showYearItem.Click += (_, _) => ToggleShowYear();
         menu.Items.Add(_showYearItem);
+
+        _launchAtLoginItem = new WinForms.ToolStripMenuItem("Launch at Login")
+        {
+            Checked = IsLaunchAtLoginEnabled(),
+        };
+        _launchAtLoginItem.Click += (_, _) => ToggleLaunchAtLogin();
+        menu.Items.Add(_launchAtLoginItem);
 
         menu.Items.Add(new WinForms.ToolStripSeparator());
 
@@ -202,6 +211,49 @@ public sealed class SystemTrayManager : IDisposable
             ScheduleMidnightRefresh();
         };
         _midnightTimer.Start();
+    }
+
+    private static bool IsLaunchAtLoginEnabled()
+    {
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+            return key?.GetValue("NagarikPatro") != null;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Registry read error: {ex.Message}");
+            return false;
+        }
+    }
+
+    private void ToggleLaunchAtLogin()
+    {
+        bool enable = !IsLaunchAtLoginEnabled();
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", writable: true);
+            if (key == null) return;
+
+            if (enable)
+            {
+                var exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName;
+                if (exePath != null)
+                    key.SetValue("NagarikPatro", exePath);
+            }
+            else
+            {
+                key.DeleteValue("NagarikPatro", throwOnMissingValue: false);
+            }
+
+            if (_launchAtLoginItem != null)
+                _launchAtLoginItem.Checked = enable;
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Registry write error: {ex.Message}");
+        }
     }
 
     private static void OpenFlutterApp()

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:NagarikPatro.ViewModels"
         Title="Nagarik Patro"
-        Width="340" Height="460"
+        Width="320" Height="490"
         WindowStyle="None"
         AllowsTransparency="True"
         Topmost="True"
@@ -15,78 +15,75 @@
         <vm:CalendarViewModel/>
     </Window.DataContext>
 
-    <Border CornerRadius="8" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
-            BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
+    <Border CornerRadius="8" Background="#1F1F1F">
         <DockPanel>
-            <!-- Month Navigation Header -->
-            <Border DockPanel.Dock="Top" Padding="8" Background="#0A3B82F6">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="32"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="32"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="◀" Click="PreviousMonth_Click"
-                            Style="{StaticResource NavButtonStyle}"/>
-                    <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding MonthHeaderNp}" FontWeight="Bold" FontSize="14"
-                                   HorizontalAlignment="Center" FontFamily="Nirmala UI"/>
-                        <TextBlock Text="{Binding MonthHeaderEn}" FontSize="11"
-                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
-                                   HorizontalAlignment="Center"/>
-                    </StackPanel>
-                    <Button Grid.Column="2" Content="▶" Click="NextMonth_Click"
-                            Style="{StaticResource NavButtonStyle}"/>
-                </Grid>
-            </Border>
 
-            <Separator DockPanel.Dock="Top"/>
-
-            <!-- Today Card -->
-            <Border DockPanel.Dock="Top" Padding="12" Background="#08000000">
-                <StackPanel Orientation="Horizontal">
-                    <Border Width="48" Height="48" CornerRadius="8" Background="#3B82F6">
-                        <TextBlock Text="{Binding TodayDayNp}" FontSize="20" FontWeight="Bold"
-                                   Foreground="White" HorizontalAlignment="Center"
-                                   VerticalAlignment="Center" FontFamily="Nirmala UI"/>
-                    </Border>
-                    <StackPanel Margin="12,0,0,0" VerticalAlignment="Center">
-                        <TextBlock FontSize="13" FontWeight="SemiBold" FontFamily="Nirmala UI">
-                            <Run Text="आज: "/><Run Text="{Binding TodayNpFormatted, Mode=OneWay}"/>
-                        </TextBlock>
-                        <TextBlock FontSize="11"
-                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}">
-                            <Run Text="{Binding TodayWeekdayNp, Mode=OneWay}"/>
-                            <Run Text=" • "/>
-                            <Run Text="{Binding TodayAdFormatted, Mode=OneWay}"/>
-                        </TextBlock>
-                    </StackPanel>
+            <!-- Live Clock + Date Header -->
+            <Border DockPanel.Dock="Top" Padding="20,16,20,12">
+                <StackPanel>
+                    <TextBlock x:Name="ClockTextBlock"
+                               FontFamily="Segoe UI Variable Display, Segoe UI Light, Segoe UI"
+                               FontSize="40" FontWeight="Light" Foreground="White"/>
+                    <TextBlock x:Name="AdDateBlock"
+                               FontFamily="Segoe UI Variable, Segoe UI"
+                               FontSize="13" Foreground="#0078D4" Margin="0,2,0,0"/>
+                    <TextBlock x:Name="BsDateBlock"
+                               FontFamily="Nirmala UI" FontSize="12"
+                               Foreground="#9D9D9D" Margin="0,2,0,0"/>
                 </StackPanel>
             </Border>
 
-            <Separator DockPanel.Dock="Top"/>
+            <Border DockPanel.Dock="Top" Height="1" Background="#3D3D3D"/>
 
-            <!-- Upcoming Google Calendar Events -->
-            <StackPanel DockPanel.Dock="Top" Margin="0,0,0,0">
+            <!-- Month Navigation -->
+            <Border DockPanel.Dock="Top" Padding="12,8,8,8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding MonthHeaderNp}" FontFamily="Nirmala UI"
+                                   FontSize="14" FontWeight="SemiBold" Foreground="White"/>
+                        <TextBlock Text="{Binding MonthHeaderEn}" FontSize="11" Foreground="#9D9D9D"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Content="∧" Click="PreviousMonth_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                        <Button Content="∨" Click="NextMonth_Click"
+                                Style="{StaticResource NavButtonStyle}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Open App (bottom) -->
+            <Button DockPanel.Dock="Bottom" Content="Open Nagarik Patro" Margin="12,6,12,8"
+                    Click="OpenApp_Click" Style="{StaticResource OpenAppButtonStyle}"/>
+
+            <Border DockPanel.Dock="Bottom" Height="1" Background="#3D3D3D"/>
+
+            <!-- Upcoming Google Calendar Events (bottom) -->
+            <StackPanel DockPanel.Dock="Bottom" MaxHeight="120">
                 <TextBlock Text="Upcoming" FontSize="11" FontWeight="SemiBold" Margin="12,8,12,4"
-                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                           Foreground="#9D9D9D"/>
 
                 <!-- Sign in prompt (no cached data) -->
-                <Button Content="Sign in via Nagarik Patro" Margin="12,0,12,8"
-                        Click="OpenApp_Click" Style="{StaticResource OpenAppButtonStyle}" Height="28" FontSize="11"
+                <Button Content="Sign in via Nagarik Patro" Margin="12,0,12,6"
+                        Click="OpenApp_Click" Style="{StaticResource OpenAppButtonStyle}"
+                        Height="26" FontSize="11"
                         Visibility="{Binding ShowGoogleSignInPrompt, Converter={StaticResource BoolToVisibility}}"/>
 
                 <!-- No upcoming events -->
                 <TextBlock Text="No upcoming events" FontSize="11" Margin="12,0,12,8"
-                           Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"
+                           Foreground="#9D9D9D"
                            Visibility="{Binding NoUpcomingGoogleEvents, Converter={StaticResource BoolToVisibility}}"/>
 
                 <!-- Event list -->
-                <ItemsControl ItemsSource="{Binding UpcomingGoogleEvents}" Margin="8,0,8,8"
+                <ItemsControl ItemsSource="{Binding UpcomingGoogleEvents}" Margin="8,0,8,6"
                               Visibility="{Binding HasUpcomingGoogleEvents, Converter={StaticResource BoolToVisibility}}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Margin="0,1" Padding="4,2" CornerRadius="4"
+                            <Border Margin="0,1" Padding="4,3" CornerRadius="4"
                                     Background="{Binding ColorBrushLight}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -97,9 +94,9 @@
                                             Background="{Binding ColorBrush}"/>
                                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                         <TextBlock Text="{Binding Title}" FontSize="11" FontWeight="Medium"
-                                                   TextTrimming="CharacterEllipsis"/>
+                                                   Foreground="White" TextTrimming="CharacterEllipsis"/>
                                         <TextBlock Text="{Binding TimeDisplay}" FontSize="9"
-                                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                                   Foreground="#9D9D9D"/>
                                     </StackPanel>
                                 </Grid>
                             </Border>
@@ -108,54 +105,49 @@
                 </ItemsControl>
             </StackPanel>
 
-            <Separator DockPanel.Dock="Top"/>
+            <Border DockPanel.Dock="Bottom" Height="1" Background="#3D3D3D"/>
 
-            <!-- Open App Button -->
-            <Button DockPanel.Dock="Bottom" Content="Open Nagarik Patro" Margin="8"
-                    Click="OpenApp_Click" Style="{StaticResource OpenAppButtonStyle}"/>
-
-            <Separator DockPanel.Dock="Bottom"/>
-
-            <!-- Calendar Grid -->
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <!-- Calendar Grid (fills remaining space) -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Background="Transparent">
                 <StackPanel>
                     <!-- Weekday Headers -->
-                    <UniformGrid Rows="1" Columns="7" Margin="0,6,0,6">
-                        <TextBlock Text="आ" Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
+                    <UniformGrid Rows="1" Columns="7" Margin="12,6,12,2">
+                        <TextBlock Text="आ"  Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
                         <TextBlock Text="सो" Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
                         <TextBlock Text="मं" Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
                         <TextBlock Text="बु" Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
                         <TextBlock Text="बि" Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
                         <TextBlock Text="शु" Style="{StaticResource WeekdayHeaderStyle}" FontFamily="Nirmala UI"/>
-                        <TextBlock Text="श" Style="{StaticResource WeekdayHeaderSatStyle}" FontFamily="Nirmala UI"/>
+                        <TextBlock Text="श"  Style="{StaticResource WeekdayHeaderSatStyle}" FontFamily="Nirmala UI"/>
                     </UniformGrid>
 
-                    <!-- Calendar days are rendered in code-behind using UniformGrid -->
-                    <UniformGrid x:Name="CalendarGrid" Columns="7"/>
+                    <!-- Calendar days rendered in code-behind -->
+                    <UniformGrid x:Name="CalendarGrid" Columns="7" Margin="12,0,12,4"/>
 
                     <!-- Selected Day Events -->
-                    <ItemsControl x:Name="EventsList" Margin="12,8"
+                    <ItemsControl x:Name="EventsList" Margin="12,4,12,8"
                                   ItemsSource="{Binding SelectedDayEvents}"
                                   Visibility="{Binding HasSelectedDayContent, Converter={StaticResource BoolToVisibility}}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Margin="0,2">
-                                    <Ellipse Width="6" Height="6" Margin="0,4,6,0" VerticalAlignment="Top">
+                                    <Ellipse Width="5" Height="5" Margin="0,4,6,0" VerticalAlignment="Top">
                                         <Ellipse.Style>
                                             <Style TargetType="Ellipse">
                                                 <Setter Property="Fill" Value="Orange"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IsHoliday}" Value="True">
-                                                        <Setter Property="Fill" Value="Red"/>
+                                                        <Setter Property="Fill" Value="#F87171"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Ellipse.Style>
                                     </Ellipse>
                                     <StackPanel>
-                                        <TextBlock Text="{Binding EventNp}" FontSize="12" FontFamily="Nirmala UI"/>
+                                        <TextBlock Text="{Binding EventNp}" FontSize="12"
+                                                   Foreground="White" FontFamily="Nirmala UI"/>
                                         <TextBlock Text="{Binding EventEn}" FontSize="10"
-                                                   Foreground="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                                   Foreground="#9D9D9D"/>
                                     </StackPanel>
                                 </StackPanel>
                             </DataTemplate>
@@ -163,6 +155,7 @@
                     </ItemsControl>
                 </StackPanel>
             </ScrollViewer>
+
         </DockPanel>
     </Border>
 </Window>

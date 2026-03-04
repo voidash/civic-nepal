@@ -1,10 +1,12 @@
+using System.Windows;
 using NagarikPatro.Views;
+
+// Suppress WinForms Application so it doesn't conflict with System.Windows.Application.
+using Application = System.Windows.Application;
 
 namespace NagarikPatro;
 
-// Qualify explicitly: UseWindowsForms implicit using adds System.Windows.Forms.Application
-// which would otherwise be ambiguous with System.Windows.Application (WPF).
-public partial class App : System.Windows.Application
+public partial class App : Application
 {
     private SystemTrayManager? _trayManager;
 

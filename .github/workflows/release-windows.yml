@@ -33,15 +33,41 @@ jobs:
           }
           echo "VERSION=$ver" >> $env:GITHUB_OUTPUT
 
+      # -----------------------------------------------------------------------
+      # Flutter app (nagarik_calendar.exe)
+      # -----------------------------------------------------------------------
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Flutter pub get
+        working-directory: flutter_app
+        run: flutter pub get
+
+      - name: Generate code (Riverpod / Freezed)
+        working-directory: flutter_app
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: Build Flutter Windows app
+        working-directory: flutter_app
+        run: flutter build windows --release
+
+      # -----------------------------------------------------------------------
+      # WPF tray app (NagarikPatro.exe)
+      # -----------------------------------------------------------------------
+
       - name: Setup .NET 8
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
 
-      - name: Restore dependencies
+      - name: Restore WPF dependencies
         run: dotnet restore windows_app/NagarikPatro/NagarikPatro.csproj
 
-      - name: Publish self-contained single-file
+      - name: Publish WPF tray app (self-contained single-file)
         shell: pwsh
         run: |
           dotnet publish windows_app/NagarikPatro/NagarikPatro.csproj `
@@ -52,6 +78,22 @@ jobs:
             -p:IncludeNativeLibrariesForSelfExtract=true `
             -p:Version=${{ steps.version.outputs.VERSION }} `
             -o publish/NagarikPatro
+
+      # -----------------------------------------------------------------------
+      # Bundle: copy Flutter output into the same folder as the tray app
+      # The tray app's FindFlutterApp() checks AppContext.BaseDirectory first.
+      # -----------------------------------------------------------------------
+
+      - name: Bundle Flutter output with tray app
+        shell: pwsh
+        run: |
+          $flutterOut = "flutter_app\build\windows\x64\runner\Release"
+          $dest       = "publish\NagarikPatro"
+          # Copy exe + all DLLs
+          Copy-Item "$flutterOut\*.exe" $dest
+          Copy-Item "$flutterOut\*.dll" $dest
+          # Copy data folder (assets, fonts, ICU, etc.)
+          Copy-Item "$flutterOut\data" $dest -Recurse
 
       - name: Package as zip
         shell: pwsh
@@ -66,24 +108,21 @@ jobs:
           tag_name: windows-v${{ steps.version.outputs.VERSION }}
           name: Nagarik Patro for Windows v${{ steps.version.outputs.VERSION }}
           body: |
-            ## Nagarik Patro — Windows System Tray App
+            ## Nagarik Patro — Windows v${{ steps.version.outputs.VERSION }}
+
+            Includes the system tray widget **and** the full Nagarik Patro app bundled together.
 
             ### Install
             1. Download `NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip`
-            2. Extract anywhere (e.g. `C:\Programs\NagarikPatro\`)
-            3. Double-click `NagarikPatro.exe` — it appears in your system tray
+            2. Extract to a permanent location (e.g. `C:\Programs\NagarikPatro\`)
+            3. Double-click `NagarikPatro.exe` — the tray icon appears immediately
             4. Right-click the tray icon → **Launch at Login** to auto-start with Windows
+            5. Click the tray icon to open the calendar popup
+            6. Click **Open Nagarik Patro** in the popup to open the full app
 
             ### Requirements
             - Windows 10 or 11 (x64)
-            - No .NET installation needed — runtime is bundled
-
-            ### Features
-            - Bikram Sambat calendar in the system tray
-            - Live Nepal time clock
-            - Bikram Sambat + AD date display
-            - Nepali holidays and auspicious days
-            - Google Calendar sync (requires Nagarik Patro Flutter app)
+            - No .NET or Flutter runtime needed — everything is bundled
           draft: false
           prerelease: false
           files: NagarikPatro-windows-x64-v${{ steps.version.outputs.VERSION }}.zip

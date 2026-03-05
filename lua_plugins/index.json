@@ -1,0 +1,42 @@
+{
+  "id": "nagarik-default",
+  "name": "NagarikPatro Built-in Plugins",
+  "description": "Default plugins shipped with the constitution-of-nepal repo",
+  "version": 1,
+  "author": "voidash",
+  "plugins": [
+    {
+      "id": "hello_startup",
+      "name": "Hello Startup",
+      "description": "Logs a timestamped greeting to confirm the Lua engine loaded correctly. Safe to disable.",
+      "version": "1.0.0",
+      "type": "startup",
+      "entryPoint": "main",
+      "scriptUrl": "https://nagarikpatro.xyz/lua_plugins/plugins/hello_startup.lua",
+      "author": "voidash",
+      "requiresNetwork": false
+    },
+    {
+      "id": "nepali_holidays",
+      "name": "Nepali Public Holidays",
+      "description": "Injects fixed Nepali public holidays into the calendar view",
+      "version": "1.0.0",
+      "type": "calendar_inject",
+      "entryPoint": "get_events",
+      "scriptUrl": "https://nagarikpatro.xyz/lua_plugins/plugins/nepali_holidays.lua",
+      "author": "voidash",
+      "requiresNetwork": false
+    },
+    {
+      "id": "civic_tip",
+      "name": "Daily Civic Tip",
+      "description": "Displays a rotating daily tip about civic rights, government services, and emergency contacts",
+      "version": "1.0.0",
+      "type": "markdown_panel",
+      "entryPoint": "get_content",
+      "scriptUrl": "https://nagarikpatro.xyz/lua_plugins/plugins/civic_tip.lua",
+      "author": "voidash",
+      "requiresNetwork": false
+    }
+  ]
+}

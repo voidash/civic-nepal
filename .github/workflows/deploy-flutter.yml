@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'flutter_app/**'
+      - 'lua_plugins/**'
       - '.github/workflows/deploy-flutter.yml'
   workflow_dispatch:
 
@@ -57,6 +58,8 @@ jobs:
           cp dictionary.json _site/cons/ 2>/dev/null || true
           cp per-sentence.json _site/cons/ 2>/dev/null || true
           cp districts.json _site/cons/ 2>/dev/null || true
+          # Lua plugin repo at /lua_plugins/
+          cp -r lua_plugins _site/lua_plugins
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

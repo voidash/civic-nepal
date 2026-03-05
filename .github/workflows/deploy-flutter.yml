@@ -40,16 +40,24 @@ jobs:
         run: dart run build_runner build --delete-conflicting-outputs
 
       - name: Build web
+        id: flutter_build
         working-directory: flutter_app
+        continue-on-error: true
         run: flutter build web --release --base-href /
 
       - name: Prepare deployment
         run: |
           mkdir -p _site
-          # Flutter app at root
-          cp -r flutter_app/build/web/* _site/
-          # Copy index.html to 404.html for GitHub Pages SPA routing
-          cp _site/index.html _site/404.html
+
+          # Flutter app at root (only if build succeeded)
+          if [ -d flutter_app/build/web ]; then
+            cp -r flutter_app/build/web/* _site/
+            cp _site/index.html _site/404.html
+          else
+            echo "Flutter web build missing — deploying static files only"
+            echo "<html><body>Flutter web build failed. Static assets are available.</body></html>" > _site/index.html
+          fi
+
           # Static constitution site at /cons/
           mkdir -p _site/cons
           cp index.html _site/cons/
@@ -58,6 +66,7 @@ jobs:
           cp dictionary.json _site/cons/ 2>/dev/null || true
           cp per-sentence.json _site/cons/ 2>/dev/null || true
           cp districts.json _site/cons/ 2>/dev/null || true
+
           # Lua plugin repo at /lua_plugins/
           cp -r lua_plugins _site/lua_plugins
 

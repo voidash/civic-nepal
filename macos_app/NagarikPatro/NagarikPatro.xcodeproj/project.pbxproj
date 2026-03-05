@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		011DC97C1B092CF7C5769439 /* DayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE55A3191C6C0844DCB4FC52 /* DayCellView.swift */; };
 		060274307FB4C3B8F4FAFE60 /* NagarikPatroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0462AC4F77178569E44403B /* NagarikPatroApp.swift */; };
-		17F209D18BCDAD2F1D623480 /* TodayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E99E72ECAF63983C419F6E /* TodayCardView.swift */; };
-		230F04AE473A6D2A788BD215 /* MiniCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E71C64CF52E9F96D3E080 /* MiniCalendarView.swift */; };
 		4343BD23716E708C8FA47A2A /* MediumWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625D4B13C7D222EB96B384DF /* MediumWidgetView.swift */; };
 		4A8361F2C16DC4D2EF605C1E /* CalendarCore in Frameworks */ = {isa = PBXBuildFile; productRef = CAC09E7AB232844B110E4143 /* CalendarCore */; };
 		50EA8DD38DB6FA206BF7BB4C /* NagarikPatroWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52609520FC21F4A52AF758DE /* NagarikPatroWidgetBundle.swift */; };
@@ -18,16 +15,12 @@
 		6B748CE32D04CEE9E961165C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B76252BA798EF583204306 /* SwiftUI.framework */; };
 		7186604E59BB84BC5DCB8AF1 /* WidgetTimelineProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27370E25FE3AE395C0F218C3 /* WidgetTimelineProvider.swift */; };
 		729D624CD6A1E867FD5D06FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC980ADE7EAC9EBB2491D964 /* Assets.xcassets */; };
-		9526D274E3529D5311C05CC6 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6977A0AB4970D494E6E4D662 /* EventListView.swift */; };
 		9FFB94544FA72C3084DAAC69 /* SmallWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E378258E6D689B077AD659B /* SmallWidgetView.swift */; };
-		A482EEB833980487F5D42B62 /* MonthNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B96D0E0FFA007DBDA5E792 /* MonthNavigationView.swift */; };
 		A53EDFDFBFDF9D4D8A6E76F1 /* NagarikPatroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26184BAD981D88B750003E5 /* NagarikPatroTests.swift */; };
-		AAD391EA6E5AAED60F956770 /* PopoverContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6142FE64ED61A0CA8A87F2 /* PopoverContentView.swift */; };
 		C6F7B128BE6C8739289C2AD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4970C237817E1711A834FB53 /* AppDelegate.swift */; };
 		CD5A7D4C157EF03269F3BDA9 /* LargeWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A94056591EB2373ADBD717 /* LargeWidgetView.swift */; };
 		F8FBA95045B6901924849CE8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B7245DF66E3952C9FB8F698 /* WidgetKit.framework */; };
 		FD1FC04AC7268A55861F5FC9 /* NagarikPatroWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7476F0F473E8C8CD51849B77 /* NagarikPatroWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FD4B2B70ABEF54E4D9C266C6 /* UpcomingEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0685DA39434135D81F64459 /* UpcomingEventsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,28 +59,21 @@
 		05A94056591EB2373ADBD717 /* LargeWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeWidgetView.swift; sourceTree = "<group>"; };
 		27370E25FE3AE395C0F218C3 /* WidgetTimelineProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTimelineProvider.swift; sourceTree = "<group>"; };
 		2B7245DF66E3952C9FB8F698 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		45E99E72ECAF63983C419F6E /* TodayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCardView.swift; sourceTree = "<group>"; };
-		466E71C64CF52E9F96D3E080 /* MiniCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniCalendarView.swift; sourceTree = "<group>"; };
 		4970C237817E1711A834FB53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4F03B7E4D792CDCAD3A201F6 /* NagarikPatroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NagarikPatroTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52609520FC21F4A52AF758DE /* NagarikPatroWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NagarikPatroWidgetBundle.swift; sourceTree = "<group>"; };
-		56B96D0E0FFA007DBDA5E792 /* MonthNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthNavigationView.swift; sourceTree = "<group>"; };
 		625D4B13C7D222EB96B384DF /* MediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediumWidgetView.swift; sourceTree = "<group>"; };
-		6977A0AB4970D494E6E4D662 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		6E378258E6D689B077AD659B /* SmallWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallWidgetView.swift; sourceTree = "<group>"; };
 		7476F0F473E8C8CD51849B77 /* NagarikPatroWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NagarikPatroWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D219A1F565B5EE42BCB8DBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		934A9221C8D8C56B4C0FD965 /* CalendarCore */ = {isa = PBXFileReference; lastKnownFileType = folder; name = CalendarCore; path = CalendarCore; sourceTree = SOURCE_ROOT; };
-		AB6142FE64ED61A0CA8A87F2 /* PopoverContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverContentView.swift; sourceTree = "<group>"; };
 		B3B76252BA798EF583204306 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		C0462AC4F77178569E44403B /* NagarikPatroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NagarikPatroApp.swift; sourceTree = "<group>"; };
-		C0685DA39434135D81F64459 /* UpcomingEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingEventsView.swift; sourceTree = "<group>"; };
 		C1ED274C5D221D2A57B7E948 /* NagarikPatro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NagarikPatro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26184BAD981D88B750003E5 /* NagarikPatroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NagarikPatroTests.swift; sourceTree = "<group>"; };
 		F51CE5201D5713297D555262 /* NagarikPatroWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NagarikPatroWidget.entitlements; sourceTree = "<group>"; };
 		FC8F66D70A6FCA102BD6E571 /* NagarikPatro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NagarikPatro.entitlements; sourceTree = "<group>"; };
 		FC980ADE7EAC9EBB2491D964 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FE55A3191C6C0844DCB4FC52 /* DayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,13 +182,6 @@
 		E36772D9ADD7AB4B5FBD61AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE55A3191C6C0844DCB4FC52 /* DayCellView.swift */,
-				6977A0AB4970D494E6E4D662 /* EventListView.swift */,
-				466E71C64CF52E9F96D3E080 /* MiniCalendarView.swift */,
-				56B96D0E0FFA007DBDA5E792 /* MonthNavigationView.swift */,
-				AB6142FE64ED61A0CA8A87F2 /* PopoverContentView.swift */,
-				45E99E72ECAF63983C419F6E /* TodayCardView.swift */,
-				C0685DA39434135D81F64459 /* UpcomingEventsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -348,14 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6F7B128BE6C8739289C2AD5 /* AppDelegate.swift in Sources */,
-				011DC97C1B092CF7C5769439 /* DayCellView.swift in Sources */,
-				9526D274E3529D5311C05CC6 /* EventListView.swift in Sources */,
-				230F04AE473A6D2A788BD215 /* MiniCalendarView.swift in Sources */,
-				A482EEB833980487F5D42B62 /* MonthNavigationView.swift in Sources */,
 				060274307FB4C3B8F4FAFE60 /* NagarikPatroApp.swift in Sources */,
-				AAD391EA6E5AAED60F956770 /* PopoverContentView.swift in Sources */,
-				17F209D18BCDAD2F1D623480 /* TodayCardView.swift in Sources */,
-				FD4B2B70ABEF54E4D9C266C6 /* UpcomingEventsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

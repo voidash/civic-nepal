@@ -5,7 +5,8 @@ import ServiceManagement
 @main
 class AppDelegate: FlutterAppDelegate {
   override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-    return true
+    // Keep alive when the popup is hidden so the tray HTTP server keeps running.
+    return false
   }
 
   override func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
@@ -23,6 +24,20 @@ class AppDelegate: FlutterAppDelegate {
     }
 
     let controller = mainFlutterWindow?.contentViewController as! FlutterViewController
+
+    // Channel: toggle macOS Dock icon (hidden in popup mode, visible in full-app mode).
+    let appChannel = FlutterMethodChannel(name: "com.nagarikpatro/app",
+                                          binaryMessenger: controller.engine.binaryMessenger)
+    appChannel.setMethodCallHandler { (call, result) in
+      if call.method == "setActivationPolicy" {
+        let hidden = call.arguments as? Bool ?? true
+        NSApp.setActivationPolicy(hidden ? .accessory : .regular)
+        result(nil)
+      } else {
+        result(FlutterMethodNotImplemented)
+      }
+    }
+
     let channel = FlutterMethodChannel(name: "com.nagarikpatro/launch_at_login",
                                        binaryMessenger: controller.engine.binaryMessenger)
     channel.setMethodCallHandler { (call, result) in

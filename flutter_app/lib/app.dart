@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -28,12 +30,19 @@ import 'screens/emergency/earthquakes_screen.dart';
 import 'screens/emergency/contacts_screen.dart';
 import 'screens/emergency/resources_screen.dart';
 import 'screens/news/ronb_feed_screen.dart';
+import 'screens/tray_popup/tray_popup_screen.dart';
 import 'widgets/desktop_nav_shell.dart';
 
 part 'app.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
+
+// Exposed so PopupController can navigate without a BuildContext.
+GlobalKey<NavigatorState> get rootNavigatorKey => _rootNavigatorKey;
+
+bool get _isDesktop =>
+    !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
 
 @riverpod
 GoRouter router(RouterRef ref) {
@@ -42,6 +51,8 @@ GoRouter router(RouterRef ref) {
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
+    // On desktop the app starts hidden in popup mode; /tray-popup is the first route.
+    initialLocation: _isDesktop ? '/tray-popup' : '/home',
     redirect: (context, state) {
       final path = state.uri.path;
       final uri = state.uri;
@@ -49,6 +60,8 @@ GoRouter router(RouterRef ref) {
       if (uri.scheme == 'nepalcivic' && uri.host.isNotEmpty) {
         return '/${uri.host}${uri.path}';
       }
+      // Never redirect the tray popup route
+      if (path == '/tray-popup') return null;
       // Redirect root to /home
       if (path == '/' || path.isEmpty) {
         return '/home';
@@ -56,6 +69,11 @@ GoRouter router(RouterRef ref) {
       return null;
     },
     routes: [
+      // Tray popup — outside the shell so it gets no nav bar or app bar.
+      GoRoute(
+        path: '/tray-popup',
+        builder: (context, state) => const TrayPopupScreen(),
+      ),
       // ShellRoute wraps all main routes with persistent WebNavBar on desktop.
       // On mobile (< 600px), the shell passes through the child directly.
       ShellRoute(

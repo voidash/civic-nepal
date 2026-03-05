@@ -2,13 +2,19 @@ import AppKit
 import SwiftUI
 import CalendarCore
 
-/// Manages the NSStatusItem (menu bar icon) and NSPopover.
-/// Left-click: toggle popover. Right-click: context menu.
+/// Manages the NSStatusItem (menu bar icon).
+/// Left-click: toggle Flutter popup via HTTP (localhost:27182).
+/// Right-click: context menu.
+/// The macOS tray app no longer renders any calendar UI — Flutter owns the popup.
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
-    private var popover: NSPopover!
     private var midnightTimer: Timer?
-    private var eventMonitor: Any?
+
+    private let urlSession: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 3
+        return URLSession(configuration: config)
+    }()
 
     // MARK: - Settings Keys
 
@@ -49,7 +55,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         setupStatusItem()
-        setupPopover()
         scheduleMidnightRefresh()
 
         NSWorkspace.shared.notificationCenter.addObserver(
@@ -75,15 +80,42 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func handleStatusItemClick() {
         guard let event = NSApp.currentEvent else {
-            togglePopover()
+            toggleFlutterPopup()
             return
         }
 
         if event.type == .rightMouseUp {
             showContextMenu()
         } else {
-            togglePopover()
+            toggleFlutterPopup()
         }
+    }
+
+    // MARK: - Flutter Popup via HTTP
+
+    private func toggleFlutterPopup() {
+        postToTrayServer(path: "/popup/toggle") { [weak self] success in
+            if !success {
+                // Flutter not running — launch it, then retry.
+                self?.openFlutterApp()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self?.postToTrayServer(path: "/popup/toggle") { _ in }
+                }
+            }
+        }
+    }
+
+    private func postToTrayServer(path: String, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: "http://127.0.0.1:27182\(path)") else {
+            completion(false)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        urlSession.dataTask(with: request) { _, response, error in
+            let ok = error == nil && (response as? HTTPURLResponse)?.statusCode == 200
+            DispatchQueue.main.async { completion(ok) }
+        }.resume()
     }
 
     private func updateStatusBarTitle(_ button: NSStatusBarButton) {
@@ -147,8 +179,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         menu.addItem(.separator())
 
-        // Open Flutter app
-        let openItem = NSMenuItem(title: "Open Nagarik Patro", action: #selector(openFlutterApp), keyEquivalent: "o")
+        // Open Flutter app (full-app mode)
+        let openItem = NSMenuItem(title: "Open Nagarik Patro", action: #selector(openFullApp), keyEquivalent: "o")
         openItem.target = self
         menu.addItem(openItem)
 
@@ -183,7 +215,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    @objc private func openFlutterApp() {
+    @objc private func openFullApp() {
+        // Ask Flutter to switch to full-app mode via the tray server.
+        postToTrayServer(path: "/popup/open-app") { [weak self] success in
+            if !success {
+                // Flutter not running — launch it directly.
+                self?.openFlutterApp()
+            }
+        }
+    }
+
+    private func openFlutterApp() {
         // 1. Try bundle ID (works if Flutter app has been launched at least once)
         let bundleID = "com.nepal.constitution.nepalCivic"
         if let appURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: bundleID) {
@@ -229,42 +271,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.terminate(nil)
     }
 
-    // MARK: - Popover
-
-    private func setupPopover() {
-        popover = NSPopover()
-        popover.contentSize = NSSize(width: 340, height: 460)
-        popover.behavior = .transient
-        popover.animates = true
-        popover.contentViewController = NSHostingController(
-            rootView: PopoverContentView()
-        )
-    }
-
-    private func togglePopover() {
-        guard let button = statusItem.button else { return }
-
-        if popover.isShown {
-            closePopover()
-        } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-
-            eventMonitor = NSEvent.addGlobalMonitorForEvents(
-                matching: [.leftMouseDown, .rightMouseDown]
-            ) { [weak self] _ in
-                self?.closePopover()
-            }
-        }
-    }
-
-    private func closePopover() {
-        popover.performClose(nil)
-        if let monitor = eventMonitor {
-            NSEvent.removeMonitor(monitor)
-            eventMonitor = nil
-        }
-    }
-
     // MARK: - Midnight Refresh
 
     private func scheduleMidnightRefresh() {
@@ -291,9 +297,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             updateStatusBarTitle(button)
         }
-        popover.contentViewController = NSHostingController(
-            rootView: PopoverContentView()
-        )
         scheduleMidnightRefresh()
     }
 
@@ -301,9 +304,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             updateStatusBarTitle(button)
         }
-        popover.contentViewController = NSHostingController(
-            rootView: PopoverContentView()
-        )
         scheduleMidnightRefresh()
     }
 }

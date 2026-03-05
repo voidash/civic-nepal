@@ -93,7 +93,8 @@
       "Bash(# Send ''R'' for hot restart to the flutter process pgrep -f \"\"flutter_tools\"\" && echo \"\"R\"\")",
       "Bash(# Try corsproxy.io curl -s \"\"https://corsproxy.io/?http://www.seismonepal.gov.np/\"\")",
       "Bash(# Try different encoding or proxy curl -sL \"\"https://api.codetabs.com/v1/proxy?quest=http://www.seismonepal.gov.np/\"\")",
-      "WebFetch(domain:nagarikpatro.xyz)"
+      "WebFetch(domain:nagarikpatro.xyz)",
+      "Bash(git:*)"
     ]
   }
 }

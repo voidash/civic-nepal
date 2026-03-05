@@ -12,6 +12,8 @@ import 'providers/calendar_view_provider.dart';
 import 'services/notification_service.dart';
 import 'services/background_service.dart';
 import 'services/google_auth_service.dart';
+import 'services/popup_controller.dart';
+import 'services/tray_server.dart';
 import 'l10n/app_localizations.dart';
 
 /// Custom delegate that provides fallback for unsupported locales
@@ -66,6 +68,17 @@ void main() async {
   // GitHub Pages: 404.html serves as fallback for all routes
   if (kIsWeb) {
     usePathUrlStrategy();
+  }
+
+  // Desktop: initialise popup window management + tray HTTP server.
+  // The window starts hidden; the native tray app drives show/hide via HTTP.
+  final isDesktop =
+      !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
+  if (isDesktop) {
+    await PopupController.instance.initialize();
+    await TrayServer.start();
+    // Give PopupController access to the root navigator for route transitions.
+    PopupController.setNavigatorKey(rootNavigatorKey);
   }
 
   // Initialize Google Sign-In for Calendar integration

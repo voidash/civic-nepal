@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -269,54 +266,8 @@ Future<void> googleCalendarSync(Ref ref) async {
       calendarIds: enabledIds.isEmpty ? null : enabledIds,
     );
     merger.updateGoogleEvents(events);
-
-    // Write cache for native menubar app (macOS/Windows only, not web)
-    if (!kIsWeb && (Platform.isMacOS || Platform.isWindows)) {
-      _writeGoogleEventCache(events, auth.email);
-    }
   } catch (e) {
     // Silently fail — Nepali events still work
-  }
-}
-
-/// Writes Google Calendar events to a shared JSON file that the native
-/// menubar/tray app can read. Path: ~/Library/Application Support/NagarikPatro/
-Future<void> _writeGoogleEventCache(List<CalendarEvent> events, String? email) async {
-  try {
-    final String cacheDir;
-    if (Platform.isMacOS) {
-      cacheDir = '${Platform.environment['HOME']}/Library/Application Support/NagarikPatro';
-    } else {
-      // Windows: %APPDATA%\NagarikPatro
-      cacheDir = '${Platform.environment['APPDATA']}\\NagarikPatro';
-    }
-    final dir = Directory(cacheDir);
-    if (!dir.existsSync()) dir.createSync(recursive: true);
-
-    final googleEvents = events.where((e) => e.source == CalendarEventSource.google).toList();
-
-    final data = {
-      'lastSynced': DateTime.now().toUtc().toIso8601String(),
-      'userEmail': email,
-      'events': googleEvents.map((e) => {
-        'id': e.id,
-        'title': e.title,
-        'startTime': e.startTime.toUtc().toIso8601String(),
-        'endTime': e.endTime?.toUtc().toIso8601String(),
-        'isAllDay': e.isAllDay,
-        'calendarId': e.calendarId,
-        'colorHex': e.color != null
-            ? '#${(e.color!.value & 0xFFFFFF).toRadixString(16).padLeft(6, '0')}'
-            : '#4285F4',
-        'location': e.location,
-        'description': e.description,
-      }).toList(),
-    };
-
-    final file = File('$cacheDir/google_calendar_cache.json');
-    await file.writeAsString(jsonEncode(data));
-  } catch (_) {
-    // Cache write failure is non-critical
   }
 }
 

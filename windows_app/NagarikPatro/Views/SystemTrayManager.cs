@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Threading;
@@ -8,13 +10,14 @@ using WinForms = System.Windows.Forms;
 namespace NagarikPatro.Views;
 
 /// <summary>
-/// Manages the system tray NotifyIcon and popup window lifecycle.
-/// Left-click: toggle popup. Right-click: context menu with settings.
+/// Manages the system tray NotifyIcon.
+/// Left-click: toggle the Flutter popup via HTTP (localhost:27182).
+/// Right-click: context menu.
+/// The tray app no longer renders any calendar UI — Flutter owns the popup.
 /// </summary>
 public sealed class SystemTrayManager : IDisposable
 {
     private readonly WinForms.NotifyIcon _notifyIcon;
-    private CalendarPopup? _popup;
     private DispatcherTimer? _midnightTimer;
 
     // Context menu items that need live updates
@@ -24,6 +27,9 @@ public sealed class SystemTrayManager : IDisposable
     private WinForms.ToolStripMenuItem? _englishLangItem;
     private WinForms.ToolStripMenuItem? _showYearItem;
     private WinForms.ToolStripMenuItem? _launchAtLoginItem;
+
+    private static readonly HttpClient _http = new() { Timeout = TimeSpan.FromSeconds(3) };
+    private const string TrayServerBase = "http://127.0.0.1:27182";
 
     // Abbreviated Nepali month names for the tray icon header (3-char)
     private static readonly string[] MonthAbbrevNp =
@@ -41,11 +47,45 @@ public sealed class SystemTrayManager : IDisposable
             Text    = GetTooltipText(),
         };
 
-        _notifyIcon.MouseClick       += OnTrayClick;
-        _notifyIcon.ContextMenuStrip  = BuildContextMenu();
+        _notifyIcon.MouseClick      += OnTrayClick;
+        _notifyIcon.ContextMenuStrip = BuildContextMenu();
 
         ThemeManager.ThemeChanged += RebuildTrayIcon;
         ScheduleMidnightRefresh();
+    }
+
+    // -------------------------------------------------------------------------
+    // Tray click — toggle Flutter popup via HTTP
+    // -------------------------------------------------------------------------
+
+    private void OnTrayClick(object? sender, WinForms.MouseEventArgs e)
+    {
+        if (e.Button != WinForms.MouseButtons.Left) return;
+        _ = ToggleFlutterPopupAsync();
+    }
+
+    private async Task ToggleFlutterPopupAsync()
+    {
+        try
+        {
+            await _http.PostAsync($"{TrayServerBase}/popup/toggle", content: null);
+        }
+        catch (Exception)
+        {
+            // Flutter not running — launch it, then retry once it's ready.
+            LaunchFlutterApp();
+
+            await Task.Delay(3000);
+            try
+            {
+                await _http.PostAsync($"{TrayServerBase}/popup/toggle", content: null);
+            }
+            catch (Exception)
+            {
+                _notifyIcon.ShowBalloonTip(3000, "Nagarik Patro",
+                    "Starting Nagarik Patro…", WinForms.ToolTipIcon.Info);
+            }
+        }
     }
 
     // -------------------------------------------------------------------------
@@ -96,8 +136,12 @@ public sealed class SystemTrayManager : IDisposable
         menu.Items.Add(_launchAtLoginItem);
 
         menu.Items.Add(new WinForms.ToolStripSeparator());
-        menu.Items.Add("Open Nagarik Patro", null, (_, _) => OpenFlutterApp());
+
+        menu.Items.Add("Open Nagarik Patro", null, (_, _) =>
+            _ = OpenFullAppAsync());
+
         menu.Items.Add(new WinForms.ToolStripSeparator());
+
         menu.Items.Add("Quit", null, (_, _) =>
         {
             Dispose();
@@ -133,8 +177,8 @@ public sealed class SystemTrayManager : IDisposable
 
     private static string GetTooltipText()
     {
-        var today   = BsDateConverter.Today();
-        var lang    = AppSettings.MenuBarLanguage;
+        var today    = BsDateConverter.Today();
+        var lang     = AppSettings.MenuBarLanguage;
         var showYear = AppSettings.ShowYearInTooltip;
 
         return lang switch
@@ -151,90 +195,43 @@ public sealed class SystemTrayManager : IDisposable
     }
 
     // -------------------------------------------------------------------------
-    // Popup
+    // Open full app (expand Flutter window to full-app mode)
     // -------------------------------------------------------------------------
 
-    private void OnTrayClick(object? sender, WinForms.MouseEventArgs e)
+    private async Task OpenFullAppAsync()
     {
-        if (e.Button != WinForms.MouseButtons.Left) return;
-        TogglePopup();
-    }
-
-    private void TogglePopup()
-    {
-        if (_popup != null && _popup.IsVisible)
+        try
         {
-            _popup.Hide();
-            return;
+            await _http.PostAsync($"{TrayServerBase}/popup/open-app", content: null);
         }
-
-        _popup ??= new CalendarPopup(OpenFlutterApp);
-        PositionPopup();
-        _popup.Show();
-        _popup.Activate();
-    }
-
-    private void PositionPopup()
-    {
-        if (_popup == null) return;
-        var workArea = SystemParameters.WorkArea;
-        _popup.Left = workArea.Right  - _popup.Width  - 8;
-        _popup.Top  = workArea.Bottom - _popup.Height - 8;
-    }
-
-    // -------------------------------------------------------------------------
-    // Midnight refresh
-    // -------------------------------------------------------------------------
-
-    private void ScheduleMidnightRefresh()
-    {
-        _midnightTimer?.Stop();
-
-        var now         = DateTimeOffset.UtcNow;
-        var nepalNow    = now.ToOffset(BsDateConverter.NepalUtcOffset);
-        var nepalMidnight = new DateTimeOffset(
-            nepalNow.Year, nepalNow.Month, nepalNow.Day, 0, 0, 0,
-            BsDateConverter.NepalUtcOffset).AddDays(1);
-
-        var interval = nepalMidnight - now;
-        if (interval <= TimeSpan.Zero) interval = TimeSpan.FromMinutes(1);
-
-        _midnightTimer = new DispatcherTimer { Interval = interval };
-        _midnightTimer.Tick += (_, _) =>
+        catch (Exception)
         {
-            UpdateTooltip();
-            UpdateContextMenuDate();
-            RebuildTrayIcon();
-            _popup?.RefreshToday();
-            ScheduleMidnightRefresh();
-        };
-        _midnightTimer.Start();
+            LaunchFlutterApp();
+        }
     }
 
     // -------------------------------------------------------------------------
-    // Open Flutter app
+    // Launch Flutter app process
     // -------------------------------------------------------------------------
 
     private const string FlutterExeName = "nagarik_calendar.exe";
 
-    private void OpenFlutterApp()
+    private void LaunchFlutterApp()
     {
         var path = FindFlutterApp();
         if (path != null)
         {
             try
             {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                Process.Start(new ProcessStartInfo
                 {
-                    FileName       = path,
+                    FileName        = path,
                     UseShellExecute = true,
                 });
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Failed to launch Nagarik Patro: {ex.Message}");
-                _notifyIcon.ShowBalloonTip(3000, "Nagarik Patro",
-                    "Failed to launch the app.", WinForms.ToolTipIcon.Error);
+                Debug.WriteLine($"Failed to launch Nagarik Patro: {ex.Message}");
             }
         }
         else
@@ -246,14 +243,13 @@ public sealed class SystemTrayManager : IDisposable
 
     private static string? FindFlutterApp()
     {
-        // 1. Registry App Paths — set by MSIX/NSIS installers
         var fromRegistry = FindViaAppPaths();
         if (fromRegistry != null) return fromRegistry;
 
-        var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+        var localAppData    = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        var programFiles    = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
         var programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-        var exeDir       = AppContext.BaseDirectory;
+        var exeDir          = AppContext.BaseDirectory;
 
         string[] candidates =
         [
@@ -272,8 +268,6 @@ public sealed class SystemTrayManager : IDisposable
 
     private static string? FindViaAppPaths()
     {
-        // HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\<exe>
-        // and HKCU variant (user-level installs)
         string[] registryPaths =
         [
             $@"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\{FlutterExeName}",
@@ -287,17 +281,45 @@ public sealed class SystemTrayManager : IDisposable
                 try
                 {
                     using var key = hive.OpenSubKey(regPath);
-                    var value = key?.GetValue(null) as string; // default value = full path
+                    var value = key?.GetValue(null) as string;
                     if (value != null && File.Exists(value))
                         return value;
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"App Paths registry lookup failed: {ex.Message}");
+                    Debug.WriteLine($"App Paths registry lookup failed: {ex.Message}");
                 }
             }
         }
         return null;
+    }
+
+    // -------------------------------------------------------------------------
+    // Midnight refresh
+    // -------------------------------------------------------------------------
+
+    private void ScheduleMidnightRefresh()
+    {
+        _midnightTimer?.Stop();
+
+        var now           = DateTimeOffset.UtcNow;
+        var nepalNow      = now.ToOffset(BsDateConverter.NepalUtcOffset);
+        var nepalMidnight = new DateTimeOffset(
+            nepalNow.Year, nepalNow.Month, nepalNow.Day, 0, 0, 0,
+            BsDateConverter.NepalUtcOffset).AddDays(1);
+
+        var interval = nepalMidnight - now;
+        if (interval <= TimeSpan.Zero) interval = TimeSpan.FromMinutes(1);
+
+        _midnightTimer = new DispatcherTimer { Interval = interval };
+        _midnightTimer.Tick += (_, _) =>
+        {
+            UpdateTooltip();
+            UpdateContextMenuDate();
+            RebuildTrayIcon();
+            ScheduleMidnightRefresh();
+        };
+        _midnightTimer.Start();
     }
 
     // -------------------------------------------------------------------------
@@ -314,7 +336,7 @@ public sealed class SystemTrayManager : IDisposable
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Registry read error: {ex.Message}");
+            Debug.WriteLine($"Registry read error: {ex.Message}");
             return false;
         }
     }
@@ -330,7 +352,7 @@ public sealed class SystemTrayManager : IDisposable
 
             if (enable)
             {
-                var exePath = System.Diagnostics.Process.GetCurrentProcess().MainModule?.FileName;
+                var exePath = Process.GetCurrentProcess().MainModule?.FileName;
                 if (exePath != null) key.SetValue("NagarikPatro", exePath);
             }
             else
@@ -342,7 +364,7 @@ public sealed class SystemTrayManager : IDisposable
         }
         catch (Exception ex)
         {
-            System.Diagnostics.Debug.WriteLine($"Registry write error: {ex.Message}");
+            Debug.WriteLine($"Registry write error: {ex.Message}");
         }
     }
 
@@ -364,8 +386,6 @@ public sealed class SystemTrayManager : IDisposable
             ? MonthAbbrevNp[today.Month - 1] : "?";
         var dayNumeral = NepaliDateFormatter.ToNepaliNumeral(today.Day);
 
-        // Use a larger bitmap and let Windows scale it down — improves sharpness on 96 DPI.
-        // 64×64 rendered, exported as 32×32 icon via GetHicon.
         const int size = 64;
         var bmp = new System.Drawing.Bitmap(size, size);
         using var g = System.Drawing.Graphics.FromImage(bmp);
@@ -380,7 +400,6 @@ public sealed class SystemTrayManager : IDisposable
             FormatFlags   = System.Drawing.StringFormatFlags.NoWrap,
         };
 
-        // Foreground: white on dark taskbar, near-black on light taskbar.
         var fgColor = ThemeManager.IsLightTheme
             ? System.Drawing.Color.FromArgb(30, 30, 30)
             : System.Drawing.Color.White;
@@ -391,15 +410,11 @@ public sealed class SystemTrayManager : IDisposable
             dayNumeral.Length == 1 ? 38f : 28f,
             System.Drawing.FontStyle.Bold);
 
-        // Month abbreviation in top ~20px
         g.DrawString(monthAbbr, monthFont, fgBrush,
             new System.Drawing.RectangleF(0, 0, size, 22), sf);
-
-        // Day numeral fills the remaining space
         g.DrawString(dayNumeral, dayFont, fgBrush,
             new System.Drawing.RectangleF(0, 18, size, size - 18), sf);
 
-        // Scale down to 32×32 for the actual icon
         var icon32 = new System.Drawing.Bitmap(32, 32);
         using (var gs = System.Drawing.Graphics.FromImage(icon32))
         {
@@ -431,10 +446,8 @@ public sealed class SystemTrayManager : IDisposable
     {
         ThemeManager.ThemeChanged -= RebuildTrayIcon;
         _midnightTimer?.Stop();
-        GoogleCalendarCache.Instance.Dispose();
         _notifyIcon.ContextMenuStrip?.Dispose();
         _notifyIcon.Visible = false;
         _notifyIcon.Dispose();
-        _popup?.Close();
     }
 }

@@ -1,5 +1,3 @@
-import 'dart:io' show Process;
-
 import 'package:flutter/foundation.dart' show kIsWeb, defaultTargetPlatform, TargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -111,22 +109,35 @@ class SettingsScreen extends ConsumerWidget {
               if (_isDesktop) ...[
                 const Divider(),
                 const _SectionHeader('Desktop Integration'),
-                if (_isMacOS) ...[
-                  const _LaunchAtLoginToggle(),
-                  _TileSetting(
-                    title: 'Menu Bar Calendar',
-                    subtitle: 'Show Nepali date in the macOS menu bar with calendar popover',
-                    icon: Icons.calendar_month,
-                    onTap: () => _launchMenuBarApp(context),
-                  ),
-                ],
-                if (_isWindows)
-                  const _TileSetting(
-                    title: 'System Tray Calendar',
-                    subtitle: 'Show Nepali date in the Windows system tray (coming soon)',
-                    icon: Icons.calendar_month,
-                    onTap: null,
-                  ),
+                // Flutter app's own launch-at-login (macOS, via SMAppService)
+                if (_isMacOS) const _LaunchAtLoginToggle(),
+                const _SectionHeader('Tray Widget'),
+                _TrayLanguageSetting(
+                  value: settings.trayMenuBarLanguage,
+                  onChanged: (v) =>
+                      ref.read(settingsProvider.notifier).setTrayMenuBarLanguage(v),
+                ),
+                _SwitchSetting(
+                  title: 'Show Year in Tray',
+                  subtitle: 'Include the BS year in the tray icon label / tooltip',
+                  value: settings.trayShowYear,
+                  onChanged: (v) =>
+                      ref.read(settingsProvider.notifier).setTrayShowYear(v),
+                ),
+                _SwitchSetting(
+                  title: 'Launch Tray App at Login',
+                  subtitle: 'Start the native tray app automatically when you log in',
+                  value: settings.trayLaunchAtLogin,
+                  onChanged: (v) =>
+                      ref.read(settingsProvider.notifier).setTrayLaunchAtLogin(v),
+                ),
+                _SwitchSetting(
+                  title: 'Show Tray Icon',
+                  subtitle: 'Display the Nepali date in the menu bar / system tray',
+                  value: settings.trayShowWidget,
+                  onChanged: (v) =>
+                      ref.read(settingsProvider.notifier).setTrayShowWidget(v),
+                ),
               ],
               const Divider(),
               _SectionHeader(l10n.dataUpdates),
@@ -234,38 +245,6 @@ class SettingsScreen extends ConsumerWidget {
         error: (error, stack) => Center(child: Text('${l10n.error}: $error')),
       ),
     );
-  }
-
-  Future<void> _launchMenuBarApp(BuildContext context) async {
-    if (kIsWeb) return;
-    try {
-      // Try launching by bundle ID (works if app has been built/registered with Launch Services)
-      final result = await Process.run('open', ['-b', 'com.nagarikpatro.menubar']);
-      if (result.exitCode != 0) {
-        // Fallback: check DerivedData or common locations
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                'Menu bar app not found. Build it from macos_app/NagarikPatro/ in Xcode first.',
-              ),
-            ),
-          );
-        }
-      } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Menu bar calendar launched — check your menu bar')),
-          );
-        }
-      }
-    } catch (e) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Could not launch menu bar app: $e')),
-        );
-      }
-    }
   }
 
   void _checkForUpdates(BuildContext context, AppLocalizations l10n) {
@@ -676,6 +655,56 @@ class _LaunchAtLoginToggleState extends State<_LaunchAtLoginToggle> {
       subtitle: const Text('Automatically open when you log in to your Mac'),
       value: _enabled,
       onChanged: _loading ? null : _toggle,
+    );
+  }
+}
+
+class _TrayLanguageSetting extends StatelessWidget {
+  final String value; // 'nepali' | 'english'
+  final ValueChanged<String> onChanged;
+
+  const _TrayLanguageSetting({required this.value, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: const Icon(Icons.language),
+      title: const Text('Tray Label Language'),
+      subtitle: Text(value == 'english' ? 'English' : 'नेपाली (Nepali)'),
+      trailing: const Icon(Icons.chevron_right),
+      onTap: () => _showDialog(context),
+    );
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Tray Label Language'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _LanguageOption(
+              title: 'नेपाली (Nepali)',
+              subtitle: 'Show Nepali date in Devanagari script',
+              isSelected: value == 'nepali',
+              onTap: () {
+                onChanged('nepali');
+                Navigator.pop(ctx);
+              },
+            ),
+            _LanguageOption(
+              title: 'English',
+              subtitle: 'Show Nepali date using English month names',
+              isSelected: value == 'english',
+              onTap: () {
+                onChanged('english');
+                Navigator.pop(ctx);
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

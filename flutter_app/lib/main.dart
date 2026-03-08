@@ -12,6 +12,7 @@ import 'providers/calendar_view_provider.dart';
 import 'services/notification_service.dart';
 import 'services/background_service.dart';
 import 'services/google_auth_service.dart';
+import 'services/lua_repo_service.dart';
 import 'services/popup_controller.dart';
 import 'services/tray_server.dart';
 import 'l10n/app_localizations.dart';
@@ -97,9 +98,28 @@ void main() async {
   if (!kIsWeb && (Platform.isAndroid || Platform.isIOS)) {
     await BackgroundService.initialize();
     await BackgroundService.registerIpoCheckTask();
+    await BackgroundService.registerLuaPluginsTask();
 
     // Restore sticky notification if it was enabled
     await _restoreStickyNotificationIfEnabled();
+  }
+
+  // Initialize Lua plugins (non-blocking — must not delay startup)
+  if (!kIsWeb) {
+    // ignore: unawaited_futures
+    LuaRepoService.initializePlugins().then((_) {
+      // Run startup plugins after VM is ready
+      // ignore: unawaited_futures
+      LuaRepoService.runStartupPlugins();
+
+      // Desktop: fire background plugins after a short settling delay
+      if (Platform.isMacOS || Platform.isWindows || Platform.isLinux) {
+        Future.delayed(
+          const Duration(seconds: 10),
+          LuaRepoService.runBackgroundPlugins,
+        );
+      }
+    });
   }
 
   runApp(

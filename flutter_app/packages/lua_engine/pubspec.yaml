@@ -1,0 +1,23 @@
+name: lua_engine
+description: Embedded Lua 5.4 scripting engine for Flutter (Android, macOS, Windows).
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: '>=3.7.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.nagarikpatro.lua_engine
+        pluginClass: LuaEnginePlugin
+      macos:
+        pluginClass: LuaEnginePlugin
+      windows:
+        pluginClass: LuaEnginePluginCApi

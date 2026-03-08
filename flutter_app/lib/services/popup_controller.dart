@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:screen_retriever/screen_retriever.dart';
 import 'package:window_manager/window_manager.dart';
 
 /// Controls the Flutter window between two modes:
@@ -126,9 +127,11 @@ class PopupController extends WindowListener {
 
   Future<void> _positionPopup() async {
     try {
-      final display = await windowManager.getPrimaryDisplay();
-      // visibleFrame accounts for taskbar (Windows) / menu bar + dock (macOS).
-      final frame = display.visibleFrame;
+      final display = await screenRetriever.getPrimaryDisplay();
+      // visibleSize accounts for taskbar (Windows) / menu bar + dock (macOS).
+      // visiblePosition gives the origin offset of the usable area.
+      final vSize = display.visibleSize ?? display.size;
+      final vPos = display.visiblePosition ?? Offset.zero;
       const margin = 8.0;
 
       final double x;
@@ -136,12 +139,12 @@ class PopupController extends WindowListener {
 
       if (Platform.isMacOS) {
         // Top-right corner, just below the menu bar.
-        x = frame.left + frame.width - _popupSize.width - margin;
-        y = frame.top + margin;
+        x = vPos.dx + vSize.width - _popupSize.width - margin;
+        y = vPos.dy + margin;
       } else {
         // Bottom-right corner, just above the taskbar.
-        x = frame.left + frame.width - _popupSize.width - margin;
-        y = frame.top + frame.height - _popupSize.height - margin;
+        x = vPos.dx + vSize.width - _popupSize.width - margin;
+        y = vPos.dy + vSize.height - _popupSize.height - margin;
       }
 
       await windowManager.setPosition(Offset(x, y));

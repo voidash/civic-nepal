@@ -31,6 +31,8 @@ import 'screens/emergency/contacts_screen.dart';
 import 'screens/emergency/resources_screen.dart';
 import 'screens/news/ronb_feed_screen.dart';
 import 'screens/tray_popup/tray_popup_screen.dart';
+import 'screens/plugins/plugins_screen.dart';
+import 'screens/plugins/plugin_detail_screen.dart';
 import 'widgets/desktop_nav_shell.dart';
 
 part 'app.g.dart';
@@ -270,6 +272,22 @@ GoRouter router(RouterRef ref) {
               final category = state.uri.queryParameters['category'];
               return GovServicesScreen(initialCategory: category);
             },
+          ),
+          // Plugins
+          GoRoute(
+            path: '/plugins',
+            builder: (context, state) => const PluginsScreen(),
+            routes: [
+              GoRoute(
+                path: ':compositeId',
+                builder: (context, state) {
+                  final compositeId = Uri.decodeComponent(
+                    state.pathParameters['compositeId'] ?? '',
+                  );
+                  return PluginDetailScreen(compositeId: compositeId);
+                },
+              ),
+            ],
           ),
           // Legacy redirects
           GoRoute(

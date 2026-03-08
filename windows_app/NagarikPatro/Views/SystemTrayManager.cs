@@ -12,21 +12,18 @@ namespace NagarikPatro.Views;
 /// <summary>
 /// Manages the system tray NotifyIcon.
 /// Left-click: toggle the Flutter popup via HTTP (localhost:27182).
-/// Right-click: context menu.
-/// The tray app no longer renders any calendar UI — Flutter owns the popup.
+/// Right-click: minimal context menu (date display + Open + Quit).
+/// Tray widget settings (language, year, launch-at-login, visibility) are
+/// managed from the Flutter app and delivered via tray_settings.json.
 /// </summary>
 public sealed class SystemTrayManager : IDisposable
 {
     private readonly WinForms.NotifyIcon _notifyIcon;
     private DispatcherTimer? _midnightTimer;
 
-    // Context menu items that need live updates
+    // Context menu date items (kept live across midnight)
     private WinForms.ToolStripMenuItem? _todayHeader;
     private WinForms.ToolStripMenuItem? _todayAdHeader;
-    private WinForms.ToolStripMenuItem? _nepaliLangItem;
-    private WinForms.ToolStripMenuItem? _englishLangItem;
-    private WinForms.ToolStripMenuItem? _showYearItem;
-    private WinForms.ToolStripMenuItem? _launchAtLoginItem;
 
     private static readonly HttpClient _http = new() { Timeout = TimeSpan.FromSeconds(3) };
     private const string TrayServerBase = "http://127.0.0.1:27182";
@@ -52,6 +49,10 @@ public sealed class SystemTrayManager : IDisposable
 
         ThemeManager.ThemeChanged += RebuildTrayIcon;
         ScheduleMidnightRefresh();
+
+        // Start watching tray_settings.json written by Flutter.
+        AppSettings.StartTrayWatcher();
+        AppSettings.TraySettingsChanged += OnTraySettingsChanged;
     }
 
     // -------------------------------------------------------------------------
@@ -89,7 +90,7 @@ public sealed class SystemTrayManager : IDisposable
     }
 
     // -------------------------------------------------------------------------
-    // Context menu
+    // Context menu — minimal: date display, Open, Quit
     // -------------------------------------------------------------------------
 
     private WinForms.ContextMenuStrip BuildContextMenu()
@@ -105,35 +106,6 @@ public sealed class SystemTrayManager : IDisposable
             NepaliDateFormatter.FormatAdDate(BsDateConverter.BsToAd(today)))
             { Enabled = false };
         menu.Items.Add(_todayAdHeader);
-
-        menu.Items.Add(new WinForms.ToolStripSeparator());
-
-        // Language submenu
-        var langMenu = new WinForms.ToolStripMenuItem("Menu Bar Language");
-
-        _nepaliLangItem = new WinForms.ToolStripMenuItem("नेपाली (Nepali)")
-            { Checked = AppSettings.MenuBarLanguage == AppSettings.Language.Nepali };
-        _nepaliLangItem.Click += (_, _) => SetLanguage(AppSettings.Language.Nepali);
-
-        _englishLangItem = new WinForms.ToolStripMenuItem("English")
-            { Checked = AppSettings.MenuBarLanguage == AppSettings.Language.English };
-        _englishLangItem.Click += (_, _) => SetLanguage(AppSettings.Language.English);
-
-        langMenu.DropDownItems.Add(_nepaliLangItem);
-        langMenu.DropDownItems.Add(_englishLangItem);
-        menu.Items.Add(langMenu);
-
-        // Show year toggle
-        _showYearItem = new WinForms.ToolStripMenuItem("Show Year in Tooltip")
-            { Checked = AppSettings.ShowYearInTooltip };
-        _showYearItem.Click += (_, _) => ToggleShowYear();
-        menu.Items.Add(_showYearItem);
-
-        // Launch at login
-        _launchAtLoginItem = new WinForms.ToolStripMenuItem("Launch at Login")
-            { Checked = IsLaunchAtLoginEnabled() };
-        _launchAtLoginItem.Click += (_, _) => ToggleLaunchAtLogin();
-        menu.Items.Add(_launchAtLoginItem);
 
         menu.Items.Add(new WinForms.ToolStripSeparator());
 
@@ -158,30 +130,15 @@ public sealed class SystemTrayManager : IDisposable
         if (_todayAdHeader != null) _todayAdHeader.Text = NepaliDateFormatter.FormatAdDate(BsDateConverter.BsToAd(today));
     }
 
-    private void SetLanguage(AppSettings.Language lang)
-    {
-        AppSettings.MenuBarLanguage  = lang;
-        _nepaliLangItem!.Checked     = lang == AppSettings.Language.Nepali;
-        _englishLangItem!.Checked    = lang == AppSettings.Language.English;
-        UpdateTooltip();
-    }
-
-    private void ToggleShowYear()
-    {
-        AppSettings.ShowYearInTooltip = !AppSettings.ShowYearInTooltip;
-        _showYearItem!.Checked        = AppSettings.ShowYearInTooltip;
-        UpdateTooltip();
-    }
-
     private void UpdateTooltip() => _notifyIcon.Text = GetTooltipText();
 
     private static string GetTooltipText()
     {
         var today    = BsDateConverter.Today();
-        var lang     = AppSettings.MenuBarLanguage;
-        var showYear = AppSettings.ShowYearInTooltip;
+        var ts       = AppSettings.GetTraySettings();
+        var showYear = ts.ShowYearInTray;
 
-        return lang switch
+        return ts.MenuBarLanguage switch
         {
             AppSettings.Language.English =>
                 showYear
@@ -207,6 +164,74 @@ public sealed class SystemTrayManager : IDisposable
         catch (Exception)
         {
             LaunchFlutterApp();
+        }
+    }
+
+    // -------------------------------------------------------------------------
+    // Tray settings change handler
+    // -------------------------------------------------------------------------
+
+    private void OnTraySettingsChanged(TraySettingsData settings)
+    {
+        Application.Current.Dispatcher.BeginInvoke(() =>
+        {
+            if (!settings.ShowTrayWidget)
+            {
+                // Flutter asked us to disappear.
+                Dispose();
+                Application.Current.Shutdown();
+                return;
+            }
+
+            // Sync launch-at-login with what Flutter says.
+            SyncLaunchAtLogin(settings.LaunchAtLogin);
+
+            UpdateTooltip();
+            RebuildTrayIcon();
+        });
+    }
+
+    // -------------------------------------------------------------------------
+    // Launch at login (registry)
+    // -------------------------------------------------------------------------
+
+    private static bool IsLaunchAtLoginEnabled()
+    {
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
+            return key?.GetValue("NagarikPatro") != null;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"AppSettings: registry read error: {ex.Message}");
+            return false;
+        }
+    }
+
+    private static void SyncLaunchAtLogin(bool desired)
+    {
+        if (IsLaunchAtLoginEnabled() == desired) return;
+        try
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(
+                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", writable: true);
+            if (key == null) return;
+
+            if (desired)
+            {
+                var exePath = Process.GetCurrentProcess().MainModule?.FileName;
+                if (exePath != null) key.SetValue("NagarikPatro", exePath);
+            }
+            else
+            {
+                key.DeleteValue("NagarikPatro", throwOnMissingValue: false);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"AppSettings: registry write error: {ex.Message}");
         }
     }
 
@@ -323,52 +348,6 @@ public sealed class SystemTrayManager : IDisposable
     }
 
     // -------------------------------------------------------------------------
-    // Launch at login
-    // -------------------------------------------------------------------------
-
-    private static bool IsLaunchAtLoginEnabled()
-    {
-        try
-        {
-            using var key = Registry.CurrentUser.OpenSubKey(
-                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            return key?.GetValue("NagarikPatro") != null;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Registry read error: {ex.Message}");
-            return false;
-        }
-    }
-
-    private void ToggleLaunchAtLogin()
-    {
-        bool enable = !IsLaunchAtLoginEnabled();
-        try
-        {
-            using var key = Registry.CurrentUser.OpenSubKey(
-                @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", writable: true);
-            if (key == null) return;
-
-            if (enable)
-            {
-                var exePath = Process.GetCurrentProcess().MainModule?.FileName;
-                if (exePath != null) key.SetValue("NagarikPatro", exePath);
-            }
-            else
-            {
-                key.DeleteValue("NagarikPatro", throwOnMissingValue: false);
-            }
-
-            if (_launchAtLoginItem != null) _launchAtLoginItem.Checked = enable;
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Registry write error: {ex.Message}");
-        }
-    }
-
-    // -------------------------------------------------------------------------
     // Tray icon — text showing abbreviated month + day numeral in current BS date
     // -------------------------------------------------------------------------
 
@@ -444,6 +423,7 @@ public sealed class SystemTrayManager : IDisposable
 
     public void Dispose()
     {
+        AppSettings.TraySettingsChanged -= OnTraySettingsChanged;
         ThemeManager.ThemeChanged -= RebuildTrayIcon;
         _midnightTimer?.Stop();
         _notifyIcon.ContextMenuStrip?.Dispose();

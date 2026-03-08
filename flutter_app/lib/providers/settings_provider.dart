@@ -1,7 +1,13 @@
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../services/tray_settings_service.dart';
 
 part 'settings_provider.g.dart';
+
+bool get _isDesktopPlatform =>
+    !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
 
 /// Provider for app settings
 @riverpod
@@ -18,6 +24,12 @@ class Settings extends _$Settings {
   static const String _keyAppLocale = 'app_locale';
   static const String _keyPinnedRoutes = 'pinned_routes';
   static const String _keyRecentRoutes = 'recent_routes';
+
+  // Tray widget settings (desktop only)
+  static const String _keyTrayMenuBarLanguage = 'tray_menu_bar_language';
+  static const String _keyTrayShowYear = 'tray_show_year';
+  static const String _keyTrayLaunchAtLogin = 'tray_launch_at_login';
+  static const String _keyTrayShowWidget = 'tray_show_widget';
 
   static const int maxPinnedItems = 6;
   static const int maxRecentItems = 5;
@@ -38,6 +50,10 @@ class Settings extends _$Settings {
       appLocale: prefs.getString(_keyAppLocale) ?? 'ne', // Default to Nepali
       pinnedRoutes: prefs.getStringList(_keyPinnedRoutes) ?? [],
       recentRoutes: prefs.getStringList(_keyRecentRoutes) ?? [],
+      trayMenuBarLanguage: prefs.getString(_keyTrayMenuBarLanguage) ?? 'nepali',
+      trayShowYear: prefs.getBool(_keyTrayShowYear) ?? false,
+      trayLaunchAtLogin: prefs.getBool(_keyTrayLaunchAtLogin) ?? false,
+      trayShowWidget: prefs.getBool(_keyTrayShowWidget) ?? true,
     );
   }
 
@@ -110,6 +126,55 @@ class Settings extends _$Settings {
     await prefs.setString(_keyAppLocale, localeCode);
     state = AsyncValue.data(current.copyWith(appLocale: localeCode));
   }
+
+  // ---------------------------------------------------------------------------
+  // Tray widget settings
+  // ---------------------------------------------------------------------------
+
+  Future<void> setTrayMenuBarLanguage(String lang) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_keyTrayMenuBarLanguage, lang);
+    final next = current.copyWith(trayMenuBarLanguage: lang);
+    state = AsyncValue.data(next);
+    if (_isDesktopPlatform) await _writeTraySettings(next);
+  }
+
+  Future<void> setTrayShowYear(bool enabled) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyTrayShowYear, enabled);
+    final next = current.copyWith(trayShowYear: enabled);
+    state = AsyncValue.data(next);
+    if (_isDesktopPlatform) await _writeTraySettings(next);
+  }
+
+  Future<void> setTrayLaunchAtLogin(bool enabled) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyTrayLaunchAtLogin, enabled);
+    final next = current.copyWith(trayLaunchAtLogin: enabled);
+    state = AsyncValue.data(next);
+    if (_isDesktopPlatform) await _writeTraySettings(next);
+  }
+
+  Future<void> setTrayShowWidget(bool enabled) async {
+    final current = await future;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyTrayShowWidget, enabled);
+    final next = current.copyWith(trayShowWidget: enabled);
+    state = AsyncValue.data(next);
+    if (_isDesktopPlatform) await _writeTraySettings(next);
+  }
+
+  Future<void> _writeTraySettings(SettingsData s) => TraySettingsService.write(
+        TraySettings(
+          menuBarLanguage: s.trayMenuBarLanguage,
+          showYearInTray: s.trayShowYear,
+          launchAtLogin: s.trayLaunchAtLogin,
+          showTrayWidget: s.trayShowWidget,
+        ),
+      );
 
   /// Toggle a route's pinned status. Returns true if now pinned, false if unpinned.
   Future<bool> togglePin(String route) async {
@@ -186,6 +251,12 @@ class SettingsData {
   final List<String> pinnedRoutes;
   final List<String> recentRoutes;
 
+  // Tray widget settings (desktop only)
+  final String trayMenuBarLanguage; // 'nepali' | 'english'
+  final bool trayShowYear;
+  final bool trayLaunchAtLogin;
+  final bool trayShowWidget;
+
   const SettingsData({
     required this.languagePreference,
     required this.viewModeDefault,
@@ -199,6 +270,10 @@ class SettingsData {
     required this.appLocale,
     required this.pinnedRoutes,
     required this.recentRoutes,
+    this.trayMenuBarLanguage = 'nepali',
+    this.trayShowYear = false,
+    this.trayLaunchAtLogin = false,
+    this.trayShowWidget = true,
   });
 
   SettingsData copyWith({
@@ -214,6 +289,10 @@ class SettingsData {
     String? appLocale,
     List<String>? pinnedRoutes,
     List<String>? recentRoutes,
+    String? trayMenuBarLanguage,
+    bool? trayShowYear,
+    bool? trayLaunchAtLogin,
+    bool? trayShowWidget,
   }) {
     return SettingsData(
       languagePreference: languagePreference ?? this.languagePreference,
@@ -228,6 +307,10 @@ class SettingsData {
       appLocale: appLocale ?? this.appLocale,
       pinnedRoutes: pinnedRoutes ?? this.pinnedRoutes,
       recentRoutes: recentRoutes ?? this.recentRoutes,
+      trayMenuBarLanguage: trayMenuBarLanguage ?? this.trayMenuBarLanguage,
+      trayShowYear: trayShowYear ?? this.trayShowYear,
+      trayLaunchAtLogin: trayLaunchAtLogin ?? this.trayLaunchAtLogin,
+      trayShowWidget: trayShowWidget ?? this.trayShowWidget,
     );
   }
 }

@@ -14,7 +14,8 @@
       "entryPoint": "main",
       "scriptUrl": "https://nagarikpatro.xyz/lua_plugins/plugins/hello_startup.lua",
       "author": "voidash",
-      "requiresNetwork": false
+      "requiresNetwork": false,
+      "autoInstall": true
     },
     {
       "id": "nepali_holidays",
@@ -25,7 +26,8 @@
       "entryPoint": "get_events",
       "scriptUrl": "https://nagarikpatro.xyz/lua_plugins/plugins/nepali_holidays.lua",
       "author": "voidash",
-      "requiresNetwork": false
+      "requiresNetwork": false,
+      "autoInstall": true
     },
     {
       "id": "civic_tip",
@@ -36,7 +38,8 @@
       "entryPoint": "get_content",
       "scriptUrl": "https://nagarikpatro.xyz/lua_plugins/plugins/civic_tip.lua",
       "author": "voidash",
-      "requiresNetwork": false
+      "requiresNetwork": false,
+      "autoInstall": true
     }
   ]
 }

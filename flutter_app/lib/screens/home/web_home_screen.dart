@@ -581,11 +581,11 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
             ),
             const Divider(height: 20),
             _buildUtilityItem(
-              icon: Icons.notifications_active,
-              label: l10n.alerts,
-              sublabel: l10n.alertsNp,
-              color: Colors.red.shade700,
-              route: '/alerts',
+              icon: Icons.extension,
+              label: 'Plugins',
+              sublabel: 'प्लगइन',
+              color: const Color(0xFF7B1FA2),
+              route: '/plugins',
             ),
           ],
         ),
@@ -1414,11 +1414,11 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
         route: '/date-converter',
       ),
       _QuickCard(
-        icon: Icons.notifications_active,
-        title: l10n.alerts,
-        titleNp: l10n.alertsNp,
-        color: Colors.red.shade700,
-        route: '/alerts',
+        icon: Icons.extension,
+        title: 'Plugins',
+        titleNp: 'प्लगइन',
+        color: const Color(0xFF7B1FA2),
+        route: '/plugins',
       ),
     ];
 

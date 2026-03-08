@@ -1,11 +1,14 @@
 import 'package:workmanager/workmanager.dart';
 import 'package:workmanager_platform_interface/src/pigeon/workmanager_api.g.dart' show ExistingPeriodicWorkPolicy;
 import 'ipo_service.dart';
+import 'lua_repo_service.dart';
 import 'notification_service.dart';
 
 /// Background task names
 const String ipoCheckTask = 'com.nepal.civic.ipoCheck';
 const String ipoCheckTaskUnique = 'ipoCheckTaskUnique';
+const String luaPluginsTask = 'com.nepal.civic.luaPlugins';
+const String luaPluginsTaskUnique = 'luaPluginsTaskUnique';
 
 /// Callback dispatcher for WorkManager
 /// This must be a top-level function
@@ -15,6 +18,11 @@ void callbackDispatcher() {
     switch (task) {
       case ipoCheckTask:
         await _checkForNewIpos();
+        return true;
+      case luaPluginsTask:
+        // WorkManager runs in a fresh isolate — must re-initialize Lua VM.
+        await LuaRepoService.initializePlugins();
+        await LuaRepoService.runBackgroundPlugins();
         return true;
       default:
         return true;
@@ -90,6 +98,19 @@ class BackgroundService {
       ipoCheckTaskUnique,
       ipoCheckTask,
       frequency: const Duration(hours: 3),
+      constraints: Constraints(
+        networkType: NetworkType.connected,
+      ),
+      existingWorkPolicy: ExistingPeriodicWorkPolicy.replace,
+    );
+  }
+
+  /// Register periodic Lua plugins background task (every 6 hours)
+  static Future<void> registerLuaPluginsTask() async {
+    await Workmanager().registerPeriodicTask(
+      luaPluginsTaskUnique,
+      luaPluginsTask,
+      frequency: const Duration(hours: 6),
       constraints: Constraints(
         networkType: NetworkType.connected,
       ),

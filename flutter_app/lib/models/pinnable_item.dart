@@ -46,11 +46,11 @@ class PinnableItems {
       getTitleNp: (l10n) => l10n.rightsNp,
     ),
     PinnableItem(
-      route: '/alerts',
-      icon: Icons.notifications_active,
-      color: const Color(0xFFD32F2F),
-      getTitle: (l10n) => l10n.alerts,
-      getTitleNp: (l10n) => l10n.alertsNp,
+      route: '/plugins',
+      icon: Icons.extension,
+      color: const Color(0xFF7B1FA2),
+      getTitle: (l10n) => 'Plugins',
+      getTitleNp: (l10n) => 'प्लगइन',
     ),
     // Utility items
     PinnableItem(

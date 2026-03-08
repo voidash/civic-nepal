@@ -35,6 +35,13 @@ dependencies:
   # HTTP client for API calls
   http: ^1.1.0
 
+  # Crypto hashing for cache key generation (used by lua_script_manager)
+  crypto: ^3.0.0
+
+  # Lua scripting engine plugin
+  lua_engine:
+    path: packages/lua_engine
+
   # Path provider for file system access
   path_provider: ^2.1.0
 

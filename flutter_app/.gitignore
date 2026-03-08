@@ -52,6 +52,10 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+# Lua 5.4 C sources (fetched by scripts/fetch_lua.sh — not committed)
+packages/lua_engine/src/lua54/*.c
+packages/lua_engine/src/lua54/*.h
+
 # Android Studio will place build artifacts here
 /android/app/debug
 /android/app/profile

@@ -291,6 +291,38 @@ def download_image(url: str, leader_id: str) -> str:
         return None
 
 
+# The upstream API spells the same party several different ways, which split
+# one party into multiple entries in the filter list (e.g. "Nepali Congress"
+# with 65 members alongside "Nepali Congress (NC)" with 25).
+#
+# Only unambiguous variants of the *same* name are merged here. Genuinely
+# ambiguous labels are deliberately left alone rather than guessed at:
+#   - "Nepali Communist Party (NCP)" — NCP was the 2018–2021 UML+Maoist merger,
+#     so these members cannot be reassigned without knowing what was meant.
+#   - "People's Socialist Party" — an English rendering that maps to more than
+#     one Janata Samajbadi splinter.
+#   - "Ministry of Finance" / "Ministry of Home Affairs" — not parties at all;
+#     upstream has an office in the party field.
+PARTY_ALIASES = {
+    "Nepali Congress (NC)": "Nepali Congress",
+    "Communist Party of Nepal (Unified Marxist–Leninist)": "Nepal Communist Party (UML)",
+    "Communist Party of Nepal (Unified Marxist-Leninist)": "Nepal Communist Party (UML)",
+    "Rastriya Swotantra Party": "Rastriya Swatantra Party (RSP)",
+    "Rastriya Prajatantra Party (RPP)": "Rastriya Prajatantra Party",
+    "Janata Samajbadi Party Nepal": "Janata Samajbadi Party Nepal (JSP)",
+    "Nagarik Unmukti Party, Nepal": "Nagarik Unmukti Party",
+    "Unaffiliated": "Independent",
+    "None": "Independent",
+    "": "Independent",
+}
+
+
+def canonical_party(party: str) -> str:
+    """Collapse known spelling variants onto one canonical party name."""
+    name = (party or "").strip()
+    return PARTY_ALIASES.get(name, name or "Independent")
+
+
 def generate_parties(leaders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """Generate parties.json from leaders data."""
     parties: Dict[str, Dict[str, Any]] = {}
@@ -300,7 +332,7 @@ def generate_parties(leaders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         "Nepali Congress": "#00A0DD",
         "Nepal Communist Party (UML)": "#0A4D3C",
         "Nepal Communist Party (Maoist Center)": "#D32F2F",
-        "Rastriya Swotantra Party": "#FF6B35",
+        "Rastriya Swatantra Party (RSP)": "#FF6B35",
         "Rastriya Prajatantra Party": "#9C27B0",
         "Communist Party of Nepal (Unified Socialist)": "#E91E63",
         "Independent": "#607D8B",
@@ -312,7 +344,7 @@ def generate_parties(leaders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     }
 
     for leader in leaders:
-        party = leader.get("party", "Unknown")
+        party = canonical_party(leader.get("party", ""))
         party_id = party.lower().replace(" ", "-").replace("(", "").replace(")", "").replace("'", "")
 
         if party not in parties:
@@ -377,7 +409,7 @@ def main():
         normalized = {
             "_id": leader.get("_id", ""),
             "name": leader.get("name", ""),
-            "party": leader.get("party", "Unknown"),
+            "party": canonical_party(leader.get("party", "")),
             "position": leader.get("position", ""),
             "district": normalize_district(leader.get("district", "")),
             "biography": leader.get("biography", ""),

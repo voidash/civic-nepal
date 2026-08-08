@@ -542,12 +542,28 @@ class LeaderCard extends StatelessWidget {
     required this.leader,
   });
 
+  /// Biographies are Markdown (the detail screen renders them as such), so the
+  /// list snippet has to strip the syntax — otherwise it shows the raw source,
+  /// e.g. "popularly known as **Balen Shah**".
+  static String _plainText(String markdown) {
+    return markdown
+        .replaceAll(RegExp(r'!\[[^\]]*\]\([^)]*\)'), '')      // images
+        .replaceAllMapped(RegExp(r'\[([^\]]*)\]\([^)]*\)'), (m) => m[1] ?? '') // links
+        .replaceAll(RegExp(r'`{1,3}'), '')                      // code ticks
+        .replaceAll(RegExp(r'(\*\*|__|\*|_|~~)'), '')           // emphasis
+        .replaceAll(RegExp(r'^\s{0,3}#{1,6}\s*', multiLine: true), '') // headings
+        .replaceAll(RegExp(r'^\s{0,3}>\s?', multiLine: true), '')      // quotes
+        .replaceAll('\n', ' ')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
+  }
+
   @override
   Widget build(BuildContext context) {
     // Get first ~100 chars of biography as snippet
-    final bioSnippet = leader.biography.length > 100
-        ? '${leader.biography.substring(0, 100).replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ')}...'
-        : leader.biography.replaceAll('\n', ' ').replaceAll(RegExp(r'\s+'), ' ');
+    final bio = _plainText(leader.biography);
+    final bioSnippet =
+        bio.length > 100 ? '${bio.substring(0, 100).trimRight()}...' : bio;
 
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

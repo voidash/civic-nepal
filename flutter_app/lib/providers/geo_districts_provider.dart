@@ -47,6 +47,23 @@ class GeoDistrict {
     }
     return count > 0 ? (sumLon / count, sumLat / count) : (0, 0);
   }
+
+  /// Approximate planar area of the outer ring, in squared degrees.
+  ///
+  /// Only used to rank districts against each other — bigger districts get
+  /// first claim on label space when two labels would collide — so the lack of
+  /// a proper projection does not matter here.
+  double get area {
+    if (rings.isEmpty || rings.first.length < 3) return 0;
+    final ring = rings.first;
+    var sum = 0.0;
+    for (var i = 0; i < ring.length; i++) {
+      final a = ring[i];
+      final b = ring[(i + 1) % ring.length];
+      sum += a[0] * b[1] - b[0] * a[1];
+    }
+    return sum.abs() / 2;
+  }
 }
 
 /// GeoJSON districts collection

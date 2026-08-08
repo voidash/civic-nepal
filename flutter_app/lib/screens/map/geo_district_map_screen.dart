@@ -307,10 +307,10 @@ class _GeoDistrictMapPainter extends CustomPainter {
       _drawDistrict(canvas, size, district, fillPaint, borderPaint);
     }
 
-    // Draw labels at higher zoom
-    if (currentZoom > 1.5) {
-      _drawLabels(canvas, size);
-    }
+    // Labels are drawn at every zoom level — an unlabelled map of 77 districts
+    // is unreadable. Collision detection keeps the default view legible and
+    // reveals more names as the user zooms in.
+    _drawLabels(canvas, size);
   }
 
   void _drawDistrict(Canvas canvas, Size size, GeoDistrict district, Paint fillPaint, Paint borderPaint) {
@@ -336,28 +336,68 @@ class _GeoDistrictMapPainter extends CustomPainter {
   }
 
   void _drawLabels(Canvas canvas, Size size) {
+    // The canvas is scaled by the surrounding InteractiveViewer, so dividing by
+    // the zoom keeps label text a constant size on screen. Label rectangles
+    // therefore shrink in map space as the user zooms, letting more of them
+    // survive the collision test.
+    final scale = currentZoom.clamp(1.0, 6.0);
     final textStyle = ui.TextStyle(
       color: Colors.black87,
-      fontSize: 12 / currentZoom.clamp(1.0, 3.0),
+      fontSize: 11 / scale,
       fontWeight: FontWeight.w600,
     );
+    final haloStyle = ui.TextStyle(
+      color: Colors.white,
+      fontSize: 11 / scale,
+      fontWeight: FontWeight.w600,
+      background: Paint()..color = Colors.transparent,
+    );
 
-    for (final district in districts) {
+    // Larger districts win when two labels compete for the same space.
+    final ordered = [...districts]..sort((a, b) => b.area.compareTo(a.area));
+
+    final placed = <Rect>[];
+    for (final district in ordered) {
       final (lon, lat) = district.centroid;
       final offset = _latLonToCanvas(lat, lon, size);
+      if (!size.contains(offset)) continue;
 
-      final builder = ui.ParagraphBuilder(ui.ParagraphStyle(
-        textAlign: TextAlign.center,
-        maxLines: 1,
-      ))
-        ..pushStyle(textStyle)
-        ..addText(district.name);
+      ui.Paragraph build(ui.TextStyle style) {
+        final builder = ui.ParagraphBuilder(ui.ParagraphStyle(
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          ellipsis: '…',
+        ))
+          ..pushStyle(style)
+          ..addText(district.name);
+        return builder.build()
+          ..layout(ui.ParagraphConstraints(width: 110 / scale));
+      }
 
-      final paragraph = builder.build()..layout(const ui.ParagraphConstraints(width: 100));
-      canvas.drawParagraph(
-        paragraph,
-        Offset(offset.dx - paragraph.width / 2, offset.dy - paragraph.height / 2),
+      final paragraph = build(textStyle);
+      final origin = Offset(
+        offset.dx - paragraph.longestLine / 2,
+        offset.dy - paragraph.height / 2,
       );
+      // Pad so neighbouring labels keep a visible gap.
+      final rect = Rect.fromLTWH(
+        origin.dx,
+        origin.dy,
+        paragraph.longestLine,
+        paragraph.height,
+      ).inflate(2 / scale);
+
+      if (placed.any(rect.overlaps)) continue;
+      placed.add(rect);
+
+      // A light halo keeps the text readable over the province fills.
+      final halo = build(haloStyle);
+      for (final d in const [
+        Offset(-1, 0), Offset(1, 0), Offset(0, -1), Offset(0, 1),
+      ]) {
+        canvas.drawParagraph(halo, origin + d / scale);
+      }
+      canvas.drawParagraph(paragraph, origin);
     }
   }
 

@@ -112,7 +112,8 @@ class ConstitutionScreen extends ConsumerWidget {
           final l10n = AppLocalizations.of(context);
           return ListTile(
             title: Text(l10n.preamble),
-            subtitle: const Text('प्रस्तावना'),
+            // Only show the second language when it differs from the first.
+            subtitle: l10n.isNepali ? null : const Text('प्रस्तावना'),
             selected: isSelected,
             tileColor: isSelected ? Theme.of(context).highlightColor : null,
             onTap: () {
@@ -123,18 +124,21 @@ class ConstitutionScreen extends ConsumerWidget {
         }
         final partIndex = index - 2;
         final part = constitution.parts[partIndex];
+        final isNepaliUi = AppLocalizations.of(context).isNepali;
+        final partSubtitle = _getPartSubtitle(part, isNepaliUi);
         return ExpansionTile(
-          title: Text(_getPartTitle(part)),
-          subtitle: part.title.np.isNotEmpty ? Text(part.title.np) : null,
+          title: Text(_getPartTitle(part, isNepaliUi)),
+          subtitle: partSubtitle != null ? Text(partSubtitle) : null,
           children: part.articles.asMap().entries.map((entry) {
             final articleIndex = entry.key;
             final article = entry.value;
             // Check if selected article matches this article
             final isSelected = _isArticleSelected(selectedArticle, partIndex, articleIndex);
 
+            final articleSubtitle = _getArticleSubtitle(article, isNepaliUi);
             return ListTile(
-              title: Text(_getArticleTitle(article)),
-              subtitle: (article.title.np?.isNotEmpty ?? false) ? Text(article.title.np!) : null,
+              title: Text(_getArticleTitle(article, isNepaliUi)),
+              subtitle: articleSubtitle != null ? Text(articleSubtitle) : null,
               selected: isSelected,
               tileColor: isSelected ? Theme.of(context).highlightColor : null,
               onTap: () {
@@ -520,15 +524,15 @@ class ConstitutionScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            part.title.en,
+            _getPartTitle(part, l10n.isNepali),
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
               fontWeight: FontWeight.bold,
             ),
           ),
-          if (part.title.np.isNotEmpty) ...[
+          if (_getPartSubtitle(part, l10n.isNepali) case final sub?) ...[
             const SizedBox(height: 4),
             Text(
-              part.title.np,
+              sub,
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
               ),
@@ -736,14 +740,38 @@ class ConstitutionScreen extends ConsumerWidget {
     );
   }
 
-  String _getPartTitle(Part part) {
+  /// Primary title for a part, in the reader's language.
+  ///
+  /// The app defaults to Nepali, so leading with the English title left the
+  /// whole table of contents in English for most users.
+  String _getPartTitle(Part part, bool isNepali) {
+    if (isNepali && part.title.np.isNotEmpty) return part.title.np;
     if (part.title.en.isNotEmpty) return part.title.en;
+    if (part.title.np.isNotEmpty) return part.title.np;
     return 'Part ${part.number}';
   }
 
-  String _getArticleTitle(Article article) {
-    if (article.title.en?.isNotEmpty ?? false) return '${article.number} ${article.title.en}';
+  /// Secondary title — the other language, or null when there is only one.
+  String? _getPartSubtitle(Part part, bool isNepali) {
+    final primary = _getPartTitle(part, isNepali);
+    final other = isNepali ? part.title.en : part.title.np;
+    return (other.isEmpty || other == primary) ? null : other;
+  }
+
+  String _getArticleTitle(Article article, bool isNepali) {
+    final np = article.title.np ?? '';
+    final en = article.title.en ?? '';
+    if (isNepali && np.isNotEmpty) return '${article.number} $np';
+    if (en.isNotEmpty) return '${article.number} $en';
+    if (np.isNotEmpty) return '${article.number} $np';
     return article.number;
+  }
+
+  String? _getArticleSubtitle(Article article, bool isNepali) {
+    final other = (isNepali ? article.title.en : article.title.np) ?? '';
+    if (other.isEmpty) return null;
+    final primary = isNepali ? (article.title.np ?? '') : (article.title.en ?? '');
+    return other == primary ? null : other;
   }
 }
 

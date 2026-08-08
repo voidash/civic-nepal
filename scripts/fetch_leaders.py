@@ -15,6 +15,7 @@ Usage:
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
@@ -41,8 +42,19 @@ USER_AGENT = (
 )
 
 
+_SESSION: "requests.Session | None" = None
+
+
 def _session() -> requests.Session:
-    """A requests session with browser-like headers and retry/backoff."""
+    """A shared requests session with browser-like headers and retry/backoff.
+
+    Reused across calls so connections are pooled and the retry policy (which
+    covers the 429s this host issues under load) applies to every request.
+    """
+    global _SESSION
+    if _SESSION is not None:
+        return _SESSION
+
     from requests.adapters import HTTPAdapter
     from urllib3.util.retry import Retry
 
@@ -60,6 +72,8 @@ def _session() -> requests.Session:
         allowed_methods=frozenset(["GET"]),
     )
     session.mount("https://", HTTPAdapter(max_retries=retry))
+    session.mount("http://", HTTPAdapter(max_retries=retry))
+    _SESSION = session
     return session
 
 # District name normalization mapping (API returns -> our standard name)
@@ -235,14 +249,24 @@ def fetch_leaders() -> List[Dict[str, Any]]:
 
 
 def download_image(url: str, leader_id: str) -> str:
-    """Download leader image and return local path."""
+    """Download a leader image and return its bundled asset path.
+
+    Images must be local: the remote hosts send no CORS headers, so on the web
+    build every remote photo fails to load and the leader falls back to
+    initials. Downloads are incremental — an image already on disk is reused —
+    so repeated runs converge on a complete set even though the upstream host
+    rate-limits (HTTP 429) a full sweep.
+    """
     if not url:
         return None
 
-    # Create images directory
     IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-
     image_path = IMAGES_DIR / f"{leader_id}.jpg"
+    asset_path = f"assets/images/leaders/{leader_id}.jpg"
+
+    # Already fetched on an earlier run — don't re-download.
+    if image_path.exists() and image_path.stat().st_size > 0:
+        return asset_path
 
     try:
         response = _session().get(url, timeout=30, stream=True)
@@ -252,7 +276,15 @@ def download_image(url: str, leader_id: str) -> str:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
-        return f"assets/images/leaders/{leader_id}.jpg"
+        # Reject error pages saved as images.
+        if image_path.stat().st_size < 1024:
+            image_path.unlink(missing_ok=True)
+            print(f"Warning: image for {leader_id} too small, discarding", file=sys.stderr)
+            return None
+
+        # Be a polite client; this host throttles aggressive sweeps.
+        time.sleep(0.3)
+        return asset_path
 
     except requests.RequestException as e:
         print(f"Warning: Failed to download image for {leader_id}: {e}", file=sys.stderr)

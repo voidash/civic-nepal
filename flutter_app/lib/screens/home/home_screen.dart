@@ -317,7 +317,8 @@ class _SectionHeader extends StatelessWidget {
               ),
         ),
         const SizedBox(width: 8),
-        Text(
+        if (titleNp.isNotEmpty)
+          Text(
           titleNp,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -581,7 +582,8 @@ class _QuickAccessCard extends StatelessWidget {
                         ),
                     textAlign: TextAlign.center,
                   ),
-                  Text(
+                  if (titleNp.isNotEmpty)
+                    Text(
                     titleNp,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,
@@ -798,7 +800,8 @@ class _UtilityGridCard extends StatelessWidget {
                         ),
                     textAlign: TextAlign.center,
                   ),
-                  Text(
+                  if (titleNp.isNotEmpty)
+                    Text(
                     titleNp,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: Theme.of(context).colorScheme.onSurfaceVariant,

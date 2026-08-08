@@ -598,7 +598,8 @@ class _StructureCard extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                       ),
-                      Text(
+                      if (titleNp.isNotEmpty)
+                        Text(
                         titleNp,
                         style: TextStyle(
                           fontSize: 13,
@@ -1122,7 +1123,8 @@ class _ProcessStep extends StatelessWidget {
                     ),
                   ),
                   if (!isNepali && titleNp.isNotEmpty)
-                    Text(
+                    if (titleNp.isNotEmpty)
+                      Text(
                       titleNp,
                       style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.onSurfaceVariant),
                     ),

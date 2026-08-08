@@ -1458,7 +1458,8 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
                             color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
-                        Text(
+                        if (card.titleNp.isNotEmpty)
+                          Text(
                           card.titleNp,
                           style: TextStyle(
                             fontSize: 9,

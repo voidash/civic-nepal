@@ -91,8 +91,4 @@ class DataService {
     return ConstituencyData.fromJson(json);
   }
 
-  /// Load constituency SVG map string from assets
-  static Future<String> loadConstituencyMapSvg() async {
-    return await rootBundle.loadString('assets/data/election/nepal_constituencies.svg');
-  }
 }

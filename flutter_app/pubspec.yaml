@@ -132,15 +132,13 @@ flutter:
     - assets/data/data_version.json
     - assets/data/gov_procedures.json
     - assets/data/ronb_feed.json
+    - assets/data/election/local_election_results.json
     - assets/data/election/local_bodies.json
     - assets/data/election/constituencies.json
-    - assets/data/election/local_election_results.json
     - assets/data/election/districts_geo.json
     - assets/data/election/constituencies_geo.json
     - assets/data/election/map_features.json
     - assets/data/election/local_units/
-    - assets/data/election/districts/
-    - assets/data/election/nepal_constituencies.svg
     - assets/data/osm/
     - assets/images/nepal_districts.svg
     - assets/images/nepal_ekantipur.svg

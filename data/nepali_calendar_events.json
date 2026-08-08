@@ -52,7 +52,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "स्मार्तानाम बारुथिनी एकादशी व्रत"
+          "स्मार्तहरूको बारुथिनी एकादशी व्रत"
         ]
       },
       {
@@ -166,7 +166,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sita जयन्ती"
+          "सीता जयन्ती"
         ]
       },
       {
@@ -176,7 +176,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "स्मार्तानाम Mohini एकादशी bratam"
+          "स्मार्तहरूको मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -186,7 +186,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishabanam Mohini एकादशी bratam"
+          "वैष्णवहरूको मोहिनी एकादशी व्रत"
         ]
       }
     ]
@@ -203,8 +203,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nrisimha जयन्ती",
-          "Kurma जयन्ती"
+          "नरसिंह जयन्ती",
+          "कूर्म जयन्ती"
         ]
       },
       {
@@ -224,7 +224,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी bratam"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -274,7 +274,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bajra Guru Padhyasambhav जयन्ती"
+          "वज्र गुरु पद्मसम्भव जयन्ती"
         ]
       },
       {
@@ -284,7 +284,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत (Tulashi Bijropanam)"
+          "निर्जला एकादशी व्रत (तुलसी Bijropanam)"
         ]
       }
     ]
@@ -312,7 +312,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी व्रत"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -354,7 +354,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "तुलशी बीजारोपणम्",
           "विश्व जनसंख्या दिवस"
         ]
@@ -366,7 +366,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       },
       {
@@ -444,7 +444,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Barah जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -468,7 +468,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Goswami Tulashidash जयन्ती"
+          "गोस्वामी तुलसीदास जयन्ती"
         ]
       },
       {
@@ -478,7 +478,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी bratam"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -500,7 +500,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाईजात्रा (होलीday in Kathmandu valley only)"
+          "गाईजात्रा (होलीday in काठमाडौं valley only)"
         ]
       }
     ]
@@ -542,7 +542,7 @@
         "events_np": [
           "गोकर्ण स्नानम्",
           "कुशे औंशी(बाबुको मुख हेर्ने दिन)",
-          "Motiram जयन्ती"
+          "मोतिराम जयन्ती"
         ]
       },
       {
@@ -564,7 +564,7 @@
         "is_holiday": true,
         "events_np": [
           "ऋषिपञ्चमी",
-          "Saptarshipuja (Womens होलीday Only)"
+          "सप्तर्षि पूजा (Womens होलीday Only)"
         ]
       },
       {
@@ -579,9 +579,9 @@
         "is_holiday": true,
         "events_np": [
           "वामन जयन्ती",
-          "Hariparwatini एकादशी व्रत",
+          "हरिपरिवर्तिनी एकादशी व्रत",
           "शिक्षा दिवस",
-          "निजामती सेवा दिवस(होलीday in Foreign Nepali Offices for Nijamati Employee",
+          "निजामती सेवा दिवस(होलीday in Foreign नेपाली Offices for निजामती Employee",
           "कानुन तथा संवैधानिक कर्मचारीहरू)"
         ]
       },
@@ -602,7 +602,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Indrajatra (होलीday in Kathmandu Valley Only)"
+          "इन्द्रजात्रा (होलीday in काठमाडौं Valley Only)"
         ]
       },
       {
@@ -725,7 +725,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "एकादशीshraddam",
+          "एकादशीश्राद्ध",
           "इन्दिरा एकादशी व्रत"
         ]
       },
@@ -736,7 +736,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "द्वादशीshraddam"
+          "द्वादशीश्राद्ध"
         ]
       },
       {
@@ -746,7 +746,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "त्रयोदशीshraddam"
+          "त्रयोदशीश्राद्ध"
         ]
       },
       {
@@ -840,7 +840,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Pampakusha एकादशी व्रत"
+          "पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -870,7 +870,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Kojagrat पूर्णिमा"
+          "कोजाग्रत पूर्णिमा"
         ]
       },
       {
@@ -934,11 +934,11 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार",
+          "काग तिहार",
           "काग बली",
           "कुकुर तिहार",
           "नरक चतुर्दशी",
-          "Dhanwantari जयन्ती"
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -1005,7 +1005,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -1018,7 +1018,7 @@
         "is_holiday": true,
         "events_np": [
           "गुरुनानक जयन्ती",
-          "(होलीday for Nepali Shikha Followers Government Employee only)"
+          "(होलीday for नेपाली शिखा Followers Government Employee only)"
         ]
       },
       {
@@ -1044,7 +1044,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Upatika एकादशी व्रत"
+          "उत्पन्ना एकादशी व्रत"
         ]
       },
       {
@@ -1110,7 +1110,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokhchyada एकादशी व्रत"
+          "मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -1124,7 +1124,7 @@
         "is_holiday": true,
         "events_np": [
           "किरात पर्व उधौली पूजा",
-          "Yamari Punhi- ज्यापु दिवस (मंसिर पूर्णिमा",
+          "यमरी पुन्ही- ज्यापु दिवस (मंसिर पूर्णिमा",
           "Dhanya पूर्णिमा) World मानव अधिकार दिवस",
           "खग्रास चन्द्र ग्रहण"
         ]
@@ -1142,7 +1142,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी व्रत"
+          "सफला एकादशी व्रत"
         ]
       },
       {
@@ -1152,7 +1152,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Gaiyamauni औंशी"
+          "गाईजात्रा औंशी"
         ]
       },
       {
@@ -1234,7 +1234,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघी Parwa"
+          "माघी पर्व"
         ]
       },
       {
@@ -1244,7 +1244,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sombar औंशी"
+          "सोमबार औंशी"
         ]
       },
       {
@@ -1254,7 +1254,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Sonam Lochhar(माघ Sulka प्रतिपदा)"
+          "सोनाम ल्होछार(माघ Sulka प्रतिपदा)"
         ]
       },
       {
@@ -1266,7 +1266,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "बसन्त पञ्चमी(Basanta श्रावण)",
+          "बसन्त पञ्चमी(बसन्त श्रावण)",
           "सरस्वती पूजा",
           "श्रीपञ्चमी (होलीday on Educational Institutions)"
         ]
@@ -1288,7 +1288,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी व्रत"
+          "भीम एकादशी व्रत"
         ]
       },
       {
@@ -1318,7 +1318,7 @@
         "is_holiday": false,
         "events_np": [
           "मेला",
-          "स्मार्तानाम Bijaya ekadashibratam"
+          "स्मार्तहरूको विजया एकादशी व्रत"
         ]
       },
       {
@@ -1328,7 +1328,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishabanam विजया एकादशी व्रत"
+          "वैष्णवहरूको विजया एकादशी व्रत"
         ]
       },
       {
@@ -1378,7 +1378,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी व्रत"
+          "आमलकी एकादशी व्रत"
         ]
       },
       {
@@ -1388,7 +1388,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा(होलीday on 55 Hilly Districts)"
+          "फाल्गु पूर्णिमा(होलीday on 55 Hilly Districts)"
         ]
       },
       {
@@ -1399,7 +1399,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा(होलीday on Terai and Inner Madhesh 20 Districts)",
+          "फाल्गु पूर्णिमा(होलीday on तराई and Inner मधेश 20 Districts)",
           "अन्तर्राष्ट्रिय महिला दिवस"
         ]
       }
@@ -1416,7 +1416,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochini एकादशी व्रत"
+          "पापमोचिनी एकादशी व्रत"
         ]
       },
       {
@@ -1426,7 +1426,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा (होलीday Only in Kathmandu Valley)"
+          "घोडेजात्रा (होलीday Only in काठमाडौं Valley)"
         ]
       },
       {
@@ -1468,7 +1468,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mahabir जयन्ती"
+          "महावीर जयन्ती"
         ]
       },
       {
@@ -1558,7 +1558,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sita जयन्ती"
+          "सीता जयन्ती"
         ]
       },
       {
@@ -1578,7 +1578,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -1601,7 +1601,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
+          "चण्डी पूर्णिमा",
           "बुद्ध जयन्ती",
           "उधौली पर्व",
           "स्याङ लसर्घा आलमदेवी पूजा"
@@ -1632,7 +1632,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -1682,7 +1682,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Nirjala एकादशी व्रत (तुलशी बीजारोपण)"
+          "स्मार्तहरूको निर्जला एकादशी व्रत (तुलशी बीजारोपण)"
         ]
       },
       {
@@ -1692,7 +1692,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baisnabharuko Nirjala एकादशी brat"
+          "वैष्णवहरूको निर्जला एकादशी व्रत"
         ]
       },
       {
@@ -1706,7 +1706,7 @@
         "events_np": [
           "पूर्णिमा व्रत",
           "गाइडु पूजा",
-          "Panauti Bhairab भाद्रkali Indreshwor Rath Yatra"
+          "पनौती भैरव भाद्रकाली इन्द्रेश्वर रथ यात्रा"
         ]
       },
       {
@@ -1732,7 +1732,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogani एकादशी व्रत"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -1766,7 +1766,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "तुलशी बीजारोपण",
           "चातुर्मास आरम्भ"
         ]
@@ -1792,7 +1792,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       },
       {
@@ -1802,7 +1802,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       }
     ]
@@ -1850,7 +1850,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Barah जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -1870,7 +1870,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -1918,7 +1918,7 @@
         "is_holiday": true,
         "events_np": [
           "गाईजात्रा",
-          "Saparu (होलीday on Kathmandu Valley)"
+          "सापारु (होलीday on काठमाडौं Valley)"
         ]
       },
       {
@@ -1940,7 +1940,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aja एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       }
     ]
@@ -1963,7 +1963,7 @@
           "गोकर्ण स्नान",
           "कुशे औंशी",
           "बाबुको मुख हेर्ने दिन",
-          "Motiram जयन्ती",
+          "मोतिराम जयन्ती",
           "दर्श श्राद्ध"
         ]
       },
@@ -1994,7 +1994,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Padhmini एकादशी व्रत"
+          "पद्मिनी एकादशी व्रत"
         ]
       },
       {
@@ -2025,7 +2025,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "निजामती सेवा दिवस (होलीday for foreign nepali offices",
+          "निजामती सेवा दिवस (होलीday for foreign नेपाली offices",
           "कानुन तथा संवैधानिक कार्यालयहरू)"
         ]
       },
@@ -2036,7 +2036,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Parama एकादशी व्रत"
+          "परमा एकादशी व्रत"
         ]
       },
       {
@@ -2094,7 +2094,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Hariparwartini एकादशी व्रत"
+          "हरिपरिवर्तिनी एकादशी व्रत"
         ]
       },
       {
@@ -2106,7 +2106,7 @@
         "is_holiday": true,
         "events_np": [
           "पूर्णिमा व्रत",
-          "Indrajatra (होलीday in Kathmandu Valley only)"
+          "इन्द्रजात्रा (होलीday in काठमाडौं Valley only)"
         ]
       },
       {
@@ -2225,7 +2225,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       },
@@ -2350,7 +2350,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Pampakusha एकादशी brat"
+          "पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -2380,7 +2380,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी व्रत"
+          "रमा एकादशी व्रत"
         ]
       },
       {
@@ -2421,7 +2421,7 @@
         "events_np": [
           "नरक चतुर्थी",
           "कुकुर तिहार",
-          "लक्ष्मी पूजा(दीपावली) darshasradda",
+          "लक्ष्मी पूजा(दीपावली) दर्श श्राद्ध",
           "सुखरात्री"
         ]
       },
@@ -2482,7 +2482,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह",
           "बाराह क्षेत्र मेला"
         ]
@@ -2506,7 +2506,7 @@
         "is_holiday": true,
         "events_np": [
           "पूर्णिमा व्रत",
-          "Gurunanak जयन्ती(होलीday for government employees following Nepali Sikh Religion)"
+          "गुरुनानक जयन्ती(होलीday for government employees following नेपाली सिख Religion)"
         ]
       },
       {
@@ -2516,7 +2516,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "International Disability Day(होलीday for Disabled government employees inside Nepal)"
+          "International Disability Day(होलीday for Disabled government employees inside नेपाल)"
         ]
       },
       {
@@ -2526,7 +2526,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Upatika एकादशी व्रत"
+          "उत्पन्ना एकादशी व्रत"
         ]
       },
       {
@@ -2584,7 +2584,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Mokhchyada एकादशी व्रत"
+          "स्मार्तहरूको मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -2594,7 +2594,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Mokhchyada एकादशी व्रत"
+          "वैष्णवहरूको मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -2652,7 +2652,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी brat"
+          "सफला एकादशी व्रत"
         ]
       }
     ]
@@ -2670,7 +2670,7 @@
         "is_holiday": true,
         "events_np": [
           "माघे संक्रान्ति",
-          "माघी Parba"
+          "माघी पर्व"
         ]
       },
       {
@@ -2680,7 +2680,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -2737,7 +2737,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "बसन्त पञ्चमी(Basanta shrawan)",
+          "बसन्त पञ्चमी(बसन्त श्रावण)",
           "श्रीपञ्चमी (होलीday Only for Educational Sector)"
         ]
       },
@@ -2758,7 +2758,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी व्रत"
+          "भीम एकादशी व्रत"
         ]
       },
       {
@@ -2792,7 +2792,7 @@
         "is_holiday": true,
         "events_np": [
           "अन्तर्राष्ट्रिय महिला दिवस",
-          "Bijaya एकादशी व्रत"
+          "विजया एकादशी व्रत"
         ]
       },
       {
@@ -2828,7 +2828,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी brat"
+          "आमलकी एकादशी व्रत"
         ]
       },
       {
@@ -2838,7 +2838,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday for Hilly 55 districts"
+          "फाल्गु पूर्णिमा (होलीday for Hilly 55 districts"
         ]
       },
       {
@@ -2848,7 +2848,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गते फागु पुर्णिमा(होलीday For Terai and Inner Madhesh 20 Districts)"
+          "गते फागु पुर्णिमा(होलीday For तराई and Inner मधेश 20 Districts)"
         ]
       },
       {
@@ -2858,7 +2858,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochani एकादशीbrat"
+          "पापमोचिनी एकादशीव्रत"
         ]
       },
       {
@@ -2868,7 +2868,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghodejatra (होलीday Only for Kathmandu Valley)"
+          "घोडेजात्रा (होलीday Only for काठमाडौं Valley)"
         ]
       }
     ]
@@ -2884,7 +2884,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Nepali नयाँ वर्ष"
+          "नेपाली नयाँ वर्ष"
         ]
       },
       {
@@ -2914,7 +2914,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -2924,7 +2924,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Mahabir जयन्ती(होलीday Only for Jain Religion Employee)"
+          "महावीर जयन्ती(होलीday Only for जैन Religion Employee)"
         ]
       },
       {
@@ -2966,7 +2966,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "smart haruko Baruthini एकादशी व्रत"
+          "smart हरूको वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -2976,7 +2976,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnab haruko Baruthini एकादशी व्रत"
+          "वैष्णव हरूको वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -3030,7 +3030,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -3053,7 +3053,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
+          "चण्डी पूर्णिमा",
           "बुद्ध जयन्ती",
           "उधौली पर्व",
           "स्याङ लसर्घा आलमदेवी पूजा"
@@ -3076,7 +3076,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apar एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -3135,7 +3135,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smarta haruko Nirjala एकादशी व्रतa",
+          "स्मार्त हरूको निर्जला एकादशी व्रत",
           "तुलशीको बिउ छर्ने"
         ]
       },
@@ -3147,7 +3147,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishanab haruko Nirjala एकादशी व्रतa",
+          "वैष्णव हरूको निर्जला एकादशी व्रत",
           "तुलशीको बिउ छर्ने"
         ]
       },
@@ -3170,7 +3170,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smarta haruko Yogini एकादशी व्रतa"
+          "स्मार्त हरूको योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -3180,7 +3180,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnab haruko Yogini एकादशी व्रतa"
+          "वैष्णव हरूको योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -3200,7 +3200,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -3217,7 +3217,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "श्रावणe Shrankranti",
+          "श्रावणe सङ्क्रान्ति",
           "लुटो फाल्ने"
         ]
       },
@@ -3229,7 +3229,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "तुलशी रोप्ने"
         ]
       },
@@ -3252,7 +3252,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -3310,7 +3310,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रतa"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -3344,7 +3344,7 @@
         "is_holiday": true,
         "events_np": [
           "गाईजात्रा",
-          "Saparu (होलीday in Ktm Only)"
+          "सापारु (होलीday in काठमाडौं Only)"
         ]
       },
       {
@@ -3366,7 +3366,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -3383,7 +3383,7 @@
           "गोकर्ण स्नान",
           "कुशे औंशी",
           "बाबुको मुख हेर्ने दिन",
-          "Motiram जयन्ती",
+          "मोतिराम जयन्ती",
           "मानव बेचबिखन विरुद्धको राष्ट्रिय दिवस"
         ]
       },
@@ -3404,7 +3404,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "निजामती सेवा दिवस (होलीday  for international Nepalese Nijamati Employee and for Court and Constitutional Employees)"
+          "निजामती सेवा दिवस (होलीday for international Nepalese निजामती Employee and for Court and Constitutional Employees)"
         ]
       },
       {
@@ -3456,7 +3456,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Hariparwartini एकादशी व्रत"
+          "हरिपरिवर्तिनी एकादशी व्रत"
         ]
       }
     ]
@@ -3482,7 +3482,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "IndraJatra (होलीday in Ktm Only)"
+          "इन्द्रजात्रा (होलीday in काठमाडौं Only)"
         ]
       },
       {
@@ -3577,7 +3577,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       },
@@ -3665,7 +3665,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Pampakusha एकादशी व्रत",
+          "पापाङ्कुशा एकादशी व्रत",
           "30 द्वादशी"
         ]
       }
@@ -3683,7 +3683,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Kojagrat पूर्णिमा",
+          "कोजाग्रत पूर्णिमा",
           "आकाश दीप दान आरम्भ"
         ]
       },
@@ -3707,8 +3707,8 @@
         "is_holiday": false,
         "events_np": [
           "यमपञ्चक आरम्भ",
-          "Kaag तिहार",
-          "Dhanwantari जयन्ती"
+          "काग तिहार",
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -3719,7 +3719,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kukkur तिहार",
+          "कुकुर तिहार",
           "नरक चतुर्दशी"
         ]
       },
@@ -3779,7 +3779,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       }
@@ -3798,7 +3798,7 @@
         "is_holiday": false,
         "events_np": [
           "पूर्णिमा व्रत",
-          "Guru Nanak जयन्ती"
+          "गुरु नानक जयन्ती"
         ]
       },
       {
@@ -3808,7 +3808,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Upattika एकादशी व्रत"
+          "उत्पन्ना एकादशी व्रत"
         ]
       },
       {
@@ -3830,7 +3830,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "अन्तर्राष्ट्रिय अपाङ्गता दिवस(होलीday for only Nepali Disabilities Employee)"
+          "अन्तर्राष्ट्रिय अपाङ्गता दिवस(होलीday for only नेपाली Disabilities Employee)"
         ]
       },
       {
@@ -3850,7 +3850,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokhshyada एकादशी व्रत"
+          "मोक्षदा एकादशी व्रत"
         ]
       }
     ]
@@ -3902,7 +3902,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी व्रत"
+          "सफला एकादशी व्रत"
         ]
       },
       {
@@ -3932,7 +3932,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       }
     ]
@@ -3951,8 +3951,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघeShangranti",
-          "माघी Parwa and चन्त्यालको राष्ट्रिय पर्व Peoples",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व and चन्त्यालको राष्ट्रिय पर्व Peoples",
           "श्री स्वस्थानी व्रत आरम्भ",
           "पूर्णिमा व्रत"
         ]
@@ -3974,7 +3974,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shattila एकादशी व्रत"
+          "षट्तिला एकादशी व्रत"
         ]
       },
       {
@@ -3994,7 +3994,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Sonamल्होसार"
+          "सोनामल्होसार"
         ]
       },
       {
@@ -4018,7 +4018,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी व्रत"
+          "भीम एकादशी व्रत"
         ]
       }
     ]
@@ -4108,7 +4108,7 @@
         "is_holiday": false,
         "events_np": [
           "चिरोत्यान",
-          "होली Aarambha"
+          "होली आरम्भ"
         ]
       },
       {
@@ -4118,7 +4118,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamlaki एकादशी व्रत"
+          "आमलकी एकादशी व्रत"
         ]
       }
     ]
@@ -4134,7 +4134,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा(होलीday for 55 District in Hilli Regions)"
+          "फाल्गु पूर्णिमा(होलीday for 55 District in Hilli Regions)"
         ]
       },
       {
@@ -4144,7 +4144,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "प्रतिपदा (Falgu पूर्णिमा होलीday for Terai 20 District)"
+          "प्रतिपदा (फाल्गु पूर्णिमा होलीday for तराई 20 District)"
         ]
       },
       {
@@ -4154,7 +4154,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochini एकादशी व्रत"
+          "पापमोचिनी एकादशी व्रत"
         ]
       },
       {
@@ -4164,7 +4164,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा (होलीday Only in Ktm)"
+          "घोडेजात्रा (होलीday Only in काठमाडौं)"
         ]
       },
       {
@@ -4174,7 +4174,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं"
+          "चैते दशैं"
         ]
       },
       {
@@ -4194,7 +4194,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaamadaa एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       }
     ]
@@ -4212,7 +4212,7 @@
         "is_holiday": true,
         "events_np": [
           "नयाँ वर्ष",
-          "पूर्णिमा व्रतa"
+          "पूर्णिमा व्रत"
         ]
       },
       {
@@ -4242,7 +4242,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रतa"
+          "वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -4296,7 +4296,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रतa"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -4383,7 +4383,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत",
+          "निर्जला एकादशी व्रत",
           "तुलशीको बिउ छर्ने"
         ]
       },
@@ -4420,7 +4420,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी व्रतa"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -4440,7 +4440,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रतa"
+          "हरिशयनी एकादशी व्रत"
         ]
       },
       {
@@ -4460,7 +4460,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -4488,7 +4488,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रतa"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -4530,7 +4530,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रतa"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -4554,7 +4554,7 @@
         "is_holiday": true,
         "events_np": [
           "गाईजात्रा",
-          "Saparu(होलीday in Kathmandu Valley Only)"
+          "सापारु(होलीday in काठमाडौं Valley Only)"
         ]
       }
     ]
@@ -4580,7 +4580,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी व्रतa"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -4599,7 +4599,7 @@
           "कुशे औंशी",
           "बाबुको मुख हेर्ने दिन",
           "बाबुको मुख हेर्ने दिन",
-          "Motiram जयन्ती",
+          "मोतिराम जयन्ती",
           "मानव बेचबिखन विरुद्धको राष्ट्रिय दिवस"
         ]
       },
@@ -4650,7 +4650,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartani एकादशी व्रतa"
+          "हरिपरिवर्तिनी एकादशी व्रत"
         ]
       },
       {
@@ -4660,7 +4660,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "निजामती सेवा दिवस (होलीday for Nepali Employees working in Law and constitutional system in international countries)"
+          "निजामती सेवा दिवस (होलीday for नेपाली Employees working in Law and constitutional system in international countries)"
         ]
       },
       {
@@ -4670,7 +4670,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "इन्द्र जात्रा (होलीday Only for Ktm)"
+          "इन्द्र जात्रा (होलीday Only for काठमाडौं)"
         ]
       },
       {
@@ -4693,7 +4693,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ditiya श्राद्ध",
+          "द्वितीया श्राद्ध",
           "26 तृतीया श्राद्ध"
         ]
       },
@@ -4705,8 +4705,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chauthi श्राद्ध",
-          "28 Panchami श्राद्ध"
+          "चौथी श्राद्ध",
+          "28 पञ्चमी श्राद्ध"
         ]
       },
       {
@@ -4717,8 +4717,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sasthi श्राद्ध",
-          "30 Saptami श्राद्ध"
+          "षष्ठी श्राद्ध",
+          "30 सप्तमी श्राद्ध"
         ]
       },
       {
@@ -4748,7 +4748,7 @@
         "is_holiday": false,
         "events_np": [
           "विश्वकर्मा पूजा",
-          "Nawami श्राद्ध"
+          "नवमी श्राद्ध"
         ]
       },
       {
@@ -4758,7 +4758,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Dashami श्राद्ध"
+          "दशमी श्राद्ध"
         ]
       },
       {
@@ -4769,7 +4769,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रतa",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       },
@@ -4793,8 +4793,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaturdashi श्राद्ध",
-          "7 Darsha श्राद्ध"
+          "चतुर्दशी श्राद्ध",
+          "7 दर्श श्राद्ध"
         ]
       },
       {
@@ -4804,7 +4804,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Matamaha श्राद्ध"
+          "मातामह श्राद्ध"
         ]
       },
       {
@@ -4858,7 +4858,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Pampakusha एकादशी व्रतa"
+          "पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -4878,7 +4878,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Kojagrat पूर्णिमा"
+          "कोजाग्रत पूर्णिमा"
         ]
       },
       {
@@ -4889,7 +4889,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "पूर्णिमा व्रतa",
+          "पूर्णिमा व्रत",
           "चन्द्र ग्रहण"
         ]
       }
@@ -4906,7 +4906,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी व्रतa"
+          "रमा एकादशी व्रत"
         ]
       },
       {
@@ -4919,8 +4919,8 @@
         "is_holiday": false,
         "events_np": [
           "यमपञ्चक आरम्भ",
-          "Kaag तिहार",
-          "Dhanwantari जयन्ती"
+          "काग तिहार",
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -4931,7 +4931,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kukar तिहार(Dogs Day)",
+          "Kukar तिहार(कुकुर Day)",
           "नरक चतुर्दशी"
         ]
       },
@@ -4991,7 +4991,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रतa",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -5003,8 +5003,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "पूर्णिमा व्रतa",
-          "Guru Nanak जयन्ती"
+          "पूर्णिमा व्रत",
+          "गुरु नानक जयन्ती"
         ]
       },
       {
@@ -5030,7 +5030,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Upattika एकादशी व्रतa"
+          "उत्पन्ना एकादशी व्रत"
         ]
       },
       {
@@ -5062,7 +5062,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokchhyada एकादशी व्रतa"
+          "मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -5072,7 +5072,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "अन्तर्राष्ट्रिय अपाङ्गता दिवस (होलीday for only Nepali Disabilities Employee)"
+          "अन्तर्राष्ट्रिय अपाङ्गता दिवस (होलीday for only नेपाली Disabilities Employee)"
         ]
       },
       {
@@ -5104,7 +5104,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी व्रतa"
+          "सफला एकादशी व्रत"
         ]
       },
       {
@@ -5124,7 +5124,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Tamuल्होसार"
+          "तमुल्होसार"
         ]
       },
       {
@@ -5134,7 +5134,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रतa"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -5146,7 +5146,7 @@
         "is_holiday": false,
         "events_np": [
           "श्री स्वस्थानी व्रत आरम्भ",
-          "पूर्णिमा व्रतa"
+          "पूर्णिमा व्रत"
         ]
       }
     ]
@@ -5164,8 +5164,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघe Shankranti",
-          "माघी Parwa",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
           "चन्त्याल जातिको राष्ट्रिय पर्व"
         ]
       },
@@ -5176,7 +5176,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shatila एकादशी व्रत"
+          "षट्तिला एकादशी व्रत"
         ]
       },
       {
@@ -5212,7 +5212,7 @@
         "is_holiday": true,
         "events_np": [
           "शहीद दिवस",
-          "Bhima एकादशी व्रतa"
+          "भीम एकादशी व्रत"
         ]
       },
       {
@@ -5224,7 +5224,7 @@
         "is_holiday": false,
         "events_np": [
           "श्री स्वस्थानी व्रत समाप्ति",
-          "पूर्णिमा व्रतa"
+          "पूर्णिमा व्रत"
         ]
       }
     ]
@@ -5240,7 +5240,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी व्रतa"
+          "विजया एकादशी व्रत"
         ]
       },
       {
@@ -5262,7 +5262,7 @@
         "is_holiday": true,
         "events_np": [
           "राष्ट्रिय प्रजातन्त्र दिवस",
-          "Ghyalpo ल्होसार"
+          "ग्याल्पो ल्होसार"
         ]
       },
       {
@@ -5274,7 +5274,7 @@
         "is_holiday": false,
         "events_np": [
           "चिरोत्यान",
-          "होली Aarambha"
+          "होली आरम्भ"
         ]
       },
       {
@@ -5284,7 +5284,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी व्रतa"
+          "आमलकी एकादशी व्रत"
         ]
       },
       {
@@ -5294,7 +5294,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा(होलीday For 55 Hilly Districts)"
+          "फाल्गु पूर्णिमा(होलीday For 55 Hilly Districts)"
         ]
       },
       {
@@ -5304,7 +5304,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "प्रतिपदा (होलीday for 20 Districts of Terai  and Inner Madhesh)"
+          "प्रतिपदा (होलीday for 20 Districts of तराई and Inner मधेश)"
         ]
       },
       {
@@ -5330,7 +5330,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "PaapMochini एकादशी व्रतa"
+          "पापमोचिनी एकादशी व्रत"
         ]
       },
       {
@@ -5340,7 +5340,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा(होलीday in Kathmandu Valley only)"
+          "घोडेजात्रा(होलीday in काठमाडौं Valley only)"
         ]
       },
       {
@@ -5350,7 +5350,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं"
+          "चैते दशैं"
         ]
       },
       {
@@ -5370,7 +5370,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaamada एकादशी व्रतa"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -5380,7 +5380,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Mahabir जयन्ती(होलीday Only for Jain Religion following Nepali Governmental Employees)"
+          "महावीर जयन्ती(होलीday Only for जैन Religion following नेपाली Governmental Employees)"
         ]
       },
       {
@@ -5390,7 +5390,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "पूर्णिमा व्रतa"
+          "पूर्णिमा व्रत"
         ]
       },
       {
@@ -5419,8 +5419,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Nepali नयाँ वर्ष",
-          "Baisakh संक्रान्ति"
+          "नेपाली नयाँ वर्ष",
+          "बैशाख संक्रान्ति"
         ]
       },
       {
@@ -5466,7 +5466,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
+          "चण्डी पूर्णिमा",
           "बुद्ध जयन्ती",
           "किरातको उधौली पर्व",
           "राई",
@@ -5569,7 +5569,7 @@
         "is_holiday": true,
         "events_np": [
           "गणतन्त्र दिवस",
-          "Nirjala एकादशी व्रत",
+          "निर्जला एकादशी व्रत",
           "तुलशीको बिउ रोप्ने"
         ]
       },
@@ -5634,7 +5634,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartako Yogini एकादशी व्रत"
+          "स्मार्तको योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -5644,7 +5644,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baisnab haruko Yogini एकादशी व्रत"
+          "वैष्णव हरूको योगिनी एकादशी व्रत"
         ]
       }
     ]
@@ -5690,7 +5690,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Padmini एकादशी व्रत"
+          "पद्मिनी एकादशी व्रत"
         ]
       },
       {
@@ -5730,7 +5730,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Parama एकादशी व्रत"
+          "परमा एकादशी व्रत"
         ]
       },
       {
@@ -5806,7 +5806,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "चातुर्मास व्रत आरम्भ",
           "तुलशी रोप्ने"
         ]
@@ -5850,7 +5850,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -5892,7 +5892,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baraha जयन्ती"
+          "वराह जयन्ती"
         ]
       }
     ]
@@ -5920,7 +5920,7 @@
         "is_holiday": false,
         "events_np": [
           "नाग पञ्चमी",
-          "3 Kalki जयन्ती"
+          "3 कल्की जयन्ती"
         ]
       },
       {
@@ -5930,7 +5930,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -5964,7 +5964,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाईजात्रा(saparu)(Ktm Valley होलीday)"
+          "गाईजात्रा(सापारु)(काठमाडौं Valley होलीday)"
         ]
       },
       {
@@ -6032,7 +6032,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "ajaa एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -6053,7 +6053,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "तीजko दार खाने din",
+          "तीजको दार खाने दिन",
           "बाल दिवस"
         ]
       },
@@ -6102,7 +6102,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Hariparwartini एकादशी व्रत"
+          "हरिपरिवर्तिनी एकादशी व्रत"
         ]
       },
       {
@@ -6124,7 +6124,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Indra jatra(होलीday in Ktm. Valley)"
+          "इन्द्र जात्रा(होलीday in काठमाडौं. Valley)"
         ]
       },
       {
@@ -6210,7 +6210,7 @@
         "is_holiday": false,
         "events_np": [
           "दशमी श्राद्ध",
-          "21 Indira एकादशी व्रतa"
+          "21 इन्दिरा एकादशी व्रत"
         ]
       },
       {
@@ -6302,7 +6302,7 @@
         "events_np": [
           "महानवमी",
           "विजया दशमी",
-          "दशैं 2072 ko Tika"
+          "दशैं 2072 को टीका"
         ]
       },
       {
@@ -6312,7 +6312,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Smartaharuko Papangkusha एकादशी व्रत"
+          "स्मार्तहरूको पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -6344,9 +6344,9 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Crow तिहार",
+          "काग तिहार",
           "यमपञ्चक",
-          "Dhanwantari जयन्ती"
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -6357,7 +6357,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Dog तिहार",
+          "कुकुर तिहार",
           "नरक चतुर्दशी"
         ]
       },
@@ -6453,7 +6453,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रतa",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -6474,7 +6474,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Guru Nanak जयन्ती(होलीday For Sikh Employee)"
+          "गुरु नानक जयन्ती(होलीday For सिख Employee)"
         ]
       },
       {
@@ -6606,7 +6606,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokhshyada एकादशी व्रत"
+          "मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -6652,7 +6652,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Safala एकादशी व्रतa"
+          "स्मार्तहरूको सफला एकादशी व्रत"
         ]
       },
       {
@@ -6662,7 +6662,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baisnabharuko Safala एकादशी brata"
+          "वैष्णवहरूको सफला एकादशी व्रत"
         ]
       },
       {
@@ -6684,7 +6684,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार",
+          "टोल ल्होसार",
           "स्नान दान औंशी",
           "हलो बर्ने"
         ]
@@ -6726,7 +6726,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघe Shankranti",
+          "माघे सङ्क्रान्ति",
           "चन्त्यालको राष्ट्रिय पर्व",
           "मकर स्नान सुरु"
         ]
@@ -6758,7 +6758,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रतa"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -6790,7 +6790,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "माघsnan Starts"
+          "माघ स्नान Starts"
         ]
       },
       {
@@ -6830,7 +6830,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shadtila एकादशी व्रतa"
+          "षट्तिला एकादशी व्रत"
         ]
       },
       {
@@ -6852,7 +6852,7 @@
         "is_holiday": true,
         "events_np": [
           "सोनाम ल्होसार",
-          "Shree Ballav जयन्ती"
+          "श्री Ballav जयन्ती"
         ]
       },
       {
@@ -6910,7 +6910,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "माघ Snan and Swasthani व्रतa Ends"
+          "माघ स्नान and स्वस्थानी व्रत Ends"
         ]
       },
       {
@@ -6920,7 +6920,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी व्रतa"
+          "विजया एकादशी व्रत"
         ]
       },
       {
@@ -6956,7 +6956,7 @@
         "is_holiday": true,
         "events_np": [
           "स्नान दान गर्ने औंशी (हलो बर्ने)",
-          "Ghyalpo ल्होसार"
+          "ग्याल्पो ल्होसार"
         ]
       }
     ]
@@ -6982,7 +6982,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी व्रतa"
+          "आमलकी एकादशी व्रत"
         ]
       },
       {
@@ -6993,7 +6993,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा",
+          "फाल्गु पूर्णिमा",
           "होली(होलीday on Hilli Regions)"
         ]
       },
@@ -7005,8 +7005,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा",
-          "होली(होलीday on Terai Regions)"
+          "फाल्गु पूर्णिमा",
+          "होली(होलीday on तराई Regions)"
         ]
       },
       {
@@ -7040,7 +7040,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochini एकादशी व्रतa"
+          "पाप पापमोचिनी एकादशी व्रत"
         ]
       },
       {
@@ -7053,7 +7053,7 @@
         "is_holiday": true,
         "events_np": [
           "औंशी श्राद्ध (निशी/हलो बर्ने)",
-          "घोडेजात्रा(होलीday in Ktm Valley)",
+          "घोडेजात्रा(होलीday in काठमाडौं Valley)",
           "विश्व स्वास्थ्य दिवस"
         ]
       },
@@ -7065,8 +7065,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Matsya जयन्ती",
-          "Bhaktapur Bhairab भाद्रkali Rath Jatra"
+          "मत्स्य जयन्ती",
+          "भक्तपुर भैरव भाद्रकाली रथ जात्रा"
         ]
       },
       {
@@ -7122,7 +7122,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -7162,7 +7162,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत"
+          "वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -7190,7 +7190,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -7220,7 +7220,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       }
     ]
@@ -7236,7 +7236,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत"
+          "निर्जला एकादशी व्रत"
         ]
       },
       {
@@ -7289,7 +7289,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी",
+          "हरिशयनी एकादशी",
           "तुलशी रोप्ने"
         ]
       }
@@ -7376,7 +7376,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाईजात्रा(होलीday in Ktm only)"
+          "गाईजात्रा(होलीday in काठमाडौं only)"
         ]
       },
       {
@@ -7396,7 +7396,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -7460,7 +7460,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartko Haripariwartini एकादशी व्रत"
+          "स्मार्तको हरिपरिवर्तिनी एकादशी व्रत"
         ]
       },
       {
@@ -7470,7 +7470,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnab Haripariwartini एकादशी व्रत"
+          "वैष्णव हरिपरिवर्तिनी एकादशी व्रत"
         ]
       }
     ]
@@ -7496,7 +7496,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत"
+          "इन्दिरा एकादशी व्रत"
         ]
       },
       {
@@ -7558,7 +7558,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशीbrat"
+          "पापाङ्कुशा एकादशीव्रत"
         ]
       },
       {
@@ -7568,7 +7568,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Kojagrat पूर्णिमा"
+          "कोजाग्रत पूर्णिमा"
         ]
       }
     ]
@@ -7584,7 +7584,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी व्रत"
+          "रमा एकादशी व्रत"
         ]
       },
       {
@@ -7594,7 +7594,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Crow तिहार"
+          "काग तिहार"
         ]
       },
       {
@@ -7604,7 +7604,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Dog तिहार"
+          "कुकुर तिहार"
         ]
       },
       {
@@ -7656,7 +7656,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartko Haribodhini एकादशी व्रत"
+          "स्मार्तको हरिबोधिनी एकादशी व्रत"
         ]
       },
       {
@@ -7666,7 +7666,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabko Haribodhini एकादशी व्रत"
+          "वैष्णवको हरिबोधिनी एकादशी व्रत"
         ]
       }
     ]
@@ -7682,7 +7682,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Upattika एकादशीbrat"
+          "उत्पन्ना एकादशीव्रत"
         ]
       },
       {
@@ -7702,7 +7702,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशीbrat"
+          "मोक्षदा एकादशीव्रत"
         ]
       },
       {
@@ -7730,7 +7730,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी व्रत"
+          "सफला एकादशी व्रत"
         ]
       },
       {
@@ -7760,7 +7760,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -7771,7 +7771,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Prithivi जयन्ती",
+          "पृथ्वी जयन्ती",
           "राष्ट्रिय एकता दिवस"
         ]
       },
@@ -7810,7 +7810,7 @@
         "is_holiday": true,
         "events_np": [
           "सोनाम ल्होसार",
-          "Shree Ballav जयन्ती"
+          "श्री Ballav जयन्ती"
         ]
       },
       {
@@ -7868,7 +7868,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijay एकादशी व्रत"
+          "विजया एकादशी व्रत"
         ]
       },
       {
@@ -7888,7 +7888,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghyalpo ल्होसार"
+          "ग्याल्पो ल्होसार"
         ]
       },
       {
@@ -7899,7 +7899,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Aamalaki एकादशी",
+          "आमलकी एकादशी",
           "महिला दिवस"
         ]
       },
@@ -7910,7 +7910,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Hilly 55 dist.)"
+          "फाल्गु पूर्णिमा (होलीday in Hilly 55 dist.)"
         ]
       },
       {
@@ -7920,7 +7920,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Terai)"
+          "फाल्गु पूर्णिमा (होलीday in तराई)"
         ]
       }
     ]
@@ -7946,7 +7946,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा(होलीday In Ktm Only)"
+          "घोडेजात्रा(होलीday In काठमाडौं Only)"
         ]
       },
       {
@@ -7956,7 +7956,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं"
+          "चैते दशैं"
         ]
       },
       {
@@ -7966,7 +7966,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -8002,7 +8002,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत"
+          "वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -8064,7 +8064,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -8078,7 +8078,7 @@
         "events_np": [
           "बुद्ध जयन्ती",
           "उधौली पर्व",
-          "Chandi पूर्णिमा"
+          "चण्डी पूर्णिमा"
         ]
       }
     ]
@@ -8094,7 +8094,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -8161,7 +8161,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत",
+          "निर्जला एकादशी व्रत",
           "तुलशीको बिउ छर्ने"
         ]
       },
@@ -8212,7 +8212,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी व्रत"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -8272,7 +8272,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -8300,7 +8300,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Kamika एकादशी व्रत"
+          "स्मार्तहरूको कामिका एकादशी व्रत"
         ]
       },
       {
@@ -8310,7 +8310,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Kamika एकादशी व्रत"
+          "वैष्णवहरूको कामिका एकादशी व्रत"
         ]
       },
       {
@@ -8348,7 +8348,7 @@
           "नाग पञ्चमी",
           "जनै पूर्णिमा",
           "रक्षाबन्धन",
-          "Kalki जयन्ती"
+          "कल्की जयन्ती"
         ]
       },
       {
@@ -8368,7 +8368,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -8388,7 +8388,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाईजात्रा (होलीday in Ktm Valley)"
+          "गाईजात्रा (होलीday in काठमाडौं Valley)"
         ]
       },
       {
@@ -8414,7 +8414,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -8484,9 +8484,9 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Hariparwartini एकादशी व्रत",
+          "हरिपरिवर्तिनी एकादशी व्रत",
           "२० इन्द्रजात्रा",
-          "(होलीday in Kathmandu valley)"
+          "(होलीday in काठमाडौं valley)"
         ]
       },
       {
@@ -8522,7 +8522,7 @@
         "events_np": [
           "द्वितीया श्राद्ध",
           "२३ तृतीया श्राद्ध",
-          "24 Chaturthi श्राद्ध"
+          "24 चतुर्थी श्राद्ध"
         ]
       },
       {
@@ -8536,7 +8536,7 @@
         "events_np": [
           "पञ्चमी श्राद्ध",
           "२६ षष्ठी श्राद्ध",
-          "27 Saptami श्राद्ध"
+          "27 सप्तमी श्राद्ध"
         ]
       },
       {
@@ -8573,7 +8573,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       }
@@ -8682,7 +8682,7 @@
         "events_np": [
           "विजया दशमी",
           "दशैं 2074",
-          "दशैं Tika"
+          "दशैं टीका"
         ]
       },
       {
@@ -8692,7 +8692,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत"
+          "पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -8712,7 +8712,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Kojagrat पूर्णिमा/व्रत"
+          "कोजाग्रत पूर्णिमा/व्रत"
         ]
       },
       {
@@ -8732,7 +8732,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी व्रत"
+          "रमा एकादशी व्रत"
         ]
       },
       {
@@ -8742,7 +8742,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार"
+          "काग तिहार"
         ]
       }
     ]
@@ -8817,7 +8817,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -8828,7 +8828,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Guru Nanak जयन्ती(होलीday for those who celebrates)"
+          "गुरु नानक जयन्ती(होलीday for those who celebrates)"
         ]
       },
       {
@@ -8848,7 +8848,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Upattika एकादशी व्रत"
+          "उत्पन्ना एकादशी व्रत"
         ]
       }
     ]
@@ -8894,7 +8894,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Mokshyada एकादशी व्रत"
+          "स्मार्तहरूको मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -8904,7 +8904,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Mokshyada एकादशी व्रत"
+          "वैष्णवहरूको मोक्षदा एकादशी व्रत"
         ]
       },
       {
@@ -8940,7 +8940,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Safala एकादशी व्रत"
+          "स्मार्तहरूको सफला एकादशी व्रत"
         ]
       },
       {
@@ -8950,7 +8950,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Safala एकादशी व्रत"
+          "वैष्णवहरूको सफला एकादशी व्रत"
         ]
       }
     ]
@@ -8976,7 +8976,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार"
+          "टोल ल्होसार"
         ]
       },
       {
@@ -8996,7 +8996,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -9030,7 +9030,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shree स्वस्थानी पूर्णिमा"
+          "श्री स्वस्थानी पूर्णिमा"
         ]
       },
       {
@@ -9052,7 +9052,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shadtila एकादशी व्रत"
+          "षट्तिला एकादशी व्रत"
         ]
       }
     ]
@@ -9070,8 +9070,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघe Shangkranti",
-          "माघी Parba",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
           "चन्त्याल पर्व"
         ]
       },
@@ -9106,7 +9106,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Bhima एकादशी"
+          "स्मार्तहरूको भीम एकादशी"
         ]
       },
       {
@@ -9116,7 +9116,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Bhima एकादशी"
+          "वैष्णवहरूको भीम एकादशी"
         ]
       },
       {
@@ -9148,7 +9148,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी व्रत"
+          "विजया एकादशी व्रत"
         ]
       },
       {
@@ -9194,7 +9194,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghyalpo ल्होसार"
+          "ग्याल्पो ल्होसार"
         ]
       },
       {
@@ -9216,7 +9216,7 @@
         "is_holiday": false,
         "events_np": [
           "चिरोत्थान",
-          "होलीkarambha"
+          "होली आरम्भ"
         ]
       },
       {
@@ -9226,7 +9226,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी व्रत"
+          "आमलकी एकादशी व्रत"
         ]
       },
       {
@@ -9236,7 +9236,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Hilly 55 Districts)"
+          "फाल्गु पूर्णिमा (होलीday in Hilly 55 Districts)"
         ]
       },
       {
@@ -9246,7 +9246,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (Terai होलीday)"
+          "फाल्गु पूर्णिमा (तराई होलीday)"
         ]
       },
       {
@@ -9266,7 +9266,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochani एकादशी व्रत"
+          "पापमोचिनी एकादशी व्रत"
         ]
       }
     ]
@@ -9292,7 +9292,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "भाद्रkalipithma Lingo Uthaune"
+          "भाद्रकालीपीठमा लिङ्गो उठाउने"
         ]
       },
       {
@@ -9302,7 +9302,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghodejatra(होलीday in Ktm Valley)"
+          "घोडेजात्रा(होलीday in काठमाडौं Valley)"
         ]
       },
       {
@@ -9332,7 +9332,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -9342,7 +9342,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Mahabir जयन्ती(होलीday for Jains)"
+          "महावीर जयन्ती(होलीday for जैन)"
         ]
       },
       {
@@ -9372,7 +9372,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत"
+          "वरूथिनी एकादशी व्रत"
         ]
       }
     ]
@@ -9440,7 +9440,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -9454,7 +9454,7 @@
         "events_np": [
           "बुद्ध जयन्ती",
           "उधौली पर्व",
-          "Chandi पूर्णिमा"
+          "चण्डी पूर्णिमा"
         ]
       },
       {
@@ -9474,7 +9474,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -9534,7 +9534,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Padmini एकादशी व्रत"
+          "पद्मिनी एकादशी व्रत"
         ]
       },
       {
@@ -9554,7 +9554,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paramaa एकादशी व्रत"
+          "परमा एकादशी व्रत"
         ]
       },
       {
@@ -9606,7 +9606,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत"
+          "निर्जला एकादशी व्रत"
         ]
       },
       {
@@ -9650,7 +9650,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी व्रत"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -9672,7 +9672,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती",
+          "भानु जयन्ती",
           "स्नान दान औंशी",
           "हलो बर्ने"
         ]
@@ -9715,7 +9715,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "तुलशी रोप्ने"
         ]
       },
@@ -9760,7 +9760,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -9804,7 +9804,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baraha जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -9840,7 +9840,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी brat"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -9864,7 +9864,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाई जात्रा (होलीday in Ktm.)"
+          "गाई जात्रा (होलीday in काठमाडौं.)"
         ]
       },
       {
@@ -9894,7 +9894,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -10004,7 +10004,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Hariparwartini एकादशी व्रत"
+          "हरिपरिवर्तिनी एकादशी व्रत"
         ]
       },
       {
@@ -10014,7 +10014,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "इन्द्र जात्रा (होलीday in Ktm.)"
+          "इन्द्र जात्रा (होलीday in काठमाडौं.)"
         ]
       },
       {
@@ -10099,7 +10099,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       },
@@ -10200,7 +10200,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papankusha एकादशी"
+          "पापाङ्कुशा एकादशी"
         ]
       },
       {
@@ -10220,7 +10220,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kojagrat पूर्णिमा/व्रत"
+          "कोजाग्रत पूर्णिमा/व्रत"
         ]
       },
       {
@@ -10240,7 +10240,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Rama एकादशी व्रत"
+          "स्मार्तहरूको रमा एकादशी व्रत"
         ]
       },
       {
@@ -10250,7 +10250,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Rama एकादशी व्रत"
+          "वैष्णवहरूको रमा एकादशी व्रत"
         ]
       },
       {
@@ -10261,8 +10261,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार",
-          "Dhanwantari जयन्ती"
+          "काग तिहार",
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -10349,7 +10349,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -10372,7 +10372,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Guru Nanak जयन्ती(होलीday for Shikhs)"
+          "गुरु नानक जयन्ती(होलीday for सिख)"
         ]
       },
       {
@@ -10393,7 +10393,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Utpatika एकादशी",
+          "उत्पन्ना एकादशी",
           "अन्तर्राष्ट्रिय अपाङ्गता दिवस(होलीday for Disable Employees)"
         ]
       },
@@ -10438,7 +10438,7 @@
         "is_holiday": false,
         "events_np": [
           "विवाह पञ्चमी",
-          "Shadananda जयन्ती"
+          "षडानन्द जयन्ती"
         ]
       }
     ]
@@ -10464,7 +10464,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी"
+          "मोक्षदा एकादशी"
         ]
       },
       {
@@ -10478,7 +10478,7 @@
         "events_np": [
           "Dhanya पूर्णिमा",
           "उधौली पर्व",
-          "Dhaneshwar मेला(होलीday for peoples who celebrates)"
+          "धनेश्वर मेला(होलीday for peoples who celebrates)"
         ]
       },
       {
@@ -10509,7 +10509,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी",
+          "सफला एकादशी",
           "नयाँ वर्ष 2019"
         ]
       },
@@ -10530,7 +10530,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार"
+          "टोल ल्होसार"
         ]
       },
       {
@@ -10541,7 +10541,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Prithivi जयन्ती",
+          "पृथ्वी जयन्ती",
           "राष्ट्रिय एकता दिवस"
         ]
       }
@@ -10559,8 +10559,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघe Shankranti 2075",
-          "माघी Parba(होलीday for related religions)"
+          "माघे सङ्क्रान्ति 2075",
+          "माघी पर्व(होलीday for related religions)"
         ]
       },
       {
@@ -10570,7 +10570,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -10600,7 +10600,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shattila एकादशी व्रत"
+          "षट्तिला एकादशी व्रत"
         ]
       },
       {
@@ -10632,7 +10632,7 @@
         "is_holiday": true,
         "events_np": [
           "सोनाम ल्होसार",
-          "Shree Ballav जयन्ती(होलीday for related celebraties)"
+          "श्री Ballav जयन्ती(होलीday for related celebraties)"
         ]
       },
       {
@@ -10670,7 +10670,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Bhima एकादशी"
+          "स्मार्तहरूको भीम एकादशी"
         ]
       },
       {
@@ -10680,7 +10680,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Bhima एकादशी"
+          "वैष्णवहरूको भीम एकादशी"
         ]
       },
       {
@@ -10702,7 +10702,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -10748,7 +10748,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -10759,7 +10759,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा",
+          "फाल्गु पूर्णिमा",
           "होली (होलीday in Hilly Districts)"
         ]
       },
@@ -10771,8 +10771,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा",
-          "होली(होलीday in Terai)"
+          "फाल्गु पूर्णिमा",
+          "होली(होलीday in तराई)"
         ]
       },
       {
@@ -10782,7 +10782,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochini एकादशी"
+          "पापमोचिनी एकादशी"
         ]
       },
       {
@@ -10804,7 +10804,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा(Ktm. होलीday)"
+          "घोडेजात्रा(काठमाडौं. होलीday)"
         ]
       },
       {
@@ -10824,7 +10824,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhaktapur Bhairab भाद्रkali Yatra"
+          "भक्तपुर भैरव भाद्रकाली यात्रा"
         ]
       },
       {
@@ -10835,8 +10835,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaitey दशैं",
-          "Shree राम नवमी व्रतam"
+          "चैते दशैं",
+          "श्री राम नवमी व्रत"
         ]
       }
     ]
@@ -10862,7 +10862,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Kamada एकादशी"
+          "स्मार्तहरूको कामदा एकादशी"
         ]
       },
       {
@@ -10872,7 +10872,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Kamada एकादशी"
+          "वैष्णवहरूको कामदा एकादशी"
         ]
       },
       {
@@ -10882,7 +10882,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Mahabir जयन्ती (होलीday for Jains)"
+          "महावीर जयन्ती (होलीday for जैन)"
         ]
       },
       {
@@ -10912,7 +10912,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी"
+          "वरूथिनी एकादशी"
         ]
       },
       {
@@ -10972,7 +10972,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -10986,11 +10986,11 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
+          "चण्डी पूर्णिमा",
           "किरात",
           "राई",
           "लिम्बू जातिको उधौली पर्व",
-          "Gautam बुद्ध जयन्ती"
+          "गौतम बुद्ध जयन्ती"
         ]
       },
       {
@@ -11010,7 +11010,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aparaa एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -11044,7 +11044,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत"
+          "निर्जला एकादशी व्रत"
         ]
       }
     ]
@@ -11082,7 +11082,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Yogini एकादशी"
+          "स्मार्तहरूको योगिनी एकादशी"
         ]
       },
       {
@@ -11092,7 +11092,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Yogini एकादशी"
+          "वैष्णवहरूको योगिनी एकादशी"
         ]
       },
       {
@@ -11135,7 +11135,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "तुलशी रोप्ने"
         ]
       },
@@ -11146,7 +11146,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       },
       {
@@ -11206,7 +11206,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -11239,7 +11239,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Snaan Daanka lagi औंशी",
+          "स्नान Daanka लागि औंशी",
           "हलो बर्ने"
         ]
       },
@@ -11260,7 +11260,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Barah जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -11292,7 +11292,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -11316,7 +11316,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाई जात्रा (होलीday in Kathmandu Valley)"
+          "गाई जात्रा (होलीday in काठमाडौं Valley)"
         ]
       }
     ]
@@ -11344,7 +11344,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी व्रत"
+          "अजा एकादशी व्रत"
         ]
       },
       {
@@ -11418,7 +11418,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartani एकादशी व्रत"
+          "हरिपरिवर्तिनी एकादशी व्रत"
         ]
       },
       {
@@ -11428,7 +11428,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Indrajatra (होलीday in Kathmandu)"
+          "इन्द्रजात्रा (होलीday in काठमाडौं)"
         ]
       },
       {
@@ -11547,7 +11547,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "द्वादशी श्राद्ध"
         ]
       },
@@ -11644,7 +11644,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत"
+          "पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -11655,7 +11655,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kojagrat पूर्णिमा",
+          "कोजाग्रत पूर्णिमा",
           "व्रत"
         ]
       },
@@ -11682,7 +11682,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       },
       {
@@ -11703,8 +11703,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार",
-          "Dhanwantari जयन्ती"
+          "काग तिहार",
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -11767,7 +11767,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -11798,7 +11798,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Guru Nanak जयन्ती *"
+          "गुरु नानक जयन्ती *"
         ]
       }
     ]
@@ -11824,7 +11824,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Utpattika एकादशी"
+          "स्मार्तहरूको उत्पन्ना एकादशी"
         ]
       },
       {
@@ -11834,7 +11834,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Utpattika एकादशी"
+          "वैष्णवहरूको उत्पन्ना एकादशी"
         ]
       },
       {
@@ -11872,7 +11872,7 @@
         "events_np": [
           "विवाह पञ्चमी",
           "एड्स दिवस",
-          "Shadananda जयन्ती"
+          "षडानन्द जयन्ती"
         ]
       },
       {
@@ -11902,7 +11902,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी"
+          "मोक्षदा एकादशी"
         ]
       },
       {
@@ -11918,7 +11918,7 @@
           "Dhanya पूर्णिमा",
           "उधौली पर्व",
           "धनेश्वर मेला",
-          "Yomaripunhi (होलीday for related religion and संस्कृति)"
+          "योमरी पुन्ही (होलीday for related religion and संस्कृति)"
         ]
       }
     ]
@@ -11947,7 +11947,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी",
+          "सफला एकादशी",
           "सबैभन्दा छोटो दिन"
         ]
       },
@@ -11985,7 +11985,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार",
+          "टोल ल्होसार",
           "चन्द्रोदय"
         ]
       },
@@ -12038,7 +12038,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -12088,8 +12088,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघe Shakranti",
-          "माघी Parba",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
           "चन्त्याल पर्व (होलीday for related)"
         ]
       },
@@ -12100,7 +12100,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shatila एकादशी"
+          "षट्तिला एकादशी"
         ]
       },
       {
@@ -12144,7 +12144,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी"
+          "भीम एकादशी"
         ]
       },
       {
@@ -12182,7 +12182,7 @@
         "is_holiday": false,
         "events_np": [
           "प्रजातन्त्र दिवस",
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -12202,7 +12202,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghyalpo ल्होसार (होलीday for related)"
+          "ग्याल्पो ल्होसार (होलीday for related)"
         ]
       },
       {
@@ -12212,7 +12212,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -12232,7 +12232,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Hilly Districts)"
+          "फाल्गु पूर्णिमा (होलीday in Hilly Districts)"
         ]
       },
       {
@@ -12242,7 +12242,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Terai)"
+          "फाल्गु पूर्णिमा (होलीday in तराई)"
         ]
       }
     ]
@@ -12268,7 +12268,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochani एकादशी"
+          "पापमोचिनी एकादशी"
         ]
       },
       {
@@ -12278,7 +12278,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "भाद्रkali Pithma lingo thadyaune"
+          "भाद्रकाली पीठमा लिङ्गो ठड्याउने"
         ]
       },
       {
@@ -12288,7 +12288,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा (होलीday in Ktm)"
+          "घोडेजात्रा (होलीday in काठमाडौं)"
         ]
       },
       {
@@ -12308,7 +12308,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं"
+          "चैते दशैं"
         ]
       },
       {
@@ -12318,7 +12318,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shree राम नवमी"
+          "श्री राम नवमी"
         ]
       },
       {
@@ -12328,7 +12328,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी"
+          "कामदा एकादशी"
         ]
       },
       {
@@ -12338,7 +12338,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Mahabir जयन्ती (Jains होलीday)"
+          "महावीर जयन्ती (जैन होलीday)"
         ]
       },
       {
@@ -12361,7 +12361,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bkt Bairab भाद्रkali Yatra",
+          "भक्तपुर भैरव भाद्रकाली यात्रा",
           "ललितपुर मत्स्येन्द्रनाथ स्नान"
         ]
       }
@@ -12388,7 +12388,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत"
+          "वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -12430,7 +12430,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -12444,11 +12444,11 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
+          "चण्डी पूर्णिमा",
           "किरात",
           "राई",
           "लिम्बू जातिको उधौली पर्व",
-          "Gautam बुद्ध जयन्ती"
+          "गौतम बुद्ध जयन्ती"
         ]
       }
     ]
@@ -12464,7 +12464,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी"
+          "अपरा एकादशी"
         ]
       },
       {
@@ -12484,7 +12484,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी"
+          "निर्जला एकादशी"
         ]
       }
     ]
@@ -12500,7 +12500,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी"
+          "योगिनी एकादशी"
         ]
       },
       {
@@ -12520,7 +12520,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी"
+          "हरिशयनी एकादशी"
         ]
       },
       {
@@ -12540,7 +12540,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -12580,7 +12580,7 @@
         "is_holiday": false,
         "events_np": [
           "खीर खाने दिन",
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -12614,7 +12614,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी"
+          "अजा एकादशी"
         ]
       }
     ]
@@ -12672,7 +12672,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartini एकादशी"
+          "हरिपरिवर्तिनी एकादशी"
         ]
       },
       {
@@ -12682,7 +12682,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Indrajatra (होलीday in KTM Valley)"
+          "इन्द्रजात्रा (होलीday in काठमाडौं Valley)"
         ]
       },
       {
@@ -12692,7 +12692,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत"
+          "इन्दिरा एकादशी व्रत"
         ]
       }
     ]
@@ -12728,7 +12728,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Padmini एकादशी व्रत"
+          "पद्मिनी एकादशी व्रत"
         ]
       },
       {
@@ -12738,7 +12738,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Parama एकादशी व्रत"
+          "परमा एकादशी व्रत"
         ]
       }
     ]
@@ -12802,7 +12802,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैं Tika 2077"
+          "दशैं टीका 2077"
         ]
       },
       {
@@ -12812,7 +12812,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत"
+          "पापाङ्कुशा एकादशी व्रत"
         ]
       },
       {
@@ -12823,7 +12823,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kojagrat पूर्णिमा",
+          "कोजाग्रत पूर्णिमा",
           "व्रत"
         ]
       },
@@ -12854,7 +12854,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       },
       {
@@ -12875,8 +12875,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार",
-          "Dhanwantari जयन्ती"
+          "काग तिहार",
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -12940,7 +12940,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी"
+          "हरिबोधिनी एकादशी"
         ]
       },
       {
@@ -13017,7 +13017,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Mokshyada एकादशी",
+          "मोक्षदा एकादशी",
           "क्रिसमस"
         ]
       },
@@ -13048,7 +13048,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी"
+          "सफला एकादशी"
         ]
       },
       {
@@ -13078,9 +13078,9 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "माघe Shankranti",
-          "माघी Parba",
-          "Tol ल्होसार"
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
+          "टोल ल्होसार"
         ]
       },
       {
@@ -13090,7 +13090,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -13120,7 +13120,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shatila एकादशी"
+          "षट्तिला एकादशी"
         ]
       },
       {
@@ -13158,7 +13158,7 @@
         "is_holiday": true,
         "events_np": [
           "श्रीपञ्चमी",
-          "Sarashwoti Puja (Educational Institution होलीday)"
+          "सरस्वती पूजा (Educational Institution होलीday)"
         ]
       },
       {
@@ -13178,7 +13178,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Jaya एकादशी"
+          "जया एकादशी"
         ]
       },
       {
@@ -13198,7 +13198,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -13224,7 +13224,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghyalpo ल्होसार (होलीday for Related)"
+          "ग्याल्पो ल्होसार (होलीday for Related)"
         ]
       },
       {
@@ -13244,7 +13244,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -13254,7 +13254,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Hilly Region)"
+          "फाल्गु पूर्णिमा (होलीday in Hilly Region)"
         ]
       },
       {
@@ -13264,7 +13264,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होलीday in Terai Region)"
+          "फाल्गु पूर्णिमा (होलीday in तराई Region)"
         ]
       },
       {
@@ -13274,7 +13274,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paapmochini एकादशी"
+          "पापमोचिनी एकादशी"
         ]
       },
       {
@@ -13284,7 +13284,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghodejatra (होलीday in KTM Valley)"
+          "घोडेजात्रा (होलीday in काठमाडौं Valley)"
         ]
       }
     ]
@@ -13316,7 +13316,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं",
+          "चैते दशैं",
           "गोरखकाली पूजा",
           "सेतो मत्स्येन्द्रनाथ रथ यात्रा"
         ]
@@ -13330,7 +13330,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shree Ram जयन्ती",
+          "श्री राम जयन्ती",
           "छन्द दिवस",
           "राम नवमी व्रत"
         ]
@@ -13352,7 +13352,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -13372,7 +13372,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mahabir जयन्ती"
+          "महावीर जयन्ती"
         ]
       },
       {
@@ -13449,7 +13449,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत",
+          "वरूथिनी एकादशी व्रत",
           "किरात समाज सुधार दिवस"
         ]
       },
@@ -13531,7 +13531,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sita जयन्ती",
+          "सीता जयन्ती",
           "गोरखकाली पूजा"
         ]
       },
@@ -13542,7 +13542,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Mohini एकादशी व्रत"
+          "स्मार्तहरूको मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -13552,7 +13552,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Mohini एकादशी व्रत"
+          "वैष्णवहरूको मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -13563,7 +13563,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Narsinha जयन्ती",
+          "नरसिंह जयन्ती",
           "स्याङ्जा लसर्घा आलमदेवी पूजा"
         ]
       },
@@ -13583,13 +13583,13 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gautam बुद्ध जयन्ती",
+          "गौतम बुद्ध जयन्ती",
           "किरात",
           "राई",
           "यख्या",
           "सुनुवार",
           "लिम्बू जातिको उधौली पर्व",
-          "Chandi पूर्णिमा(होलीday only for related religion",
+          "चण्डी पूर्णिमा(होलीday only for related religion",
           "संस्कृति",
           "भूगोल र स्थान)",
           "बैशाख स्नान समाप्ति"
@@ -13632,7 +13632,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी व्रत"
+          "अपरा एकादशी व्रत"
         ]
       },
       {
@@ -13695,7 +13695,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी व्रत",
+          "निर्जला एकादशी व्रत",
           "तुलशीको डाल राख्ने"
         ]
       },
@@ -13732,7 +13732,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी  व्रत"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -13742,7 +13742,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -13761,7 +13761,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saune संक्रान्ति",
+          "साउने संक्रान्ति",
           "लुटो फाल्ने एवं राँको बाल्ने",
           "थारु गुरिया पर्व",
           "देउडा पर्व"
@@ -13786,7 +13786,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी व्रत",
+          "हरिशयनी एकादशी व्रत",
           "तुलशी रोप्ने",
           "चातुर्मास व्रत आरम्भ"
         ]
@@ -13840,7 +13840,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -13910,7 +13910,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -13946,7 +13946,7 @@
         "is_holiday": true,
         "events_np": [
           "गाईजात्रा",
-          "Saparu (होलीday for KTM. Only)"
+          "सापारु (होलीday for काठमाडौं. Only)"
         ]
       },
       {
@@ -14004,7 +14004,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Ajaa एकादशी व्रत"
+          "स्मार्तहरूको अजा एकादशी व्रत"
         ]
       },
       {
@@ -14014,7 +14014,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Ajaa एकादशी व्रत"
+          "वैष्णवहरूको अजा एकादशी व्रत"
         ]
       },
       {
@@ -14114,7 +14114,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Hariparwartini एकादशी व्रत",
+          "हरिपरिवर्तिनी एकादशी व्रत",
           "विश्वकर्मा पूजा",
           "वास्तु दिवस"
         ]
@@ -14215,7 +14215,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       },
@@ -14304,7 +14304,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैंko Tika 2078 2021"
+          "दशैंको टीका 2078 2021"
         ]
       },
       {
@@ -14316,7 +14316,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत",
+          "पापाङ्कुशा एकादशी व्रत",
           "अन्नपूर्णा यात्रा",
           "आसन चलन"
         ]
@@ -14334,7 +14334,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kojagrat पूर्णिमा (Sighaya)"
+          "कोजाग्रत पूर्णिमा (सिघःया)"
         ]
       },
       {
@@ -14347,7 +14347,7 @@
         "is_holiday": false,
         "events_np": [
           "पूर्णिमा व्रत",
-          "कार्तिकsnan",
+          "कार्तिकस्नान",
           "आकाश दीप दान आरम्भ"
         ]
       },
@@ -14378,7 +14378,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी व्रत"
+          "रमा एकादशी व्रत"
         ]
       },
       {
@@ -14390,7 +14390,7 @@
         "is_holiday": false,
         "events_np": [
           "यम दीप दान",
-          "Dhanwantari जयन्ती"
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -14402,7 +14402,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार",
+          "काग तिहार",
           "नरक चतुर्दशी",
           "कुकुर तिहार"
         ]
@@ -14469,7 +14469,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "छठ Parba",
+          "छठ पर्व",
           "डाला पूजा"
         ]
       },
@@ -14501,7 +14501,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhani एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       }
@@ -14520,8 +14520,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gurunanak जयन्ती (होलीday only for Sikhs)",
-          "Nimbakarcharya जयन्ती",
+          "गुरुनानक जयन्ती (होलीday only for सिख)",
+          "निम्बार्काचार्य जयन्ती",
           "चन्द्र ग्रहण"
         ]
       },
@@ -14574,7 +14574,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Utpattika एकादशी व्रत"
+          "उत्पन्ना एकादशी व्रत"
         ]
       },
       {
@@ -14596,7 +14596,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Bishwa Apanga Diwas (होलीday for Disabled people)",
+          "विश्व Apanga दिवस (होलीday for Disabled people)",
           "बालाचतुर्दशी",
           "षट्बीजारोपण"
         ]
@@ -14612,7 +14612,7 @@
         "events_np": [
           "विवाह पञ्चमी",
           "सीता विवाह पञ्चमी मेला",
-          "Shadanand जयन्ती"
+          "षडानन्द जयन्ती"
         ]
       },
       {
@@ -14642,7 +14642,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Moksyada एकादशी व्रत"
+          "मोक्षदा एकादशी व्रत"
         ]
       }
     ]
@@ -14672,7 +14672,7 @@
           "किरात राई",
           "यख्या",
           "सुनुवार",
-          "लिम्बू जाति उधौली Parba  (होलीday only for related religion",
+          "लिम्बू जाति उधौली पर्व (होलीday only for related religion",
           "संस्कृति",
           "भूगोल र स्थान)"
         ]
@@ -14707,7 +14707,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Safala एकादशी व्रत",
+          "सफला एकादशी व्रत",
           "तमु ल्होसार (होलीday only for related religion",
           "संस्कृति",
           "भूगोल र स्थान)"
@@ -14730,7 +14730,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार"
+          "टोल ल्होसार"
         ]
       },
       {
@@ -14740,7 +14740,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Guru Gobinda Sinha जयन्ती"
+          "गुरु गोविन्द सिंह जयन्ती"
         ]
       },
       {
@@ -14786,7 +14786,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       }
     ]
@@ -14803,8 +14803,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघe Shankranti",
-          "माघी Parba"
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व"
         ]
       },
       {
@@ -14844,7 +14844,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shattila एकादशी व्रत"
+          "षट्तिला एकादशी व्रत"
         ]
       },
       {
@@ -14870,7 +14870,7 @@
           "सोनाम ल्होसार (होलीday only for related religion",
           "संस्कृति",
           "भूगोल र स्थान)",
-          "Shree Ballav जयन्ती"
+          "श्री Ballav जयन्ती"
         ]
       },
       {
@@ -14884,9 +14884,9 @@
         "is_holiday": true,
         "events_np": [
           "बसन्त पञ्चमी",
-          "Basanta श्रावण",
+          "बसन्त श्रावण",
           "श्रीपञ्चमी",
-          "सरस्वती पूजा (होलीday only for educational institutions )"
+          "सरस्वती पूजा (होलीday only for educational institutions)"
         ]
       },
       {
@@ -14906,7 +14906,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी व्रत"
+          "भीम एकादशी व्रत"
         ]
       }
     ]
@@ -14966,7 +14966,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी व्रत"
+          "विजया एकादशी व्रत"
         ]
       },
       {
@@ -15016,7 +15016,7 @@
         "events_np": [
           "गोरखकाली पूजा",
           "चिरोत्थान",
-          "होलीkarambha"
+          "होली आरम्भ"
         ]
       },
       {
@@ -15026,7 +15026,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी व्रत"
+          "आमलकी एकादशी व्रत"
         ]
       }
     ]
@@ -15057,8 +15057,8 @@
         "is_holiday": true,
         "events_np": [
           "फागु पूर्णिमा",
-          "होलीpunhi",
-          "Terai होली (होलीday in 21 districts of Terai )"
+          "होलीपुन्ही",
+          "तराई होली (होलीday in 21 districts of तराई)"
         ]
       },
       {
@@ -15098,7 +15098,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochani एकादशी व्रत"
+          "पाप पापमोचिनी एकादशी व्रत"
         ]
       },
       {
@@ -15108,7 +15108,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Ghodejatra (होलीday in KTM only)"
+          "घोडेजात्रा (होलीday in काठमाडौं only)"
         ]
       },
       {
@@ -15140,7 +15140,7 @@
         "is_holiday": false,
         "events_np": [
           "गोरखकाली पूजा",
-          "Chaite दशैं"
+          "चैते दशैं"
         ]
       },
       {
@@ -15151,8 +15151,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shree Ram जयन्ती",
-          "Shree राम नवमी व्रत"
+          "श्री राम जयन्ती",
+          "श्री राम नवमी व्रत"
         ]
       },
       {
@@ -15162,7 +15162,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी व्रत"
+          "कामदा एकादशी व्रत"
         ]
       },
       {
@@ -15191,7 +15191,7 @@
         "is_holiday": true,
         "events_np": [
           "नयाँ वर्ष 2079",
-          "Mahabir जयन्ती",
+          "महावीर जयन्ती",
           "भ.क. विश्वध्वजपतन (बिस्काजात्रा)"
         ]
       },
@@ -15229,7 +15229,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Swami Shashidhar Janma जयन्ती",
+          "Swami शशिधर जन्म जयन्ती",
           "शंखुयात्रा"
         ]
       },
@@ -15272,7 +15272,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Baruthini एकादशी"
+          "स्मार्तहरूको वरूथिनी एकादशी"
         ]
       },
       {
@@ -15282,7 +15282,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Baruthini एकादशी"
+          "वैष्णवहरूको वरूथिनी एकादशी"
         ]
       },
       {
@@ -15370,7 +15370,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sita जयन्ती"
+          "सीता जयन्ती"
         ]
       },
       {
@@ -15390,7 +15390,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी"
+          "मोहिनी एकादशी"
         ]
       },
       {
@@ -15400,7 +15400,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Narshinha जयन्ती"
+          "नरसिंह जयन्ती"
         ]
       }
     ]
@@ -15419,7 +15419,7 @@
         "is_holiday": false,
         "events_np": [
           "स्याङ्जा लसर्घा आलमदेवी पूजा",
-          "Kurma जयन्ती",
+          "कूर्म जयन्ती",
           "पूर्णिमा व्रत"
         ]
       },
@@ -15435,9 +15435,9 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gautam बुद्ध जयन्ती",
+          "गौतम बुद्ध जयन्ती",
           "उधौली पर्व",
-          "Chandi पूर्णिमा",
+          "चण्डी पूर्णिमा",
           "श्री बागभैरव पर्व",
           "बैशाख स्नान समाप्ति",
           "ल.पु. गोटीखेल बैतरणीधाम स्नान"
@@ -15460,7 +15460,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी"
+          "अपरा एकादशी"
         ]
       },
       {
@@ -15549,7 +15549,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी",
+          "निर्जला एकादशी",
           "तुलशीको डाल राख्ने"
         ]
       },
@@ -15600,7 +15600,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी"
+          "योगिनी एकादशी"
         ]
       },
       {
@@ -15656,7 +15656,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी",
+          "हरिशयनी एकादशी",
           "तुलशी रोप्ने",
           "चातुर्मास व्रत आरम्भ"
         ]
@@ -15671,8 +15671,8 @@
         "is_holiday": false,
         "events_np": [
           "गुरु पूर्णिमा",
-          "Byas जयन्ती",
-          "Bhanu जयन्ती"
+          "व्यास जयन्ती",
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -15692,7 +15692,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saune संक्रान्ति",
+          "साउने संक्रान्ति",
           "लुटो फाल्ने",
           "राँको बाल्ने",
           "थारु गुरिया पर्व",
@@ -15716,7 +15716,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी"
+          "कामिका एकादशी"
         ]
       },
       {
@@ -15750,7 +15750,7 @@
         "is_holiday": false,
         "events_np": [
           "खीर खाने दिन",
-          "Barah जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -15786,7 +15786,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -15811,7 +15811,7 @@
         "events_np": [
           "रक्षाबन्धन",
           "जनै पूर्णिमा",
-          "गाई जात्रा (Saparu)",
+          "गाई जात्रा (सापारु)",
           "ऋषि तर्पणी"
         ]
       },
@@ -15864,7 +15864,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी"
+          "अजा एकादशी"
         ]
       },
       {
@@ -15878,7 +15878,7 @@
         "events_np": [
           "कुशे औंशी",
           "बाबुको मुख हेर्ने दिन",
-          "Moti जयन्ती"
+          "मोति जयन्ती"
         ]
       },
       {
@@ -15972,7 +15972,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartani एकादशी"
+          "हरिपरिवर्तिनी एकादशी"
         ]
       },
       {
@@ -15993,7 +15993,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "कुमारी इन्द्रजात्रा  (होलीday in Ktm)",
+          "कुमारी इन्द्रजात्रा (होलीday in काठमाडौं)",
           "अनन्त चतुर्दशी व्रत"
         ]
       },
@@ -16145,7 +16145,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी",
+          "इन्दिरा एकादशी",
           "एकादशी श्राद्ध"
         ]
       },
@@ -16205,7 +16205,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Nawa Ratrambha: घटस्थापना",
+          "नव Ratrambha: घटस्थापना",
           "मातामह श्राद्ध"
         ]
       },
@@ -16265,7 +16265,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैं Tika 2079",
+          "दशैं टीका 2079",
           "देवी विसर्जन"
         ]
       },
@@ -16278,7 +16278,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत",
+          "पापाङ्कुशा एकादशी व्रत",
           "अन्नपूर्णा यात्रा",
           "आसन चलन"
         ]
@@ -16330,7 +16330,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       },
       {
@@ -16342,7 +16342,7 @@
         "is_holiday": false,
         "events_np": [
           "यम दीप दान",
-          "Dhan त्रयोदशी"
+          "धन त्रयोदशी"
         ]
       },
       {
@@ -16355,8 +16355,8 @@
         "is_holiday": false,
         "events_np": [
           "यमपञ्चक आरम्भ",
-          "Kaag तिहार",
-          "Dhanwantari जयन्ती"
+          "काग तिहार",
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -16437,7 +16437,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "छठ Parba",
+          "छठ पर्व",
           "डाला पूजा"
         ]
       },
@@ -16471,7 +16471,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी",
+          "हरिबोधिनी एकादशी",
           "तुलशी विवाह"
         ]
       },
@@ -16506,9 +16506,9 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Guru Nanak जयन्ती",
+          "गुरु नानक जयन्ती",
           "खग्रास चन्द्र ग्रहण",
-          "चातुर्मास व्रत समाप्ति (होलीday only for Sikhs)"
+          "चातुर्मास व्रत समाप्ति (होलीday only for सिख)"
         ]
       },
       {
@@ -16555,7 +16555,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Utpatika एकादशी",
+          "उत्पन्ना एकादशी",
           "विश्व बाल दिवस"
         ]
       },
@@ -16592,7 +16592,7 @@
         "events_np": [
           "विवाह पञ्चमी",
           "सीता विवाह पञ्चमी मेला",
-          "Shadananda जयन्ती"
+          "षडानन्द जयन्ती"
         ]
       },
       {
@@ -16624,7 +16624,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी"
+          "मोक्षदा एकादशी"
         ]
       },
       {
@@ -16678,7 +16678,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी"
+          "सफला एकादशी"
         ]
       },
       {
@@ -16688,7 +16688,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार"
+          "टोल ल्होसार"
         ]
       },
       {
@@ -16742,7 +16742,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -16752,7 +16752,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Guru Govinda Sinha जयन्ती"
+          "गुरु गोविन्द सिंह जयन्ती"
         ]
       },
       {
@@ -16766,7 +16766,7 @@
         "events_np": [
           "श्री स्वस्थानी व्रत सुरु",
           "पूर्णिमा व्रत",
-          "माघ Snan Suru"
+          "माघ स्नान सुरु"
         ]
       },
       {
@@ -16827,8 +16827,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघesankranti",
-          "माघी Parba",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
           "देवघाटमा मकर स्नान सुरु",
           "गोरखकाली पूजा"
         ]
@@ -16850,7 +16850,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shatila एकादशी"
+          "षट्तिला एकादशी"
         ]
       },
       {
@@ -16861,8 +16861,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "सोनाम ल्होसार (Tamang ल्होसार)",
-          "Shree Ballav जयन्ती"
+          "सोनाम ल्होसार (तामाङ ल्होसार)",
+          "श्री Ballav जयन्ती"
         ]
       },
       {
@@ -16876,7 +16876,7 @@
         "is_holiday": true,
         "events_np": [
           "बसन्त पञ्चमी",
-          "Basanta श्रावण",
+          "बसन्त श्रावण",
           "श्रीपञ्चमी",
           "सरस्वती पूजा (होलीday only for educational institutions)"
         ]
@@ -16918,7 +16918,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी"
+          "भीम एकादशी"
         ]
       },
       {
@@ -16930,7 +16930,7 @@
         "is_holiday": false,
         "events_np": [
           "श्री स्वस्थानी व्रत समाप्ति",
-          "माघ Snan Samapti"
+          "माघ स्नान समाप्ति"
         ]
       },
       {
@@ -16976,7 +16976,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -17023,7 +17023,7 @@
         "is_holiday": false,
         "events_np": [
           "चिरोत्थान",
-          "होलीka Aarambha",
+          "होलीका आरम्भ",
           "गोरखकाली पूजा"
         ]
       },
@@ -17044,7 +17044,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -17058,7 +17058,7 @@
         "is_holiday": true,
         "events_np": [
           "राष्ट्रिय रक्तदाता दिवस",
-          "Pahadi Jilla ma होली",
+          "पहाडी Jilla मा होली",
           "(होलीdays in 56 districts of Himalayan",
           "पहाड र भित्री मधेश)"
         ]
@@ -17074,8 +17074,8 @@
         "is_holiday": true,
         "events_np": [
           "फागु पूर्णिमा",
-          "होलीpunhi",
-          "Terai होली (होलीday in 21 districts of Terai )",
+          "होलीपुन्ही",
+          "तराई होली (होलीday in 21 districts of तराई)",
           "पूर्णिमा व्रत"
         ]
       },
@@ -17112,7 +17112,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochini एकादशी"
+          "पाप पापमोचिनी एकादशी"
         ]
       },
       {
@@ -17122,7 +17122,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा (होलीday in Ktm. )"
+          "घोडेजात्रा (होलीday in काठमाडौं.)"
         ]
       },
       {
@@ -17145,7 +17145,7 @@
         "is_holiday": false,
         "events_np": [
           "मत्स्य नारायण रथ यात्रा",
-          "Chaite दशैं",
+          "चैते दशैं",
           "गोरखकाली पूजा"
         ]
       },
@@ -17157,7 +17157,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shree Ram जयन्ती",
+          "श्री राम जयन्ती",
           "राम नवमी व्रत"
         ]
       },
@@ -17168,7 +17168,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Kamada एकादशी"
+          "स्मार्तहरूको कामदा एकादशी"
         ]
       },
       {
@@ -17178,7 +17178,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Kamada एकादशी"
+          "वैष्णवहरूको कामदा एकादशी"
         ]
       },
       {
@@ -17188,7 +17188,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mahabir जयन्ती"
+          "महावीर जयन्ती"
         ]
       },
       {
@@ -17232,7 +17232,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhaktapur Bhairab भाद्रkali Rathyatra Aarambha"
+          "भक्तपुर भैरव भाद्रकाली रथयात्रा आरम्भ"
         ]
       },
       {
@@ -17275,7 +17275,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Siruwa Pawani Parwa (होलीdays for Jhapa",
+          "सिरुवा पावनी पर्व (होलीdays for झापा",
           "मोरङ",
           "सुनसरी",
           "सिराहा र सप्तरीमा मनाइने)"
@@ -17288,7 +17288,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत"
+          "वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -17346,7 +17346,7 @@
         "events_np": [
           "लोकतन्त्र दिवस",
           "ललितपुर मत्स्येन्द्रनाथ रथ यात्रा आरम्भ",
-          "Adhyaguru Shankaracharya जयन्ती"
+          "आद्यगुरु शंकराचार्य जयन्ती"
         ]
       },
       {
@@ -17376,7 +17376,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sita जयन्ती"
+          "सीता जयन्ती"
         ]
       },
       {
@@ -17409,7 +17409,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Narasimha जयन्ती",
+          "नरसिंह जयन्ती",
           "स्याङ्जा लसर्घा आलमदेवी पूजा"
         ]
       },
@@ -17426,11 +17426,11 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
-          "Gautam बुद्ध जयन्ती",
+          "चण्डी पूर्णिमा",
+          "गौतम बुद्ध जयन्ती",
           "उधौली पर्व",
-          "Gorakhnath जयन्ती",
-          "बैशाखsnan Samapti",
+          "गोरखनाथ जयन्ती",
+          "बैशाखस्नान समाप्ति",
           "राष्ट्रिय सूचना आयोग स्थापना दिवस",
           "ललितपुर गोटीखेल बैतरणीधाम स्नान"
         ]
@@ -17492,7 +17492,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी"
+          "अपरा एकादशी"
         ]
       },
       {
@@ -17575,7 +17575,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी",
+          "निर्जला एकादशी",
           "तुलशीको डाल राख्ने"
         ]
       },
@@ -17622,7 +17622,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी"
+          "योगिनी एकादशी"
         ]
       }
     ]
@@ -17670,7 +17670,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी",
+          "हरिशयनी एकादशी",
           "तुलशी रोप्ने",
           "चातुर्मास व्रत आरम्भ"
         ]
@@ -17696,7 +17696,7 @@
         "is_holiday": false,
         "events_np": [
           "गुरु पूर्णिमा",
-          "Byas जयन्ती"
+          "व्यास जयन्ती"
         ]
       },
       {
@@ -17716,7 +17716,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी"
+          "कामिका एकादशी"
         ]
       },
       {
@@ -17726,7 +17726,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       },
       {
@@ -17758,7 +17758,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saune संक्रान्ति",
+          "साउने संक्रान्ति",
           "लुटो फाल्ने",
           "राँको बाल्ने",
           "थारु गुरिया पर्व",
@@ -17794,7 +17794,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Padmini एकादशी"
+          "पद्मिनी एकादशी"
         ]
       },
       {
@@ -17824,7 +17824,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Parama एकादशी"
+          "परमा एकादशी"
         ]
       },
       {
@@ -17862,7 +17862,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Barah जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -17910,7 +17910,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -17936,7 +17936,7 @@
           "रक्षाबन्धन",
           "जनै पूर्णिमा",
           "ऋषि तर्पणी",
-          "गाई जात्रा (Saparu)"
+          "गाई जात्रा (सापारु)"
         ]
       },
       {
@@ -18002,7 +18002,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी"
+          "अजा एकादशी"
         ]
       },
       {
@@ -18026,7 +18026,7 @@
         "events_np": [
           "कुशे औंशी",
           "बाबुको मुख हेर्ने दिन",
-          "Moti जयन्ती"
+          "मोति जयन्ती"
         ]
       },
       {
@@ -18132,7 +18132,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartani एकादशी"
+          "हरिपरिवर्तिनी एकादशी"
         ]
       },
       {
@@ -18153,7 +18153,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "कुमारी इन्द्रजात्रा  (होलीday in Ktm)",
+          "कुमारी इन्द्रजात्रा (होलीday in काठमाडौं)",
           "अनन्त चतुर्दशी व्रत"
         ]
       },
@@ -18291,7 +18291,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी",
+          "इन्दिरा एकादशी",
           "एकादशी श्राद्ध"
         ]
       },
@@ -18409,7 +18409,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैं Tika 2080",
+          "दशैं टीका 2080",
           "देवी विसर्जन"
         ]
       },
@@ -18422,7 +18422,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत",
+          "पापाङ्कुशा एकादशी व्रत",
           "अन्नपूर्णा यात्रा",
           "आसन चलन"
         ]
@@ -18482,7 +18482,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       },
       {
@@ -18493,7 +18493,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Dhan त्रयोदशी",
+          "धन त्रयोदशी",
           "धनतेरस"
         ]
       },
@@ -18507,9 +18507,9 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Kaag तिहार",
+          "काग तिहार",
           "यम दीप दान",
-          "Dhanwantari जयन्ती",
+          "धन्वन्तरी जयन्ती",
           "फाल्गुणand जयन्ती (होलीdays for किरातi Only)"
         ]
       },
@@ -18593,7 +18593,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "छठ Parba",
+          "छठ पर्व",
           "डाला पूजा"
         ]
       },
@@ -18627,7 +18627,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी",
+          "हरिबोधिनी एकादशी",
           "तुलशी विवाह"
         ]
       },
@@ -18660,7 +18660,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gurunanak जयन्ती (होलीdays for Sikhs)",
+          "गुरुनानक जयन्ती (होलीdays for सिख)",
           "चातुर्मास व्रत समाप्ति",
           "सकिमाना पुन्हि:"
         ]
@@ -18704,7 +18704,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Utpatika एकादशी"
+          "उत्पन्ना एकादशी"
         ]
       },
       {
@@ -18746,7 +18746,7 @@
         "events_np": [
           "विवाह पञ्चमी",
           "सीता विवाह पञ्चमी मेला",
-          "Shadananda जयन्ती"
+          "षडानन्द जयन्ती"
         ]
       },
       {
@@ -18777,8 +18777,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी",
-          "Geeta जयन्ती"
+          "मोक्षदा एकादशी",
+          "गीता जयन्ती"
         ]
       },
       {
@@ -18819,7 +18819,7 @@
         "is_holiday": true,
         "events_np": [
           "तमु ल्होसार",
-          "Kabi Shiromani Lekhnath जयन्ती",
+          "कवि शिरोमणि लेखनाथ जयन्ती",
           "म्हैप्रु नकुमा"
         ]
       },
@@ -18850,7 +18850,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Guru Gowinda Singh जयन्ती"
+          "गुरु गोविन्द सिंह जयन्ती"
         ]
       },
       {
@@ -18860,7 +18860,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी"
+          "सफला एकादशी"
         ]
       },
       {
@@ -18913,8 +18913,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघesankranti",
-          "माघी Parba",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
           "देवघाटमा मकर स्नान सुरु",
           "राष्ट्रिय कृषि जैविक विविधता दिवस"
         ]
@@ -18948,7 +18948,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -18962,7 +18962,7 @@
         "events_np": [
           "श्री स्वस्थानी व्रत सुरु",
           "पूर्णिमा व्रत",
-          "माघ Snan Suru"
+          "माघ स्नान सुरु"
         ]
       },
       {
@@ -18992,7 +18992,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shatila एकादशी"
+          "षट्तिला एकादशी"
         ]
       },
       {
@@ -19015,7 +19015,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "सोनाम ल्होसार (Tamang ल्होसार)",
+          "सोनाम ल्होसार (तामाङ ल्होसार)",
           "Shreeballav जयन्ती"
         ]
       },
@@ -19090,7 +19090,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima (Jaya) एकादशी"
+          "भीम (जया) एकादशी"
         ]
       },
       {
@@ -19102,7 +19102,7 @@
         "is_holiday": false,
         "events_np": [
           "श्री स्वस्थानी व्रत समाप्ति",
-          "माघ Snan Samapti"
+          "माघ स्नान समाप्ति"
         ]
       },
       {
@@ -19132,7 +19132,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -19176,7 +19176,7 @@
         "events_np": [
           "गोरखकाली पूजा",
           "चिरोत्थान",
-          "होलीkarambha"
+          "होली आरम्भ"
         ]
       },
       {
@@ -19186,7 +19186,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -19198,7 +19198,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Pahadi Jilla ma होली",
+          "पहाडी Jilla मा होली",
           "(होलीdays in 56 districts of Himalayan",
           "पहाड र भित्री मधेश)"
         ]
@@ -19210,7 +19210,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Terai होली (होलीday in 21 districts of Terai )"
+          "तराई होली (होलीday in 21 districts of तराई)"
         ]
       },
       {
@@ -19230,7 +19230,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochani एकादशी"
+          "पाप पापमोचिनी एकादशी"
         ]
       },
       {
@@ -19240,7 +19240,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा  (होलीday in Ktm. Valley)"
+          "घोडेजात्रा (होलीday in काठमाडौं. Valley)"
         ]
       },
       {
@@ -19297,7 +19297,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Siruwa Pawani Parba (होलीday for people who celebrates in Jhapa",
+          "सिरुवा पावनी पर्व (होलीday for people who celebrates in झापा",
           "मोरङ",
           "सुनसरी",
           "सिराहा र सप्तरी जिल्ला)"
@@ -19322,7 +19322,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं",
+          "चैते दशैं",
           "सेतो मछिन्द्रनाथ रथ यात्रा आरम्भ",
           "गोरखकाली पूजा"
         ]
@@ -19344,7 +19344,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी"
+          "कामदा एकादशी"
         ]
       },
       {
@@ -19364,7 +19364,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mahabir जयन्ती"
+          "महावीर जयन्ती"
         ]
       },
       {
@@ -19388,7 +19388,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Lalitpur रातो मछिन्द्रनाथ Snan (Bungadhya nhawa)"
+          "ललितपुर रातो मछिन्द्रनाथ स्नान (बुंगद्य न्हवं)"
         ]
       },
       {
@@ -19408,7 +19408,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Swami Shashidhar जयन्ती"
+          "Swami शशिधर जयन्ती"
         ]
       },
       {
@@ -19442,7 +19442,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी व्रत"
+          "वरूथिनी एकादशी व्रत"
         ]
       },
       {
@@ -19516,7 +19516,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aadhyaguru Shankaracharya जयन्ती"
+          "आद्यगुरु शंकराचार्य जयन्ती"
         ]
       }
     ]
@@ -19536,7 +19536,7 @@
         "events_np": [
           "अष्टमी व्रत",
           "गोरखकाली पूजा",
-          "Sita जयन्ती"
+          "सीता जयन्ती"
         ]
       },
       {
@@ -19546,7 +19546,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी व्रत"
+          "मोहिनी एकादशी व्रत"
         ]
       },
       {
@@ -19556,7 +19556,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Narsinha जयन्ती"
+          "नरसिंह जयन्ती"
         ]
       },
       {
@@ -19580,11 +19580,11 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Chandi पूर्णिमा",
-          "Gautam बुद्ध जयन्ती",
+          "चण्डी पूर्णिमा",
+          "गौतम बुद्ध जयन्ती",
           "स्वन्या पुन्हि",
-          "उभौली Parba",
-          "Gorakhnath जयन्ती"
+          "उभौली पर्व",
+          "गोरखनाथ जयन्ती"
         ]
       },
       {
@@ -19616,7 +19616,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Apara एकादशी व्रत"
+          "स्मार्तहरूको अपरा एकादशी व्रत"
         ]
       },
       {
@@ -19627,7 +19627,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnab haruko Apara एकादशी व्रत",
+          "वैष्णव हरूको अपरा एकादशी व्रत",
           "जातीय भेदभाव तथा छुवाछुत उन्मूलन राष्ट्रिय दिवस"
         ]
       },
@@ -19650,7 +19650,7 @@
         "is_holiday": false,
         "events_np": [
           "दर्श श्राद्ध",
-          "Shani जयन्ती"
+          "शनि जयन्ती"
         ]
       },
       {
@@ -19727,7 +19727,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Smartaharuko Nirjala एकादशी व्रत",
+          "स्मार्तहरूको निर्जला एकादशी व्रत",
           "बक्र ईद"
         ]
       },
@@ -19739,7 +19739,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnabharuko Nirjala एकादशी व्रत",
+          "वैष्णवहरूको निर्जला एकादशी व्रत",
           "तुलशीको डाल राख्ने"
         ]
       },
@@ -19774,8 +19774,8 @@
         "is_holiday": false,
         "events_np": [
           "पनौती स्नान",
-          "Masta पूर्णिमा (ज्या: पुन्हि::)",
-          "Kabir जयन्ती",
+          "मष्टा पूर्णिमा (ज्या: पुन्हि::)",
+          "कबीर जयन्ती",
           "भूमिराज"
         ]
       },
@@ -19826,7 +19826,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी व्रत"
+          "योगिनी एकादशी व्रत"
         ]
       },
       {
@@ -19876,7 +19876,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       },
       {
@@ -19906,7 +19906,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saune संक्रान्ति",
+          "साउने संक्रान्ति",
           "लुटो फाल्ने",
           "राँको बाल्ने",
           "थारु गुरिया पर्व",
@@ -19922,7 +19922,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी",
+          "हरिशयनी एकादशी",
           "तुलशी रोप्ने",
           "चातुर्मास व्रत आरम्भ"
         ]
@@ -19947,7 +19947,7 @@
         "is_holiday": false,
         "events_np": [
           "गुरु पूर्णिमा",
-          "Byas जयन्ती",
+          "व्यास जयन्ती",
           "दिला पुन्हि:"
         ]
       },
@@ -19978,7 +19978,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी व्रत"
+          "कामिका एकादशी व्रत"
         ]
       },
       {
@@ -20022,7 +20022,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baraha जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -20066,7 +20066,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       }
     ]
@@ -20112,7 +20112,7 @@
         "is_holiday": true,
         "events_np": [
           "गाई जात्रा",
-          "Saparu (होलीday for Ktm only and Newar Community all over country)"
+          "सापारु (होलीday for काठमाडौं only and नेवार Community all over country)"
         ]
       },
       {
@@ -20180,7 +20180,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartharuko Ajaa एकादशी व्रत"
+          "स्मार्तहरूको अजा एकादशी व्रत"
         ]
       },
       {
@@ -20191,7 +20191,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Biashnab haruko Ajaa एकादशी व्रत",
+          "वैष्णव हरूको अजा एकादशी व्रत",
           "स्वयम्भूको छायाँ दर्शन"
         ]
       },
@@ -20305,7 +20305,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartini एकादशी व्रत",
+          "हरिपरिवर्तिनी एकादशी व्रत",
           "राष्ट्रिय बाल दिवस"
         ]
       },
@@ -20318,7 +20318,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baman द्वादशी",
+          "वामन द्वादशी",
           "इन्द्रध्वजोत्थान",
           "उपाकु"
         ]
@@ -20341,10 +20341,10 @@
         "is_holiday": true,
         "events_np": [
           "विश्वकर्मा पूजा",
-          "Kumari इन्द्र जात्रा",
+          "कुमारी इन्द्र जात्रा",
           "पूर्णिमा व्रत",
           "अनन्त चतुर्दशी",
-          "Vastu Diwas (होलीday for Ktm Only)"
+          "वास्तु दिवस (होलीday for काठमाडौं Only)"
         ]
       },
       {
@@ -20469,7 +20469,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी व्रत",
+          "इन्दिरा एकादशी व्रत",
           "एकादशी श्राद्ध"
         ]
       },
@@ -20571,7 +20571,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैं ko Tika 2081",
+          "दशैं को टीका 2081",
           "देवी विसर्जन"
         ]
       },
@@ -20585,7 +20585,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papangkusha एकादशी व्रत",
+          "पापाङ्कुशा एकादशी व्रत",
           "अन्नपूर्णा यात्रा",
           "आसन",
           "चलन"
@@ -20631,9 +20631,9 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kojagrat पूर्णिमा",
+          "कोजाग्रत पूर्णिमा",
           "कतिं पुन्हि:",
-          "कार्तिक Snan",
+          "कार्तिक स्नान",
           "आकाश दीप दान आरम्भ"
         ]
       },
@@ -20666,7 +20666,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       },
       {
@@ -20690,9 +20690,9 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kaag तिहार",
+          "काग तिहार",
           "यम दीप दान",
-          "Dhanwantari जयन्ती"
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -20783,7 +20783,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "छठ Parba",
+          "छठ पर्व",
           "डाला पूजा"
         ]
       },
@@ -20829,7 +20829,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी व्रत",
+          "हरिबोधिनी एकादशी व्रत",
           "तुलशी विवाह"
         ]
       },
@@ -20865,7 +20865,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gurunanak जयन्ती (होलीdays for Sikhs)",
+          "गुरुनानक जयन्ती (होलीdays for सिख)",
           "पूर्णिमा व्रत",
           "सकमाना पुन्हि:",
           "चातुर्मास व्रत समाप्ति"
@@ -20934,7 +20934,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Uttpatika एकादशी व्रत"
+          "उत्पन्ना एकादशी व्रत"
         ]
       },
       {
@@ -20986,7 +20986,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Disability Day  (होलीday for people with Disability)"
+          "Disability Day (होलीday for people with Disability)"
         ]
       },
       {
@@ -21000,7 +21000,7 @@
         "events_np": [
           "विवाह पञ्चमी",
           "सीता विवाह पञ्चमी मेला",
-          "Brahmachari Shadananda जयन्ती"
+          "ब्रह्मचारी षडानन्द जयन्ती"
         ]
       },
       {
@@ -21030,7 +21030,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी"
+          "मोक्षदा एकादशी"
         ]
       },
       {
@@ -21044,7 +21044,7 @@
         "is_holiday": true,
         "events_np": [
           "योमरी पुन्हि",
-          "उधौली Parba",
+          "उधौली पर्व",
           "धान्य पूर्णिमा",
           "ज्यापु दिवस"
         ]
@@ -21126,7 +21126,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Guru Govinda Sinha जयन्ती"
+          "गुरु गोविन्द सिंह जयन्ती"
         ]
       },
       {
@@ -21162,7 +21162,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी व्रत"
+          "पुत्रदा एकादशी व्रत"
         ]
       },
       {
@@ -21189,7 +21189,7 @@
         "events_np": [
           "श्री स्वस्थानी व्रत आरम्भ",
           "पूर्णिमा व्रत",
-          "माघ Snan Starts",
+          "माघ स्नान Starts",
           "मिला पुन्हि:"
         ]
       }
@@ -21208,8 +21208,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "माघesankranti",
-          "माघी Parba",
+          "माघे सङ्क्रान्ति",
+          "माघी पर्व",
           "देवघाटमा मकर स्नान आरम्भ"
         ]
       },
@@ -21250,7 +21250,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shattila एकादशी"
+          "षट्तिला एकादशी"
         ]
       },
       {
@@ -21276,7 +21276,7 @@
         "is_holiday": true,
         "events_np": [
           "सोनाम ल्होसार (तामाङ ल्होसार)",
-          "Shree Ballav जयन्ती"
+          "श्री Ballav जयन्ती"
         ]
       },
       {
@@ -21302,7 +21302,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima (Jaya) एकादशी"
+          "भीम (जया) एकादशी"
         ]
       },
       {
@@ -21325,7 +21325,7 @@
         "is_holiday": false,
         "events_np": [
           "श्री स्वस्थानी व्रत समाप्ति",
-          "माघ Snan Samapti",
+          "माघ स्नान समाप्ति",
           "सी पुन्हि:"
         ]
       }
@@ -21388,7 +21388,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -21435,7 +21435,7 @@
         "is_holiday": false,
         "events_np": [
           "चिरोत्थान",
-          "होलीkarambha",
+          "होली आरम्भ",
           "चिर्स्वयागु"
         ]
       },
@@ -21456,7 +21456,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -21467,7 +21467,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Pahadi Jilla ma होली (होलीdays in 56 districts of Himalayan",
+          "पहाडी Jilla मा होली (होलीdays in 56 districts of Himalayan",
           "पहाड र भित्री मधेश)"
         ]
       }
@@ -21484,7 +21484,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Terai होली (होलीday in 21 districts of Terai )"
+          "तराई होली (होलीday in 21 districts of तराई)"
         ]
       },
       {
@@ -21526,7 +21526,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochani एकादशी"
+          "पाप पापमोचिनी एकादशी"
         ]
       },
       {
@@ -21546,7 +21546,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा (होलीday in Ktm Only)"
+          "घोडेजात्रा (होलीday in काठमाडौं Only)"
         ]
       },
       {
@@ -21579,7 +21579,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं",
+          "चैते दशैं",
           "सेतो मछिन्द्रनाथ रथयात्रा आरम्भ"
         ]
       },
@@ -21602,7 +21602,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी"
+          "कामदा एकादशी"
         ]
       },
       {
@@ -21612,7 +21612,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mahavir जयन्ती"
+          "महावीर जयन्ती"
         ]
       },
       {
@@ -21626,8 +21626,8 @@
         "is_holiday": false,
         "events_np": [
           "ल्हुति पुन्हि:",
-          "बैशाख Snan Suru",
-          "Shree हनुमान जयन्ती",
+          "बैशाख स्नान सुरु",
+          "श्री हनुमान जयन्ती",
           "बालाजु बाइसधारा मेला"
         ]
       },
@@ -21639,7 +21639,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Lalitpur रातो मछिन्द्रनाथ Snan (Bungadhya: Nhwan:)",
+          "ललितपुर रातो मछिन्द्रनाथ स्नान (बुंगद्य: न्हवं:)",
           "भक्तपुर विश्वध्वजोत्थान"
         ]
       }
@@ -21690,7 +21690,7 @@
         "is_holiday": false,
         "events_np": [
           "भक्तपुर ब्रह्मायणी यात्रा",
-          "Swami Sashidhar जयन्ती"
+          "Swami शशिधर जयन्ती"
         ]
       },
       {
@@ -21725,7 +21725,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी",
+          "वरूथिनी एकादशी",
           "लोकतन्त्र दिवस"
         ]
       },
@@ -21804,7 +21804,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Adhyaguru Shankaracharya जयन्ती"
+          "आद्यगुरु शंकराचार्य जयन्ती"
         ]
       },
       {
@@ -21836,7 +21836,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Sita जयन्ती"
+          "सीता जयन्ती"
         ]
       },
       {
@@ -21858,7 +21858,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी"
+          "मोहिनी एकादशी"
         ]
       },
       {
@@ -21879,7 +21879,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Narshinha जयन्ती",
+          "नरसिंह जयन्ती",
           "स्याङ्जा लसर्घा आलमदेवी पूजा"
         ]
       },
@@ -21895,10 +21895,10 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gautam बुद्ध जयन्ती",
+          "गौतम बुद्ध जयन्ती",
           "स्वन्या पुन्हि",
-          "Chandi पूर्णिमा",
-          "उभौली Parba",
+          "चण्डी पूर्णिमा",
+          "उभौली पर्व",
           "ललितपुर गोटीखेल बैतरणी स्नान",
           "बैशाख स्नान समाप्ति"
         ]
@@ -21928,7 +21928,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी"
+          "अपरा एकादशी"
         ]
       },
       {
@@ -21948,7 +21948,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shani जयन्ती"
+          "शनि जयन्ती"
         ]
       },
       {
@@ -22014,7 +22014,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Jatiya Bhedbhav tatha Chuwachut Unmulan राष्ट्रिय दिवस"
+          "जातीय भेदभाव तथा छुवाछूत उन्मूलन राष्ट्रिय दिवस"
         ]
       },
       {
@@ -22038,7 +22038,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Nirjala एकादशी",
+          "निर्जला एकादशी",
           "तुलशीको डाल राख्ने",
           "ईद-उल-अजहा (बक्र ईद)"
         ]
@@ -22063,10 +22063,10 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Masta पूर्णिमा (ज्या: पुन्हि::)",
+          "मष्टा पूर्णिमा (ज्या: पुन्हि::)",
           "पनौती स्नान",
           "पनौती रथ यात्रा",
-          "Kabir जयन्ती"
+          "कबीर जयन्ती"
         ]
       },
       {
@@ -22116,7 +22116,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Smartaharuko Yogini एकादशी"
+          "स्मार्तहरूको योगिनी एकादशी"
         ]
       },
       {
@@ -22127,7 +22127,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baishnab haruko Yogini एकादशी",
+          "वैष्णव हरूको योगिनी एकादशी",
           "भूमिराज"
         ]
       },
@@ -22196,7 +22196,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी",
+          "हरिशयनी एकादशी",
           "तुलशी रोप्ने",
           "चातुर्मास व्रत आरम्भ"
         ]
@@ -22214,7 +22214,7 @@
           "गुरु पूर्णिमा",
           "पूर्णिमा व्रत",
           "दिला पुन्हि:",
-          "Byas जयन्ती"
+          "व्यास जयन्ती"
         ]
       },
       {
@@ -22234,7 +22234,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -22252,7 +22252,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saune संक्रान्ति",
+          "साउने संक्रान्ति",
           "लुटो फाल्ने एवं राँको बाल्ने",
           "थारु गुरिया पर्व"
         ]
@@ -22274,7 +22274,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी"
+          "कामिका एकादशी"
         ]
       },
       {
@@ -22316,7 +22316,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Barah जयन्ती"
+          "वराह जयन्ती"
         ]
       },
       {
@@ -22336,7 +22336,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kalki जयन्ती"
+          "कल्की जयन्ती"
         ]
       },
       {
@@ -22374,7 +22374,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -22412,7 +22412,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "गाई जात्रा (Saparu) (होलीday for Ktm. Valley and all Newars of Nepal)"
+          "गाई जात्रा (सापारु) (होलीday for काठमाडौं. Valley and all नेवार of नेपाल)"
         ]
       },
       {
@@ -22461,7 +22461,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी",
+          "अजा एकादशी",
           "राष्ट्रिय सूचना दिवस"
         ]
       },
@@ -22588,7 +22588,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartini एकादशी"
+          "हरिपरिवर्तिनी एकादशी"
         ]
       },
       {
@@ -22601,7 +22601,7 @@
         "is_holiday": false,
         "events_np": [
           "इन्द्रध्वजोत्थान",
-          "Baman द्वादशी",
+          "वामन द्वादशी",
           "उपाकु"
         ]
       },
@@ -22622,7 +22622,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "इन्द्र जात्रा (होलीday in Ktm. Only)"
+          "इन्द्र जात्रा (होलीday in काठमाडौं. Only)"
         ]
       },
       {
@@ -22634,7 +22634,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "येँया Punhi:",
+          "येँया पुन्ही:",
           "चेपाङ चोनाम पर्व",
           "निजामती सेवा दिवस"
         ]
@@ -22764,7 +22764,7 @@
         "is_holiday": false,
         "events_np": [
           "एकादशी श्राद्ध",
-          "Indira एकादशी",
+          "इन्दिरा एकादशी",
           "विश्वकर्मा पूजा",
           "वास्तु दिवस"
         ]
@@ -22889,7 +22889,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैं Ko Tika 2082",
+          "दशैं को टीका 2082",
           "देवी विसर्जन"
         ]
       },
@@ -22902,7 +22902,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Papankusha एकादशी",
+          "पापाङ्कुशा एकादशी",
           "अन्नपूर्णा यात्रा",
           "आसन: चलन:"
         ]
@@ -22936,8 +22936,8 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kojagrat पूर्णिमा",
-          "Katin Punhi:. कार्तिक Snan",
+          "कोजाग्रत पूर्णिमा",
+          "कातिन पुन्ही:. कार्तिक स्नान",
           "आकाश दीप दान आरम्भ"
         ]
       },
@@ -22982,7 +22982,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       }
     ]
@@ -23012,7 +23012,7 @@
         "is_holiday": false,
         "events_np": [
           "काग तिहार",
-          "Dhanwantari जयन्ती"
+          "धन्वन्तरी जयन्ती"
         ]
       },
       {
@@ -23091,7 +23091,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "छठ Parba",
+          "छठ पर्व",
           "डाला पूजा"
         ]
       },
@@ -23135,7 +23135,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी",
+          "हरिबोधिनी एकादशी",
           "तुलशी विवाह"
         ]
       },
@@ -23169,7 +23169,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Guru Nanak जयन्ती (होलीday for Sikhs)",
+          "गुरु नानक जयन्ती (होलीday for सिख)",
           "पूर्णिमा व्रत",
           "चातुर्मास व्रत समाप्ति",
           "सकिमाना पुन्हि:"
@@ -23182,7 +23182,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "फाल्गुणanda जयन्ती  (होलीday for किरातi People)"
+          "फाल्गुणanda जयन्ती (होलीday for किरातi People)"
         ]
       },
       {
@@ -23216,7 +23216,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Utpatika एकादशी"
+          "उत्पन्ना एकादशी"
         ]
       }
     ]
@@ -23268,7 +23268,7 @@
         "events_np": [
           "विवाह पञ्चमी",
           "जनकपुरमा सीता विवाह पञ्चमी मेला",
-          "Bramhachari Shadananda जयन्ती"
+          "ब्रह्मचारी षडानन्द जयन्ती"
         ]
       },
       {
@@ -23290,7 +23290,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी"
+          "मोक्षदा एकादशी"
         ]
       },
       {
@@ -23348,7 +23348,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Safala एकादशी"
+          "सफला एकादशी"
         ]
       }
     ]
@@ -23364,7 +23364,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Tol ल्होसार"
+          "टोल ल्होसार"
         ]
       },
       {
@@ -23401,7 +23401,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Putrada एकादशी",
+          "पुत्रदा एकादशी",
           "तमु ल्होसार"
         ]
       },
@@ -23428,7 +23428,7 @@
         "events_np": [
           "श्री स्वस्थानी व्रत सुरु",
           "मिला पुन्हि:",
-          "माघ Snan Suru"
+          "माघ स्नान सुरु"
         ]
       },
       {
@@ -23438,7 +23438,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Guru Govinda Sinha जयन्ती"
+          "गुरु गोविन्द सिंह जयन्ती"
         ]
       },
       {
@@ -23490,7 +23490,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shattila एकादशी"
+          "षट्तिला एकादशी"
         ]
       }
     ]
@@ -23510,7 +23510,7 @@
         "is_holiday": true,
         "events_np": [
           "माघे संक्रान्ति",
-          "माघी Parba",
+          "माघी पर्व",
           "घ्या: चाकु सन्ल्हु",
           "राष्ट्रिय कृषि जैविक विविधता दिवस"
         ]
@@ -23548,7 +23548,7 @@
         "events_np": [
           "सोनाम ल्होसार",
           "तामाङ ल्होसार",
-          "Shree Ballav जयन्ती"
+          "श्री Ballav जयन्ती"
         ]
       },
       {
@@ -23562,9 +23562,9 @@
         "is_holiday": true,
         "events_np": [
           "बसन्त पञ्चमी",
-          "Basanta श्रावण",
+          "बसन्त श्रावण",
           "श्रीपञ्चमी",
-          "सरस्वती पूजा  (होलीday on Educational Institution)"
+          "सरस्वती पूजा (होलीday on Educational Institution)"
         ]
       },
       {
@@ -23608,7 +23608,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Jaya एकादशी"
+          "जया एकादशी"
         ]
       },
       {
@@ -23644,7 +23644,7 @@
         "events_np": [
           "श्री स्वस्थानी व्रत समाप्ति",
           "सी पुन्हि:",
-          "माघ Snan Samapti"
+          "माघ स्नान समाप्ति"
         ]
       },
       {
@@ -23683,7 +23683,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी",
+          "विजया एकादशी",
           "रेडियो दिवस"
         ]
       },
@@ -23745,7 +23745,7 @@
         "events_np": [
           "भौमाष्टमी व्रत",
           "चिरोत्थान",
-          "होलीkarambha",
+          "होली आरम्भ",
           "चिर्स्वयागु"
         ]
       },
@@ -23756,7 +23756,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -23783,8 +23783,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होली Punhi:)",
-          "Terai होली (होलीday in 21 districts of Terai )"
+          "फाल्गु पूर्णिमा (होली पुन्ही:)",
+          "तराई होली (होलीday in 21 districts of तराई)"
         ]
       },
       {
@@ -23844,7 +23844,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochani एकादशी"
+          "पाप पापमोचिनी एकादशी"
         ]
       },
       {
@@ -23864,7 +23864,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "घोडेजात्रा (होलीday on Ktm. Valley)"
+          "घोडेजात्रा (होलीday on काठमाडौं. Valley)"
         ]
       },
       {
@@ -23896,7 +23896,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaiti छठ"
+          "चैते छठ"
         ]
       },
       {
@@ -23908,7 +23908,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaitey दशैं",
+          "चैते दशैं",
           "सेतो मछिन्द्रनाथ रथ यात्रा आरम्भ",
           "चैत्रstami"
         ]
@@ -23922,7 +23922,7 @@
         "is_holiday": true,
         "events_np": [
           "राम नवमी",
-          "Shree Ram जयन्ती"
+          "श्री राम जयन्ती"
         ]
       },
       {
@@ -23932,7 +23932,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamada एकादशी"
+          "कामदा एकादशी"
         ]
       },
       {
@@ -23942,7 +23942,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mahabir जयन्ती"
+          "महावीर जयन्ती"
         ]
       },
       {
@@ -23967,7 +23967,7 @@
         "events_np": [
           "ल्हुति पुन्हि:",
           "बैशाख स्नान सुरु",
-          "Shree हनुमान जयन्ती",
+          "श्री हनुमान जयन्ती",
           "बालाजु बाइसधारा मेला"
         ]
       },
@@ -23978,7 +23978,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Swami Shashidhar जयन्ती"
+          "Swami शशिधर जयन्ती"
         ]
       },
       {
@@ -24001,7 +24001,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Baruthini एकादशी",
+          "वरूथिनी एकादशी",
           "भक्तपुर विश्वध्वजोत्थान"
         ]
       }
@@ -24018,7 +24018,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Nepali नयाँ वर्ष 2083 BS"
+          "नेपाली नयाँ वर्ष 2083 BS"
         ]
       },
       {
@@ -24048,7 +24048,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mohini एकादशी"
+          "मोहिनी एकादशी"
         ]
       },
       {
@@ -24060,8 +24060,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Gautam बुद्ध जयन्ती",
-          "Chandi पूर्णिमा",
+          "गौतम बुद्ध जयन्ती",
+          "चण्डी पूर्णिमा",
           "उधौली पर्व"
         ]
       },
@@ -24082,7 +24082,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Apara एकादशी"
+          "अपरा एकादशी"
         ]
       }
     ]
@@ -24098,7 +24098,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Padmini एकादशी"
+          "पद्मिनी एकादशी"
         ]
       },
       {
@@ -24118,7 +24118,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Jatiya Bhedbhav tatha Chuwachut Unmulan राष्ट्रिय दिवस"
+          "जातीय भेदभाव तथा छुवाछूत उन्मूलन राष्ट्रिय दिवस"
         ]
       },
       {
@@ -24128,7 +24128,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Parama एकादशी"
+          "परमा एकादशी"
         ]
       }
     ]
@@ -24144,7 +24144,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Nirjala एकादशी"
+          "निर्जला एकादशी"
         ]
       },
       {
@@ -24166,7 +24166,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Yogini एकादशी"
+          "योगिनी एकादशी"
         ]
       },
       {
@@ -24186,7 +24186,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhanu जयन्ती"
+          "भानु जयन्ती"
         ]
       }
     ]
@@ -24204,7 +24204,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saune संक्रान्ति",
+          "साउने संक्रान्ति",
           "लुटो फाल्ने एवं राँको बाल्ने",
           "थारु गुरिया पर्व"
         ]
@@ -24216,7 +24216,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Harisayani एकादशी"
+          "हरिशयनी एकादशी"
         ]
       },
       {
@@ -24236,7 +24236,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Kamika एकादशी"
+          "कामिका एकादशी"
         ]
       }
     ]
@@ -24262,7 +24262,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -24297,7 +24297,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Ajaa एकादशी",
+          "अजा एकादशी",
           "निजामती सेवा दिवस"
         ]
       },
@@ -24388,7 +24388,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haripariwartini एकादशी"
+          "हरिपरिवर्तिनी एकादशी"
         ]
       },
       {
@@ -24398,7 +24398,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "इन्द्र जात्रा (होलीday in Ktm Only)"
+          "इन्द्र जात्रा (होलीday in काठमाडौं Only)"
         ]
       },
       {
@@ -24418,7 +24418,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Indira एकादशी"
+          "इन्दिरा एकादशी"
         ]
       },
       {
@@ -24486,7 +24486,7 @@
         "is_holiday": true,
         "events_np": [
           "विजया दशमी",
-          "दशैं ko Tika"
+          "दशैं को टीका"
         ]
       },
       {
@@ -24496,7 +24496,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Padmini एकादशी"
+          "पद्मिनी एकादशी"
         ]
       },
       {
@@ -24526,7 +24526,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Rama एकादशी"
+          "रमा एकादशी"
         ]
       },
       {
@@ -24592,7 +24592,7 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "छठ Parba"
+          "छठ पर्व"
         ]
       }
     ]
@@ -24608,7 +24608,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Haribodhini एकादशी"
+          "हरिबोधिनी एकादशी"
         ]
       },
       {
@@ -24618,7 +24618,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Utpattika एकादशी"
+          "उत्पन्ना एकादशी"
         ]
       },
       {
@@ -24654,7 +24654,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Mokshyada एकादशी"
+          "मोक्षदा एकादशी"
         ]
       },
       {
@@ -24668,7 +24668,7 @@
         "is_holiday": true,
         "events_np": [
           "योमरी पुन्हि:",
-          "उधौली Parba",
+          "उधौली पर्व",
           "Dhanya पूर्णिमा",
           "ज्यापु दिवस"
         ]
@@ -24690,7 +24690,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Saphala एकादशी"
+          "सफला एकादशी"
         ]
       },
       {
@@ -24719,7 +24719,7 @@
         "is_holiday": false,
         "events_np": [
           "माघे संक्रान्ति",
-          "माघी Parba",
+          "माघी पर्व",
           "घ्या: चाकु सन्ल्हु"
         ]
       },
@@ -24730,7 +24730,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Putrada एकादशी"
+          "पुत्रदा एकादशी"
         ]
       },
       {
@@ -24750,7 +24750,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Shatila एकादशी"
+          "षट्तिला एकादशी"
         ]
       },
       {
@@ -24776,7 +24776,7 @@
         "is_holiday": true,
         "events_np": [
           "बसन्त पञ्चमी",
-          "Basanta श्रावण",
+          "बसन्त श्रावण",
           "श्रीपञ्चमी",
           "सरस्वती पूजा (होलीday on Educational Institution)"
         ]
@@ -24804,7 +24804,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bhima एकादशी"
+          "भीम एकादशी"
         ]
       },
       {
@@ -24824,7 +24824,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Bijaya एकादशी"
+          "विजया एकादशी"
         ]
       },
       {
@@ -24860,7 +24860,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Aamalaki एकादशी"
+          "आमलकी एकादशी"
         ]
       },
       {
@@ -24887,8 +24887,8 @@
         ],
         "is_holiday": true,
         "events_np": [
-          "Falgu पूर्णिमा (होली Punhi:)",
-          "Terai होली (होलीday in 21 districts of Terai )"
+          "फाल्गु पूर्णिमा (होली पुन्ही:)",
+          "तराई होली (होलीday in 21 districts of तराई)"
         ]
       },
       {
@@ -24908,7 +24908,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Paap Mochini एकादशी"
+          "पाप पापमोचिनी एकादशी"
         ]
       },
       {
@@ -24918,7 +24918,7 @@
         ],
         "is_holiday": false,
         "events_np": [
-          "Chaite दशैं"
+          "चैते दशैं"
         ]
       }
     ]

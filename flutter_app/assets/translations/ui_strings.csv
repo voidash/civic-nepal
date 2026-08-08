@@ -67,6 +67,7 @@ ipo_alerts,IPO Alerts,आईपीओ सूचना,आईपीओ सूच�
 ipo_alerts_desc,Get notified when IPOs are opening or closing,आईपीओ खुल्दा वा बन्द हुँदा सूचना पाउनुहोस्,आईपीओ खुलय् वा बन्द जुलय् सूचना काय्,Setting subtitle
 checking_updates,Checking for updates...,अपडेट जाँच गर्दै...,अपडेट जाँच यानाच्वँ...,Snackbar message
 cache_cleared,Cache cleared,क्यास खाली भयो,क्यास खाली जुल,Snackbar message
+update_failed,Could not reach the update server,अपडेट सर्भरमा पुग्न सकिएन,अपडेट सर्भरय् थ्यंकेगु मखु,Snackbar message
 app_version,NagarikCalendar v1.0.0,नागरिक क्यालेन्डर v1.0.0,नागरिक क्यालेन्डर v1.0.0,Version info
 privacy_policy,Privacy Policy,गोपनीयता नीति,गोपनीयता नीति,Setting title
 privacy_policy_desc,Read our privacy policy,हाम्रो गोपनीयता नीति पढ्नुहोस्,जिगु गोपनीयता नीति ब्वनादिसँ,Setting subtitle

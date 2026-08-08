@@ -54,6 +54,22 @@ class AppLocalizations {
     return strings[key] ?? fallback[key] ?? key;
   }
 
+  /// Look a key up in a specific locale, ignoring the active one.
+  String getIn(String localeCode, String key) {
+    return _service.getTranslations(localeCode)[key] ?? '';
+  }
+
+  /// The counterpart of [get] in the other language, for two-line labels.
+  ///
+  /// The primary label is already localized, so the secondary line must be the
+  /// *other* language — otherwise a Nepali UI shows the same words twice.
+  /// Returns an empty string when only one translation exists.
+  String bilingualSubtitle(String key) {
+    final primary = get(key);
+    final other = isNepali ? getIn('en', key) : getIn('ne', key);
+    return (other.isEmpty || other == primary) ? '' : other;
+  }
+
   /// Get localized string with parameters
   String getWithParams(String key, Map<String, String> params) {
     var text = get(key);
@@ -129,6 +145,7 @@ class AppLocalizations {
   String get ipoAlertsDesc => get('ipo_alerts_desc');
   String get checkingUpdates => get('checking_updates');
   String get cacheCleared => get('cache_cleared');
+  String get updateFailed => get('update_failed');
   String get appVersion => get('app_version');
   String get privacyPolicy => get('privacy_policy');
   String get privacyPolicyDesc => get('privacy_policy_desc');

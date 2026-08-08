@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/calendar_event.dart';
 import '../../models/calendar_view_state.dart';
+import '../../l10n/app_localizations.dart';
 import '../../providers/calendar_view_provider.dart';
 import '../../services/nepali_date_service.dart';
 import '../../services/calendar_event_merger.dart';
@@ -16,6 +17,9 @@ class MonthView extends ConsumerWidget {
     final dateSystem = ref.watch(dateSystemNotifierProvider);
     final selectedDay = ref.watch(selectedDayNotifierProvider);
     final merger = ref.read(calendarEventMergerProvider);
+    // Watch the Nepali data load so the grid repaints once the JSON is parsed.
+    // Without this the first frame renders an empty month and never recovers.
+    ref.watch(calendarDataLoaderProvider);
     // Watch Google sync so event dots update
     ref.watch(googleCalendarSyncProvider);
 
@@ -61,6 +65,7 @@ class _BsMonthGrid extends ConsumerWidget {
 
     final rows = ((startOffset + daysInMonth) / 7).ceil();
     final theme = Theme.of(context);
+    final isNepaliUi = AppLocalizations.of(context).isNepali;
 
     return Column(
       children: [
@@ -108,6 +113,14 @@ class _BsMonthGrid extends ConsumerWidget {
                         final allEvents = merger.eventsForAdDate(adDate);
                         final hasGoogleEvents = allEvents.any((e) => e.source == CalendarEventSource.google);
 
+                        // Prefer the Nepali name when the UI is in Nepali.
+                        final names = isNepaliUi
+                            ? (dayInfo?.eventsNp.isNotEmpty ?? false
+                                ? dayInfo!.eventsNp
+                                : dayInfo?.events ?? const [])
+                            : (dayInfo?.events ?? const []);
+                        final eventText = names.isNotEmpty ? names.first : null;
+
                         return Expanded(
                           child: _DayCell(
                             dayNum: dayNum,
@@ -120,6 +133,7 @@ class _BsMonthGrid extends ConsumerWidget {
                             isAuspicious: isAuspicious,
                             hasGoogleEvents: hasGoogleEvents,
                             showSecondaryDate: true,
+                            eventText: eventText,
                             onTap: () {
                               ref.read(selectedDayNotifierProvider.notifier).select(adDate);
                             },
@@ -161,6 +175,7 @@ class _AdMonthGrid extends ConsumerWidget {
     final now = DateTime.now();
     final rows = ((startOffset + daysInMonth) / 7).ceil();
     final theme = Theme.of(context);
+    final isNepaliUi = AppLocalizations.of(context).isNepali;
 
     // Get events for this AD month
     final start = DateTime(year, month, 1);
@@ -217,6 +232,11 @@ class _AdMonthGrid extends ConsumerWidget {
                         final isAuspicious = dayEvents.any((e) => e.auspiciousType != null);
                         final hasGoogleEvents = dayEvents.any((e) => e.source == CalendarEventSource.google);
 
+                        final first = dayEvents.isNotEmpty ? dayEvents.first : null;
+                        final eventText = first == null
+                            ? null
+                            : (isNepaliUi ? (first.titleNp ?? first.title) : first.title);
+
                         return Expanded(
                           child: _DayCell(
                             dayNum: dayNum,
@@ -230,6 +250,7 @@ class _AdMonthGrid extends ConsumerWidget {
                             hasGoogleEvents: hasGoogleEvents,
                             showSecondaryDate: true,
                             secondaryIsNepali: true,
+                            eventText: eventText,
                             onTap: () {
                               ref.read(selectedDayNotifierProvider.notifier).select(adDate);
                             },
@@ -249,29 +270,43 @@ class _AdMonthGrid extends ConsumerWidget {
 }
 
 /// Weekday header row (Sun–Sat).
+///
+/// Uses full day names — the single-syllable forms ("बि", "श") were ambiguous
+/// between बिहीबार/बुधबार and शनिबार/शुक्रबार.
 class _WeekdayHeader extends StatelessWidget {
-  static const _daysNp = ['आ', 'सो', 'मं', 'बु', 'बि', 'शु', 'श'];
+  static const _daysNp = ['आइत', 'सोम', 'मंगल', 'बुध', 'बिही', 'शुक्र', 'शनि'];
+  static const _daysEn = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return SizedBox(
-      height: 32,
+      height: 38,
       child: Row(
         children: List.generate(7, (i) {
           final isSaturday = i == 6;
+          final color =
+              isSaturday ? Colors.red : theme.colorScheme.onSurfaceVariant;
           return Expanded(
-            child: Center(
-              child: Text(
-                _daysNp[i],
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  color: isSaturday
-                      ? Colors.red
-                      : theme.colorScheme.onSurfaceVariant,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  _daysNp[i],
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: color,
+                  ),
                 ),
-              ),
+                Text(
+                  _daysEn[i],
+                  style: TextStyle(
+                    fontSize: 9,
+                    color: color.withValues(alpha: 0.6),
+                  ),
+                ),
+              ],
             ),
           );
         }),
@@ -293,6 +328,9 @@ class _DayCell extends StatelessWidget {
   final bool hasGoogleEvents;
   final bool showSecondaryDate;
   final bool secondaryIsNepali;
+
+  /// Festival/holiday name shown inside the cell, when there is room.
+  final String? eventText;
   final VoidCallback onTap;
 
   const _DayCell({
@@ -307,6 +345,7 @@ class _DayCell extends StatelessWidget {
     this.hasGoogleEvents = false,
     required this.showSecondaryDate,
     this.secondaryIsNepali = false,
+    this.eventText,
     required this.onTap,
   });
 
@@ -318,19 +357,29 @@ class _DayCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     Color? textColor;
     if (isHoliday || isSaturday) {
-      textColor = Colors.red;
+      textColor = Colors.red[isDark ? 300 : 700];
+    }
+
+    // Tint non-working days so holidays read at a glance, matching the
+    // home-screen calendar.
+    Color? background;
+    if (isSelected) {
+      background = theme.colorScheme.primaryContainer;
+    } else if (isHoliday) {
+      background = Colors.red.withValues(alpha: isDark ? 0.10 : 0.06);
+    } else if (isSaturday) {
+      background = Colors.red.withValues(alpha: isDark ? 0.05 : 0.03);
     }
 
     return GestureDetector(
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: isSelected
-              ? theme.colorScheme.primaryContainer
-              : null,
+          color: background,
           border: Border.all(
             color: theme.colorScheme.outlineVariant.withValues(alpha: 0.3),
             width: 0.5,
@@ -386,6 +435,27 @@ class _DayCell extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 10,
                     color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+                  ),
+                ),
+              ),
+            // Festival / holiday name
+            if (eventText != null && eventText!.isNotEmpty)
+              Positioned(
+                // Clears the 24px "today" circle that sits at top: 4.
+                top: 30,
+                left: 4,
+                right: 4,
+                bottom: 12,
+                child: Text(
+                  eventText!,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 9,
+                    height: 1.2,
+                    color: isHoliday
+                        ? Colors.red[isDark ? 300 : 600]
+                        : theme.colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),

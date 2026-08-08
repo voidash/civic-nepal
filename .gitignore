@@ -3,3 +3,8 @@
 **/GoogleService-Info.plist
 macos_app/**/.build/
 macos_app/**/build/
+
+# Local tooling artifacts
+.playwright-mcp/
+__pycache__/
+*.pyc

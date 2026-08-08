@@ -16,6 +16,8 @@ class EventDetailPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final merger = ref.read(calendarEventMergerProvider);
+    // Repaint once the bundled Nepali event data has parsed.
+    ref.watch(calendarDataLoaderProvider);
     final dateSystem = ref.watch(dateSystemNotifierProvider);
     final l10n = AppLocalizations.of(context);
     final focused = ref.watch(focusedDateNotifierProvider);
@@ -335,7 +337,9 @@ class _GoogleSignInCard extends StatelessWidget {
             Icon(Icons.calendar_month, size: 32, color: theme.colorScheme.primary),
             const SizedBox(height: 8),
             Text(
-              'Connect Google Calendar',
+              authState.needsReconnect
+                  ? 'Reconnect Google Calendar'
+                  : 'Connect Google Calendar',
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -344,7 +348,9 @@ class _GoogleSignInCard extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              'See your events, create new ones, and get reminders',
+              authState.needsReconnect
+                  ? 'Your session expired. Reconnecting takes one click.'
+                  : 'See your events, create new ones, and get reminders',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 12, color: theme.colorScheme.onSurfaceVariant),
             ),
@@ -356,7 +362,9 @@ class _GoogleSignInCard extends StatelessWidget {
               icon: authState.isLoading
                   ? const SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white))
                   : const Icon(Icons.login, size: 18),
-              label: const Text('Sign in with Google'),
+              label: Text(authState.needsReconnect
+                  ? 'Reconnect'
+                  : 'Sign in with Google'),
               style: FilledButton.styleFrom(
                 minimumSize: const Size(double.infinity, 40),
               ),

@@ -47,13 +47,18 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
     return Scaffold(
       appBar: AppBar(
         title: HomeTitle(child: Text(_buildHeaderTitle(viewMode, dateSystem, focused))),
+        // On a phone the actions used to overrun the bar: the six of them ate
+        // the full width, so Material squeezed the title to nothing and pushed
+        // the last action off the edge. That left no month or year on screen
+        // and no way to reach Google sign-in at all. Navigation and account
+        // stay in the bar; the two pickers move into an overflow menu.
         actions: [
-          // View mode segmented button (compact on mobile)
-          _ViewModeSelector(currentMode: viewMode),
-          const SizedBox(width: 4),
-          // AD/BS toggle
-          _DateSystemToggle(dateSystem: dateSystem),
-          const SizedBox(width: 4),
+          if (isWide) ...[
+            _ViewModeSelector(currentMode: viewMode),
+            const SizedBox(width: 4),
+            _DateSystemToggle(dateSystem: dateSystem),
+            const SizedBox(width: 4),
+          ],
           // Today button
           IconButton(
             icon: const Icon(Icons.today),
@@ -63,13 +68,16 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
               ref.read(selectedDayNotifierProvider.notifier).clear();
             },
           ),
-          // Navigation arrows
+          // Navigation arrows — the only way to change month; the grid has no
+          // swipe gesture.
           IconButton(
             icon: const Icon(Icons.chevron_left),
+            tooltip: l10n.isNepali ? 'अघिल्लो' : 'Previous',
             onPressed: () => _navigateBack(viewMode, dateSystem),
           ),
           IconButton(
             icon: const Icon(Icons.chevron_right),
+            tooltip: l10n.isNepali ? 'अर्को' : 'Next',
             onPressed: () => _navigateForward(viewMode, dateSystem),
           ),
           // Sync indicator
@@ -84,6 +92,8 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
             ),
           // Google account
           _GoogleAccountButton(),
+          if (!isWide)
+            _CompactViewMenu(currentMode: viewMode, dateSystem: dateSystem),
           const SizedBox(width: 8),
         ],
       ),
@@ -263,6 +273,66 @@ class _ViewModeSelector extends ConsumerWidget {
       onSelectionChanged: (selected) {
         ref.read(calendarViewModeNotifierProvider.notifier).setMode(selected.first);
       },
+    );
+  }
+}
+
+/// View mode and calendar system, folded into one overflow menu for phones.
+///
+/// The segmented D/W/M/Y control and the AD/BS chip together take roughly half
+/// a phone's width. Collapsing them to a single icon is what buys the title and
+/// the Google account button room to stay on screen.
+class _CompactViewMenu extends ConsumerWidget {
+  final CalendarViewMode currentMode;
+  final DateSystem dateSystem;
+
+  const _CompactViewMenu({required this.currentMode, required this.dateSystem});
+
+  static const _modeLabels = {
+    CalendarViewMode.day: ('दिन', 'Day'),
+    CalendarViewMode.week: ('हप्ता', 'Week'),
+    CalendarViewMode.month: ('महिना', 'Month'),
+    CalendarViewMode.year: ('वर्ष', 'Year'),
+  };
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isNepali = AppLocalizations.of(context).isNepali;
+
+    return PopupMenuButton<String>(
+      icon: const Icon(Icons.more_vert),
+      tooltip: isNepali ? 'दृश्य' : 'View',
+      onSelected: (value) {
+        if (value == 'toggle-system') {
+          ref.read(dateSystemNotifierProvider.notifier).toggle();
+          return;
+        }
+        final mode = CalendarViewMode.values.firstWhere((m) => m.name == value);
+        ref.read(calendarViewModeNotifierProvider.notifier).setMode(mode);
+      },
+      itemBuilder: (context) => [
+        for (final entry in _modeLabels.entries)
+          CheckedPopupMenuItem(
+            value: entry.key.name,
+            checked: entry.key == currentMode,
+            child: Text(isNepali ? entry.value.$1 : entry.value.$2),
+          ),
+        const PopupMenuDivider(),
+        PopupMenuItem(
+          value: 'toggle-system',
+          child: Row(
+            children: [
+              const Icon(Icons.swap_horiz, size: 18),
+              const SizedBox(width: 12),
+              Text(
+                dateSystem == DateSystem.bs
+                    ? (isNepali ? 'ई.सं. मा देखाउनुहोस्' : 'Show in AD')
+                    : (isNepali ? 'वि.सं. मा देखाउनुहोस्' : 'Show in BS'),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

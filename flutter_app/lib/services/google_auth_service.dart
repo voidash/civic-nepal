@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart' show kIsWeb, debugPrint;
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
 import 'package:extension_google_sign_in_as_googleapis_auth/extension_google_sign_in_as_googleapis_auth.dart';
 import 'package:googleapis/calendar/v3.dart' as gcal;
 import 'package:googleapis_auth/googleapis_auth.dart' as gapis;
@@ -93,26 +94,30 @@ class GoogleAuthService {
     // 1. Ask the platform SDK. This works well on Android/iOS/macOS where the
     //    native SDK persists the session and can mint a fresh access token.
     //
-    //    On the web this runs Google One Tap, whose future does not complete
-    //    until a "prompt moment" arrives — often ~10s, sometimes never. Bound
-    //    it so the sign-in button does not sit disabled behind a spinner.
-    try {
-      _currentUser = await _googleSignIn!
-          .signInSilently()
-          .timeout(const Duration(seconds: 4), onTimeout: () => null);
-    } catch (e) {
-      debugPrint('Google silent sign-in failed: $e');
-      _currentUser = null;
-    }
-
-    if (_currentUser != null) {
-      final client = await _googleSignIn!.authenticatedClient();
-      if (client != null) {
-        _authClient = client;
-        await _persistSignInState();
-        return true;
+    //    Skipped entirely on the web. There it runs Google One Tap, which can
+    //    only ever return an identity — never the access token the Calendar
+    //    API needs — so the result is unusable even when it succeeds. What it
+    //    does do is take ~4s to resolve and log a FedCM "Error retrieving a
+    //    token" on every single page load. The stored token below is the real
+    //    restore path on the web.
+    if (!kIsWeb) {
+      try {
+        _currentUser = await _googleSignIn!
+            .signInSilently()
+            .timeout(const Duration(seconds: 4), onTimeout: () => null);
+      } catch (e) {
+        debugPrint('Google silent sign-in failed: $e');
+        _currentUser = null;
       }
-      // Identity restored but no usable token (typical for web One Tap).
+
+      if (_currentUser != null) {
+        final client = await _googleSignIn!.authenticatedClient();
+        if (client != null) {
+          _authClient = client;
+          await _persistSignInState();
+          return true;
+        }
+      }
     }
 
     // 2. Fall back to credentials we persisted ourselves.
@@ -159,6 +164,8 @@ class GoogleAuthService {
     if (_googleSignIn == null) {
       throw StateError('GoogleAuthService not initialized. Call initialize() first.');
     }
+    if (kIsWeb) return _authorizeWeb();
+
     try {
       _currentUser = await _googleSignIn!.signIn();
       if (_currentUser != null) {
@@ -172,6 +179,71 @@ class GoogleAuthService {
       _authClient = null;
       rethrow;
     }
+  }
+
+  /// Web sign-in: ask for calendar authorization and nothing else.
+  ///
+  /// `GoogleSignIn.signIn()` is the wrong tool here. It is deprecated on the
+  /// web (the plugin says it will be removed, and its own comment notes the
+  /// popup needs user activation), but the fatal part is what it does *after*
+  /// the token arrives: it calls the People API to synthesise a profile,
+  /// because the GIS authorization flow returns no identity. If the People API
+  /// is not enabled on the Cloud project that call fails, `signIn()` throws,
+  /// and the user is reported as signed out — even though the access token was
+  /// granted seconds earlier.
+  ///
+  /// This app never needed the profile. It needs one thing: an access token
+  /// for Google Calendar. So it asks for exactly that, and reads the account's
+  /// address back from the primary calendar, whose id *is* the user's email.
+  Future<bool> _authorizeWeb() async {
+    final platform = GoogleSignInPlatform.instance;
+
+    // Must be reached directly from the button press: this opens a popup and
+    // browsers only allow that while a user gesture is still in scope.
+    final granted = await platform.requestScopes(_calendarScopes);
+    if (!granted) return false;
+
+    // The web plugin ignores `email` here and returns the token it just got.
+    final tokens = await platform.getTokens(email: '', shouldRecoverAuth: false);
+    final accessToken = tokens.accessToken;
+    if (accessToken == null) return false;
+
+    // GIS does not tell us when the token expires; Google's browser tokens are
+    // an hour, so expire ours slightly early and prompt to reconnect.
+    final expiry = DateTime.now().toUtc().add(const Duration(minutes: 55));
+    _authClient = gapis.authenticatedClient(
+      http.Client(),
+      gapis.AccessCredentials(
+        gapis.AccessToken('Bearer', accessToken, expiry),
+        null, // the browser flow issues no refresh token
+        _calendarScopes,
+      ),
+    );
+    _needsReconnect = false;
+    _restoredEmail = await _primaryCalendarAddress() ?? 'Google Calendar';
+
+    await _persistWebSession(accessToken, expiry);
+    return true;
+  }
+
+  /// The signed-in account's address, taken from the primary calendar's id.
+  Future<String?> _primaryCalendarAddress() async {
+    try {
+      final entry = await calendarApi?.calendarList.get('primary');
+      return entry?.id;
+    } catch (e) {
+      debugPrint('Could not read primary calendar address: $e');
+      return null;
+    }
+  }
+
+  Future<void> _persistWebSession(String accessToken, DateTime expiry) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_keyWasSignedIn, true);
+    await prefs.setString(_keyAccessToken, accessToken);
+    await prefs.setInt(_keyTokenExpiry, expiry.millisecondsSinceEpoch);
+    final email = _restoredEmail;
+    if (email != null) await prefs.setString(_keyEmail, email);
   }
 
   /// Sign out and clear cached credentials.

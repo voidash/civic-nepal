@@ -72,6 +72,9 @@ dependencies:
   googleapis: ^13.0.0
   googleapis_auth: ^1.4.0
   google_sign_in: ^6.2.0
+  # Direct use: the web sign-in path talks to the platform interface so it can
+  # request calendar authorization without the deprecated signIn() profile step.
+  google_sign_in_platform_interface: ^2.4.0
   extension_google_sign_in_as_googleapis_auth: ^2.0.0
 
   # Localization

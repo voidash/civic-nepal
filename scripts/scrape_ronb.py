@@ -2,21 +2,31 @@
 """
 Scrape RONB (Routine of Nepal Banda) Facebook page posts.
 
-Uses Googlebot UA to get server-rendered page with embedded JSON post data.
-Outputs structured JSON with post text, timestamps, images, and links.
+Facebook serves a fully server-rendered page to Googlebot, with the post data
+embedded as JSON inside the HTML. We request with a Googlebot UA and pull the
+post text, timestamps, images and permalinks back out of that JSON.
+
+Everything in the embedded blob is JSON-escaped, so `/` arrives as `\\/` and all
+non-ASCII arrives as `\\uXXXX` surrogate pairs. Unescaping is done by handing the
+raw capture to `json.loads`, which is the only thing that gets surrogate pairs
+right.
 
 Usage:
-    python3 scripts/scrape_ronb.py                    # Output to stdout
-    python3 scripts/scrape_ronb.py -o data/ronb.json  # Output to file
-    python3 scripts/scrape_ronb.py --pretty            # Pretty print
+    python3 scripts/scrape_ronb.py                      # stdout
+    python3 scripts/scrape_ronb.py -o data/ronb.json    # to file
+    python3 scripts/scrape_ronb.py --pretty             # readable
+    python3 scripts/scrape_ronb.py --min-posts 5        # fail if fewer
 """
 
 import argparse
 import json
 import re
 import sys
-import urllib.request
 from datetime import datetime, timezone, timedelta
+
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 FACEBOOK_PAGE = "officialroutineofnepalbanda"
 PAGE_URL = f"https://www.facebook.com/{FACEBOOK_PAGE}/"
@@ -24,110 +34,123 @@ NEPAL_TZ = timezone(timedelta(hours=5, minutes=45))
 
 GOOGLEBOT_UA = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
 
+# Every post is introduced by an object carrying its id next to its creation
+# time. This pair is the anchor everything else hangs off: it appears exactly
+# once per post and gives both a stable identity and an exact timestamp.
+_POST_RE = re.compile(r'"post_id":"(\d+)","creation_time":(\d{10})')
+# The id is then repeated throughout the blocks that render that post.
+_POST_ID_RE = re.compile(r'"post_id":"(\d+)"')
+# Post text lives in "message":{"text":"..."}.
+_MSG_RE = re.compile(r'"message":\{"text":"((?:[^"\\]|\\.){5,5000})"\}')
+# Attached photo. The URI is JSON-escaped, so `/` shows up as `\/`.
+_IMG_RE = re.compile(r'"photo_image":\{"uri":"(https?:[^"]+?media_id=\d+[^"]*)"')
+
+
+def _session() -> requests.Session:
+    """Session with retries — Facebook rate-limits CI runner IP ranges."""
+    session = requests.Session()
+    retry = Retry(
+        total=4,
+        backoff_factor=2,
+        status_forcelist=(403, 429, 500, 502, 503, 504),
+        allowed_methods=("GET",),
+    )
+    session.mount("https://", HTTPAdapter(max_retries=retry))
+    session.headers.update({
+        "User-Agent": GOOGLEBOT_UA,
+        "Accept-Language": "en-US,en;q=0.9,ne;q=0.8",
+    })
+    return session
+
 
 def fetch_page(url: str) -> str:
-    """Fetch Facebook page HTML using Googlebot user agent."""
-    req = urllib.request.Request(url, headers={"User-Agent": GOOGLEBOT_UA})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return resp.read().decode("utf-8", errors="replace")
+    resp = _session().get(url, timeout=30)
+    resp.raise_for_status()
+    return resp.text
 
 
-def clean_text(raw: str) -> str:
-    """Decode escaped unicode from Facebook JSON."""
+def unescape(raw: str) -> str:
+    """Unescape a JSON string body.
+
+    The previous implementation round-tripped through `unicode_escape`, which
+    mangles anything outside latin-1 and leaves `\\/` untouched — that is why
+    scraped posts used to read "Pic\\/Story". Re-quoting and letting the JSON
+    parser do it handles escapes and surrogate pairs correctly.
+    """
     try:
-        text = raw.encode("utf-8", errors="replace").decode("unicode_escape", errors="replace")
-        # Fix surrogate pairs
-        text = text.encode("utf-16", "surrogatepass").decode("utf-16", "replace")
-    except Exception:
-        text = raw
-    return text.strip()
+        return json.loads(f'"{raw}"').strip()
+    except (json.JSONDecodeError, ValueError):
+        # Truncated capture: fall back to the escapes that matter most.
+        text = raw.replace(r"\/", "/").replace(r"\"", '"').replace(r"\n", "\n")
+        return text.strip()
 
 
 def extract_posts(html: str) -> list[dict]:
-    """Extract post data from Facebook page HTML."""
+    """Pull posts out of the embedded JSON, keyed by post id.
+
+    Facebook renders each post more than once (different layout variants) and
+    does not keep a post's fields inside one object we can match whole. What it
+    does do is repeat the post's id in every block belonging to that post, so
+    each message and image is attributed to the nearest post-id occurrence.
+    That is what makes the mapping 1:1 — pairing on raw proximity alone used to
+    hand the same photo to two neighbouring posts.
+    """
+    # Canonical id -> creation time. One entry per post.
+    creation_times = {pid: int(ts) for pid, ts in _POST_RE.findall(html)}
+    if not creation_times:
+        return []
+
+    anchors = [
+        (m.start(), m.group(1))
+        for m in _POST_ID_RE.finditer(html)
+        if m.group(1) in creation_times
+    ]
+
+    def owner(pos: int) -> str:
+        """Id of the post whose block this offset falls closest to."""
+        return min(anchors, key=lambda a: abs(a[0] - pos))[1]
+
+    texts: dict[str, str] = {}
+    for m in _MSG_RE.finditer(html):
+        text = unescape(m.group(1))
+        if text:
+            texts.setdefault(owner(m.start()), text)
+
+    images: dict[str, str] = {}
+    for m in _IMG_RE.finditer(html):
+        images.setdefault(owner(m.start()), m.group(1).replace(r"\/", "/"))
+
     posts = []
-
-    # Facebook embeds post data as JSON in the page source.
-    # Strategy: find all "creation_story" objects which contain post text and metadata.
-
-    # Extract (message_text, creation_time, post_id) tuples
-    # We need to correlate them. The most reliable approach is to find
-    # JSON-like structures containing both message and timestamp.
-
-    # Extract post URLs
-    url_pattern = re.compile(r'"url":"(https://www\.facebook\.com/' + FACEBOOK_PAGE + r'/posts/[^"]+)"')
-    post_urls = url_pattern.findall(html)
-
-    # Extract messages and timestamps separately, then pair by proximity
-    msg_pattern = re.compile(r'"message":\{"text":"((?:[^"\\]|\\.){5,5000})"\}')
-    ts_pattern = re.compile(r'"creation_time":(\d{10})')
-
-    messages = []
-    for m in msg_pattern.finditer(html):
-        messages.append({
-            "text": clean_text(m.group(1)),
-            "pos": m.start(),
-        })
-
-    timestamps = []
-    for m in ts_pattern.finditer(html):
-        timestamps.append({
-            "ts": int(m.group(1)),
-            "pos": m.start(),
-        })
-
-    # Pair each message with the nearest timestamp
-    seen_texts = set()
-    for msg in messages:
-        text = msg["text"]
-
-        # Deduplicate (Facebook sometimes repeats posts in different formats)
-        text_key = text[:100]
-        if text_key in seen_texts:
+    for post_id, ts in creation_times.items():
+        text = texts.get(post_id)
+        if not text:
+            # Photo-only or video-only post with no caption; nothing to show.
             continue
-        seen_texts.add(text_key)
-
-        # Find nearest timestamp
-        nearest_ts = None
-        min_dist = float("inf")
-        for ts in timestamps:
-            dist = abs(ts["pos"] - msg["pos"])
-            if dist < min_dist:
-                min_dist = dist
-                nearest_ts = ts["ts"]
-
-        # Find nearest post URL
-        nearest_url = None
-        min_url_dist = float("inf")
-        for url in post_urls:
-            # Find position of this URL in HTML
-            url_pos = html.find(url)
-            if url_pos >= 0:
-                dist = abs(url_pos - msg["pos"])
-                if dist < min_url_dist:
-                    min_url_dist = dist
-                    nearest_url = url
-
-        post = {
+        posts.append({
+            "id": post_id,
             "text": text,
-            "timestamp": nearest_ts,
-            "datetime_utc": datetime.fromtimestamp(nearest_ts, tz=timezone.utc).isoformat() if nearest_ts else None,
-            "datetime_npt": datetime.fromtimestamp(nearest_ts, tz=NEPAL_TZ).strftime("%Y-%m-%d %H:%M") if nearest_ts else None,
-            "url": nearest_url,
-        }
+            "timestamp": ts,
+            "datetime_utc": datetime.fromtimestamp(ts, tz=timezone.utc).isoformat(),
+            "datetime_npt": datetime.fromtimestamp(ts, tz=NEPAL_TZ).strftime("%Y-%m-%d %H:%M"),
+            "url": f"https://www.facebook.com/{FACEBOOK_PAGE}/posts/{post_id}",
+            "imageUrl": images.get(post_id),
+        })
 
-        posts.append(post)
-
-    # Sort by timestamp descending (newest first)
-    posts.sort(key=lambda p: p.get("timestamp") or 0, reverse=True)
-
+    posts.sort(key=lambda p: p["timestamp"], reverse=True)
     return posts
 
 
-def main():
+def main() -> int:
     parser = argparse.ArgumentParser(description="Scrape RONB Facebook page")
     parser.add_argument("-o", "--output", help="Output file path (default: stdout)")
     parser.add_argument("--pretty", action="store_true", help="Pretty print JSON")
+    parser.add_argument(
+        "--min-posts",
+        type=int,
+        default=0,
+        help="Exit non-zero if fewer than this many posts were found, so a "
+             "blocked scrape fails the job instead of publishing an empty feed",
+    )
     args = parser.parse_args()
 
     print(f"Fetching {PAGE_URL}...", file=sys.stderr)
@@ -135,7 +158,20 @@ def main():
     print(f"Page size: {len(html):,} bytes", file=sys.stderr)
 
     posts = extract_posts(html)
-    print(f"Extracted {len(posts)} posts", file=sys.stderr)
+    with_url = sum(1 for p in posts if p["url"])
+    with_img = sum(1 for p in posts if p["imageUrl"])
+    print(
+        f"Extracted {len(posts)} posts ({with_url} with permalink, {with_img} with image)",
+        file=sys.stderr,
+    )
+
+    if len(posts) < args.min_posts:
+        print(
+            f"ERROR: only {len(posts)} posts, expected at least {args.min_posts}. "
+            "Refusing to write a degraded feed.",
+            file=sys.stderr,
+        )
+        return 1
 
     result = {
         "source": "facebook",
@@ -147,8 +183,7 @@ def main():
         "posts": posts,
     }
 
-    indent = 2 if args.pretty else None
-    output = json.dumps(result, ensure_ascii=False, indent=indent)
+    output = json.dumps(result, ensure_ascii=False, indent=2 if args.pretty else None)
 
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:
@@ -156,7 +191,8 @@ def main():
         print(f"Written to {args.output}", file=sys.stderr)
     else:
         print(output)
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

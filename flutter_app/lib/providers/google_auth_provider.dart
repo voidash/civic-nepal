@@ -17,6 +17,14 @@ class GoogleAuthState {
   /// shows no consent screen — the UI should say so rather than look logged out.
   final bool needsReconnect;
 
+  /// The user's calendar list has arrived.
+  ///
+  /// Sign-in completes before the list does, and everything that reads Google
+  /// events keys off this state. Without a second change to react to, those
+  /// providers ran once against an empty calendar list, cached no events, and
+  /// had no reason to run again.
+  final bool calendarsLoaded;
+
   const GoogleAuthState({
     this.isSignedIn = false,
     this.email,
@@ -24,6 +32,7 @@ class GoogleAuthState {
     this.isLoading = false,
     this.error,
     this.needsReconnect = false,
+    this.calendarsLoaded = false,
   });
 
   GoogleAuthState copyWith({
@@ -33,6 +42,7 @@ class GoogleAuthState {
     bool? isLoading,
     String? error,
     bool? needsReconnect,
+    bool? calendarsLoaded,
   }) {
     return GoogleAuthState(
       isSignedIn: isSignedIn ?? this.isSignedIn,
@@ -41,8 +51,31 @@ class GoogleAuthState {
       isLoading: isLoading ?? this.isLoading,
       error: error,
       needsReconnect: needsReconnect ?? this.needsReconnect,
+      calendarsLoaded: calendarsLoaded ?? this.calendarsLoaded,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is GoogleAuthState &&
+      other.isSignedIn == isSignedIn &&
+      other.email == email &&
+      other.displayName == displayName &&
+      other.isLoading == isLoading &&
+      other.error == error &&
+      other.needsReconnect == needsReconnect &&
+      other.calendarsLoaded == calendarsLoaded;
+
+  @override
+  int get hashCode => Object.hash(
+        isSignedIn,
+        email,
+        displayName,
+        isLoading,
+        error,
+        needsReconnect,
+        calendarsLoaded,
+      );
 }
 
 @riverpod
@@ -77,11 +110,7 @@ class GoogleAuth extends _$GoogleAuth {
         displayName: GoogleAuthService.instance.displayName,
       ));
 
-      try {
-        await GoogleCalendarService.instance.fetchCalendarList();
-      } catch (_) {
-        // Avoid dropping signed-in state if calendar fetch fails (e.g. API disabled).
-      }
+      await _loadCalendars();
     } else {
       _emit(GoogleAuthState(
         needsReconnect: GoogleAuthService.instance.needsReconnect,
@@ -101,16 +130,24 @@ class GoogleAuth extends _$GoogleAuth {
           displayName: GoogleAuthService.instance.displayName,
         ));
 
-        try {
-          await GoogleCalendarService.instance.fetchCalendarList();
-        } catch (_) {
-          // Keep signed-in state even if calendar fetch fails.
-        }
+        await _loadCalendars();
       } else {
         _emit(const GoogleAuthState(error: 'Sign-in cancelled'));
       }
     } catch (e) {
       _emit(GoogleAuthState(error: e.toString()));
+    }
+  }
+
+  /// Load the calendar list and announce it, so event providers re-run now
+  /// that there are calendars to read from. A failure here (API disabled,
+  /// offline) must not drop the user back to signed-out.
+  Future<void> _loadCalendars() async {
+    try {
+      await GoogleCalendarService.instance.fetchCalendarList();
+      _emit(state.copyWith(calendarsLoaded: true));
+    } catch (_) {
+      // Signed in, but with no usable calendar list.
     }
   }
 

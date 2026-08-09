@@ -6,7 +6,7 @@ import '../../l10n/app_localizations.dart';
 import '../../providers/geo_districts_provider.dart';
 import '../../widgets/home_title.dart';
 import '../../widgets/source_attribution.dart';
-import 'local_body_screen.dart'; // For election data models
+import '../../providers/local_election_provider.dart'; // For election data models
 
 /// Local body type colors
 Color _getTypeColor(String type) {

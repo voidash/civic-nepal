@@ -1,18 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../models/constituency.dart';
 import '../services/data_service.dart';
-import '../services/svg_path_parser.dart';
 
 part 'constituencies_provider.g.dart';
-
-/// Cached SVG path parser for federal constituencies map
-/// Using keepAlive to parse the SVG only once
-@Riverpod(keepAlive: true)
-Future<SvgPathParser> federalConstituenciesSvg(FederalConstituenciesSvgRef ref) async {
-  final parser = SvgPathParser();
-  await parser.loadSvg('assets/data/election/nepal_constituencies.svg');
-  return parser;
-}
 
 /// Provider for federal constituencies data
 /// Using keepAlive to cache the data and avoid reloading on every screen visit

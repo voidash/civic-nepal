@@ -49,8 +49,6 @@ dependencies:
   image_picker: ^1.0.0
   file_picker: ^8.0.0
   simple_pdf_compression: ^0.0.2
-  pdf: ^3.10.0
-  pdfx: ^2.9.0
   image: ^4.0.0
   share_plus: ^7.0.0
   gal: ^2.3.0
@@ -72,6 +70,7 @@ dependencies:
 
   # Google Calendar integration
   googleapis: ^13.0.0
+  googleapis_auth: ^1.4.0
   google_sign_in: ^6.2.0
   extension_google_sign_in_as_googleapis_auth: ^2.0.0
 
@@ -131,15 +130,13 @@ flutter:
     - assets/data/data_version.json
     - assets/data/gov_procedures.json
     - assets/data/ronb_feed.json
+    - assets/data/election/local_election_results.json
     - assets/data/election/local_bodies.json
     - assets/data/election/constituencies.json
-    - assets/data/election/local_election_results.json
     - assets/data/election/districts_geo.json
     - assets/data/election/constituencies_geo.json
     - assets/data/election/map_features.json
     - assets/data/election/local_units/
-    - assets/data/election/districts/
-    - assets/data/election/nepal_constituencies.svg
     - assets/data/osm/
     - assets/images/nepal_districts.svg
     - assets/images/nepal_ekantipur.svg

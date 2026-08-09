@@ -1,5 +1,6 @@
 import 'package:googleapis/calendar/v3.dart' as gcal;
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import '../models/calendar_event.dart';
 import 'google_auth_service.dart';
 
@@ -13,9 +14,6 @@ class GoogleCalendarService {
 
   /// Cached events indexed by date string (YYYY-MM-DD).
   final Map<String, List<CalendarEvent>> _eventsByDate = {};
-
-  /// Sync tokens per calendar for incremental sync.
-  final Map<String, String> _syncTokens = {};
 
   /// Whether initial sync has been done.
   bool _hasSynced = false;
@@ -57,6 +55,18 @@ class GoogleCalendarService {
     final api = GoogleAuthService.instance.calendarApi;
     if (api == null) return [];
 
+    // The calendar list is what says which calendars to read. Callers watch
+    // auth state, which flips to signed-in before the list finishes loading,
+    // so without this a fresh sign-in fetched from zero calendars, returned
+    // nothing, and never retried.
+    if (_calendars.isEmpty) {
+      try {
+        await fetchCalendarList();
+      } catch (_) {
+        return [];
+      }
+    }
+
     final targetCalendars = calendarIds ?? _calendars.keys.toSet();
     final allEvents = <CalendarEvent>[];
 
@@ -70,14 +80,27 @@ class GoogleCalendarService {
       }
     }
 
-    // Cache by date
-    for (final event in allEvents) {
-      final key = _dateKey(event.startTime);
-      _eventsByDate.putIfAbsent(key, () => []).add(event);
-    }
-
+    cacheEvents(allEvents);
     _hasSynced = true;
     return allEvents;
+  }
+
+  /// Index events by date, replacing any earlier copy of the same event.
+  ///
+  /// This used to append unconditionally, so every re-fetch of a month stacked
+  /// another copy of each event onto the same day — navigate away and back and
+  /// everything appeared twice, then three times.
+  @visibleForTesting
+  void cacheEvents(List<CalendarEvent> events) {
+    for (final event in events) {
+      final bucket = _eventsByDate.putIfAbsent(_dateKey(event.startTime), () => []);
+      final existing = bucket.indexWhere((e) => e.id == event.id);
+      if (existing >= 0) {
+        bucket[existing] = event;
+      } else {
+        bucket.add(event);
+      }
+    }
   }
 
   Future<List<CalendarEvent>> _fetchCalendarEvents(
@@ -90,37 +113,21 @@ class GoogleCalendarService {
     final events = <CalendarEvent>[];
 
     String? pageToken;
-    final syncToken = _syncTokens[calendarId];
 
     do {
-      gcal.Events result;
-      try {
-        if (syncToken != null) {
-          // Incremental sync
-          result = await api.events.list(
-            calendarId,
-            syncToken: syncToken,
-            pageToken: pageToken,
-          );
-        } else {
-          // Full sync
-          result = await api.events.list(
-            calendarId,
-            timeMin: start.toUtc(),
-            timeMax: end.toUtc(),
-            singleEvents: true,
-            orderBy: 'startTime',
-            pageToken: pageToken,
-          );
-        }
-      } on gcal.DetailedApiRequestError catch (e) {
-        if (e.status == 410) {
-          // Sync token expired — full resync
-          _syncTokens.remove(calendarId);
-          return _fetchCalendarEvents(api, calendarId, start, end);
-        }
-        rethrow;
-      }
+      // Always a bounded range query. There used to be an incremental
+      // sync-token branch here, but the API does not issue a nextSyncToken for
+      // a request carrying timeMin/timeMax/orderBy, so it could never have
+      // engaged — and had it engaged it would have returned recent changes
+      // instead of the requested month, blanking the grid on navigation.
+      final result = await api.events.list(
+        calendarId,
+        timeMin: start.toUtc(),
+        timeMax: end.toUtc(),
+        singleEvents: true,
+        orderBy: 'startTime',
+        pageToken: pageToken,
+      );
 
       for (final item in result.items ?? <gcal.Event>[]) {
         if (item.status == 'cancelled') continue;
@@ -134,7 +141,11 @@ class GoogleCalendarService {
 
         if (isAllDay) {
           startTime = eventStart.date!;
-          endTime = item.end?.date;
+          // Google reports an exclusive end date for all-day events, so a
+          // one-day event comes back ending the following day. Pull it back
+          // to the last day the event actually covers.
+          final exclusiveEnd = item.end?.date;
+          endTime = exclusiveEnd?.subtract(const Duration(days: 1));
         } else {
           startTime = eventStart.dateTime?.toLocal() ?? DateTime.now();
           endTime = item.end?.dateTime?.toLocal();
@@ -155,11 +166,6 @@ class GoogleCalendarService {
       }
 
       pageToken = result.nextPageToken;
-
-      // Store sync token for future incremental syncs
-      if (result.nextSyncToken != null) {
-        _syncTokens[calendarId] = result.nextSyncToken!;
-      }
     } while (pageToken != null);
 
     return events;
@@ -203,8 +209,10 @@ class GoogleCalendarService {
       start: isAllDay
           ? gcal.EventDateTime(date: startTime)
           : gcal.EventDateTime(dateTime: startTime.toUtc()),
+      // All-day ends are exclusive on the wire, so the last covered day is
+      // sent as the day after. Mirrors the inclusive end read back above.
       end: isAllDay
-          ? gcal.EventDateTime(date: endTime ?? startTime.add(const Duration(days: 1)))
+          ? gcal.EventDateTime(date: (endTime ?? startTime).add(const Duration(days: 1)))
           : gcal.EventDateTime(dateTime: (endTime ?? startTime.add(const Duration(hours: 1))).toUtc()),
     );
 
@@ -258,7 +266,6 @@ class GoogleCalendarService {
   void clearCache() {
     _calendars.clear();
     _eventsByDate.clear();
-    _syncTokens.clear();
     _hasSynced = false;
   }
 

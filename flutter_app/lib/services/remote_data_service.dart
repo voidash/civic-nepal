@@ -13,9 +13,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// 3. Cache remote data locally
 /// 4. On subsequent loads, use cached data if newer than bundled
 class RemoteDataService {
-  // TODO: Update this to your actual GitHub repo
+  /// Data files are refreshed in-repo by the weekly `update-data` workflow,
+  /// so the repository itself is the update channel.
   static const String _remoteBaseUrl =
-      'https://raw.githubusercontent.com/user/nepal-civic/main/flutter_app/assets/data';
+      'https://raw.githubusercontent.com/voidash/civic-nepal/main/flutter_app/assets/data';
 
   static const String _versionFile = 'data_version.json';
   static const String _cachePrefix = 'cached_data_';
@@ -172,19 +173,25 @@ class RemoteDataService {
     }
   }
 
-  /// Force refresh all remote files (call from settings or pull-to-refresh)
-  static Future<void> forceRefreshAll() async {
+  /// Force refresh all remote files (call from settings or pull-to-refresh).
+  ///
+  /// Returns the number of files successfully refreshed, so callers can report
+  /// a real outcome instead of an unconditional "done" message.
+  static Future<int> forceRefreshAll() async {
+    var refreshed = 0;
     for (final filename in remoteFiles) {
       try {
         final remoteData = await _fetchRemoteFile(filename);
         if (remoteData != null) {
           await _cacheData(filename, remoteData);
+          refreshed++;
           debugPrint('Force refreshed $filename');
         }
       } catch (e) {
         debugPrint('Error refreshing $filename: $e');
       }
     }
+    return refreshed;
   }
 
   /// Clear all cached data (for debugging/reset)

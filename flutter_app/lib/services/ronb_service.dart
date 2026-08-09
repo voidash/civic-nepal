@@ -76,15 +76,26 @@ class RonbFeed {
       );
 }
 
-/// Service to scrape RONB Facebook page and extract posts.
+/// Service that supplies the RONB news feed.
 ///
-/// Uses Googlebot user agent to get server-rendered HTML with embedded JSON.
-/// On web, routes through a CORS proxy. On mobile/desktop, fetches directly.
+/// The feed is scraped server-side every ~10 minutes by the `update-ronb`
+/// workflow and published to the repository's `data` branch, so the app just
+/// downloads a few KB of JSON instead of parsing a 2MB Facebook page. That is
+/// the only path that works on web at all: scraping Facebook directly needs a
+/// Googlebot user agent, which a browser cannot set cross-origin.
+///
+/// Native platforms keep the direct scrape as a fallback for when the
+/// published feed is unreachable.
 class RonbService {
   static const String _facebookPage = 'officialroutineofnepalbanda';
   static const String _pageUrl = 'https://www.facebook.com/$_facebookPage/';
   static const String _googlebotUa =
       'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+
+  /// Pre-scraped feed. raw.githubusercontent.com allows cross-origin reads and
+  /// caches for 5 minutes, which suits the publish cadence.
+  static const String _publishedFeedUrl =
+      'https://raw.githubusercontent.com/voidash/civic-nepal/data/ronb_feed.json';
 
 // Bump version when cache format changes (v2: added image extraction)
   static const String _cacheKey = 'ronb_feed_cache_v2';
@@ -95,66 +106,91 @@ class RonbService {
 
   /// Fetch the RONB feed.
   ///
-  /// Strategy for snappiness:
-  /// 1. If cache exists, return it immediately (even if stale)
-  /// 2. Caller can then call fetchFeed(forceRefresh: true) in background
+  /// Order of preference:
+  ///  1. Cache, if younger than [maxAge] and [forceRefresh] is not set.
+  ///  2. The published feed — small, current, and the only option on web.
+  ///  3. A direct Facebook scrape (native only).
+  ///  4. Stale cache, then the bundled asset, so the screen is never empty.
   ///
-  /// On web: Facebook requires Googlebot UA which browsers can't set on
-  /// cross-origin requests. Falls back to bundled JSON asset.
-  ///
-  /// [forceRefresh] bypasses cache age check.
-  /// [maxAge] is how old cached data can be before auto re-fetching (default 30 min).
+  /// [maxAge] defaults to 15 minutes to sit just above the ~10 minute publish
+  /// interval.
   static Future<RonbFeed> fetchFeed({
     bool forceRefresh = false,
-    Duration maxAge = const Duration(minutes: 30),
+    Duration maxAge = const Duration(minutes: 15),
   }) async {
-    // Web: can't scrape Facebook (CORS + Googlebot UA required).
-    // Fall back to bundled JSON asset.
-    if (kIsWeb) {
-      return _loadBundledFeed();
-    }
-
-    // Check cache first
     if (!forceRefresh) {
       final cached = await _loadCache();
-      if (cached != null) {
-        final age = DateTime.now().toUtc().difference(cached.scrapedAt);
-        if (age < maxAge) {
-          return cached;
-        }
+      if (cached != null &&
+          DateTime.now().toUtc().difference(cached.scrapedAt) < maxAge) {
+        return cached;
       }
     }
 
-    // Scrape fresh data
+    final published = await _fetchPublishedFeed();
+    if (published != null) {
+      await _saveCache(published);
+      return published;
+    }
+
+    // Browsers cannot set the Googlebot user agent on a cross-origin request,
+    // so the direct scrape is native-only.
+    if (!kIsWeb) {
+      try {
+        final feed = RonbFeed(
+          posts: _extractPosts(await _fetchPage()),
+          scrapedAt: DateTime.now().toUtc(),
+        );
+        await _saveCache(feed);
+        return feed;
+      } catch (_) {
+        // Fall through to the offline fallbacks below.
+      }
+    }
+
+    return await _loadCache() ?? await _loadBundledFeed();
+  }
+
+  /// Download the pre-scraped feed. Returns null if it cannot be reached.
+  static Future<RonbFeed?> _fetchPublishedFeed() async {
     try {
-      final html = await _fetchPage();
-      final posts = _extractPosts(html);
-      final feed = RonbFeed(posts: posts, scrapedAt: DateTime.now().toUtc());
-      await _saveCache(feed);
-      return feed;
-    } catch (e) {
-      // If scrape fails, return stale cache if available
-      final cached = await _loadCache();
-      if (cached != null) return cached;
-      rethrow;
+      final response = await http
+          .get(Uri.parse(_publishedFeedUrl))
+          .timeout(const Duration(seconds: 10));
+      if (response.statusCode != 200) return null;
+      // bodyBytes rather than body: the feed is largely Devanagari and the
+      // default latin1 decode would mangle it.
+      return _parseScrapedFeed(
+        json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+      );
+    } catch (_) {
+      return null;
     }
   }
 
-  /// Load pre-scraped feed from bundled assets (for web).
+  /// Load the copy bundled at build time — first launch, and offline.
   static Future<RonbFeed> _loadBundledFeed() async {
     final jsonStr = await rootBundle.loadString('assets/data/ronb_feed.json');
-    final data = json.decode(jsonStr) as Map<String, dynamic>;
-    final posts = (data['posts'] as List).map((p) {
+    return _parseScrapedFeed(json.decode(jsonStr) as Map<String, dynamic>);
+  }
+
+  /// Parse the format written by `scripts/scrape_ronb.py`.
+  static RonbFeed _parseScrapedFeed(Map<String, dynamic> data) {
+    final posts = (data['posts'] as List? ?? []).map((p) {
       final post = p as Map<String, dynamic>;
       return RonbPost(
         text: post['text'] as String? ?? '',
         timestamp: post['timestamp'] as int?,
-        imageUrl: null, // Bundled feed has no accessible image URLs
+        // Only reachable on native: the URLs need a Googlebot user agent,
+        // which an <img> tag cannot send.
+        imageUrl: kIsWeb ? null : post['imageUrl'] as String?,
         postUrl: post['url'] as String?,
       );
     }).toList();
-    final scrapedAt = DateTime.tryParse(data['scraped_at'] as String? ?? '') ?? DateTime.now().toUtc();
-    return RonbFeed(posts: posts, scrapedAt: scrapedAt);
+    return RonbFeed(
+      posts: posts,
+      scrapedAt: DateTime.tryParse(data['scraped_at'] as String? ?? '') ??
+          DateTime.now().toUtc(),
+    );
   }
 
   /// Get cached feed immediately (no network). Returns null if no cache.

@@ -8,7 +8,11 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 21
+        // Lua is compiled with LUA_USE_POSIX, whose file layer calls fseeko /
+        // ftello. Bionic only declares those from API 24, so building against
+        // 21 fails to compile liolib.c. Android 7.0 is the real floor for this
+        // plugin.
+        minSdk = 24
 
         externalNativeBuild {
             cmake {

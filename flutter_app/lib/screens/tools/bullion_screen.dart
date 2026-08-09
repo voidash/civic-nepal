@@ -324,7 +324,8 @@ class _BullionScreenState extends State<BullionScreen> {
                     title,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text(
+                  if (titleNp.isNotEmpty)
+                    Text(
                     titleNp,
                     style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurfaceVariant),
                   ),

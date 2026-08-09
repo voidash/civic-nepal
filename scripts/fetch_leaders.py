@@ -15,6 +15,7 @@ Usage:
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
@@ -25,9 +26,55 @@ import requests
 
 # Configuration
 API_BASE = "https://api.ratemyneta.com/api"
-OUTPUT_DIR = Path(__file__).parent.parent / "assets" / "data"
-IMAGES_DIR = Path(__file__).parent.parent / "assets" / "images" / "leaders"
-DISTRICTS_FILE = Path(__file__).parent.parent / "districts.json"
+
+# The Flutter app bundles `flutter_app/assets/`, so data must land there.
+# Writing to the repo-root `assets/` copy left the app on stale data.
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_DIR = _REPO_ROOT / "flutter_app" / "assets" / "data"
+IMAGES_DIR = _REPO_ROOT / "flutter_app" / "assets" / "images" / "leaders"
+DISTRICTS_FILE = _REPO_ROOT / "flutter_app" / "assets" / "data" / "districts.json"
+
+# ratemyneta.com sits behind a CDN that rejects default python-requests
+# user-agents and datacenter IPs, so present as a normal browser and retry.
+USER_AGENT = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+)
+
+
+_SESSION: "requests.Session | None" = None
+
+
+def _session() -> requests.Session:
+    """A shared requests session with browser-like headers and retry/backoff.
+
+    Reused across calls so connections are pooled and the retry policy (which
+    covers the 429s this host issues under load) applies to every request.
+    """
+    global _SESSION
+    if _SESSION is not None:
+        return _SESSION
+
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
+
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": USER_AGENT,
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://ratemyneta.com/",
+    })
+    retry = Retry(
+        total=4,
+        backoff_factor=2,
+        status_forcelist=(403, 429, 500, 502, 503, 504),
+        allowed_methods=frozenset(["GET"]),
+    )
+    session.mount("https://", HTTPAdapter(max_retries=retry))
+    session.mount("http://", HTTPAdapter(max_retries=retry))
+    _SESSION = session
+    return session
 
 # District name normalization mapping (API returns -> our standard name)
 DISTRICT_ALIASES = {
@@ -177,7 +224,7 @@ def fetch_leaders() -> List[Dict[str, Any]]:
     print(f"Fetching leaders from {API_BASE}/leaders...")
 
     try:
-        response = requests.get(f"{API_BASE}/leaders", timeout=30)
+        response = _session().get(f"{API_BASE}/leaders", timeout=30)
         response.raise_for_status()
         result = response.json()
 
@@ -202,28 +249,78 @@ def fetch_leaders() -> List[Dict[str, Any]]:
 
 
 def download_image(url: str, leader_id: str) -> str:
-    """Download leader image and return local path."""
+    """Download a leader image and return its bundled asset path.
+
+    Images must be local: the remote hosts send no CORS headers, so on the web
+    build every remote photo fails to load and the leader falls back to
+    initials. Downloads are incremental — an image already on disk is reused —
+    so repeated runs converge on a complete set even though the upstream host
+    rate-limits (HTTP 429) a full sweep.
+    """
     if not url:
         return None
 
-    # Create images directory
     IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-
     image_path = IMAGES_DIR / f"{leader_id}.jpg"
+    asset_path = f"assets/images/leaders/{leader_id}.jpg"
+
+    # Already fetched on an earlier run — don't re-download.
+    if image_path.exists() and image_path.stat().st_size > 0:
+        return asset_path
 
     try:
-        response = requests.get(url, timeout=30, stream=True)
+        response = _session().get(url, timeout=30, stream=True)
         response.raise_for_status()
 
         with open(image_path, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
 
-        return f"assets/images/leaders/{leader_id}.jpg"
+        # Reject error pages saved as images.
+        if image_path.stat().st_size < 1024:
+            image_path.unlink(missing_ok=True)
+            print(f"Warning: image for {leader_id} too small, discarding", file=sys.stderr)
+            return None
+
+        # Be a polite client; this host throttles aggressive sweeps.
+        time.sleep(0.3)
+        return asset_path
 
     except requests.RequestException as e:
         print(f"Warning: Failed to download image for {leader_id}: {e}", file=sys.stderr)
         return None
+
+
+# The upstream API spells the same party several different ways, which split
+# one party into multiple entries in the filter list (e.g. "Nepali Congress"
+# with 65 members alongside "Nepali Congress (NC)" with 25).
+#
+# Only unambiguous variants of the *same* name are merged here. Genuinely
+# ambiguous labels are deliberately left alone rather than guessed at:
+#   - "Nepali Communist Party (NCP)" — NCP was the 2018–2021 UML+Maoist merger,
+#     so these members cannot be reassigned without knowing what was meant.
+#   - "People's Socialist Party" — an English rendering that maps to more than
+#     one Janata Samajbadi splinter.
+#   - "Ministry of Finance" / "Ministry of Home Affairs" — not parties at all;
+#     upstream has an office in the party field.
+PARTY_ALIASES = {
+    "Nepali Congress (NC)": "Nepali Congress",
+    "Communist Party of Nepal (Unified Marxist–Leninist)": "Nepal Communist Party (UML)",
+    "Communist Party of Nepal (Unified Marxist-Leninist)": "Nepal Communist Party (UML)",
+    "Rastriya Swotantra Party": "Rastriya Swatantra Party (RSP)",
+    "Rastriya Prajatantra Party (RPP)": "Rastriya Prajatantra Party",
+    "Janata Samajbadi Party Nepal": "Janata Samajbadi Party Nepal (JSP)",
+    "Nagarik Unmukti Party, Nepal": "Nagarik Unmukti Party",
+    "Unaffiliated": "Independent",
+    "None": "Independent",
+    "": "Independent",
+}
+
+
+def canonical_party(party: str) -> str:
+    """Collapse known spelling variants onto one canonical party name."""
+    name = (party or "").strip()
+    return PARTY_ALIASES.get(name, name or "Independent")
 
 
 def generate_parties(leaders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -235,7 +332,7 @@ def generate_parties(leaders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         "Nepali Congress": "#00A0DD",
         "Nepal Communist Party (UML)": "#0A4D3C",
         "Nepal Communist Party (Maoist Center)": "#D32F2F",
-        "Rastriya Swotantra Party": "#FF6B35",
+        "Rastriya Swatantra Party (RSP)": "#FF6B35",
         "Rastriya Prajatantra Party": "#9C27B0",
         "Communist Party of Nepal (Unified Socialist)": "#E91E63",
         "Independent": "#607D8B",
@@ -247,7 +344,7 @@ def generate_parties(leaders: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     }
 
     for leader in leaders:
-        party = leader.get("party", "Unknown")
+        party = canonical_party(leader.get("party", ""))
         party_id = party.lower().replace(" ", "-").replace("(", "").replace(")", "").replace("'", "")
 
         if party not in parties:
@@ -295,8 +392,16 @@ def main():
     print(f"Fetched {len(leaders)} leaders")
 
     if not leaders:
-        print("No leaders fetched. Exiting.", file=sys.stderr)
-        sys.exit(1)
+        # ratemyneta.com blocks datacenter IPs, so a scheduled CI run can fail
+        # for reasons unrelated to this repo. Skip quietly (keeping the existing
+        # committed data) unless --strict was requested.
+        strict = "--strict" in sys.argv
+        print(
+            "No leaders fetched — upstream API unreachable. "
+            f"{'Failing (--strict).' if strict else 'Keeping existing data.'}",
+            file=sys.stderr,
+        )
+        sys.exit(1 if strict else 0)
 
     # Normalize leader data
     normalized_leaders = []
@@ -304,7 +409,7 @@ def main():
         normalized = {
             "_id": leader.get("_id", ""),
             "name": leader.get("name", ""),
-            "party": leader.get("party", "Unknown"),
+            "party": canonical_party(leader.get("party", "")),
             "position": leader.get("position", ""),
             "district": normalize_district(leader.get("district", "")),
             "biography": leader.get("biography", ""),

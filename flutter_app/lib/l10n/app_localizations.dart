@@ -54,6 +54,22 @@ class AppLocalizations {
     return strings[key] ?? fallback[key] ?? key;
   }
 
+  /// Look a key up in a specific locale, ignoring the active one.
+  String getIn(String localeCode, String key) {
+    return _service.getTranslations(localeCode)[key] ?? '';
+  }
+
+  /// The counterpart of [get] in the other language, for two-line labels.
+  ///
+  /// The primary label is already localized, so the secondary line must be the
+  /// *other* language — otherwise a Nepali UI shows the same words twice.
+  /// Returns an empty string when only one translation exists.
+  String bilingualSubtitle(String key) {
+    final primary = get(key);
+    final other = isNepali ? getIn('en', key) : getIn('ne', key);
+    return (other.isEmpty || other == primary) ? '' : other;
+  }
+
   /// Get localized string with parameters
   String getWithParams(String key, Map<String, String> params) {
     var text = get(key);
@@ -72,42 +88,42 @@ class AppLocalizations {
   String get navIpo => get('nav_ipo');
   String get navRights => get('nav_rights');
   String get explore => get('explore');
-  String get exploreNp => get('explore_np');
+  String get exploreNp => bilingualSubtitle('explore');
   String get utilities => get('utilities');
-  String get utilitiesNp => get('utilities_np');
+  String get utilitiesNp => bilingualSubtitle('utilities');
   String get pinned => get('pinned');
-  String get pinnedNp => get('pinned_np');
+  String get pinnedNp => bilingualSubtitle('pinned');
   String get recent => get('recent');
-  String get recentNp => get('recent_np');
+  String get recentNp => bilingualSubtitle('recent');
   String get longPressToPin => get('long_press_to_pin');
   String get pinnedToast => get('pinned_toast');
   String get unpinnedToast => get('unpinned_toast');
   String get govt => get('govt');
-  String get govtNp => get('govt_np');
+  String get govtNp => bilingualSubtitle('govt');
   String get government => get('government');
   String get map => get('map');
-  String get mapNp => get('map_np');
+  String get mapNp => bilingualSubtitle('map');
   String get rights => get('rights');
-  String get rightsNp => get('rights_np');
+  String get rightsNp => bilingualSubtitle('rights');
 
   // ============= Utility Cards =============
   String get photoMerger => get('photo_merger');
-  String get photoMergerNp => get('photo_merger_np');
+  String get photoMergerNp => bilingualSubtitle('photo_merger');
   String get imageCompressor => get('image_compressor');
-  String get imageCompressorNp => get('image_compressor_np');
+  String get imageCompressorNp => bilingualSubtitle('image_compressor');
   String get calendar => get('calendar');
-  String get calendarNp => get('calendar_np');
+  String get calendarNp => bilingualSubtitle('calendar');
   String get viewCalendar => get('view_calendar');
   String get dateConvert => get('date_convert');
-  String get dateConvertNp => get('date_convert_np');
+  String get dateConvertNp => bilingualSubtitle('date_convert');
   String get forex => get('forex');
-  String get forexNp => get('forex_np');
+  String get forexNp => bilingualSubtitle('forex');
   String get goldSilver => get('gold_silver');
-  String get goldSilverNp => get('gold_silver_np');
+  String get goldSilverNp => bilingualSubtitle('gold_silver');
   String get pdfCompressorShort => get('pdf_compressor_short');
-  String get pdfCompressorNp => get('pdf_compressor_np');
+  String get pdfCompressorNp => bilingualSubtitle('pdf_compressor');
   String get unicodeShort => get('unicode_short');
-  String get unicodeNp => get('unicode_np');
+  String get unicodeNp => bilingualSubtitle('unicode_short');
 
   // ============= Settings =============
   String get settings => get('settings');
@@ -129,6 +145,7 @@ class AppLocalizations {
   String get ipoAlertsDesc => get('ipo_alerts_desc');
   String get checkingUpdates => get('checking_updates');
   String get cacheCleared => get('cache_cleared');
+  String get updateFailed => get('update_failed');
   String get appVersion => get('app_version');
   String get privacyPolicy => get('privacy_policy');
   String get privacyPolicyDesc => get('privacy_policy_desc');
@@ -170,7 +187,7 @@ class AppLocalizations {
 
   // ============= Leaders =============
   String get leaders => get('leaders');
-  String get leadersNp => get('leaders_np');
+  String get leadersNp => bilingualSubtitle('leaders');
   String get sort => get('sort');
   String get filter => get('filter');
   String get sortBy => get('sort_by');
@@ -310,7 +327,7 @@ class AppLocalizations {
   String get marketUnavailable => get('market_unavailable');
   String get marketClosed => get('market_closed');
   String get vol => get('vol');
-  String get ipoSharesNp => get('ipo_shares_np');
+  String get ipoSharesNp => bilingualSubtitle('ipo_shares');
   String get updating => get('updating');
   String get justNow => get('just_now');
   String get sourceShares => get('source_shares');
@@ -333,9 +350,9 @@ class AppLocalizations {
   String get reset => get('reset');
   String get mergerInstructions => get('merger_instructions');
   String get frontSide => get('front_side');
-  String get frontSideNp => get('front_side_np');
+  String get frontSideNp => bilingualSubtitle('front_side');
   String get backSide => get('back_side');
-  String get backSideNp => get('back_side_np');
+  String get backSideNp => bilingualSubtitle('back_side');
   String get failedToDisplay => get('failed_to_display');
   String get mergePhotos => get('merge_photos');
   String get processing => get('processing');
@@ -487,7 +504,7 @@ class AppLocalizations {
 
   // ============= Alerts & Disaster Response =============
   String get alerts => get('alerts');
-  String get alertsNp => get('alerts_np');
+  String get alertsNp => bilingualSubtitle('alerts');
   String get contacts => get('contacts');
   String get earthquakesTab => get('earthquakes');
   String get resourcesTab => get('resources');
@@ -510,14 +527,14 @@ class AppLocalizations {
   String get roadClosureAlertsDesc => get('road_closure_alerts_desc');
 
   // Alerts hub
-  String get contactsNp => get('contacts_np');
-  String get earthquakesNp => get('earthquakes_np');
-  String get resourcesNp => get('resources_np');
+  String get contactsNp => bilingualSubtitle('contacts');
+  String get earthquakesNp => bilingualSubtitle('earthquakes');
+  String get resourcesNp => bilingualSubtitle('resources');
   String get roadClosures => get('road_closures');
-  String get roadClosuresNp => get('road_closures_np');
+  String get roadClosuresNp => bilingualSubtitle('road_closures');
   String get roadClosuresDesc => get('road_closures_desc');
   String get weather => get('weather');
-  String get weatherNp => get('weather_np');
+  String get weatherNp => bilingualSubtitle('weather');
   String get weatherDesc => get('weather_desc');
   String get emergencyContactsDesc => get('emergency_contacts_desc');
   String get resourcesDesc => get('resources_desc');

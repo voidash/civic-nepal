@@ -86,45 +86,124 @@
   </script>
 </head>
 <body>
-  <!-- pdf.js for pdfx package -->
-  <script src='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.min.mjs' type='module'></script>
-  <script type='module'>
-  var { pdfjsLib } = globalThis;
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/build/pdf.worker.mjs';
+  <!--
+    Pure HTML/CSS splash. Flutter paints nothing until the engine and
+    main.dart.js (~1.5MB gzipped) have downloaded and booted, which on a slow
+    connection is several seconds of blank white page. This renders instantly
+    and is removed by flutter_bootstrap once the first frame is up.
+  -->
+  <style>
+    #boot-splash {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: #ffffff;
+      color: #1976D2;
+      z-index: 9999;
+      transition: opacity .25s ease-out;
+    }
+    #boot-splash .title { font-size: 20px; font-weight: 600; letter-spacing: .2px; }
+    #boot-splash .sub { font-size: 13px; color: #5F6368; }
+    #boot-splash .bar {
+      width: 148px; height: 3px; border-radius: 2px;
+      background: #E8EAED; overflow: hidden;
+    }
+    #boot-splash .bar i {
+      display: block; width: 40%; height: 100%; border-radius: 2px;
+      background: #1976D2; animation: boot-slide 1.1s ease-in-out infinite;
+    }
+    @keyframes boot-slide {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(350%); }
+    }
+    @media (prefers-color-scheme: dark) {
+      #boot-splash { background: #121212; color: #90CAF9; }
+      #boot-splash .sub { color: #9E9E9E; }
+      #boot-splash .bar { background: #2A2A2A; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #boot-splash .bar i { animation: none; width: 100%; }
+    }
+  </style>
+  <div id="boot-splash">
+    <div class="title">नागरिक पात्रो</div>
+    <div class="bar"><i></i></div>
+    <div class="sub">लोड हुँदै…</div>
+  </div>
 
-  var pdfRenderOptions = {
-    cMapUrl: 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.6.82/cmaps/',
-    cMapPacked: true,
-  }
+  <script>
+  // pdf-lib (~202KB gzipped) is only needed by the PDF compressor screen.
+  // Loading it eagerly cost every visitor a render-blocking third-party
+  // download for a tool most never open, so it is fetched on first use.
+  //
+  // pdf.js used to be loaded here too, for the `pdfx` package — which no Dart
+  // file imports. Both were dropped.
+  (function () {
+    var pdfLibPromise = null;
+
+    window.loadPdfLibs = function () {
+      if (pdfLibPromise) return pdfLibPromise;
+      pdfLibPromise = new Promise(function (resolve, reject) {
+        var el = document.createElement('script');
+        el.src = 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js';
+        el.onload = resolve;
+        el.onerror = function () {
+          // Allow a later attempt to retry rather than caching the failure.
+          pdfLibPromise = null;
+          reject(new Error('Failed to load pdf-lib'));
+        };
+        document.head.appendChild(el);
+      });
+      return pdfLibPromise;
+    };
+
+    window.compressPdfWithMupdf = async function (pdfData, quality) {
+      try {
+        await window.loadPdfLibs();
+        const { PDFDocument } = PDFLib;
+
+        const pdfDoc = await PDFDocument.load(pdfData, {
+          ignoreEncryption: true,
+        });
+
+        // pdf-lib automatically uses deflate compression.
+        const compressedBytes = await pdfDoc.save({
+          useObjectStreams: true,      // Compress objects into streams
+          addDefaultPage: false,
+          objectsPerTick: 50,
+        });
+
+        return new Uint8Array(compressedBytes);
+      } catch (e) {
+        console.error("PDF compression error:", e);
+        return null;
+      }
+    };
+  })();
   </script>
 
-  <!-- pdf-lib for PDF compression (pure JS, no WASM) -->
-  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
   <script>
-  // Expose compression function using pdf-lib
-  window.compressPdfWithMupdf = async function(pdfData, quality) {
-    try {
-      const { PDFDocument } = PDFLib;
-
-      // Load the PDF
-      const pdfDoc = await PDFDocument.load(pdfData, {
-        ignoreEncryption: true,
-      });
-
-      // Save with compression options
-      // pdf-lib automatically uses deflate compression
-      const compressedBytes = await pdfDoc.save({
-        useObjectStreams: true,      // Compress objects into streams
-        addDefaultPage: false,
-        objectsPerTick: 50,
-      });
-
-      return new Uint8Array(compressedBytes);
-    } catch (e) {
-      console.error("PDF compression error:", e);
-      return null;
+  // Flutter dispatches `flutter-first-frame` on window once it has painted.
+  // The timeout is a backstop so a failure to boot never leaves the splash
+  // permanently covering the page.
+  (function () {
+    var removed = false;
+    function dismissSplash() {
+      if (removed) return;
+      removed = true;
+      var el = document.getElementById('boot-splash');
+      if (!el) return;
+      el.style.opacity = '0';
+      setTimeout(function () { el.remove(); }, 260);
     }
-  };
+    window.addEventListener('flutter-first-frame', dismissSplash);
+    setTimeout(dismissSplash, 20000);
+  })();
   </script>
 
   <script src="flutter_bootstrap.js" async></script>

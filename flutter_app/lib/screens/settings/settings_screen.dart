@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../l10n/app_localizations.dart';
+import '../../providers/calendar_view_provider.dart';
 import '../../providers/settings_provider.dart';
 import '../../services/notification_service.dart';
+import '../../services/remote_data_service.dart';
 import '../../services/launch_at_login_service.dart';
 import '../../widgets/home_title.dart';
 
@@ -153,14 +155,14 @@ class SettingsScreen extends ConsumerWidget {
                 title: l10n.checkUpdatesNow,
                 subtitle: l10n.checkUpdatesNowDesc,
                 onTap: () {
-                  _checkForUpdates(context, l10n);
+                  _checkForUpdates(context, ref, l10n);
                 },
               ),
               _TileSetting(
                 title: l10n.clearCache,
                 subtitle: l10n.clearCacheDesc,
                 onTap: () {
-                  _clearCache(context, l10n);
+                  _clearCache(context, ref, l10n);
                 },
               ),
               // Notifications (mobile + desktop native, NOT web)
@@ -247,14 +249,39 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  void _checkForUpdates(BuildContext context, AppLocalizations l10n) {
-    ScaffoldMessenger.of(context).showSnackBar(
+  Future<void> _checkForUpdates(
+      BuildContext context, WidgetRef ref, AppLocalizations l10n) async {
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.showSnackBar(
       SnackBar(content: Text(l10n.checkingUpdates)),
+    );
+
+    final refreshed = await RemoteDataService.forceRefreshAll();
+
+    // Drop the parsed-in-memory copies so the new data is picked up.
+    await ref.read(calendarEventMergerProvider).reload();
+    ref.invalidate(calendarDataLoaderProvider);
+
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBar(
+      SnackBar(
+        content: Text(refreshed > 0
+            ? '$refreshed / ${RemoteDataService.remoteFiles.length} updated'
+            : l10n.updateFailed),
+      ),
     );
   }
 
-  void _clearCache(BuildContext context, AppLocalizations l10n) {
-    ScaffoldMessenger.of(context).showSnackBar(
+  Future<void> _clearCache(
+      BuildContext context, WidgetRef ref, AppLocalizations l10n) async {
+    final messenger = ScaffoldMessenger.of(context);
+
+    await RemoteDataService.clearCache();
+    // Fall back to the bundled assets again.
+    await ref.read(calendarEventMergerProvider).reload();
+    ref.invalidate(calendarDataLoaderProvider);
+
+    messenger.showSnackBar(
       SnackBar(content: Text(l10n.cacheCleared)),
     );
   }

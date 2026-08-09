@@ -377,7 +377,8 @@ class _AlertHubCard extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(
+              if (titleNp.isNotEmpty)
+                Text(
                 titleNp,
                 style: theme.textTheme.bodySmall?.copyWith(
                   color: theme.colorScheme.onSurfaceVariant,

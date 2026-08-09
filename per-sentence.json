@@ -18,7 +18,7 @@
         "number": 1,
         "title": {
           "en": "Preliminary",
-          "np": ""
+          "np": "प्रारम्भिक"
         },
         "articles": [
           {
@@ -287,7 +287,7 @@
         "number": 2,
         "title": {
           "en": "Citizenship",
-          "np": ""
+          "np": "नागरिकता"
         },
         "articles": [
           {
@@ -522,7 +522,7 @@
         "number": 3,
         "title": {
           "en": "Fundamental Rights and Duties",
-          "np": ""
+          "np": "मौलिक हक तथा कर्तव्य"
         },
         "articles": [
           {
@@ -2416,7 +2416,7 @@
         "number": 4,
         "title": {
           "en": "Directive Principles, Policies and Obligations of the State",
-          "np": ""
+          "np": "राज्यका निर्देशक सिद्धान्त, नीति तथा दायित्व"
         },
         "articles": [
           {
@@ -4374,7 +4374,7 @@
         "number": 5,
         "title": {
           "en": "Structure of State and Distribution of State Power",
-          "np": ""
+          "np": "राज्यको संरचना र राज्यशक्तिको बाँडफाँट"
         },
         "articles": [
           {
@@ -4763,7 +4763,7 @@
         "number": 6,
         "title": {
           "en": "President and Vice-President",
-          "np": ""
+          "np": "राष्ट्रपति र उपराष्ट्रपति"
         },
         "articles": [
           {
@@ -5330,7 +5330,7 @@
         "number": 7,
         "title": {
           "en": "Federal Executive",
-          "np": ""
+          "np": "संघीय कार्यपालिका"
         },
         "articles": [
           {
@@ -5995,7 +5995,7 @@
         "number": 8,
         "title": {
           "en": "Federal Legislature",
-          "np": ""
+          "np": "संघीय व्यवस्थापिका"
         },
         "articles": [
           {
@@ -7478,7 +7478,7 @@
         "number": 9,
         "title": {
           "en": "Federal Legislative Procedures",
-          "np": ""
+          "np": "संघीय व्यवस्थापन कार्यविधि"
         },
         "articles": [
           {
@@ -7843,7 +7843,7 @@
         "number": 10,
         "title": {
           "en": "Federal Financial Procedures",
-          "np": ""
+          "np": "संघीय आर्थिक कार्यप्रणाली"
         },
         "articles": [
           {
@@ -8184,7 +8184,7 @@
         "number": 11,
         "title": {
           "en": "Judiciary",
-          "np": ""
+          "np": "न्यायपालिका"
         },
         "articles": [
           {
@@ -9691,7 +9691,7 @@
         "number": 12,
         "title": {
           "en": "Attorney General",
-          "np": ""
+          "np": "महान्यायाधिवक्ता"
         },
         "articles": [
           {
@@ -10022,7 +10022,7 @@
         "number": 13,
         "title": {
           "en": "State Executive",
-          "np": ""
+          "np": "प्रदेश कार्यपालिका"
         },
         "articles": [
           {
@@ -10767,7 +10767,7 @@
         "number": 14,
         "title": {
           "en": "State Legislature",
-          "np": ""
+          "np": "प्रदेश व्यवस्थापिका"
         },
         "articles": [
           {
@@ -11809,7 +11809,7 @@
         "number": 15,
         "title": {
           "en": "State Legislative Procedures",
-          "np": ""
+          "np": "प्रदेश व्यवस्थापन कार्यविधि"
         },
         "articles": [
           {
@@ -12052,7 +12052,7 @@
         "number": 16,
         "title": {
           "en": "State Financial Procedures",
-          "np": ""
+          "np": "प्रदेश आर्थिक कार्यप्रणाली"
         },
         "articles": [
           {
@@ -12377,7 +12377,7 @@
         "number": 17,
         "title": {
           "en": "Local Executive",
-          "np": ""
+          "np": "स्थानीय कार्यपालिका"
         },
         "articles": [
           {
@@ -12929,7 +12929,7 @@
         "number": 18,
         "title": {
           "en": "Local Legislature",
-          "np": ""
+          "np": "स्थानीय व्यवस्थापिका"
         },
         "articles": [
           {
@@ -13276,7 +13276,7 @@
         "number": 19,
         "title": {
           "en": "Local Financial Procedures",
-          "np": ""
+          "np": "स्थानीय आर्थिक कार्यप्रणाली"
         },
         "articles": [
           {
@@ -13396,7 +13396,7 @@
         "number": 20,
         "title": {
           "en": "Interrelations between Federation, State and Local Level",
-          "np": ""
+          "np": "संघ, प्रदेश र स्थानीय तह बीचको अन्तरसम्बन्ध"
         },
         "articles": [
           {
@@ -13772,7 +13772,7 @@
         "number": 21,
         "title": {
           "en": "Commission for the Investigation of Abuse of Authority",
-          "np": ""
+          "np": "अख्तियार दुरुपयोग अनुसन्धान आयोग"
         },
         "articles": [
           {
@@ -13998,7 +13998,7 @@
         "number": 22,
         "title": {
           "en": "Auditor General",
-          "np": ""
+          "np": "महालेखा परीक्षक"
         },
         "articles": [
           {
@@ -14217,7 +14217,7 @@
         "number": 23,
         "title": {
           "en": "Public Service Commission",
-          "np": ""
+          "np": "लोक सेवा आयोग"
         },
         "articles": [
           {
@@ -14527,7 +14527,7 @@
         "number": 24,
         "title": {
           "en": "Election Commission",
-          "np": ""
+          "np": "निर्वाचन आयोग"
         },
         "articles": [
           {
@@ -14742,7 +14742,7 @@
         "number": 25,
         "title": {
           "en": "National Human Rights Commission",
-          "np": ""
+          "np": "राष्ट्रिय मानव अधिकार आयोग"
         },
         "articles": [
           {
@@ -14937,7 +14937,7 @@
         "number": 26,
         "title": {
           "en": "National Natural Resources and Fiscal Commission",
-          "np": ""
+          "np": "राष्ट्रिय प्राकृतिक स्रोत तथा वित्त आयोग"
         },
         "articles": [
           {
@@ -15071,7 +15071,7 @@
         "number": 27,
         "title": {
           "en": "Other Commissions",
-          "np": ""
+          "np": "अन्य आयोग"
         },
         "articles": [
           {
@@ -15828,7 +15828,7 @@
         "number": 28,
         "title": {
           "en": "Provisions Relating to National Security",
-          "np": ""
+          "np": "राष्ट्रिय सुरक्षा सम्बन्धी व्यवस्था"
         },
         "articles": [
           {
@@ -16017,7 +16017,7 @@
         "number": 29,
         "title": {
           "en": "Provisions Relating to Political Parties",
-          "np": ""
+          "np": "राजनीतिक दल सम्बन्धी व्यवस्था"
         },
         "articles": [
           {
@@ -16230,7 +16230,7 @@
         "number": 30,
         "title": {
           "en": "Emergency Power",
-          "np": ""
+          "np": "सङ्कटकालीन अधिकार"
         },
         "articles": [
           {
@@ -16590,7 +16590,7 @@
         "number": 31,
         "title": {
           "en": "Amendment to the Constitution",
-          "np": ""
+          "np": "संविधान संशोधन"
         },
         "articles": [
           {
@@ -16812,7 +16812,7 @@
         "number": 32,
         "title": {
           "en": "Miscellaneous",
-          "np": ""
+          "np": "विविध"
         },
         "articles": [
           {
@@ -17781,7 +17781,7 @@
         "number": 33,
         "title": {
           "en": "Transitional Provisions",
-          "np": ""
+          "np": "संक्रमणकालीन व्यवस्था"
         },
         "articles": [
           {
@@ -18854,7 +18854,7 @@
         "number": 34,
         "title": {
           "en": "Definitions and Interpretations",
-          "np": ""
+          "np": "परिभाषा र व्याख्या"
         },
         "articles": [
           {
@@ -18896,7 +18896,7 @@
         "number": 35,
         "title": {
           "en": "Short Title, Commencement and Repeal",
-          "np": ""
+          "np": "संक्षिप्त नाम, प्रारम्भ र खारेजी"
         },
         "articles": [
           {

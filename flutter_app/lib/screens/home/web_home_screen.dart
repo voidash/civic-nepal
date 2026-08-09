@@ -11,7 +11,7 @@ import '../../l10n/app_localizations.dart';
 import '../../providers/settings_provider.dart';
 import '../../services/data_service.dart';
 import '../../services/nepali_date_service.dart';
-import '../tools/nepali_calendar_screen.dart';
+import '../../models/nepali_calendar_day.dart';
 
 /// Primary brand color - blue
 const _brandColor = Color(0xFF1976D2);
@@ -524,21 +524,21 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
             _buildUtilityItem(
               icon: Icons.currency_exchange,
               label: l10n.forex,
-              sublabel: l10n.forexNp,
+              sublabel: l10n.bilingualSubtitle('forex'),
               color: const Color(0xFF2E7D32),
               route: '/forex',
             ),
             _buildUtilityItem(
               icon: Icons.diamond,
               label: l10n.goldSilver,
-              sublabel: l10n.goldSilverNp,
+              sublabel: l10n.bilingualSubtitle('gold_silver'),
               color: const Color(0xFFFFB300),
               route: '/gold-price',
             ),
             _buildUtilityItem(
               icon: Icons.trending_up,
               label: l10n.ipoShares,
-              sublabel: 'IPO शेयर',
+              sublabel: l10n.bilingualSubtitle('ipo_shares'),
               color: const Color(0xFFD32F2F),
               route: '/ipo',
             ),
@@ -546,14 +546,14 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
             _buildUtilityItem(
               icon: Icons.swap_horiz,
               label: l10n.dateConvert,
-              sublabel: l10n.dateConvertNp,
+              sublabel: l10n.bilingualSubtitle('date_convert'),
               color: const Color(0xFFE65100),
               route: '/date-converter',
             ),
             _buildUtilityItem(
               icon: Icons.translate,
               label: l10n.unicodeConverter,
-              sublabel: 'युनिकोड',
+              sublabel: l10n.bilingualSubtitle('unicode_converter'),
               color: const Color(0xFF5E35B1),
               route: '/unicode',
             ),
@@ -561,21 +561,21 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
             _buildUtilityItem(
               icon: Icons.photo_library,
               label: l10n.photoMerger,
-              sublabel: 'फोटो मर्जर',
+              sublabel: l10n.bilingualSubtitle('photo_merger'),
               color: const Color(0xFF00897B),
               route: '/photo-merger',
             ),
             _buildUtilityItem(
               icon: Icons.compress,
               label: l10n.imageCompressor,
-              sublabel: 'इमेज कम्प्रेस',
+              sublabel: l10n.bilingualSubtitle('image_compressor'),
               color: const Color(0xFF1976D2),
               route: '/photo-compress',
             ),
             _buildUtilityItem(
               icon: Icons.picture_as_pdf,
               label: l10n.pdfCompressor,
-              sublabel: 'PDF कम्प्रेस',
+              sublabel: l10n.bilingualSubtitle('pdf_compressor'),
               color: const Color(0xFFC62828),
               route: '/pdf-compress',
             ),
@@ -631,13 +631,16 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
                         color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
-                    Text(
-                      sublabel,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    // Omitted when there is no distinct second-language name,
+                    // rather than repeating the label back at the reader.
+                    if (sublabel.isNotEmpty)
+                      Text(
+                        sublabel,
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -1455,7 +1458,8 @@ class _WebHomeScreenState extends ConsumerState<WebHomeScreen> {
                             color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
-                        Text(
+                        if (card.titleNp.isNotEmpty)
+                          Text(
                           card.titleNp,
                           style: TextStyle(
                             fontSize: 9,

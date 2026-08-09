@@ -441,7 +441,8 @@ class _ImagePickerCard extends StatelessWidget {
                           l10n.addTitle(title),
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
-                        Text(
+                        if (titleNp.isNotEmpty)
+                          Text(
                           titleNp,
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 color: Theme.of(context).colorScheme.onSurfaceVariant,

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nagarik Patro — Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>नागरिक पात्रो</h1>
+      <p class="sub">Nepali dates on every page.</p>
+    </header>
+
+    <section>
+      <h2>Display</h2>
+
+      <label class="row">
+        <span>
+          <strong>How to show it</strong>
+          <small>Beside the date, or only when you hover it.</small>
+        </span>
+        <select id="displayMode">
+          <option value="inline">Beside the date</option>
+          <option value="hover">On hover only</option>
+        </select>
+      </label>
+
+      <label class="row">
+        <span>
+          <strong>Numerals</strong>
+          <small>१२३ or 123.</small>
+        </span>
+        <select id="numerals">
+          <option value="devanagari">देवनागरी (१२३)</option>
+          <option value="latin">Latin (123)</option>
+        </select>
+      </label>
+
+      <label class="row">
+        <span>
+          <strong>Month names</strong>
+        </span>
+        <select id="language">
+          <option value="nepali">नेपाली</option>
+          <option value="english">English</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Calendars in the hover card</h2>
+      <p class="note">
+        Bikram Sambat is always shown. The others appear when the date can be
+        stated exactly — no calendar is ever guessed at.
+      </p>
+
+      <label class="check"><input type="checkbox" id="showWeekday"> Weekday (बार)</label>
+      <label class="check"><input type="checkbox" id="showNepalSambat"> Nepal Sambat (नेपाल सम्वत्)</label>
+      <label class="check"><input type="checkbox" id="showSaka"> Saka Sambat (शक सम्वत्)</label>
+      <label class="check"><input type="checkbox" id="showBuddhaSambat"> Buddha Sambat (बुद्ध सम्वत्)</label>
+    </section>
+
+    <section>
+      <h2>Reading ambiguous dates</h2>
+      <p class="note">
+        <code>09/08/2026</code> means 9 August in Nepal and the UK, but
+        8 September in the US. There is no way to tell from the page.
+      </p>
+      <label class="row">
+        <span><strong>Treat 09/08/2026 as</strong></span>
+        <select id="dateOrder">
+          <option value="mdy">Month first — 8 September</option>
+          <option value="dmy">Day first — 9 August</option>
+          <option value="strict">Skip it — only annotate unambiguous dates</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>Google Calendar</h2>
+      <label class="check">
+        <input type="checkbox" id="googleCalendarBs">
+        Show Bikram Sambat day numbers on calendar.google.com
+      </label>
+      <p class="note">
+        Each day gains its Bikram Sambat number, with the month name marked on
+        the first of every Nepali month.
+      </p>
+    </section>
+
+    <section>
+      <h2>Sites to skip</h2>
+      <p class="note">One hostname per line. Subdomains are included.</p>
+      <textarea id="blocklist" rows="4" placeholder="example.com"></textarea>
+    </section>
+
+    <footer>
+      <button id="save">Save</button>
+      <span id="status" role="status"></span>
+    </footer>
+  </main>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

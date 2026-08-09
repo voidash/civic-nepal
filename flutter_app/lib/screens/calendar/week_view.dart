@@ -20,6 +20,8 @@ class WeekView extends ConsumerWidget {
     final focused = ref.watch(focusedDateNotifierProvider);
     final dateSystem = ref.watch(dateSystemNotifierProvider);
     final merger = ref.read(calendarEventMergerProvider);
+    // Repaint once the bundled Nepali event data has parsed.
+    ref.watch(calendarDataLoaderProvider);
     ref.watch(googleCalendarSyncProvider);
 
     final weekday = focused.weekday % 7;

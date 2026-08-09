@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Nagarik Patro — Nepali dates everywhere",
+  "version": "1.0.0",
+  "description": "Shows the Bikram Sambat date beside any English date on the web, and puts Nepali dates on Google Calendar.",
+  "homepage_url": "https://nagarikpatro.xyz",
+
+  "permissions": ["storage"],
+
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": true
+  },
+
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Nagarik Patro"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["src/content.js"],
+      "css": ["src/annotate.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/calendars.js",
+        "src/bs-data.js",
+        "src/detect.js",
+        "src/settings.js",
+        "src/gcal.js"
+      ],
+      "matches": ["http://*/*", "https://*/*"]
+    }
+  ]
+}

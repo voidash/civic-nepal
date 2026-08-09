@@ -52,6 +52,10 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+# Native build output from the lua_engine CMake/NDK build
+packages/lua_engine/android/.cxx/
+packages/*/android/build/
+
 # Lua 5.4 C sources (fetched by scripts/fetch_lua.sh — not committed)
 packages/lua_engine/src/lua54/*.c
 packages/lua_engine/src/lua54/*.h

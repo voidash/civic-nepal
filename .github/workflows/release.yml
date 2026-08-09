@@ -49,6 +49,12 @@ jobs:
         working-directory: flutter_app
         run: dart run build_runner build --delete-conflicting-outputs
 
+      # The lua_engine plugin compiles Lua from source, and those sources are
+      # gitignored rather than vendored.
+      - name: Fetch Lua sources
+        shell: bash
+        run: ./scripts/fetch_lua.sh
+
       - name: Build Flutter Windows app
         working-directory: flutter_app
         run: flutter build windows --release
@@ -153,6 +159,11 @@ jobs:
       - name: Generate code (Riverpod / Freezed)
         working-directory: flutter_app
         run: dart run build_runner build --delete-conflicting-outputs
+
+      # The lua_engine plugin compiles Lua from source, and those sources are
+      # gitignored rather than vendored.
+      - name: Fetch Lua sources
+        run: ./scripts/fetch_lua.sh
 
       - name: Build Flutter macOS app
         working-directory: flutter_app

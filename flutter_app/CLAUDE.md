@@ -16,6 +16,12 @@ This file provides guidance to Claude Code when working with this Flutter codeba
 ## Quick Start
 
 ```bash
+# Fetch the Lua 5.4 sources the lua_engine plugin compiles against.
+# Required for Android / macOS / Windows builds — they are gitignored, not
+# vendored, so without this the native build fails on a missing lua.h.
+# Web builds do not need it.
+../scripts/fetch_lua.sh
+
 # Install dependencies
 flutter pub get
 

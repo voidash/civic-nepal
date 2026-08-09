@@ -8,9 +8,14 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// key.properties holds the upload keystore credentials and is deliberately not
+// committed. Gradle configures signingConfigs for every build, not just
+// release, so reading it unconditionally used to fail `assembleDebug` too —
+// meaning a fresh clone could not build for Android at all.
 val keystorePropertiesFile = rootProject.file("key.properties")
 val keystoreProperties = Properties()
-if (keystorePropertiesFile.exists()) {
+val hasReleaseKeystore = keystorePropertiesFile.exists()
+if (hasReleaseKeystore) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
@@ -38,17 +43,30 @@ android {
     }
 
     signingConfigs {
-        create("release") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"] as String)
-            storePassword = keystoreProperties["storePassword"] as String
+        if (hasReleaseKeystore) {
+            create("release") {
+                keyAlias = keystoreProperties["keyAlias"] as String
+                keyPassword = keystoreProperties["keyPassword"] as String
+                storeFile = file(keystoreProperties["storeFile"] as String)
+                storePassword = keystoreProperties["storePassword"] as String
+            }
         }
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            // Without the keystore, sign with the debug key so the build still
+            // completes and can be installed for testing. Play rejects
+            // debug-signed uploads, so this cannot silently ship.
+            signingConfig = if (hasReleaseKeystore) {
+                signingConfigs.getByName("release")
+            } else {
+                logger.warn(
+                    "android/key.properties not found — signing the release " +
+                    "build with the debug key. Not suitable for distribution."
+                )
+                signingConfigs.getByName("debug")
+            }
         }
     }
 }

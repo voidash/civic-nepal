@@ -1,0 +1,129 @@
+name: Update Live Data
+
+# Everything the app needs fresh but cannot fetch for itself.
+#
+# Browsers cannot read facebook.com, cdsc.com.np or sharesansar.com directly —
+# none of them send CORS headers — and Facebook's images only return bytes to a
+# Googlebot user agent, which an <img> tag cannot send. The app used to route
+# around this with public CORS proxies; both are now dead (api.allorigins.win
+# returns 520, corsproxy.io returns 403), which is why the IPO and shares
+# screen renders empty. Scraping here removes the third-party dependency.
+#
+# Everything is published in ONE job to a single-commit `data` branch. One job
+# matters: two workflows force-pushing the same branch would overwrite each
+# other's output. The branch is deliberately not `flutter_app/assets/`, which
+# `deploy-flutter.yml` watches — a commit there would rebuild and redeploy the
+# whole web app every ten minutes — and not `main`, which would gain ~144
+# commits a day.
+#
+# Note on timing: GitHub runs scheduled workflows on a best-effort basis and
+# delays them under load, so ten minutes is the floor, not a guarantee.
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Skip a queued run if a newer one is already going; a missed scrape is
+# replaced by the next one a few minutes later.
+concurrency:
+  group: update-live-data
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout scrapers
+        uses: actions/checkout@v5
+        with:
+          sparse-checkout: scripts
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check requests beautifulsoup4 pillow
+
+      # Start from what is already published so mirrored images are reused
+      # rather than re-downloaded and re-uploaded every ten minutes.
+      - name: Fetch published data
+        run: |
+          if git clone --depth 1 --branch data \
+               "https://github.com/${{ github.repository }}.git" published 2>/dev/null; then
+            rm -rf published/.git
+            echo "Reusing $(ls published/images 2>/dev/null | wc -l) mirrored images"
+          else
+            mkdir -p published
+            echo "No data branch yet; starting fresh"
+          fi
+
+      # --min-posts fails the step rather than publishing an empty feed when
+      # Facebook blocks the runner.
+      - name: Scrape RONB news
+        id: ronb
+        continue-on-error: true
+        run: python3 scripts/scrape_ronb.py --min-posts 5 -o published/ronb_feed.json
+
+      - name: Mirror RONB images
+        if: steps.ronb.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python3 scripts/mirror_ronb_images.py published/ronb_feed.json \
+            --image-dir published/images \
+            --base-url "https://raw.githubusercontent.com/${{ github.repository }}/data"
+
+      # NEPSE is closed on Friday and Saturday and outside trading hours, so an
+      # empty stock list is normal; --min-stocks stays 0 and the app shows the
+      # last published prices with their timestamp.
+      - name: Scrape market and IPOs
+        id: market
+        continue-on-error: true
+        run: python3 scripts/scrape_market.py -o published/market.json
+
+      - name: Publish to data branch
+        run: |
+          set -euo pipefail
+          cd published
+          test -f ronb_feed.json || test -f market.json || {
+            echo "Nothing scraped successfully; leaving the published data alone."
+            exit 1
+          }
+
+          # One commit, force-pushed. Blobs the remote already has are not
+          # re-sent, so reused images cost nothing.
+          git init -q
+          git checkout -q -b data
+          git add -A
+          git -c user.name='github-actions[bot]' \
+              -c user.email='github-actions[bot]@users.noreply.github.com' \
+              commit -q -m "data: live feeds $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push -q --force \
+            "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" \
+            data
+
+      - name: Job summary
+        if: always()
+        run: |
+          {
+            echo "## Live data — $(date -u +'%Y-%m-%d %H:%M UTC')"
+            echo ""
+            echo "| Source | Result | Detail |"
+            echo "|--------|--------|--------|"
+            if [ -f published/ronb_feed.json ]; then
+              echo "| RONB | ${{ steps.ronb.outcome }} | $(python3 -c 'import json;d=json.load(open("published/ronb_feed.json"));print(str(d["post_count"])+" posts, "+str(sum(1 for p in d["posts"] if p.get("imageUrl")))+" images")') |"
+            else
+              echo "| RONB | ${{ steps.ronb.outcome }} | no feed written |"
+            fi
+            if [ -f published/market.json ]; then
+              echo "| Market | ${{ steps.market.outcome }} | $(python3 -c 'import json;d=json.load(open("published/market.json"));print(str(len(d["stocks"]))+" stocks, "+str(len(d["ipos"]))+" IPOs")') |"
+            else
+              echo "| Market | ${{ steps.market.outcome }} | no data written |"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

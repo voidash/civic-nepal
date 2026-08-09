@@ -173,16 +173,22 @@ class RonbService {
     return _parseScrapedFeed(json.decode(jsonStr) as Map<String, dynamic>);
   }
 
+  /// True for an image we re-host ourselves, as opposed to a Facebook URL.
+  static bool isMirrored(String? url) =>
+      url != null && url.startsWith('https://raw.githubusercontent.com/');
+
   /// Parse the format written by `scripts/scrape_ronb.py`.
   static RonbFeed _parseScrapedFeed(Map<String, dynamic> data) {
     final posts = (data['posts'] as List? ?? []).map((p) {
       final post = p as Map<String, dynamic>;
+      final imageUrl = post['imageUrl'] as String?;
       return RonbPost(
         text: post['text'] as String? ?? '',
         timestamp: post['timestamp'] as int?,
-        // Only reachable on native: the URLs need a Googlebot user agent,
-        // which an <img> tag cannot send.
-        imageUrl: kIsWeb ? null : post['imageUrl'] as String?,
+        // The published feed points at images mirrored onto the data branch,
+        // which any browser can load. Facebook's own lookaside URLs only
+        // return bytes to a Googlebot user agent, so those stay native-only.
+        imageUrl: (kIsWeb && !isMirrored(imageUrl)) ? null : imageUrl,
         postUrl: post['url'] as String?,
       );
     }).toList();

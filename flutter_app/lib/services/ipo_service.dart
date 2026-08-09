@@ -21,8 +21,18 @@ class IpoService {
   static const String eventOpening = 'opening';
   static const String eventClosing = 'closing';
 
-  /// CORS proxies for web (browsers block cross-origin requests)
-  /// Multiple proxies for fallback when one fails
+  /// Market snapshot scraped server-side every ~10 minutes by the
+  /// `update-live-data` workflow. raw.githubusercontent serves it with
+  /// `access-control-allow-origin: *`, so unlike the sources themselves it is
+  /// readable from a browser.
+  static const String _publishedMarketUrl =
+      'https://raw.githubusercontent.com/voidash/civic-nepal/data/market.json';
+
+  /// CORS proxies, kept only as a native-side fallback.
+  ///
+  /// These are third-party services that go down without warning, and both had:
+  /// api.allorigins.win returns 520 and corsproxy.io returns 403, which is what
+  /// left the IPO and shares screen blank on the web.
   static const List<String> _corsProxies = [
     'https://api.allorigins.win/raw?url=',
     'https://corsproxy.io/?',
@@ -81,19 +91,104 @@ class IpoService {
 
   /// Fetch IPO list from CDSC
   static Future<List<Ipo>> fetchIpoList() async {
-    try {
-      final response = await _fetchWithProxyFallback(_cdscUrl);
-
-      if (response != null && response.statusCode == 200) {
-        final ipos = _parseIpoHtml(response.body);
-        await _cacheIpos(ipos);
-        return ipos;
-      }
-    } catch (e) {
-      // Return cached data on error
+    // Prefer the feed scraped server-side by the `update-live-data` workflow.
+    // CDSC populates its table with JavaScript, so parsing the HTML in the app
+    // finds an empty tbody even when the request succeeds — and on the web the
+    // request cannot succeed at all without a CORS proxy.
+    final published = await _fetchPublishedMarket();
+    if (published != null) {
+      final ipos = (published['ipos'] as List? ?? [])
+          .map((e) => _ipoFromPublished(e as Map<String, dynamic>))
+          .whereType<Ipo>()
+          .toList();
+      await _cacheIpos(ipos);
+      return ipos;
     }
-    final cached = await getCachedIpos();
-    return cached.isNotEmpty ? cached : [];
+
+    // Native can still scrape directly if the feed is unreachable.
+    if (!kIsWeb) {
+      try {
+        final response = await _fetchWithProxyFallback(_cdscUrl);
+        if (response != null && response.statusCode == 200) {
+          final ipos = _parseIpoHtml(response.body);
+          if (ipos.isNotEmpty) {
+            await _cacheIpos(ipos);
+            return ipos;
+          }
+        }
+      } catch (_) {
+        // Fall through to the cache.
+      }
+    }
+    return getCachedIpos();
+  }
+
+  /// Published market snapshot, or null when it cannot be reached.
+  ///
+  /// Cached for the lifetime of the call chain so fetching IPOs and stock
+  /// prices back to back does not download the same document twice.
+  static Future<Map<String, dynamic>?> _fetchPublishedMarket() async {
+    final cached = _marketSnapshot;
+    if (cached != null &&
+        DateTime.now().difference(_marketFetchedAt!) < const Duration(minutes: 2)) {
+      return cached;
+    }
+    try {
+      final response = await http
+          .get(Uri.parse(_publishedMarketUrl))
+          .timeout(const Duration(seconds: 12));
+      if (response.statusCode != 200) return null;
+      final decoded =
+          json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      _marketSnapshot = decoded;
+      _marketFetchedAt = DateTime.now();
+      return decoded;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Map<String, dynamic>? _marketSnapshot;
+  static DateTime? _marketFetchedAt;
+
+  static Ipo? _ipoFromPublished(Map<String, dynamic> json) {
+    DateTime parseDate(String? value) =>
+        DateTime.tryParse(value ?? '') ?? DateTime.now();
+    try {
+      return Ipo(
+        companyName: json['companyName'] as String? ?? '',
+        symbol: json['symbol'] as String? ?? '',
+        issueType: json['issueType'] as String? ?? '',
+        issueManager: json['issueManager'] as String? ?? '',
+        issuedUnits: (json['issuedUnits'] as num?)?.toInt() ?? 0,
+        numberOfApplications: (json['numberOfApplications'] as num?)?.toInt() ?? 0,
+        appliedUnits: (json['appliedUnits'] as num?)?.toInt() ?? 0,
+        amount: (json['amount'] as num?)?.toInt() ?? 0,
+        openDate: parseDate(json['openDate'] as String?),
+        closeDate: parseDate(json['closeDate'] as String?),
+        lastUpdate: parseDate(json['lastUpdate'] as String?),
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static StockPrice? _stockFromPublished(Map<String, dynamic> json) {
+    double asDouble(Object? v) => (v as num?)?.toDouble() ?? 0;
+    final symbol = json['symbol'] as String?;
+    if (symbol == null || symbol.isEmpty) return null;
+    return StockPrice(
+      symbol: symbol,
+      companyName: json['companyName'] as String? ?? symbol,
+      ltp: asDouble(json['ltp']),
+      change: asDouble(json['change']),
+      changePercent: asDouble(json['changePercent']),
+      open: asDouble(json['open']),
+      high: asDouble(json['high']),
+      low: asDouble(json['low']),
+      volume: (json['volume'] as num?)?.toInt() ?? 0,
+      previousClose: asDouble(json['previousClose']),
+    );
   }
 
   /// Parse IPO data from CDSC HTML
@@ -204,6 +299,25 @@ class IpoService {
 
   /// Fetch stock prices - tries ShareSansar first, then Merolagani
   static Future<List<StockPrice>> fetchStockPrices() async {
+    // The published snapshot is the only path that works on the web, and is
+    // cheaper than parsing an 800KB page everywhere else.
+    final published = await _fetchPublishedMarket();
+    if (published != null) {
+      final stocks = (published['stocks'] as List? ?? [])
+          .map((e) => _stockFromPublished(e as Map<String, dynamic>))
+          .whereType<StockPrice>()
+          .toList();
+      if (stocks.isNotEmpty) {
+        await _cacheStocks(stocks);
+        return stocks;
+      }
+      // NEPSE is shut at weekends and overnight; show the last known prices.
+      final cached = await getCachedStocks();
+      if (cached.isNotEmpty) return cached;
+    }
+
+    if (kIsWeb) return getCachedStocks();
+
     // Try ShareSansar first
     try {
       final stocks = await _fetchFromShareSansar();

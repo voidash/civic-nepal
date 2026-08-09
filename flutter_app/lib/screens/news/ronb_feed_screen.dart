@@ -372,7 +372,16 @@ class _RonbImageState extends State<_RonbImage> {
     _loadImage();
   }
 
+  @override
+  void didUpdateWidget(_RonbImage old) {
+    super.didUpdateWidget(old);
+    if (old.url != widget.url) _loadImage();
+  }
+
   Future<void> _loadImage() async {
+    // Mirrored images are ordinary URLs, handled by Image.network below.
+    if (RonbService.isMirrored(widget.url)) return;
+
     final bytes = await RonbService.fetchImage(widget.url);
     if (mounted) {
       setState(() {
@@ -391,22 +400,40 @@ class _RonbImageState extends State<_RonbImage> {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: _loading
-            ? Container(
-                height: 200,
-                width: double.infinity,
-                color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                child: const Center(
-                  child: CircularProgressIndicator(strokeWidth: 2),
-                ),
-              )
-            : Image.memory(
-                _imageBytes!,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                errorBuilder: (_, __, ___) => const SizedBox.shrink(),
-              ),
+        child: _buildImage(context),
       ),
+    );
+  }
+
+  Widget _placeholder(BuildContext context) => Container(
+        height: 200,
+        width: double.infinity,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
+        child: const Center(child: CircularProgressIndicator(strokeWidth: 2)),
+      );
+
+  Widget _buildImage(BuildContext context) {
+    // Images we re-host go straight through Image.network, which gets HTTP
+    // caching and progressive decoding for free. Facebook's own lookaside URLs
+    // need a Googlebot user agent, so those are fetched as bytes instead — and
+    // only work off the web.
+    if (RonbService.isMirrored(widget.url)) {
+      return Image.network(
+        widget.url,
+        fit: BoxFit.cover,
+        width: double.infinity,
+        loadingBuilder: (context, child, progress) =>
+            progress == null ? child : _placeholder(context),
+        errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+      );
+    }
+
+    if (_loading) return _placeholder(context);
+    return Image.memory(
+      _imageBytes!,
+      fit: BoxFit.cover,
+      width: double.infinity,
+      errorBuilder: (_, __, ___) => const SizedBox.shrink(),
     );
   }
 }

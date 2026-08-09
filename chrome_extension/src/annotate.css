@@ -1,0 +1,135 @@
+/*
+ * Styles injected into every page, so everything is namespaced and every
+ * property that could leak is stated explicitly. Inheriting the host page's
+ * font-size is deliberate — the badge should scale with the text it annotates.
+ */
+
+.nagarik-date {
+  all: unset;
+  display: inline;
+  cursor: help;
+}
+
+.nagarik-date__original {
+  all: unset;
+  display: inline;
+}
+
+.nagarik-date--hover .nagarik-date__original {
+  text-decoration: underline dotted currentColor;
+  text-underline-offset: 2px;
+}
+
+.nagarik-date__badge {
+  all: unset;
+  display: inline;
+  margin-inline-start: 0.35em;
+  padding: 0.05em 0.4em;
+  border-radius: 0.5em;
+  font-size: 0.85em;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: #0b4a86;
+  background: #e3f0fb;
+  border: 1px solid #bcd9f2;
+  vertical-align: baseline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nagarik-date__badge {
+    color: #cfe6ff;
+    background: #12314d;
+    border-color: #1d4c78;
+  }
+}
+
+/* ── Hover card ─────────────────────────────────────────────────── */
+
+.nagarik-date-card {
+  all: unset;
+  position: absolute;
+  z-index: 2147483647;
+  box-sizing: border-box;
+  min-width: 190px;
+  max-width: 320px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1b1b1b;
+  border: 1px solid #d8dde3;
+  box-shadow: 0 8px 28px rgba(15, 30, 50, 0.18);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: start;
+  pointer-events: none;
+}
+
+.nagarik-date-card[hidden] {
+  display: none;
+}
+
+.nagarik-date-card__ad {
+  font-weight: 600;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e8ebef;
+  color: #44505f;
+}
+
+.nagarik-date-card__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.nagarik-date-card__label {
+  color: #6b7683;
+  white-space: nowrap;
+}
+
+.nagarik-date-card__value {
+  font-weight: 600;
+  text-align: end;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nagarik-date-card {
+    background: #1e2227;
+    color: #e8eaed;
+    border-color: #343a41;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+  }
+  .nagarik-date-card__ad {
+    color: #b6bec8;
+    border-bottom-color: #2c3238;
+  }
+  .nagarik-date-card__label {
+    color: #9aa4af;
+  }
+}
+
+/* ── Google Calendar ────────────────────────────────────────────── */
+
+.nagarik-gcal-bs {
+  display: inline-block;
+  margin-inline-start: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #1a73e8;
+  vertical-align: super;
+  line-height: 1;
+}
+
+.nagarik-gcal-bs--month-start {
+  color: #d93025;
+}
+
+@media (prefers-color-scheme: dark) {
+  .nagarik-gcal-bs {
+    color: #8ab4f8;
+  }
+  .nagarik-gcal-bs--month-start {
+    color: #f28b82;
+  }
+}
